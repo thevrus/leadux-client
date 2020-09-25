@@ -5,7 +5,7 @@ import Home from '../views/Home.vue'
 // import Login from '../views/Login.vue'
 // import Register from '../views/Register.vue'
 
-import Lesson from '../views/Lesson.vue'
+import Watch from '../views/Watch.vue'
 
 Vue.use(VueRouter)
 
@@ -25,8 +25,10 @@ const routes = [
 		component: () => import('../views/Register.vue'),
 	},
 	{
-		path: '/lesson',
-		component: Lesson,
+		path: '/watch',
+		// path: '/watch/:slug',
+		// path: '/watch?lesson=slug',
+		component: Watch,
 	},
 ]
 

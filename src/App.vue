@@ -1,30 +1,19 @@
 <template>
-	<div id="app">
-		<div id="nav">
-			<router-link to="/">Home</router-link>
-			<router-link to="/lesson"> | Watch</router-link>
-			<router-link v-if="!loggedIn" to="/login"> | Login</router-link>
-			<a v-if="loggedIn" href="#!" @click.prevent="logout"> | Logout</a>
-		</div>
-		<router-view />
-	</div>
+	<main id="app">
+		<Nav />
+
+		<transition name="fade" mode="out-in">
+			<router-view />
+		</transition>
+	</main>
 </template>
 
 <script>
+import Nav from '@/components/Nav'
+
 export default {
-	computed: {
-		loggedIn() {
-			return this.$store.state.auth.status.loggedIn
-		},
-	},
-	created() {
-		this.loggedIn ? true : false
-	},
-	methods: {
-		logout() {
-			this.$store.dispatch('auth/logout')
-			window.location.reload()
-		},
+	components: {
+		Nav,
 	},
 }
 </script>
@@ -38,16 +27,13 @@ export default {
 	color: #2c3e50;
 }
 
-#nav {
-	padding: 30px;
+.fade-enter-active,
+.fade-leave-active {
+	transition: opacity 0.3s;
+}
 
-	a {
-		font-weight: bold;
-		color: #2c3e50;
-
-		&.router-link-exact-active {
-			color: #42b983;
-		}
-	}
+.fade-enter,
+.fade-leave-to {
+	opacity: 0;
 }
 </style>

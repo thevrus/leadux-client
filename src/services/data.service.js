@@ -1,15 +1,9 @@
 import axios from 'axios'
 import authHeader from './auth-header'
 
-class UserService {
+class DataService {
 	me() {
 		return axios.get(process.env.VUE_APP_API_URL + 'users/me', {
-			headers: authHeader(),
-		})
-	}
-
-	getLessons() {
-		return axios.get(process.env.VUE_APP_API_URL + 'lessons', {
 			headers: authHeader(),
 		})
 	}
@@ -19,6 +13,12 @@ class UserService {
 			headers: authHeader(),
 		})
 	}
+
+	getPlaylists() {
+		return axios.get(process.env.VUE_APP_API_URL + 'playlists', {
+			headers: authHeader(),
+		})
+	}
 }
 
-export default new UserService()
+export default new DataService()

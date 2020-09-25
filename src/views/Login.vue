@@ -79,7 +79,7 @@ export default {
 			if (this.user.email && this.user.password) {
 				this.$store.dispatch('auth/login', this.user).then(
 					() => {
-						this.$router.push('/lesson')
+						this.$router.push('/watch')
 					},
 					error => {
 						this.loading = false
