@@ -1,4 +1,4 @@
-# rockux-client
+# LeadUX Client
 
 ## Project setup
 ```
