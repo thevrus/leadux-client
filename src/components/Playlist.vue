@@ -27,6 +27,8 @@ export default {
 	},
 	methods: {
 		handleClick(lesson) {
+			// TODO
+			// * If user logged in and withou payment redirect to payment page
 			if (lesson.videoId) {
 				this.$store.dispatch('lessons/setCurrentLesson', lesson)
 			} else {

@@ -68,6 +68,9 @@ export default {
 		loggedIn() {
 			return this.$store.state.auth.status.loggedIn
 		},
+		// isPayed() {
+		// 	return null
+		// },
 	},
 	created() {
 		this.loggedIn && this.$router.push('/')

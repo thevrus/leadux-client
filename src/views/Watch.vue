@@ -1,7 +1,5 @@
 <template>
 	<div>
-		<h1>Lessons</h1>
-		<hr />
 		<div v-if="!loading" class="lesson">
 			<Player />
 			<Playlist />
@@ -14,7 +12,7 @@
 <script>
 import Player from '@/components/Player'
 import Playlist from '@/components/Playlist'
-import DataService from '../services/data.service'
+import DataService from '@/services/data.service'
 
 export default {
 	name: 'Watch',
@@ -45,6 +43,6 @@ export default {
 .lesson {
 	margin: 0 auto;
 	display: flex;
-	align-items: top;
+	width: 100%;
 }
 </style>

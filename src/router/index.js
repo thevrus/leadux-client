@@ -1,11 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-
-// import Login from '../views/Login.vue'
-// import Register from '../views/Register.vue'
-
 import Watch from '../views/Watch.vue'
+import Thanks from '../views/Thanks.vue'
 
 Vue.use(VueRouter)
 
@@ -16,19 +13,29 @@ const routes = [
 	},
 	{
 		path: '/login',
-		// component: Login,
 		component: () => import('../views/Login.vue'),
 	},
 	{
 		path: '/register',
-		// component: Register,
 		component: () => import('../views/Register.vue'),
+	},
+	{
+		path: '/pay',
+		component: () => import('../views/Pay.vue'),
+	},
+	{
+		path: '/me',
+		component: () => import('../views/Me.vue'),
 	},
 	{
 		path: '/watch',
 		// path: '/watch/:slug',
 		// path: '/watch?lesson=slug',
 		component: Watch,
+	},
+	{
+		path: '/thanks',
+		component: Thanks,
 	},
 ]
 

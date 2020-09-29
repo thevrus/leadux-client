@@ -3,5 +3,8 @@ export default function authHeader() {
 
 	if (!user || !user.jwt) return {}
 
-	return { Authorization: `Bearer ${user.jwt}` }
+	return {
+		Authorization: `Bearer ${user.jwt}`,
+		'Content-Type': 'application/json',
+	}
 }

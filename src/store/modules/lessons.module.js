@@ -44,10 +44,16 @@ export const lessons = {
 			return state.currentLesson
 		},
 
-		// TODO
-		// * Sort lessons in each playlist
 		getPlaylists(state) {
-			return state.playlists
+			const sort = (a, b) => a.order - b.order
+
+			const sorted = state.playlists.sort(sort).map(playlist => {
+				playlist.lessons = playlist.lessons.sort(sort)
+
+				return playlist
+			})
+
+			return sorted
 		},
 	},
 }

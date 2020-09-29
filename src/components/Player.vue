@@ -1,12 +1,11 @@
 <template>
 	<div v-if="currentLesson" class="lesson">
-		<div v-if="currentLesson.videoId">
+		<div v-if="currentLesson.videoId" class="video-wrapper">
 			<iframe
 				:src="'https://player.vimeo.com/video/' + currentLesson.videoId"
-				width="640"
-				height="360"
 				frameborder="0"
-				allowFullScreen
+				scrolling="no"
+				allowfullscreen
 			></iframe>
 		</div>
 		<h3>{{ currentLesson.order }}.{{ currentLesson.title }}</h3>
@@ -42,6 +41,20 @@ export default {
 		letter-spacing: 1px;
 		text-transform: uppercase;
 		font-size: 0.75rem;
+	}
+
+	.video-wrapper {
+		position: relative;
+		padding-top: 56.25%;
+		overflow: hidden;
+
+		iframe {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
 	}
 
 	h3 {
