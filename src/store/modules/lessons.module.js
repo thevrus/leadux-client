@@ -18,6 +18,7 @@ export const lessons = {
 			localStorage.setItem('currentLesson', JSON.stringify(lesson))
 			commit('setCurrentLesson', lesson)
 			// TODO
+			//* set first video as current lesson
 			// * update search params in url
 		},
 		clearCurrentLesson({ commit }) {
@@ -29,6 +30,11 @@ export const lessons = {
 			state.lessons = payload
 		},
 		setPlaylists(state, payload) {
+			payload.forEach(pl => {
+				pl.lessons.forEach(les => {
+					les.isWatched = false
+				})
+			})
 			state.playlists = payload
 		},
 		setCurrentLesson(state, payload) {
@@ -54,6 +60,15 @@ export const lessons = {
 			})
 
 			return sorted
+		},
+
+		getLessonsLength(state) {
+			let count = 0
+			state.playlists.forEach(pl => {
+				count += pl.lessons.length
+			})
+
+			return count
 		},
 	},
 }

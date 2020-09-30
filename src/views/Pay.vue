@@ -20,14 +20,18 @@
 				</form>
 			</div>
 		</div>
-		<div v-else>Loading...</div>
+		<div class="green" v-else>Loading...</div>
 	</div>
 </template>
 
 <script>
 import AuthService from '@/services/auth.service'
+import Nav from '@/components/Nav'
 
 export default {
+	components: {
+		Nav,
+	},
 	data() {
 		return {
 			plans: [],
@@ -49,6 +53,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.green {
+	color: #7ab72b;
+}
 button {
 	border: none !important;
 	display: inline-block !important;

@@ -1,5 +1,6 @@
 <template>
 	<div>
+		<NavWatch />
 		<div v-if="!loading" class="lesson">
 			<Player />
 			<Playlist />
@@ -12,6 +13,7 @@
 <script>
 import Player from '@/components/Player'
 import Playlist from '@/components/Playlist'
+import NavWatch from '@/components/NavWatch'
 import DataService from '@/services/data.service'
 
 export default {
@@ -19,6 +21,7 @@ export default {
 	components: {
 		Player,
 		Playlist,
+		NavWatch,
 	},
 	data() {
 		return {
