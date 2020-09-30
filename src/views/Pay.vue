@@ -1,19 +1,24 @@
 <template>
 	<div>
-		<div v-if="data && signature">
-			<form
-				method="POST"
-				accept-charset="utf-8"
-				action="https://www.liqpay.ua/api/3/checkout"
-			>
-				<input type="hidden" name="data" :value="data" />
-				<input type="hidden" name="signature" :value="signature" />
-				<button>
-					<span style="vertical-align:middle; !important"
-						>Оплатить {{ amount }} {{ currency }}</span
-					>
-				</button>
-			</form>
+		<div v-if="plans.length > 0">
+			<div v-for="plan in plans" :key="plan.signature">
+				<form
+					method="POST"
+					accept-charset="utf-8"
+					action="https://www.liqpay.ua/api/3/checkout"
+					style="border: 0.5px solid grey"
+				>
+					<input type="hidden" name="data" :value="plan.data" />
+					<input type="hidden" name="signature" :value="plan.signature" />
+					<p>{{ plan.name }}</p>
+					<p>{{ plan.description }}</p>
+					<button>
+						<span style="vertical-align:middle; !important"
+							>Оплатить {{ plan.amount }} {{ plan.currency }}</span
+						>
+					</button>
+				</form>
+			</div>
 		</div>
 		<div v-else>Loading...</div>
 	</div>
@@ -25,10 +30,7 @@ import AuthService from '@/services/auth.service'
 export default {
 	data() {
 		return {
-			amount: null,
-			currency: null,
-			data: null,
-			signature: null,
+			plans: [],
 		}
 	},
 	computed: {
@@ -40,10 +42,7 @@ export default {
 		// !this.loggedIn && this.$router.push('/login')
 
 		AuthService.invoice().then(({ data }) => {
-			this.amount = data.amount
-			this.currency = data.currency
-			this.data = data.data
-			this.signature = data.signature
+			data.forEach(plan => plan && this.plans.push(plan))
 		})
 	},
 }

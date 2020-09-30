@@ -3,6 +3,7 @@
 		<div v-if="currentLesson.videoId" class="video-wrapper">
 			<iframe
 				:src="'https://player.vimeo.com/video/' + currentLesson.videoId"
+				:title="currentLesson.title"
 				frameborder="0"
 				scrolling="no"
 				allowfullscreen
