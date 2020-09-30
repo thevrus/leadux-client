@@ -7,7 +7,7 @@
 				<div class="progress__wrapper">
 					<span class="progress__title">Прогресс курса</span>
 					<span class="progress__numbers"
-						>{{ watchedVideos }} из {{ totalVideos }}</span
+						>{{ watchedVideos }} из {{ totalLessons }}</span
 					>
 				</div>
 				<div class="progress__line">
@@ -33,7 +33,6 @@ export default {
 	},
 	data() {
 		return {
-			totalVideos: 37,
 			watchedVideos: 1,
 			isStudent: false,
 		}
@@ -42,7 +41,11 @@ export default {
 
 	computed: {
 		progress() {
-			return 'width:' + (100 / this.totalVideos) * this.watchedVideos + '%'
+			return 'width:' + (100 / this.totalLessons) * this.watchedVideos + '%'
+		},
+
+		totalLessons() {
+			return this.$store.getters['lessons/getLessonsLength']
 		},
 	},
 }

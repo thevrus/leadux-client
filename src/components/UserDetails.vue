@@ -1,34 +1,42 @@
 <template>
-	<div class="wrapp">
-		<div class="avatar" @click="showUserInfo">
-			<div v-if="user.avatar">
-				<img :src="user.avatar" alt="Avatar" class="user__img" />
-			</div>
-			<div class="avatar__letter" v-else>
-				{{ user.userName | capitalize }}
-			</div>
+	<div>
+		<div class="unregistered__wrapp" v-if="!loggedIn">
+			<router-link class="register-btn" to="/register">Регистрация</router-link>
+			<router-link class="login-btn" to="/login">Вход</router-link>
 		</div>
-		<div class="user">
-			<div class="user__nick">{{ user.userName }}</div>
-			<div class="user__status">{{ user.userStatus }}</div>
-			<transition name="fade" mode="out-in" appear>
-				<div class="user__info-wrapper" v-show="userInfo">
-					<div class="avatar" @click="showUserInfo">
-						<div v-if="user.avatar">
-							<img :src="user.avatar" alt="Avatar" class="user__img" />
+		<div class="registered__wrapp" v-if="loggedIn">
+			<div class="user">
+				<div class="user__nick">{{ user.username }}</div>
+				<div class="user__status">{{ user.role.description }}</div>
+				<transition name="fade" mode="out-in" appear>
+					<div class="user__info-wrapper" v-show="userInfo">
+						<div class="user__details">
+							<div class="user__nick">{{ user.username }}</div>
+							<div class="user__email">{{ user.email }}</div>
+							<button v-if="loggedIn" @click.prevent="logout" class="logout">
+								Выйти
+							</button>
 						</div>
-						<div class="avatar__letter" v-else>
-							{{ user.userName | capitalize }}
-						</div>
-					</div>
 
-					<div class="user__details">
-						<div class="user__nick">{{ user.userName }}</div>
-						<div class="user__email">{{ user.userEmail }}</div>
-						<button @logout="logout" class="logout">Выйти</button>
+						<div class="avatar" @click="toggleUserInfo">
+							<div v-if="user.avatar">
+								<img :src="user.avatar" alt="Avatar" class="user__img" />
+							</div>
+							<div class="avatar__letter" v-else>
+								{{ user.username | capitalize }}
+							</div>
+						</div>
 					</div>
+				</transition>
+			</div>
+			<div class="avatar" @click="toggleUserInfo">
+				<div v-if="user.avatar">
+					<img :src="user.avatar" alt="Avatar" class="user__img" />
 				</div>
-			</transition>
+				<div class="avatar__letter" v-else>
+					{{ user.username | capitalize }}
+				</div>
+			</div>
 		</div>
 	</div>
 </template>
@@ -40,21 +48,22 @@ export default {
 	data() {
 		return {
 			userInfo: false,
-			user: {
-				userName: 'wowa',
-				userEmail: 'test4test@gmail.com',
-				userStatus: 'Тестовый доступ',
-				avatar: null,
-				//   "https://avatars1.githubusercontent.com/u/25208437?s=460&u=3d367c58a7d9341ac0ff526030353d93030e4f74&v=4",
-			},
 		}
 	},
 
+	created() {
+		this.loggedIn ? true : false
+	},
+
 	methods: {
-		showUserInfo() {
+		toggleUserInfo() {
 			return (this.userInfo = !this.userInfo)
 		},
-		logout() {},
+		logout() {
+			this.$store.dispatch('auth/logout')
+			this.$store.dispatch('lessons/clearCurrentLesson')
+			window.location.reload()
+		},
 	},
 
 	filters: {
@@ -64,16 +73,54 @@ export default {
 			return value.slice(0, 2).toUpperCase()
 		},
 	},
+
+	computed: {
+		loggedIn() {
+			return this.$store.state.auth.status.loggedIn
+		},
+
+		user() {
+			return this.$store.state.auth.user.user
+		},
+	},
 }
 </script>
 
-<style scoped>
-.wrapp {
+<style scoped lang="scss">
+.registered__wrapp {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	position: relative;
 	flex-shrink: 0;
+}
+
+.register-btn {
+	padding: 0.75rem 1.5rem;
+	background-color: rgba(255, 255, 255, 0.04);
+	border-radius: 7px;
+	color: #fff;
+	font-weight: 500;
+	font-size: 1rem;
+	line-height: 1rem;
+	transition: background-color 0.3s;
+	&:hover {
+		background-color: rgba(255, 255, 255, 0.1);
+	}
+}
+
+.login-btn {
+	padding: 0.75rem 1.5rem;
+	border-radius: 7px;
+	color: rgba(255, 255, 255, 0.6);
+	font-weight: 500;
+	font-size: 1rem;
+	margin-left: 1rem;
+	line-height: 1rem;
+	transition: background-color 0.3s;
+	&:hover {
+		background-color: rgba(255, 255, 255, 0.1);
+	}
 }
 
 .avatar {
@@ -82,7 +129,7 @@ export default {
 	border-radius: 50%;
 	background-color: #76b680;
 	position: relative;
-	margin-right: 1rem;
+	margin-left: 1rem;
 	overflow: hidden;
 	cursor: pointer;
 }
@@ -141,7 +188,7 @@ export default {
 	align-items: center;
 	position: absolute;
 	top: -31px;
-	right: -36.4px;
+	right: -18.9px;
 	background-color: #2c2c2c;
 	padding: 1rem 1.1rem 1rem 1rem;
 	border-radius: 12px;
