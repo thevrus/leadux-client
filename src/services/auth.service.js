@@ -4,7 +4,7 @@ import authHeader from './auth-header'
 class AuthService {
 	login(user) {
 		return axios
-			.post(`${process.env.VUE_APP_API_URL}auth/local`, {
+			.post(`${process.env.VUE_APP_API_URL}/auth/local`, {
 				identifier: user.email,
 				password: user.password,
 			})
@@ -19,7 +19,7 @@ class AuthService {
 
 	register(user) {
 		return axios
-			.post(`${process.env.VUE_APP_API_URL}auth/local/register`, {
+			.post(`${process.env.VUE_APP_API_URL}/auth/local/register`, {
 				username: user.username,
 				email: user.email,
 				password: user.password,
@@ -36,7 +36,7 @@ class AuthService {
 	}
 
 	me() {
-		return axios.get(process.env.VUE_APP_API_URL + 'users/me', {
+		return axios.get(`${process.env.VUE_APP_API_URL}/users/me`, {
 			headers: authHeader(),
 		})
 	}
@@ -51,7 +51,7 @@ class AuthService {
 
 		return axios({
 			method: 'post',
-			url: `${process.env.VUE_APP_API_URL}users-permissions/invoice`,
+			url: `${process.env.VUE_APP_API_URL}/users-permissions/invoice`,
 			headers: authHeader(),
 			data: ip_info && ip_info.data,
 		})

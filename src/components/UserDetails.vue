@@ -20,7 +20,11 @@
 
 						<div class="avatar" @click="toggleUserInfo">
 							<div v-if="user.avatar">
-								<img :src="user.avatar" alt="Avatar" class="user__img" />
+								<img
+									:src="host_url + user.avatar.url"
+									alt="Avatar"
+									class="user__img"
+								/>
 							</div>
 							<div class="avatar__letter" v-else>
 								{{ user.username | capitalize }}
@@ -31,7 +35,11 @@
 			</div>
 			<div class="avatar" @click="toggleUserInfo">
 				<div v-if="user.avatar">
-					<img :src="user.avatar" alt="Avatar" class="user__img" />
+					<img
+						:src="host_url + user.avatar.url"
+						alt="Avatar"
+						class="user__img"
+					/>
 				</div>
 				<div class="avatar__letter" v-else>
 					{{ user.username | capitalize }}
@@ -48,6 +56,7 @@ export default {
 	data() {
 		return {
 			userInfo: false,
+			host_url: process.env.VUE_APP_API_URL,
 		}
 	},
 
@@ -80,6 +89,7 @@ export default {
 		},
 
 		user() {
+			console.log(this.$store.state.auth.user.user)
 			return this.$store.state.auth.user.user
 		},
 	},

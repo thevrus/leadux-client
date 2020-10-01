@@ -26,12 +26,9 @@
 
 <script>
 import AuthService from '@/services/auth.service'
-import Nav from '@/components/Nav'
 
 export default {
-	components: {
-		Nav,
-	},
+	components: {},
 	data() {
 		return {
 			plans: [],

@@ -19,17 +19,8 @@ export default {
 </script>
 
 <style lang="scss">
-@import './assets/normalize';
-@import './assets/global';
-@import './assets/helpers';
-
-.fade-enter-active,
-.fade-leave-active {
-	transition: opacity 0.3s;
-}
-
-.fade-enter,
-.fade-leave-to {
-	opacity: 0;
-}
+@import './assets/css/normalize';
+@import './assets/css/global';
+@import './assets/css/helpers';
+@import './assets/css/transitions';
 </style>
