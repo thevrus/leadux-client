@@ -44,8 +44,8 @@ export default {
 
 <style scoped lang="scss">
 .lesson {
-	margin: 0 auto;
-	display: flex;
-	width: 100%;
+	display: grid;
+	grid-template-columns: 63.75% 33.75%;
+	grid-gap: 2.5%;
 }
 </style>
