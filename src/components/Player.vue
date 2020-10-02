@@ -36,6 +36,7 @@ export default {
 	.video-wrapper {
 		position: relative;
 		padding-top: 56.25%;
+		height: 0;
 		overflow: hidden;
 		border-radius: 0.5rem 0.5rem 0 0;
 

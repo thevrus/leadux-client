@@ -78,8 +78,10 @@ export default {
 	filters: {
 		capitalize(value) {
 			if (!value) return ''
-			value = value.toString()
-			return value.slice(0, 2).toUpperCase()
+			return value
+				.toString()
+				.slice(0, 2)
+				.toUpperCase()
 		},
 	},
 

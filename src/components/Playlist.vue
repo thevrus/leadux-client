@@ -11,6 +11,7 @@
 						>
 					</div>
 				</summary>
+
 				<ul class="playlist__list">
 					<li v-for="lesson in playlist.lessons" :key="lesson.id">
 						<div class="playlist__wrapp">
@@ -21,7 +22,9 @@
 								<h6 @click="handleClick(lesson)" class="playlist__video-title">
 									{{ lesson.order }}. {{ lesson.title }}
 								</h6>
-								<div class="playlist__video-time">4 мин</div>
+								<div v-if="lesson.videoLength" class="playlist__video-time">
+									{{ lesson.videoLength | time }}
+								</div>
 							</div>
 
 							<label v-else class="playlist__label">
@@ -34,7 +37,9 @@
 									>
 										{{ lesson.order }}. {{ lesson.title }}
 									</h6>
-									<div class="playlist__video-time">4 мин</div>
+									<div v-if="lesson.videoLength" class="playlist__video-time">
+										{{ lesson.videoLength | time }}
+									</div>
 								</div>
 							</label>
 						</div>
@@ -70,13 +75,17 @@ export default {
 	},
 	methods: {
 		handleClick(lesson) {
-			// TODO
-			// * If user logged in and withou payment redirect to payment page
 			if (lesson.videoId) {
 				this.$store.dispatch('lessons/setCurrentLesson', lesson)
 			} else {
 				this.$router.push('/login')
 			}
+		},
+	},
+	filters: {
+		time(value) {
+			if (!value || typeof value !== 'number') return
+			return Math.floor(value / 60) + ' мин.'
 		},
 	},
 }
@@ -205,12 +214,12 @@ summary::-webkit-details-marker {
 	outline: none;
 	background-color: #333333;
 	border-radius: 0.5rem;
-	padding: 2.25rem;
+	padding: 1.75rem 2.25rem;
 	position: relative;
 	&::after {
 		position: absolute;
 		right: 2.25rem;
-		top: 50%;
+		top: 40%;
 		content: '';
 		width: 10.6px;
 		height: 6.3px;
