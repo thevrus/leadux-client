@@ -12,11 +12,11 @@ export const auth = {
 		login({ commit }, user) {
 			return AuthService.login(user).then(
 				user => {
-					commit('loginSuccess', user)
+					commit('LOGIN_SUCCESS', user)
 					return Promise.resolve(user)
 				},
 				error => {
-					commit('loginFailure')
+					commit('LOGIN_FAILURE')
 					return Promise.reject(error)
 				}
 			)
@@ -24,37 +24,37 @@ export const auth = {
 		register({ commit }, user) {
 			return AuthService.register(user).then(
 				user => {
-					commit('registerSuccess')
+					commit('REGISTER_SUCCESS')
 					return Promise.resolve(user)
 				},
 				error => {
-					commit('registerFailure')
+					commit('REGISTER_FAILURE')
 					return Promise.reject(error)
 				}
 			)
 		},
 		logout({ commit }) {
 			AuthService.logout()
-			commit('logout')
+			commit('LOGOUT')
 		},
 	},
 	mutations: {
-		loginSuccess(state, user) {
+		LOGIN_SUCCESS(state, user) {
 			state.status.loggedIn = true
 			state.user = user
 		},
-		loginFailure(state) {
+		LOGIN_FAILURE(state) {
 			state.status.loggedIn = false
 			state.user = null
 		},
-		registerSuccess(state) {
+		REGISTER_SUCCESS(state) {
 			state.status.loggedIn = true
 			state.user = user
 		},
-		registerFailure(state) {
+		REGISTER_FAILURE(state) {
 			state.status.loggedIn = false
 		},
-		logout(state) {
+		LOGOUT(state) {
 			state.status.loggedIn = false
 			state.user = null
 		},

@@ -9,40 +9,37 @@ export const lessons = {
 	state: initialState,
 	actions: {
 		setLessons({ commit }, lessons) {
-			commit('setLessons', lessons)
+			commit('SET_LESSONS', lessons)
 		},
 		setPlaylists({ commit }, playlists) {
-			commit('setPlaylists', playlists)
+			commit('SET_PLAYLISTS', playlists)
 		},
 		setCurrentLesson({ commit }, lesson) {
 			localStorage.setItem('currentLesson', JSON.stringify(lesson))
-			commit('setCurrentLesson', lesson)
-			// TODO
-			//* set first video as current lesson
-			// * update search params in url
+			commit('SET_CURRENT_LESSON', lesson)
 		},
 		clearCurrentLesson({ commit }) {
-			commit('clearCurrentLesson')
+			localStorage.removeItem('currentLesson')
+			commit('CLEAR_CURRENT_LESSON')
 		},
 	},
 	mutations: {
-		setLessons(state, payload) {
-			state.lessons = payload
+		SET_LESSONS(state, lessons) {
+			state.lessons = lessons
 		},
-		setPlaylists(state, payload) {
-			payload.forEach(pl => {
+		SET_PLAYLISTS(state, playlists) {
+			playlists.forEach(pl => {
 				pl.lessons.forEach(les => {
 					les.isWatched = false
 				})
 			})
-			state.playlists = payload
+			state.playlists = playlists
 		},
-		setCurrentLesson(state, payload) {
+		SET_CURRENT_LESSON(state, payload) {
 			state.currentLesson = payload
 		},
-		clearCurrentLesson(state) {
+		CLEAR_CURRENT_LESSON(state) {
 			state.currentLesson = null
-			localStorage.removeItem('currentLesson')
 		},
 	},
 	getters: {
