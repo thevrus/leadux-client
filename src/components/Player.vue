@@ -1,5 +1,5 @@
 <template>
-	<div v-if="currentLesson" class="lesson">
+	<div v-if="currentLesson" class="player">
 		<div v-if="currentLesson.videoId" class="video-wrapper">
 			<iframe
 				:src="'https://player.vimeo.com/video/' + currentLesson.videoId"
@@ -27,27 +27,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.lesson {
-	background-color: hsl(0, 0%, 95%);
-	padding: 2rem;
-	margin: 1rem 2rem;
+.player {
+	width: 100%;
+	background-color: #2c2c2c;
 	border-radius: 0.5rem;
 	transition: 0.3s;
-	display: flex;
-	flex-direction: column;
-	position: relative;
-
-	.private {
-		font-weight: bold;
-		letter-spacing: 1px;
-		text-transform: uppercase;
-		font-size: 0.75rem;
-	}
 
 	.video-wrapper {
 		position: relative;
 		padding-top: 56.25%;
+		height: 0;
 		overflow: hidden;
+		border-radius: 0.5rem 0.5rem 0 0;
 
 		iframe {
 			position: absolute;
@@ -60,6 +51,9 @@ export default {
 
 	h3 {
 		font-weight: bold;
+		font-size: 1.1rem;
+		color: #f4f4f4;
+		margin-left: 1rem;
 	}
 }
 </style>

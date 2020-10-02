@@ -1,4 +1,6 @@
 .tac {
 	text-align: center;
 }
-
+.fl-sh0 {
+	flex-shrink: 0;
+}

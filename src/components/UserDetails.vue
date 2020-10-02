@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="fl-sh0">
 		<div class="unregistered__wrapp" v-if="!loggedIn">
 			<router-link class="register-btn" to="/register">Регистрация</router-link>
 			<router-link class="login-btn" to="/login">Вход</router-link>
@@ -78,8 +78,10 @@ export default {
 	filters: {
 		capitalize(value) {
 			if (!value) return ''
-			value = value.toString()
-			return value.slice(0, 2).toUpperCase()
+			return value
+				.toString()
+				.slice(0, 2)
+				.toUpperCase()
 		},
 	},
 
@@ -89,7 +91,6 @@ export default {
 		},
 
 		user() {
-			console.log(this.$store.state.auth.user.user)
 			return this.$store.state.auth.user.user
 		},
 	},
@@ -102,7 +103,6 @@ export default {
 	justify-content: space-between;
 	align-items: center;
 	position: relative;
-	flex-shrink: 0;
 }
 
 .register-btn {

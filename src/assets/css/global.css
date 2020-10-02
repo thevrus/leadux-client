@@ -5,10 +5,17 @@
 }
 ul {
 	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 
 a {
 	text-decoration: none;
+}
+
+p {
+	margin: 0;
+	padding: 0;
 }
 
 body {
@@ -19,6 +26,7 @@ body {
 }
 .container {
 	max-width: 1660px;
+	margin: 0 auto;
 	width: 100%;
 	padding: 0 40px;
 }
