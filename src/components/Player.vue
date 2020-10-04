@@ -17,10 +17,7 @@
 export default {
 	computed: {
 		currentLesson() {
-			return (
-				this.$store.getters['lessons/getCurrentLesson'] ||
-				this.$store.getters['lessons/getPlaylists'][0].lessons[0]
-			)
+			return this.$store.getters['lessons/getCurrentLesson']
 		},
 	},
 }

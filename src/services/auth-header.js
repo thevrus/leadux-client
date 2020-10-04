@@ -1,5 +1,7 @@
+import ls from '@/services/ls.service'
+
 export default function authHeader() {
-	const user = JSON.parse(localStorage.getItem('user'))
+	const user = ls.find('user')
 
 	if (!user || !user.jwt) return {}
 

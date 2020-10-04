@@ -11,10 +11,9 @@
 </template>
 
 <script>
-import Player from '@/components/Player'
-import Playlist from '@/components/Playlist'
 import NavWatch from '@/components/NavWatch'
-import DataService from '@/services/data.service'
+import Playlist from '@/components/Playlist'
+import Player from '@/components/Player'
 
 export default {
 	name: 'Watch',
@@ -34,8 +33,9 @@ export default {
 		},
 	},
 	mounted() {
-		DataService.getPlaylists().then(response => {
-			this.$store.dispatch('lessons/setPlaylists', response.data)
+		this.loggedIn && this.$store.dispatch('auth/me')
+
+		this.$store.dispatch('lessons/loadLessons').then(() => {
 			this.loading = false
 		})
 	},

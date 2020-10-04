@@ -1,38 +1,35 @@
 import axios from 'axios'
 import authHeader from './auth-header'
+import ls from '@/services/ls.service'
 
 class AuthService {
-	login(user) {
+	login({ email, password }) {
 		return axios
 			.post(`${process.env.VUE_APP_API_URL}/auth/local`, {
-				identifier: user.email,
-				password: user.password,
+				identifier: email,
+				password,
 			})
 			.then(response => {
-				if (response.data.jwt) {
-					localStorage.setItem('user', JSON.stringify(response.data))
-				}
+				response.data.jwt && ls.create('user', response.data)
 
 				return response.data
 			})
 	}
 
-	register(user) {
+	register({ username, email, password }) {
 		return axios
 			.post(`${process.env.VUE_APP_API_URL}/auth/local/register`, {
-				username: user.username,
-				email: user.email,
-				password: user.password,
+				username,
+				email,
+				password,
 			})
 			.then(response => {
-				if (response.data.jwt) {
-					localStorage.setItem('user', JSON.stringify(response.data))
-				}
+				response.data.jwt && ls.create('user', response.data)
 			})
 	}
 
 	logout() {
-		localStorage.removeItem('user')
+		ls.delete('user')
 	}
 
 	me() {

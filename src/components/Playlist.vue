@@ -1,7 +1,12 @@
 <template>
 	<aside>
 		<div v-for="playlist in playlists" :key="playlist.id">
-			<details v-if="playlist.lessons.length > 0" class="playlist" id="details">
+			<details
+				v-if="playlist.lessons.length > 0"
+				open
+				class="playlist"
+				id="details"
+			>
 				<summary class="summary">
 					<p class="summary__title">{{ playlist.name }}</p>
 					<div class="summary__wrap">
@@ -19,7 +24,10 @@
 								v-if="!lesson.videoId"
 								class="playlist__lesson-info playlist__private"
 							>
-								<h6 @click="handleClick(lesson)" class="playlist__video-title">
+								<h6
+									@click="setCurrentLesson(lesson)"
+									class="playlist__video-title"
+								>
 									{{ lesson.order }}. {{ lesson.title }}
 								</h6>
 								<div v-if="lesson.videoLength" class="playlist__video-time">
@@ -28,11 +36,16 @@
 							</div>
 
 							<label v-else class="playlist__label">
-								<input type="checkbox" class="playlist__checkbox" />
+								<input
+									type="checkbox"
+									:checked="watchedLessons.includes(lesson.id)"
+									@change="handleChange(lesson.id)"
+									class="playlist__checkbox"
+								/>
 								<span class="playlist__custom-check"></span>
 								<div class="playlist__lesson-info">
 									<h6
-										@click="handleClick(lesson)"
+										@click="setCurrentLesson(lesson)"
 										class="playlist__video-title"
 									>
 										{{ lesson.order }}. {{ lesson.title }}
@@ -53,7 +66,7 @@
 				<h4>{{ playlist.name }}</h4>
 
 				<div v-for="lesson in playlist.lessons" :key="lesson.id">
-					<h6 @click="handleClick(lesson)">
+					<h6 @click="setCurrentLesson(lesson)">
 						{{ lesson.order }}. {{ lesson.title }}
 						<span v-if="!lesson.videoId" class="private">– PRIVATE</span>
 					</h6>
@@ -67,19 +80,27 @@
 export default {
 	computed: {
 		playlists() {
-			return this.$store.getters['lessons/getPlaylists']
+			return this.$store.getters['lessons/getLessons']
 		},
 		loggedIn() {
 			return this.$store.state.auth.loggedIn
 		},
+		watchedLessons() {
+			return this.$store.state.lessons.watchedLessons
+		},
 	},
 	methods: {
-		handleClick(lesson) {
+		setCurrentLesson(lesson) {
 			if (lesson.videoId) {
 				this.$store.dispatch('lessons/setCurrentLesson', lesson)
-			} else {
+			} else if (!this.loggedIn) {
 				this.$router.push('/login')
+			} else {
+				this.$router.push('/pay')
 			}
+		},
+		handleChange(lessonId) {
+			this.$store.dispatch('lessons/toggleWatchedLesson', lessonId)
 		},
 	},
 	filters: {
@@ -92,10 +113,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// Details animate
-
-// Details animate
-
 .playlist {
 	width: 100%;
 	background-color: #2c2c2c;
@@ -216,6 +233,8 @@ summary::-webkit-details-marker {
 	border-radius: 0.5rem;
 	padding: 1.75rem 2.25rem;
 	position: relative;
+	cursor: pointer;
+
 	&::after {
 		position: absolute;
 		right: 2.25rem;

@@ -1,6 +1,7 @@
 import AuthService from '@/services/auth.service'
+import ls from '@/services/ls.service'
 
-const user = JSON.parse(localStorage.getItem('user'))
+const user = ls.find('user')
 const state = user
 	? { status: { loggedIn: true }, user }
 	: { status: { loggedIn: false }, user: null }
@@ -37,6 +38,12 @@ export const auth = {
 			AuthService.logout()
 			commit('LOGOUT')
 		},
+		me({ commit }) {
+			AuthService.me().then(({ data }) => {
+				ls.create('user', { jwt: state.user.jwt, user: state.user.user })
+				commit('SET_USER', data)
+			})
+		},
 	},
 	mutations: {
 		LOGIN_SUCCESS(state, user) {
@@ -57,6 +64,9 @@ export const auth = {
 		LOGOUT(state) {
 			state.status.loggedIn = false
 			state.user = null
+		},
+		SET_USER(state, user) {
+			state.user.user = user
 		},
 	},
 }

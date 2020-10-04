@@ -40,7 +40,7 @@ export default {
 		},
 	},
 	created() {
-		// !this.loggedIn && this.$router.push('/login')
+		!this.loggedIn && this.$router.push('/login')
 
 		AuthService.invoice().then(({ data }) => {
 			data.forEach(plan => plan && this.plans.push(plan))

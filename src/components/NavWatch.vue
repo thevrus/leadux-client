@@ -5,10 +5,13 @@
 		<div class="progresss">
 			<div class="progress__container">
 				<div class="progress__wrapper">
-					<span class="progress__title">Прогресс курса</span>
-					<span class="progress__numbers"
-						>{{ watchedVideos }} из {{ totalLessons }}</span
-					>
+					<span class="progress__title">
+						<span v-if="watchedLessons === totalLessons">Курс пройден 🎉</span>
+						<span v-else>Прогресс курса</span>
+					</span>
+					<span class="progress__numbers">
+						{{ watchedLessons }} из {{ totalLessons }}
+					</span>
 				</div>
 				<div class="progress__line">
 					<div class="progress__line--load" :style="progress"></div>
@@ -26,32 +29,48 @@
 
 <script>
 import UserDetails from '@/components/UserDetails'
+
 export default {
 	name: 'NavWatch',
 	components: {
 		UserDetails,
 	},
-	data() {
-		return {
-			watchedVideos: 1,
-			isStudent: false,
-		}
-	},
-	methods: {},
-
 	computed: {
-		progress() {
-			return 'width:' + (100 / this.totalLessons) * this.watchedVideos + '%'
+		loggedIn() {
+			return this.$store.state.auth.status.loggedIn
 		},
-
+		progress() {
+			return 'width:' + (100 / this.totalLessons) * this.watchedLessons + '%'
+		},
 		totalLessons() {
 			return this.$store.getters['lessons/getLessonsLength']
+		},
+		watchedLessons() {
+			return this.$store.state.lessons.watchedLessons.length
+		},
+		isStudent() {
+			let isStudent
+			const roleType = this.$store.state.auth.user
+				? this.$store.state.auth.user.user.role.type
+				: null
+
+			switch (roleType) {
+				case 'student':
+					isStudent = true
+					break
+				case 'advanced':
+					isStudent = true
+					break
+				default:
+					isStudent = false
+			}
+			return isStudent
 		},
 	},
 }
 </script>
 
-<style  scoped>
+<style lang="scss" scoped>
 .wrapper {
 	max-width: 1580px;
 	height: 80px;
