@@ -83,7 +83,7 @@ export default {
 			return this.$store.getters['lessons/getLessons']
 		},
 		loggedIn() {
-			return this.$store.state.auth.loggedIn
+			return this.$store.state.auth.status.loggedIn
 		},
 		watchedLessons() {
 			return this.$store.state.lessons.watchedLessons
@@ -92,7 +92,10 @@ export default {
 	methods: {
 		setCurrentLesson(lesson) {
 			if (lesson.videoId) {
+				if (lesson.slug === this.$route.params.slug) return
+
 				this.$store.dispatch('lessons/setCurrentLesson', lesson)
+				this.$router.push({ name: 'WatchSlug', params: { slug: lesson.slug } })
 			} else if (!this.loggedIn) {
 				this.$router.push('/login')
 			} else {

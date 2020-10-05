@@ -11,6 +11,16 @@ const routes = [
 		component: Home,
 	},
 	{
+		name: 'Watch',
+		path: '/watch',
+		component: Watch,
+	},
+	{
+		name: 'WatchSlug',
+		path: '/watch/:slug',
+		component: Watch,
+	},
+	{
 		path: '/login',
 		component: () => import('../views/Login.vue'),
 	},
@@ -21,12 +31,6 @@ const routes = [
 	{
 		path: '/pay',
 		component: () => import('../views/Pay.vue'),
-	},
-	{
-		path: '/watch',
-		// path: '/watch/:slug',
-		// path: '/watch?lesson=slug',
-		component: Watch,
 	},
 ]
 

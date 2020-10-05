@@ -12,13 +12,17 @@ export const lessons = {
 	state: initialState,
 	actions: {
 		loadLessons({ commit }) {
-			DataService.getLessons().then(({ data }) => {
-				commit('LOAD_LESSONS', data)
+			return new Promise((resolve, reject) => {
+				DataService.getLessons()
+					.then(({ data }) => {
+						commit('LOAD_LESSONS', data)
 
-				!ls.find('currentLesson') &&
-					commit('SET_CURRENT_LESSON', data[0].lessons[0])
+						!ls.find('currentLesson') &&
+							commit('SET_CURRENT_LESSON', data[0].lessons[0])
 
-				return Promise.resolve()
+						resolve(data)
+					})
+					.catch(error => reject(error))
 			})
 		},
 		setCurrentLesson({ commit }, lesson) {

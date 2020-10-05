@@ -35,7 +35,26 @@ export default {
 	mounted() {
 		this.loggedIn && this.$store.dispatch('auth/me')
 
-		this.$store.dispatch('lessons/loadLessons').then(() => {
+		this.$store.dispatch('lessons/loadLessons').then(lessons => {
+			const slug = this.$route.params.slug
+			if (slug) {
+				let flatLessons = []
+				lessons.forEach(playlist => [
+					playlist.lessons.forEach(lesson => flatLessons.push(lesson)),
+				])
+
+				const lesson = flatLessons.find(lesson => lesson.slug === slug)
+
+				this.$store.dispatch('lessons/setCurrentLesson', lesson)
+			} else {
+				this.$router.push({
+					name: 'WatchSlug',
+					params: {
+						slug: this.$store.getters['lessons/getCurrentLesson'].slug,
+					},
+				})
+			}
+
 			this.loading = false
 		})
 	},

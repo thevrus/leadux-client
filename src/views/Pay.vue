@@ -36,15 +36,15 @@ export default {
 	},
 	computed: {
 		loggedIn() {
-			return this.$store.state.auth.loggedIn
+			return this.$store.state.auth.status.loggedIn
 		},
 	},
 	created() {
-		!this.loggedIn && this.$router.push('/login')
-
-		AuthService.invoice().then(({ data }) => {
-			data.forEach(plan => plan && this.plans.push(plan))
-		})
+		!this.loggedIn
+			? this.$router.push('/login')
+			: AuthService.invoice().then(({ data }) => {
+					data.forEach(plan => plan && this.plans.push(plan))
+			  })
 	},
 }
 </script>
