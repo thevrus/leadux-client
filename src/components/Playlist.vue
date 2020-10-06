@@ -10,7 +10,9 @@
 				<summary class="summary">
 					<p class="summary__title">{{ playlist.name }}</p>
 					<div class="summary__wrap">
-						<span class="summary__time">38 мин</span>
+						<span class="summary__time">{{
+							playlistLength(playlist.lessons)
+						}}</span>
 						<span class="summary__amount"
 							>1 из {{ playlist.lessons.length }}</span
 						>
@@ -35,14 +37,16 @@
 								</div>
 							</div>
 
-							<label v-else class="playlist__label">
-								<input
-									type="checkbox"
-									:checked="watchedLessons.includes(lesson.id)"
-									@change="handleChange(lesson.id)"
-									class="playlist__checkbox"
-								/>
-								<span class="playlist__custom-check"></span>
+							<div v-else class="playlist__lesson-wrap">
+								<label class="playlist__label">
+									<input
+										type="checkbox"
+										:checked="watchedLessons.includes(lesson.id)"
+										@change="handleChange(lesson.id)"
+										class="playlist__checkbox"
+									/>
+									<span class="playlist__custom-check"></span>
+								</label>
 								<div class="playlist__lesson-info">
 									<h6
 										@click="setCurrentLesson(lesson)"
@@ -54,7 +58,7 @@
 										{{ lesson.videoLength | time }}
 									</div>
 								</div>
-							</label>
+							</div>
 						</div>
 					</li>
 				</ul>
@@ -105,6 +109,15 @@ export default {
 		handleChange(lessonId) {
 			this.$store.dispatch('lessons/toggleWatchedLesson', lessonId)
 		},
+		playlistLength(pl) {
+			let plLength = 0
+
+			pl.forEach(les => {
+				if (les.videoLength) plLength += les.videoLength
+			})
+
+			return Math.floor(plLength / 60) + ' мин'
+		},
 	},
 	filters: {
 		time(value) {
@@ -137,6 +150,10 @@ export default {
 	&__label {
 		display: flex;
 		position: relative;
+	}
+
+	&__lesson-wrap {
+		display: flex;
 	}
 
 	&__checkbox {

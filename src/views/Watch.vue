@@ -2,8 +2,8 @@
 	<div>
 		<NavWatch />
 		<div v-if="!loading" class="lesson">
-			<Player />
-			<Playlist />
+			<Player class="di-63" />
+			<Playlist class="di-33" />
 		</div>
 
 		<p v-else>Loading...</p>
@@ -63,8 +63,19 @@ export default {
 
 <style scoped lang="scss">
 .lesson {
-	display: grid;
-	grid-template-columns: 63.75% 33.75%;
-	grid-gap: 2.5%;
+	// display: grid;
+	// grid-template-columns: 63.75% 33.75%;
+	// grid-gap: 2.5%;
+	display: inline;
+}
+
+.di-63 {
+	display: inline;
+	width: 63.75%;
+	margin-right: 2.5%;
+}
+.di-33 {
+	display: inline;
+	width: 33.75%;
 }
 </style>

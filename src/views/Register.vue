@@ -1,51 +1,83 @@
 <template>
-	<div class="col-md-12">
-		<h3>Register</h3>
-		<div class="card card-container">
-			<form name="form" @submit.prevent="handleRegister">
-				<!-- Email -->
-				<div class="form-group">
-					<label for="email">Email</label>
-					<input
-						v-model="user.email"
-						type="email"
-						class="form-control"
-						name="email"
-					/>
-				</div>
+	<div>
+		<div class="register">
+			<h3 class="register__title">Регистрация</h3>
 
-				<!-- Username -->
-				<div class="form-group">
-					<label for="username">Username</label>
+			<p class="register__desc">
+				Зарегистрируйтесь и смотрите 2 урока из курса совершенно бесплатно.
+			</p>
+
+			<form name="form" @submit.prevent="handleRegister" class="register__form">
+				<section class="register__username">
 					<input
 						v-model="user.username"
-						type="text"
-						class="form-control"
+						id="username"
 						name="username"
+						type="text"
+						placeholder=" "
+						class="register__username-input inputs"
+						required
 					/>
-				</div>
+					<label for="username" class="register__username-label"
+						>Ваше имя</label
+					>
+				</section>
 
-				<!-- Password -->
-				<div class="form-group">
-					<label for="password">Password</label>
+				<section class="register__email">
+					<input
+						v-model="user.email"
+						id="email"
+						name="email"
+						type="email"
+						autocomplete="email"
+						placeholder=" "
+						class="register__email-input inputs"
+						required
+					/>
+					<label for="email" class="register__email-label">Ваш Email</label>
+				</section>
+
+				<section class="register__password">
 					<input
 						v-model="user.password"
-						type="password"
-						class="form-control"
+						id="password"
 						name="password"
+						type="password"
+						autocomplete="password"
+						placeholder=" "
+						aria-describedby="password-constraints"
+						class="register__password-input inputs"
+						required
 					/>
+					<label for="password" class="register__password-label">Пароль</label>
+					<button
+						id="toggle-password"
+						class="register__toggle-password"
+						type="button"
+						aria-label="Show password as plain text. Warning: this will display your password on the screen."
+					></button>
+				</section>
+
+				<div v-if="message" class="register__message">
+					{{ message }}
 				</div>
 
-				<div class="form-group">
-					<button class="btn btn-primary btn-block">Register</button>
-				</div>
+				<label class="register__check-label">
+					<input type="checkbox" class="register__check" />
+					<span class="register__check-info">
+						Я хочу получать уведомления о специальных предложениях и скидках.
+					</span>
+				</label>
 
-				<div class="form-group">
-					<div v-if="message" class="alert alert-danger" role="alert">
-						{{ message }}
-					</div>
-				</div>
+				<button class="register__submit">Зapeгиcтpиpoвaтьcя</button>
 			</form>
+			<div class="register__login">
+				<p class="register__login-info">Я уже зарегистрирован</p>
+
+				<router-link v-if="!loggedIn" to="/login" class="register__login-btn"
+					>Войти</router-link
+				>
+			</div>
 		</div>
 	</div>
 </template>
@@ -72,6 +104,51 @@ export default {
 		if (this.loggedIn) {
 			this.$router.push('/profile')
 		}
+
+		// Test code
+		const passwordInput = document.querySelector('input#password')
+		const togglePasswordButton = document.querySelector(
+			'button#toggle-password'
+		)
+
+		togglePasswordButton.addEventListener('click', togglePassword)
+
+		function togglePassword() {
+			if (passwordInput.value) {
+				if (passwordInput.type === 'password') {
+					passwordInput.type = 'text'
+					togglePasswordButton.style.opacity = 1
+					togglePasswordButton.setAttribute('aria-label', 'Скрыть пароль.')
+				} else {
+					passwordInput.type = 'password'
+					togglePasswordButton.style.opacity = 0.2
+					togglePasswordButton.setAttribute(
+						'aria-label',
+						'Показать пароль как обычный текст. ' +
+							'Внимание: это действие выведет Ваш пароль на екран.'
+					)
+				}
+			}
+		}
+
+		passwordInput.addEventListener('input', validatePassword)
+
+		// A production site would use more stringent password testing on the client
+		// and would sanitize and validate passwords on the back end.
+		function validatePassword() {
+			let message = ''
+			if (!/.{6,}/.test(passwordInput.value)) {
+				message = 'Пароль должен содержать минимум 6 символов. '
+			}
+			if (!/.*[A-Z].*/.test(passwordInput.value)) {
+				message +=
+					'\nПароль должен содержать как минимум одну заглавную букву. '
+			}
+			if (!/.*[a-z].*/.test(passwordInput.value)) {
+				message += '\nПароль должен содержать как минимум одну строчную букву.'
+			}
+			passwordInput.setCustomValidity(message)
+		}
 	},
 	methods: {
 		handleRegister() {
@@ -85,10 +162,19 @@ export default {
 						this.successful = true
 					},
 					error => {
-						this.message =
-							(error.response && error.response.data) ||
-							error.message ||
-							error.toString()
+						console.log(error.response.data.message)
+						let message = null
+						switch (error.response.data.message[0].messages[0].id) {
+							case 'Auth.form.error.email.taken':
+								message = 'Данный e-mail уже занят!'
+								break
+							case 'Auth.form.error.username.taken':
+								message = 'Данное имя пользователя уже занято!'
+								break
+						}
+
+						this.message = message
+
 						this.successful = false
 					}
 				)
@@ -98,27 +184,255 @@ export default {
 }
 </script>
 
-<style scoped>
-label {
-	display: block;
-	margin-top: 10px;
+<style lang="scss" scoped>
+// Animate bg
+div.bg-reg {
+	height: 100%;
+	margin-left: -40px;
+	margin-right: -40px;
 }
 
-.card-container.card {
-	max-width: 350px !important;
-	padding: 40px 40px;
+@media (prefers-reduced-motion: no-preference) {
+	.bg-reg {
+		will-change: background-position;
+	}
 }
 
-.card {
-	background-color: #f7f7f7;
-	padding: 20px 25px 30px;
-	margin: 0 auto 25px;
-	margin-top: 50px;
-	-moz-border-radius: 2px;
-	-webkit-border-radius: 2px;
-	border-radius: 2px;
-	-moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-	-webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+.bg-reg {
+	background-repeat: no-repeat;
+	background-position: center;
+
+	--bg-gradient-stop-1: #262626;
+	--bg-gradient-stop-2: #1b3699;
+	--bg-gradient-stop-3: #262626;
+
+	background-color: var(--bg-gradient-stop-1);
+	background-image: radial-gradient(
+			ellipse at 90% 30%,
+			var(--bg-gradient-stop-1) 20%,
+			transparent 50%
+		),
+		radial-gradient(
+			ellipse at 70% 0%,
+			var(--bg-gradient-stop-2) 0%,
+			transparent 50%
+		),
+		radial-gradient(
+			ellipse at 20% 10%,
+			var(--bg-gradient-stop-3) 10%,
+			transparent 70%
+		),
+		radial-gradient(
+			ellipse at 50% 100%,
+			var(--bg-gradient-stop-2) 0%,
+			transparent 50%
+		);
+	background-size: 200% 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.bg-reg {
+		background-size: 400% 200%;
+		background-position: 0% 0%;
+		animation: bg-gradient-anim-1 30s linear infinite;
+	}
+}
+
+@keyframes bg-gradient-anim-1 {
+	0%,
+	100% {
+		background-position: 0% 0%;
+	}
+	25% {
+		background-position: 100% 100%;
+	}
+	50% {
+		background-position: 100% 0%;
+	}
+	75% {
+		background-position: 0% 100%;
+	}
+}
+
+.register {
+	width: 100%;
+	height: 100vh;
+	margin: 0 auto;
+
+	&__title {
+		text-align: center;
+		font-weight: bold;
+		font-size: 2.6rem;
+		line-height: 120%;
+		color: #f4f4f4;
+		margin-top: 5rem;
+		margin-bottom: 1rem;
+	}
+
+	&__desc {
+		width: 100%;
+		max-width: 29rem;
+		font-weight: 500;
+		font-size: 1.1rem;
+		line-height: 140%;
+		color: #fffdcb;
+		margin: 0 auto 3rem;
+		text-align: center;
+	}
+
+	&__form {
+		max-width: 372px;
+		width: 100%;
+		margin: 0px auto;
+		position: relative;
+	}
+
+	&__email,
+	&__username,
+	&__password {
+		position: relative;
+	}
+
+	section input:focus ~ label {
+		top: 0.6rem;
+		font-size: 0.8rem;
+	}
+
+	&__username-input:not(:placeholder-shown).register__username-input:not(:focus)
+		+ &__username-label,
+	&__email-input:not(:placeholder-shown).register__email-input:not(:focus)
+		+ &__email-label,
+	&__password-input:not(:placeholder-shown).register__password-input:not(:focus)
+		+ &__password-label {
+		top: 0.6rem;
+		font-size: 0.8rem;
+	}
+
+	input[type='email']:not(:focus):invalid,
+	input[type='password']:not(:focus):invalid {
+		color: red;
+	}
+	input[type='email']:valid + label,
+	input[type='password']:valid + label {
+		color: green;
+	}
+
+	&__username-label,
+	&__email-label,
+	&__password-label {
+		position: absolute;
+		top: 1.1rem;
+		left: 1.5rem;
+		font-weight: 500;
+		font-size: 1.1rem;
+		line-height: 140%;
+		color: rgba(0, 0, 0, 0.38);
+		transition: all 0.3s;
+	}
+
+	&__toggle-password {
+		border: none;
+		outline: none;
+		width: 1.25rem;
+		height: 1rem;
+		background-image: url('../assets/pass-view.svg');
+		background-size: cover;
+		position: absolute;
+		top: 1.4rem;
+		right: 1.4rem;
+		opacity: 0.2;
+		cursor: pointer;
+		transition: opacity 0.2s;
+	}
+
+	&__message {
+		width: 100%;
+		padding: 1rem;
+		margin-bottom: 1rem;
+		background-color: rgba(219, 110, 110, 04);
+		border: 1px solid #e44343;
+		border-radius: 0.5rem;
+		color: #412929;
+	}
+
+	&__check-label {
+		display: flex;
+		align-items: center;
+	}
+
+	&__check {
+		margin-right: 1rem;
+	}
+
+	&__check-info {
+		font-weight: 500;
+		font-size: 0.93rem;
+		line-height: 140%;
+		color: rgba(255, 255, 255, 0.77);
+	}
+
+	&__submit {
+		width: 100%;
+		padding: 1.1rem 1rem;
+		font-weight: 500;
+		font-size: 1.1rem;
+		line-height: 120%;
+		color: #f4f4f4;
+		background-color: #48a161;
+		border-radius: 0.75rem;
+		margin-top: 2rem;
+		margin-bottom: 6.8rem;
+		border: none;
+		cursor: pointer;
+		transition: background-color 0.3s;
+
+		&:hover {
+			background-color: #318f4b;
+		}
+	}
+
+	&__login {
+		max-width: 480px;
+		width: 100%;
+		border-top: 1px solid rgba(255, 255, 255, 0.07);
+		padding-top: 1.75rem;
+		margin: 0 auto 10rem;
+		text-align: center;
+		&-info {
+			font-weight: 500;
+			font-size: 1rem;
+			line-height: 140%;
+			color: rgba(255, 255, 255, 0.37);
+			margin-bottom: 1.6rem;
+		}
+
+		&-btn {
+			padding: 0.7rem 1.75rem;
+			background-color: rgba(255, 255, 255, 0.04);
+			border-radius: 7px;
+			cursor: pointer;
+			font-size: 0.93rem;
+			color: rgba(255, 255, 255, 0.6);
+			transition: color, background-color 0.3s;
+			&:hover {
+				color: rgba(255, 255, 255, 0.4);
+				background-color: rgba(255, 255, 255, 0.1);
+			}
+		}
+	}
+}
+
+.inputs {
+	width: 100%;
+	padding: 1.7rem 1.5rem 0.7rem 1.5rem;
+	border-radius: 0.7rem;
+	font-weight: bold;
+	font-size: 0.88rem;
+	line-height: 140%;
+	color: #434343;
+	border: 1px solid transparent;
+	margin-bottom: 1.25rem;
+	background-color: rgba(255, 255, 255, 0.9);
+	outline-color: #222e4f;
 }
 </style>
