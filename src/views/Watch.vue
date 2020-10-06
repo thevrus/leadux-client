@@ -2,7 +2,10 @@
 	<div>
 		<NavWatch />
 		<div v-if="!loading" class="lesson">
-			<Player />
+			<div>
+				<Player />
+				<Panel />
+			</div>
 			<Playlist />
 		</div>
 
@@ -14,6 +17,7 @@
 import NavWatch from '@/components/NavWatch'
 import Playlist from '@/components/Playlist'
 import Player from '@/components/Player'
+import Panel from '@/components/Panel'
 
 export default {
 	name: 'Watch',
@@ -21,6 +25,7 @@ export default {
 		Player,
 		Playlist,
 		NavWatch,
+		Panel,
 	},
 	data() {
 		return {
