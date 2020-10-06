@@ -1,15 +1,17 @@
 <template>
-	<div v-if="!loading">
-		<div v-for="comment in comments" :key="comment.id">
-			<Comment :comment="{ comment }" />
+	<div>
+		<div v-if="!loading">
+			<div v-for="comment in comments" :key="comment.id">
+				<Comment :comment="{ comment }" />
+			</div>
+			<hr />
+			<form @submit.prevent="handleSubmit">
+				<textarea v-model="comment" />
+				<input type="submit" value="Добавить ответ" />
+			</form>
 		</div>
-		<hr />
-		<form @submit.prevent="handleSubmit">
-			<textarea v-model="comment" />
-			<input type="submit" value="Добавить ответ" />
-		</form>
+		<div v-else>Loading...</div>
 	</div>
-	<div v-else>Loading...</div>
 </template>
 
 <script>
