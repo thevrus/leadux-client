@@ -121,7 +121,7 @@ export default {
 	},
 	filters: {
 		time(value) {
-			if (!value || typeof value !== 'number') return
+			if (!value || typeof value !== 'number') return value
 			return Math.floor(value / 60) + ' мин.'
 		},
 	},

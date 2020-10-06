@@ -3,7 +3,6 @@
 		<router-link to="/">Home</router-link>
 		<router-link to="/watch">Watch</router-link>
 		<router-link to="/pay">Pay</router-link>
-		<router-link to="/me">Me</router-link>
 		<router-link v-if="!loggedIn" to="/login">Login</router-link>
 		<a v-if="loggedIn" href="#!" @click.prevent="logout">Logout</a>
 	</nav>
