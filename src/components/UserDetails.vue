@@ -4,7 +4,7 @@
 			<router-link class="register-btn" to="/register">Регистрация</router-link>
 			<router-link class="login-btn" to="/login">Вход</router-link>
 		</div>
-		<div class="registered__wrapp" v-if="loggedIn">
+		<div class="registered__wrapp" v-if="loggedIn && user">
 			<div class="user">
 				<div class="user__nick">{{ user.username }}</div>
 				<div class="user__status">{{ user.role.description }}</div>
@@ -59,11 +59,6 @@ export default {
 			host_url: process.env.VUE_APP_API_URL,
 		}
 	},
-
-	created() {
-		this.loggedIn ? true : false
-	},
-
 	methods: {
 		toggleUserInfo() {
 			return (this.userInfo = !this.userInfo)
@@ -74,17 +69,6 @@ export default {
 			window.location.reload()
 		},
 	},
-
-	filters: {
-		capitalize(value) {
-			if (!value) return ''
-			return value
-				.toString()
-				.slice(0, 2)
-				.toUpperCase()
-		},
-	},
-
 	computed: {
 		loggedIn() {
 			return this.$store.state.auth.status.loggedIn
@@ -92,6 +76,15 @@ export default {
 
 		user() {
 			return this.$store.state.auth.user.user
+		},
+	},
+	filters: {
+		capitalize(value) {
+			if (!value) return ''
+			return value
+				.toString()
+				.slice(0, 2)
+				.toUpperCase()
 		},
 	},
 }

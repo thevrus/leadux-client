@@ -1,35 +1,20 @@
 import axios from 'axios'
 import authHeader from './auth-header'
-import ls from '@/services/ls.service'
 
 class AuthService {
 	login({ email, password }) {
-		return axios
-			.post(`${process.env.VUE_APP_API_URL}/auth/local`, {
-				identifier: email,
-				password,
-			})
-			.then(response => {
-				response.data.jwt && ls.create('user', response.data)
-
-				return response.data
-			})
+		return axios.post(`${process.env.VUE_APP_API_URL}/auth/local`, {
+			identifier: email,
+			password,
+		})
 	}
 
 	register({ username, email, password }) {
-		return axios
-			.post(`${process.env.VUE_APP_API_URL}/auth/local/register`, {
-				username,
-				email,
-				password,
-			})
-			.then(response => {
-				response.data.jwt && ls.create('user', response.data)
-			})
-	}
-
-	logout() {
-		ls.delete('user')
+		return axios.post(`${process.env.VUE_APP_API_URL}/auth/local/register`, {
+			username,
+			email,
+			password,
+		})
 	}
 
 	me() {

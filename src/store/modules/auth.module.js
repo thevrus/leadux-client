@@ -11,31 +11,39 @@ export const auth = {
 	state,
 	actions: {
 		login({ commit }, user) {
-			return AuthService.login(user).then(
-				user => {
-					commit('LOGIN_SUCCESS', user)
-					return Promise.resolve(user)
-				},
-				error => {
-					commit('LOGIN_FAILURE')
-					return Promise.reject(error)
-				}
-			)
+			return new Promise((resolve, reject) => {
+				AuthService.login(user).then(
+					({ data }) => {
+						data.jwt && ls.create('user', data)
+						commit('LOGIN_SUCCESS', data)
+
+						return resolve(data)
+					},
+					error => {
+						commit('LOGIN_FAILURE')
+						return reject(error)
+					}
+				)
+			})
 		},
 		register({ commit }, user) {
-			return AuthService.register(user).then(
-				user => {
-					commit('REGISTER_SUCCESS')
-					return Promise.resolve(user)
-				},
-				error => {
-					commit('REGISTER_FAILURE')
-					return Promise.reject(error)
-				}
-			)
+			return new Promise((resolve, reject) => {
+				AuthService.register(user).then(
+					({ data }) => {
+						data.jwt && ls.create('user', data)
+						commit('REGISTER_SUCCESS', data)
+
+						return resolve(data)
+					},
+					error => {
+						commit('REGISTER_FAILURE')
+						return reject(error)
+					}
+				)
+			})
 		},
 		logout({ commit }) {
-			AuthService.logout()
+			ls.delete('user')
 			commit('LOGOUT')
 		},
 		me({ commit }) {
@@ -54,7 +62,7 @@ export const auth = {
 			state.status.loggedIn = false
 			state.user = null
 		},
-		REGISTER_SUCCESS(state) {
+		REGISTER_SUCCESS(state, user) {
 			state.status.loggedIn = true
 			state.user = user
 		},
