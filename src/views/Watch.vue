@@ -1,31 +1,40 @@
 <template>
 	<div>
-		<NavWatch />
-		<div v-if="!loading" class="lesson">
-			<div>
-				<Player />
-				<Panel />
+		<div class="container">
+			<NavWatch />
+			<div v-if="!loading" class="watch">
+				<div>
+					<Player />
+					<Panel />
+				</div>
+				<Playlist />
 			</div>
-			<Playlist />
-		</div>
 
-		<p v-else>Loading...</p>
+			<div v-else>
+				<Loader />
+			</div>
+		</div>
+		<Footer />
 	</div>
 </template>
 
 <script>
 import NavWatch from '@/components/NavWatch'
+import Loader from '@/components/Loader'
 import Playlist from '@/components/Playlist'
 import Player from '@/components/Player'
 import Panel from '@/components/Panel'
+import Footer from '@/components/Footer'
 
 export default {
 	name: 'Watch',
 	components: {
+		Loader,
 		Player,
 		Playlist,
 		NavWatch,
 		Panel,
+		Footer,
 	},
 	data() {
 		return {
@@ -67,20 +76,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.lesson {
-	// display: grid;
-	// grid-template-columns: 63.75% 33.75%;
-	// grid-gap: 2.5%;
-	display: inline;
-}
-
-.di-63 {
-	display: inline;
-	width: 63.75%;
-	margin-right: 2.5%;
-}
-.di-33 {
-	display: inline;
-	width: 33.75%;
+.watch {
+	display: grid;
+	grid-template-columns: 1fr 392px;
+	grid-gap: 2%;
 }
 </style>

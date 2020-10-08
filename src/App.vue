@@ -1,21 +1,11 @@
 <template>
-	<main id="app" class="container">
-		<!-- <Nav /> -->
-
-		<transition name="fade" mode="out-in">
-			<router-view />
-		</transition>
-	</main>
+	<transition name="fade" mode="out-in">
+		<router-view />
+	</transition>
 </template>
 
 <script>
-// import Nav from '@/components/Nav'
-
-export default {
-	components: {
-		// Nav,
-	},
-}
+export default {}
 </script>
 
 <style lang="scss">

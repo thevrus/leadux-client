@@ -75,8 +75,8 @@ export default {
 	max-width: 1580px;
 	height: 80px;
 	padding: 0 2.2rem;
-	margin-top: 1.75rem;
-	margin-bottom: 2.6rem;
+	margin-top: 1rem;
+	margin-bottom: 1.5rem;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;

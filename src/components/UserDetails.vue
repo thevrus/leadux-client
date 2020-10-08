@@ -130,7 +130,7 @@ export default {
 	width: 42px;
 	height: 42px;
 	border-radius: 50%;
-	background-color: #76b680;
+	background: linear-gradient(180deg, #93e3a0 0%, #5b8b62 100%);
 	position: relative;
 	margin-left: 1rem;
 	overflow: hidden;

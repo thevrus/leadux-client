@@ -1,26 +1,24 @@
 <template>
 	<div>
 		<div v-if="!loading">
-			<div v-for="comment in comments" :key="comment.id">
+			<ul v-for="comment in comments" :key="comment.id">
 				<Comment :comment="{ comment }" />
-			</div>
-			<hr />
-			<form @submit.prevent="handleSubmit">
-				<textarea v-model="comment" />
-				<input type="submit" value="Добавить ответ" />
-			</form>
+			</ul>
+
+			<CommentForm />
 		</div>
 		<div v-else>Loading...</div>
 	</div>
 </template>
 
 <script>
-import DataService from '@/services/data.service'
 import Comment from '@/components/Comment'
+import CommentForm from '@/components/CommentForm'
 
 export default {
 	components: {
 		Comment,
+		CommentForm,
 	},
 	data() {
 		return {
@@ -37,16 +35,6 @@ export default {
 		this.$store.dispatch('comments/loadComments').then(() => {
 			this.loading = false
 		})
-	},
-	methods: {
-		handleSubmit() {
-			const cl = this.$store.getters['lessons/getCurrentLesson']
-
-			DataService.addComment(cl.id, this.comment).then(() => {
-				this.$store.dispatch('comments/loadComments')
-				this.comment = ''
-			})
-		},
 	},
 }
 </script>

@@ -64,19 +64,6 @@
 				</ul>
 			</details>
 		</div>
-
-		<!-- <div v-for="playlist in playlists" :key="playlist.id">
-			<div v-if="playlist.lessons.length > 0" class="playlist">
-				<h4>{{ playlist.name }}</h4>
-
-				<div v-for="lesson in playlist.lessons" :key="lesson.id">
-					<h6 @click="setCurrentLesson(lesson)">
-						{{ lesson.order }}. {{ lesson.title }}
-						<span v-if="!lesson.videoId" class="private">– PRIVATE</span>
-					</h6>
-				</div>
-			</div>
-		</div> -->
 	</aside>
 </template>
 
@@ -277,6 +264,7 @@ summary::-webkit-details-marker {
 	&__title {
 		font-weight: bold;
 		font-size: 1.1rem;
+		line-height: 145%;
 		margin-bottom: 0.5rem;
 		user-select: none;
 		cursor: pointer;
