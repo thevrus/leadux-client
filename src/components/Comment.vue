@@ -2,7 +2,11 @@
 	<li v-if="comment.comment.user">
 		<div class="avatar">
 			<div v-if="comment.comment.user.avatar">
-				<img :src="host_url + user.avatar.url" alt="Avatar" class="user__img" />
+				<img
+					:src="host_url + comment.comment.user.avatar.url"
+					alt="Avatar"
+					class="avatar"
+				/>
 			</div>
 			<div class="avatar-letter" v-else>
 				{{ comment.comment.user.username | capitalize }}
@@ -16,6 +20,8 @@
 </template>
 
 <script>
+import { capitalize } from '@/js/filters'
+
 export default {
 	props: {
 		comment: {
@@ -23,14 +29,13 @@ export default {
 			required: true,
 		},
 	},
+	data() {
+		return {
+			host_url: process.env.VUE_APP_API_URL,
+		}
+	},
 	filters: {
-		capitalize(value) {
-			if (!value) return ''
-			return value
-				.toString()
-				.slice(0, 2)
-				.toUpperCase()
-		},
+		capitalize,
 	},
 }
 </script>

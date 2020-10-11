@@ -50,6 +50,8 @@
 </template>
 
 <script>
+import { capitalize } from '@/js/filters'
+
 export default {
 	name: 'UserDetails',
 
@@ -79,13 +81,7 @@ export default {
 		},
 	},
 	filters: {
-		capitalize(value) {
-			if (!value) return ''
-			return value
-				.toString()
-				.slice(0, 2)
-				.toUpperCase()
-		},
+		capitalize,
 	},
 }
 </script>

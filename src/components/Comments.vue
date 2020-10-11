@@ -5,7 +5,7 @@
 				<Comment :comment="{ comment }" />
 			</ul>
 
-			<CommentForm />
+			<CommentForm v-if="loggedIn" />
 		</div>
 		<div v-else>Loading...</div>
 	</div>
@@ -27,6 +27,9 @@ export default {
 		}
 	},
 	computed: {
+		loggedIn() {
+			return this.$store.state.auth.status.loggedIn
+		},
 		comments() {
 			return this.$store.getters['comments/getComments']
 		},
