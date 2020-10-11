@@ -34,7 +34,7 @@ export default {
 		padding-top: 56.25%;
 		height: 0;
 		overflow: hidden;
-		border-radius: 0.5rem 0.5rem 0 0;
+		border-radius: 10px;
 
 		iframe {
 			position: absolute;

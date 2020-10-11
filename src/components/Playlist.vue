@@ -42,7 +42,7 @@
 									<input
 										type="checkbox"
 										:checked="watchedLessons.includes(lesson.id)"
-										@change="handleChange(lesson.id)"
+										@change="toggleWatched(lesson.id)"
 										class="playlist__checkbox"
 									/>
 									<span class="playlist__custom-check"></span>
@@ -93,7 +93,7 @@ export default {
 				this.$router.push('/pay')
 			}
 		},
-		handleChange(lessonId) {
+		toggleWatched(lessonId) {
 			this.$store.dispatch('lessons/toggleWatchedLesson', lessonId)
 		},
 		playlistLength(pl) {

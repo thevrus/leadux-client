@@ -1,34 +1,32 @@
 <template>
-	<footer class="container">
-		<router-link to="#!" class="logo">Leadux</router-link>
+	<footer>
+		<div class="container">
+			<router-link to="#!" class="logo">Leadux</router-link>
 
-		<div>
-			<p>
-				Сайт защищен авторским правом. Любое копирование и распространение
-				материалов карается законом
-			</p>
+			<div class="content">
+				<p>
+					Сайт защищен авторским правом. Любое копирование и распространение
+					материалов карается законом
+				</p>
 
-			<ul class="links">
-				<li>
-					<router-link to="#!">FAQ</router-link>
-				</li>
-				<li>
-					<router-link to="#!">Условия использования</router-link>
-				</li>
-				<li>
-					<router-link to="#!">Обратная связь</router-link>
-				</li>
-			</ul>
+				<ul class="links">
+					<li>
+						<router-link to="#!">FAQ</router-link>
+					</li>
+					<li>
+						<router-link to="#!">Условия использования</router-link>
+					</li>
+					<li>
+						<router-link to="#!">Обратная связь</router-link>
+					</li>
+				</ul>
+			</div>
+
+			<hr />
+			<p class="copyright">© Leadux, 2020</p>
 		</div>
-
-		<hr />
-		<p class="copyright">© Leadux, 2020</p>
 	</footer>
 </template>
-
-<script>
-export default {}
-</script>
 
 <style lang="scss" scoped>
 footer {
@@ -49,7 +47,7 @@ footer {
 		}
 	}
 
-	div {
+	.content {
 		display: flex;
 		justify-content: space-between;
 		margin-top: 1rem;

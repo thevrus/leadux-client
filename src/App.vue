@@ -10,6 +10,7 @@ export default {}
 
 <style lang="scss">
 @import './assets/css/normalize';
+@import './assets/css/fonts';
 @import './assets/css/global';
 @import './assets/css/helpers';
 @import './assets/css/transitions';

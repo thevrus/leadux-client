@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div id="app">
 		<div class="container">
 			<NavWatch />
 			<div v-if="!loading" class="watch">
@@ -10,9 +10,7 @@
 				<Playlist />
 			</div>
 
-			<div v-else>
-				<Loader />
-			</div>
+			<Loader v-else />
 		</div>
 		<Footer />
 	</div>
@@ -76,9 +74,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
+#app {
+	display: grid;
+	grid-template-rows: 1fr auto;
+	min-height: 100vh;
+}
+
 .watch {
 	display: grid;
-	grid-template-columns: 1fr 392px;
+	grid-template-columns: 1fr 388px;
 	grid-gap: 2%;
 }
 </style>

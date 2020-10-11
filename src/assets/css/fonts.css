@@ -1,0 +1,29 @@
+@font-face {
+	font-family: 'Freigeist';
+	src: url('./fonts/Freigeist-Bold.woff2') format('woff2'),
+		url('./fonts/Freigeist-Bold.woff') format('woff'),
+		url('./fonts/Freigeist-Bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Freigeist';
+	src: url('./fonts/Freigeist-Medium.woff2') format('woff2'),
+		url('./fonts/Freigeist-Medium.woff') format('woff'),
+		url('./fonts/Freigeist-Medium.ttf') format('truetype');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Freigeist';
+	src: url('./fonts/Freigeist-Light.woff2') format('woff2'),
+		url('./fonts/Freigeist-Light.woff') format('woff'),
+		url('./fonts/Freigeist-Light.ttf') format('truetype');
+	font-weight: 100;
+	font-style: normal;
+	font-display: swap;
+}
