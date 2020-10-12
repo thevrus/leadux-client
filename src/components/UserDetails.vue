@@ -86,7 +86,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="postcss" scoped>
 .registered__wrapp {
 	display: flex;
 	justify-content: space-between;
@@ -135,6 +135,8 @@ export default {
 
 .avatar__letter {
 	position: absolute;
+	width: 100%;
+	text-align: center;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -46%);

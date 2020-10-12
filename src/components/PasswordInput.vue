@@ -87,7 +87,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="postcss" scoped>
 div {
 	position: relative;
 }
@@ -132,7 +132,7 @@ button {
 	outline: none;
 	width: 1.25rem;
 	height: 1rem;
-	background-image: url('../assets/pass-view.svg');
+	background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTE5LjkxNiA3LjZDMTcuODk4IDIuOTEgMTQuMSAwIDEwIDBTMi4xMDMgMi45MS4wODMgNy42YTEgMSAwIDAwMCAuOEMyLjEwMyAxMy4wOSA1LjkwMSAxNiAxMCAxNnM3Ljg5Ny0yLjkxIDkuOTE2LTcuNmExIDEgMCAwMDAtLjh6TTEwIDE0Yy0zLjE2OSAwLTYuMTY4LTIuMjktNy44OTctNkMzLjgzMyA0LjI5IDYuODMgMiAxMCAyYzMuMTY5IDAgNi4xNjggMi4yOSA3Ljg5NyA2LTEuNzMgMy43MS00LjcyOCA2LTcuODk3IDZ6bTAtMTBhMy45OTggMy45OTggMCAwMC0zLjkyMiA0Ljc4IDQgNCAwIDAwNS40NTIgMi45MTUgMy45OTggMy45OTggMCAwMDEuMjk3LTYuNTIzQTMuOTk4IDMuOTk4IDAgMDAxMCA0em0wIDZhMS45OTkgMS45OTkgMCAxMTAtMy45OThBMS45OTkgMS45OTkgMCAwMTEwIDEweiIgZmlsbD0iIzAwMCIgZmlsbC1vcGFjaXR5PSIuNyIvPjwvc3ZnPg==');
 	background-size: cover;
 	position: absolute;
 	top: 1.4rem;

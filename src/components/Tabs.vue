@@ -1,4 +1,4 @@
-<template>
+<template functional>
 	<div class="tabs">
 		<div class="tab tab--active">Вопросы и ответы</div>
 		<div class="tab">Задания</div>
@@ -6,11 +6,7 @@
 	</div>
 </template>
 
-<script>
-export default {}
-</script>
-
-<style lang="scss" scoped>
+<style lang="postcss" scoped>
 .tabs {
 	display: flex;
 	justify-content: space-between;

@@ -22,7 +22,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="postcss" scoped>
 .player {
 	width: 100%;
 	background-color: #2c2c2c;

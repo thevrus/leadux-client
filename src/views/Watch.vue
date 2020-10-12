@@ -73,7 +73,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="postcss" scoped>
 #app {
 	display: grid;
 	grid-template-rows: 1fr auto;

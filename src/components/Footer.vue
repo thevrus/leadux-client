@@ -1,4 +1,4 @@
-<template>
+<template functional>
 	<footer>
 		<div class="container">
 			<router-link to="#!" class="logo">Leadux</router-link>
@@ -28,7 +28,7 @@
 	</footer>
 </template>
 
-<style lang="scss" scoped>
+<style lang="postcss" scoped>
 footer {
 	background-color: #2c2c2c;
 	padding-top: 2rem;

@@ -9,7 +9,7 @@
 				autocomplete="email"
 				:required="true"
 				id="email"
-				type="email"
+				type="text"
 				v-model="user.email"
 			/>
 
@@ -98,7 +98,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="postcss" scoped>
 .login {
 	width: 100%;
 	min-height: 100vh;

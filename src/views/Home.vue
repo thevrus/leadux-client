@@ -1,7 +1,6 @@
 <template>
 	<div class="tac">
 		<Nav />
-		<img alt="Vue logo" src="../assets/logo.png" />
 		<HelloWorld msg="Lead UX is coming soon" />
 	</div>
 </template>

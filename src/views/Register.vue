@@ -118,7 +118,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="postcss" scoped>
 .register {
 	width: 100%;
 	height: 100vh;

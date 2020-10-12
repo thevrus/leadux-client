@@ -70,7 +70,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="postcss" scoped>
 .wrapper {
 	max-width: 1580px;
 	height: 80px;

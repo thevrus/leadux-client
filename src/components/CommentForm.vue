@@ -55,7 +55,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="postcss" scoped>
 .form {
 	position: relative;
 	display: grid;
@@ -77,6 +77,8 @@ export default {
 
 .avatar-letter {
 	position: absolute;
+	width: 100%;
+	text-align: center;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -46%);

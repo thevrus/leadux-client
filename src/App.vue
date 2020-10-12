@@ -8,8 +8,10 @@
 export default {}
 </script>
 
-<style lang="scss">
-@import './assets/css/normalize';
+<style lang="postcss">
+@import 'normalize.css';
+@import 'sanitize.css';
+@import './assets/css/variables';
 @import './assets/css/fonts';
 @import './assets/css/global';
 @import './assets/css/helpers';

@@ -13,9 +13,15 @@
 			</div>
 		</div>
 
-		<span>
-			{{ comment.comment.user.username }} / {{ comment.comment.comment }}
-		</span>
+		<div class="content">
+			<div class="top">
+				<span>{{ comment.comment.user.username }}</span
+				>6 дней назад
+			</div>
+			<p class="comment">
+				{{ comment.comment.comment }}
+			</p>
+		</div>
 	</li>
 </template>
 
@@ -40,7 +46,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="postcss" scoped>
 li {
 	background: #323232;
 	widows: 100%;
@@ -52,7 +58,7 @@ li {
 		width: 42px;
 		height: 42px;
 		border-radius: 50%;
-		background: linear-gradient(180deg, #93e3a0 0%, #5b8b62 100%);
+		background-color: #76b680;
 		position: relative;
 		overflow: hidden;
 		display: inline-block;
@@ -61,6 +67,8 @@ li {
 
 	.avatar-letter {
 		position: absolute;
+		width: 100%;
+		text-align: center;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -46%);
@@ -70,8 +78,32 @@ li {
 		color: #ffffff;
 	}
 
-	span {
+	.content {
+		display: inline-block;
 		vertical-align: top;
+
+		.top {
+			font-weight: 500;
+			font-size: 13px;
+			color: #666666;
+			display: block;
+			margin-bottom: 0.25rem;
+
+			span {
+				&::after {
+					content: ' ';
+					display: inline-block;
+					width: 0.5px;
+					height: 9px;
+					background-color: #464646;
+					margin: 0 0.5rem;
+				}
+			}
+		}
+
+		.comment {
+			display: inline;
+		}
 	}
 }
 </style>

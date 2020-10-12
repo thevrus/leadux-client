@@ -1,12 +1,8 @@
-<template>
+<template functional>
 	<div></div>
 </template>
 
-<script>
-export default {}
-</script>
-
-<style lang="scss" scoped>
+<style lang="postcss" scoped>
 div {
 	animation: animate 1.5s linear infinite;
 	clip: rect(0, 80px, 80px, 40px);

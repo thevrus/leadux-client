@@ -21,7 +21,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="postcss" scoped>
 .panel {
 	background-color: #2c2c2c;
 	padding-bottom: 2rem;
