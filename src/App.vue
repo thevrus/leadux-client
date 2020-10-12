@@ -5,7 +5,12 @@
 </template>
 
 <script>
-export default {}
+import { metaInfo } from '@/meta/index'
+
+export default {
+	name: 'App',
+	metaInfo,
+}
 </script>
 
 <style lang="postcss">

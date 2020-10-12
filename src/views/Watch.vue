@@ -2,13 +2,13 @@
 	<div id="app">
 		<div class="container">
 			<NavWatch />
-			<div v-if="!loading" class="watch">
+			<main v-if="!loading" class="watch">
 				<div>
 					<Player />
 					<Panel />
 				</div>
 				<Playlist />
-			</div>
+			</main>
 
 			<Loader v-else />
 		</div>
@@ -43,6 +43,9 @@ export default {
 		loggedIn() {
 			return this.$store.state.auth.status.loggedIn
 		},
+		currentLesson() {
+			return this.$store.getters['lessons/getCurrentLesson']
+		},
 	},
 	mounted() {
 		this.loggedIn && this.$store.dispatch('auth/me')
@@ -56,13 +59,12 @@ export default {
 				])
 
 				const lesson = flatLessons.find(lesson => lesson.slug === slug)
-
 				this.$store.dispatch('lessons/setCurrentLesson', lesson)
 			} else {
 				this.$router.push({
 					name: 'WatchSlug',
 					params: {
-						slug: this.$store.getters['lessons/getCurrentLesson'].slug,
+						slug: this.currentLesson.slug,
 					},
 				})
 			}

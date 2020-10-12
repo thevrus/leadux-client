@@ -68,6 +68,9 @@ import PasswordInput from '@/components/PasswordInput'
 
 export default {
 	name: 'Register',
+	metaInfo: {
+		title: 'Регистрация – LeadUX',
+	},
 	components: {
 		TextInput,
 		PasswordInput,
