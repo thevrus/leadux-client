@@ -30,7 +30,7 @@
 
 <style lang="postcss" scoped>
 footer {
-	background-color: #2c2c2c;
+	background-color: var(--panel-bg);
 	padding-top: 2rem;
 	padding-bottom: 2rem;
 	margin-top: 8rem;

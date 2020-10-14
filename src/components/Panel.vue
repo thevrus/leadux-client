@@ -23,10 +23,10 @@ export default {
 
 <style lang="postcss" scoped>
 .panel {
-	background-color: #2c2c2c;
+	background-color: var(--panel-bg);
 	padding-bottom: 2rem;
 	border-radius: 10px;
-	border: 1px solid #363636;
+	border: 1px solid var(--panel-border);
 	box-shadow: 0px 2px 6px 0px #000000 20%;
 
 	&-body {

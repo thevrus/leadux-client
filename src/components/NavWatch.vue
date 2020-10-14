@@ -80,8 +80,9 @@ export default {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background-color: #2c2c2c;
-	border: 1px solid #363636;
+	background-color: var(--panel-bg);
+	border: 1px solid var(--panel-border);
+
 	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
 	border-radius: 10px;
 }

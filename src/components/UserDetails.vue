@@ -190,10 +190,10 @@ export default {
 	position: absolute;
 	top: -31px;
 	right: -18.9px;
-	background-color: #2c2c2c;
+	background-color: var(--panel-bg);
 	padding: 1rem 1.1rem 1rem 1rem;
 	border-radius: 12px;
-	border: 1px solid #363636;
+	border: 1px solid var(--panel-border);
 	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
 }
 

@@ -1,5 +1,5 @@
 <template>
-	<div class="register">
+	<div class="register bg" data-bg-animate="off">
 		<h3 class="register__title">Регистрация</h3>
 
 		<p class="register__desc">
@@ -125,17 +125,16 @@ export default {
 .register {
 	width: 100%;
 	height: 100vh;
-	margin: 0 auto;
 	padding: 0 1rem;
+	overflow-y: scroll;
 
 	&__title {
 		text-align: center;
 		font-weight: bold;
 		font-size: 2.6rem;
-		line-height: 120%;
 		color: #f4f4f4;
-		margin-top: 5rem;
-		margin-bottom: 1rem;
+		padding-top: 5rem;
+		margin: 0 0 1rem 0;
 	}
 
 	&__desc {

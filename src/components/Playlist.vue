@@ -118,13 +118,13 @@ export default {
 <style lang="postcss" scoped>
 .playlist {
 	width: 100%;
-	background-color: #2c2c2c;
+	background-color: var(--panel-bg);
 	color: #f4f4f4;
 	margin-bottom: 1rem;
 	border-radius: 0.5rem;
 	transition: 0.3s;
 	text-align: left;
-	border: 1px solid #363636;
+	border: 1px solid var(--panel-border);
 
 	&__list {
 		padding: 2.4rem 2rem 1.4rem 2rem;

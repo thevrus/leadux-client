@@ -72,3 +72,66 @@ input {
 	background-color: rgba(255, 255, 255, 0.9);
 	outline-color: #222e4f;
 }
+
+@media (prefers-reduced-motion: no-preference) {
+	.bg[data-bg-animate='on'] {
+		will-change: background-position;
+	}
+}
+
+.bg {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+
+	--bg-gradient-stop-1: #000;
+	--bg-gradient-stop-2: #1b3699;
+	--bg-gradient-stop-3: #000;
+
+	background-color: var(--bg-gradient-stop-1);
+	background-image: radial-gradient(
+			ellipse at 90% 30%,
+			var(--bg-gradient-stop-1) 20%,
+			transparent 50%
+		),
+		radial-gradient(
+			ellipse at 70% 0%,
+			var(--bg-gradient-stop-2) 0%,
+			transparent 50%
+		),
+		radial-gradient(
+			ellipse at 20% 10%,
+			var(--bg-gradient-stop-3) 10%,
+			transparent 70%
+		),
+		radial-gradient(
+			ellipse at 50% 100%,
+			var(--bg-gradient-stop-2) 0%,
+			transparent 50%
+		);
+	background-size: 200% 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.bg[data-bg-animate='on'] {
+		background-size: 400% 200%;
+		background-position: 0% 0%;
+		animation: bg-gradient-anim-1 180s linear infinite;
+	}
+}
+
+@keyframes bg-gradient-anim-1 {
+	0%,
+	100% {
+		background-position: 0% 0%;
+	}
+	25% {
+		background-position: 100% 100%;
+	}
+	50% {
+		background-position: 100% 0%;
+	}
+	75% {
+		background-position: 0% 100%;
+	}
+}

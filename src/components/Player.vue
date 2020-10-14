@@ -25,7 +25,7 @@ export default {
 <style lang="postcss" scoped>
 .player {
 	width: 100%;
-	background-color: #2c2c2c;
+	background-color: var(--panel-bg);
 	border-radius: 0.5rem;
 	margin-bottom: 1.5rem;
 
