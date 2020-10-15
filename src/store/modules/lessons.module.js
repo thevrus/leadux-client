@@ -90,5 +90,8 @@ export const lessons = {
 
 			return count
 		},
+		watchedLessons(state) {
+			return state.watchedLessons
+		},
 	},
 }

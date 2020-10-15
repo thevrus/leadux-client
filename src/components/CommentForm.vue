@@ -21,6 +21,7 @@
 
 <script>
 import DataService from '@/services/data.service'
+import { mapGetters, mapActions } from 'vuex'
 import { capitalize } from '@/js/filters'
 
 export default {
@@ -31,20 +32,16 @@ export default {
 		}
 	},
 	computed: {
-		loggedIn() {
-			return this.$store.state.auth.status.loggedIn
-		},
-
-		user() {
-			return this.$store.state.auth.user.user
-		},
+		...mapGetters('auth', ['loggedIn', 'user']),
+		...mapGetters('lessons', ['getCurrentLesson']),
 	},
 	methods: {
+		...mapActions('comments', ['loadComments']),
 		handleSubmit() {
-			const cl = this.$store.getters['lessons/getCurrentLesson']
+			const cl = this.getCurrentLesson()
 
 			DataService.addComment(cl.id, this.comment).then(() => {
-				this.$store.dispatch('comments/loadComments')
+				this.loadComments()
 				this.comment = ''
 			})
 		},

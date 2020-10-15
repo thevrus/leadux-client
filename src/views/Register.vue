@@ -65,6 +65,7 @@
 import User from '../models/user'
 import TextInput from '@/components/TextInput'
 import PasswordInput from '@/components/PasswordInput'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
 	name: 'Register',
@@ -84,17 +85,17 @@ export default {
 		}
 	},
 	computed: {
-		loggedIn() {
-			return this.$store.state.auth.status.loggedIn
-		},
+		...mapGetters('auth', ['loggedIn']),
 	},
 	methods: {
+		...mapActions('auth', ['register']),
+
 		handleRegister() {
 			this.message = ''
 			this.submitted = true
 
 			if (this.user.email && this.user.username && this.user.password) {
-				this.$store.dispatch('auth/register', this.user).then(
+				this.register(this.user).then(
 					() => {
 						this.$router.push('/watch')
 						this.successful = true

@@ -23,6 +23,7 @@ import Playlist from '@/components/Playlist'
 import Player from '@/components/Player'
 import Panel from '@/components/Panel'
 import Footer from '@/components/Footer'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
 	name: 'Watch',
@@ -40,17 +41,22 @@ export default {
 		}
 	},
 	computed: {
-		loggedIn() {
-			return this.$store.state.auth.status.loggedIn
-		},
-		currentLesson() {
-			return this.$store.getters['lessons/getCurrentLesson']
-		},
+		...mapGetters('auth', { loggedIn: 'loggedIn' }),
+		...mapGetters('lessons', {
+			getCurrentLesson: 'getCurrentLesson',
+		}),
+	},
+	methods: {
+		...mapActions('lessons', {
+			setCurrentLesson: 'setCurrentLesson',
+			loadLessons: 'loadLessons',
+		}),
+		...mapActions('auth', { me: 'me' }),
 	},
 	mounted() {
-		this.loggedIn && this.$store.dispatch('auth/me')
+		this.loggedIn && this.me()
 
-		this.$store.dispatch('lessons/loadLessons').then(lessons => {
+		this.loadLessons().then(lessons => {
 			const slug = this.$route.params.slug
 			if (slug) {
 				let flatLessons = []
@@ -59,12 +65,12 @@ export default {
 				])
 
 				const lesson = flatLessons.find(lesson => lesson.slug === slug)
-				this.$store.dispatch('lessons/setCurrentLesson', lesson)
+				this.setCurrentLesson(lesson)
 			} else {
 				this.$router.push({
 					name: 'WatchSlug',
 					params: {
-						slug: this.currentLesson.slug,
+						slug: this.getCurrentLesson.slug,
 					},
 				})
 			}

@@ -14,6 +14,7 @@
 <script>
 import Comment from '@/components/Comment'
 import CommentForm from '@/components/CommentForm'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
 	components: {
@@ -27,15 +28,14 @@ export default {
 		}
 	},
 	computed: {
-		loggedIn() {
-			return this.$store.state.auth.status.loggedIn
-		},
-		comments() {
-			return this.$store.getters['comments/getComments']
-		},
+		...mapGetters('auth', ['loggedIn', 'user']),
+		...mapGetters('comments', { comments: 'getComments' }),
+	},
+	methods: {
+		...mapActions('comments', ['loadComments']),
 	},
 	mounted() {
-		this.$store.dispatch('comments/loadComments').then(() => {
+		this.loadComments().then(() => {
 			this.loading = false
 		})
 	},

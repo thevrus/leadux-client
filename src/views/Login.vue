@@ -4,11 +4,10 @@
 
 		<form name="form" @submit.prevent="handleLogin" class="login__form">
 			<TextInput
-				label="Ваш Email"
-				name="email"
-				autocomplete="email"
+				label="Email или Username"
+				name="login"
 				:required="true"
-				id="email"
+				id="login"
 				type="text"
 				v-model="user.email"
 			/>
@@ -48,6 +47,7 @@
 import User from '@/models/user'
 import TextInput from '@/components/TextInput'
 import PasswordInput from '@/components/PasswordInput'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
 	name: 'Login',
@@ -71,19 +71,19 @@ export default {
 		}
 	},
 	computed: {
-		loggedIn() {
-			return this.$store.state.auth.status.loggedIn
-		},
+		...mapGetters('auth', ['loggedIn']),
 	},
 	created() {
 		this.loggedIn && this.$router.push('/watch')
 	},
 	methods: {
+		...mapActions('auth', ['login']),
+
 		handleLogin() {
 			this.loading = true
 
 			if (this.user.email && this.user.password) {
-				this.$store.dispatch('auth/login', this.user).then(
+				this.login(this.user).then(
 					() => {
 						this.$router.push('/watch')
 					},

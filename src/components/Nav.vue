@@ -9,19 +9,22 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
 	computed: {
-		loggedIn() {
-			return this.$store.state.auth.status.loggedIn
-		},
+		...mapGetters('auth', ['loggedIn']),
 	},
 	created() {
 		this.loggedIn ? true : false
 	},
 	methods: {
+		...mapActions('auth', ['loadComlogoutments']),
+		...mapActions('lessons', ['clearCurrentLesson']),
+
 		logout() {
-			this.$store.dispatch('auth/logout')
-			this.$store.dispatch('lessons/clearCurrentLesson')
+			this.logout()
+			this.clearCurrentLesson()
 			window.location.reload()
 		},
 	},

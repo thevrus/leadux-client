@@ -77,4 +77,12 @@ export const auth = {
 			state.user.user = user
 		},
 	},
+	getters: {
+		user(state) {
+			return state.user ? state.user.user : null
+		},
+		loggedIn(state) {
+			return state.status.loggedIn
+		},
+	},
 }

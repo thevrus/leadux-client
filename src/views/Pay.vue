@@ -26,6 +26,7 @@
 
 <script>
 import AuthService from '@/services/auth.service'
+import { mapGetters } from 'vuex'
 
 export default {
 	components: {},
@@ -35,9 +36,7 @@ export default {
 		}
 	},
 	computed: {
-		loggedIn() {
-			return this.$store.state.auth.status.loggedIn
-		},
+		...mapGetters('auth', ['loggedIn']),
 	},
 	created() {
 		!this.loggedIn

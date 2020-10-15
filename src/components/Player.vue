@@ -13,11 +13,11 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
 	computed: {
-		currentLesson() {
-			return this.$store.getters['lessons/getCurrentLesson']
-		},
+		...mapGetters({ currentLesson: 'lessons/getCurrentLesson' }),
 	},
 }
 </script>

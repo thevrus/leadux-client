@@ -2,15 +2,17 @@
 	<div class="wrapper">
 		<router-link to="/" class="logo__link">Leadux</router-link>
 
-		<div class="progresss">
+		<div class="progresss" v-if="getLessonsLength">
 			<div class="progress__container">
 				<div class="progress__wrapper">
 					<span class="progress__title">
-						<span v-if="watchedLessons === totalLessons">Курс пройден 🎉</span>
+						<span v-if="watchedLessons.length === getLessonsLength">
+							Курс пройден 🎉
+						</span>
 						<span v-else>Прогресс курса</span>
 					</span>
 					<span class="progress__numbers">
-						{{ watchedLessons }} из {{ totalLessons }}
+						{{ watchedLessons.length }} из {{ getLessonsLength }}
 					</span>
 				</div>
 				<div class="progress__line">
@@ -18,9 +20,9 @@
 				</div>
 			</div>
 
-			<router-link to="/pay" class="main-btn ml" v-if="!isStudent"
-				>Открыть полный доступ</router-link
-			>
+			<router-link to="/pay" class="main-btn ml" v-if="!isStudent">
+				Открыть полный доступ
+			</router-link>
 		</div>
 
 		<UserDetails />
@@ -29,6 +31,7 @@
 
 <script>
 import UserDetails from '@/components/UserDetails'
+import { mapGetters } from 'vuex'
 
 export default {
 	name: 'NavWatch',
@@ -36,23 +39,18 @@ export default {
 		UserDetails,
 	},
 	computed: {
-		loggedIn() {
-			return this.$store.state.auth.status.loggedIn
-		},
+		...mapGetters('lessons', ['getLessonsLength', 'watchedLessons']),
+		...mapGetters('auth', ['loggedIn', 'user']),
 		progress() {
-			return 'width:' + (100 / this.totalLessons) * this.watchedLessons + '%'
-		},
-		totalLessons() {
-			return this.$store.getters['lessons/getLessonsLength']
-		},
-		watchedLessons() {
-			return this.$store.state.lessons.watchedLessons.length
+			return (
+				'width:' +
+				(100 / this.getLessonsLength) * this.watchedLessons.length +
+				'%'
+			)
 		},
 		isStudent() {
 			let isStudent
-			const roleType = this.$store.state.auth.user
-				? this.$store.state.auth.user.user.role.type
-				: null
+			const roleType = this.user && this.user.role.type
 
 			switch (roleType) {
 				case 'student':
@@ -90,7 +88,8 @@ export default {
 .logo__link {
 	color: #ffffff;
 	font-weight: 700;
-	font-size: 1.75rem;
+	font-size: responsive 1rem 1.75rem;
+	word-break: normal;
 	line-height: 33px;
 }
 

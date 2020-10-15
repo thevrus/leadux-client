@@ -4,16 +4,18 @@
 			<router-link class="register-btn" to="/register">Регистрация</router-link>
 			<router-link class="login-btn" to="/login">Вход</router-link>
 		</div>
+
 		<div class="registered__wrapp" v-if="loggedIn && user">
 			<div class="user">
 				<div class="user__nick">{{ user.username }}</div>
 				<div class="user__status">{{ user.role.description }}</div>
+
 				<transition name="fade" mode="out-in" appear>
 					<div class="user__info-wrapper" v-show="userInfo">
 						<div class="user__details">
 							<div class="user__nick">{{ user.username }}</div>
 							<div class="user__email">{{ user.email }}</div>
-							<button v-if="loggedIn" @click.prevent="logout" class="logout">
+							<button v-if="loggedIn" @click="userLogout" class="logout">
 								Выйти
 							</button>
 						</div>
@@ -26,6 +28,7 @@
 									class="user__img"
 								/>
 							</div>
+
 							<div class="avatar__letter" v-else>
 								{{ user.username | capitalize }}
 							</div>
@@ -33,6 +36,7 @@
 					</div>
 				</transition>
 			</div>
+
 			<div class="avatar" @click="toggleUserInfo">
 				<div v-if="user.avatar">
 					<img
@@ -41,6 +45,7 @@
 						class="user__img"
 					/>
 				</div>
+
 				<div class="avatar__letter" v-else>
 					{{ user.username | capitalize }}
 				</div>
@@ -50,34 +55,30 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
 import { capitalize } from '@/js/filters'
 
 export default {
 	name: 'UserDetails',
-
 	data() {
 		return {
 			userInfo: false,
 			host_url: process.env.VUE_APP_API_URL,
 		}
 	},
+	computed: {
+		...mapGetters('auth', { user: 'user', loggedIn: 'loggedIn' }),
+	},
 	methods: {
+		...mapActions('lessons', { clearCurrentLesson: 'clearCurrentLesson' }),
+		...mapActions('auth', ['logout']),
 		toggleUserInfo() {
 			return (this.userInfo = !this.userInfo)
 		},
-		logout() {
-			this.$store.dispatch('auth/logout')
-			this.$store.dispatch('lessons/clearCurrentLesson')
+		userLogout() {
+			this.logout()
+			this.clearCurrentLesson()
 			window.location.reload()
-		},
-	},
-	computed: {
-		loggedIn() {
-			return this.$store.state.auth.status.loggedIn
-		},
-
-		user() {
-			return this.$store.state.auth.user.user
 		},
 	},
 	filters: {
@@ -87,6 +88,10 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
+.fl-sh0 {
+	flex-shrink: 0;
+}
+
 .registered__wrapp {
 	display: flex;
 	justify-content: space-between;

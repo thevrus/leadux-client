@@ -6,4 +6,9 @@ const capitalize = value => {
 		.toUpperCase()
 }
 
-export { capitalize }
+const time = value => {
+	if (!value || typeof value !== 'number') return value
+	return Math.floor(value / 60) + ' мин.'
+}
+
+export { capitalize, time }

@@ -19,6 +19,5 @@ export default {
 @import './assets/css/variables';
 @import './assets/css/fonts';
 @import './assets/css/global';
-@import './assets/css/helpers';
 @import './assets/css/transitions';
 </style>

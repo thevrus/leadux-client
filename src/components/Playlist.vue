@@ -10,12 +10,12 @@
 				<summary class="summary">
 					<p class="summary__title">{{ playlist.name }}</p>
 					<div class="summary__wrap">
-						<span class="summary__time">{{
-							playlistLength(playlist.lessons)
-						}}</span>
-						<span class="summary__amount"
-							>1 из {{ playlist.lessons.length }}</span
-						>
+						<span class="summary__time">
+							{{ playlistLength(playlist.lessons) }}
+						</span>
+						<span class="summary__amount">
+							1 из {{ playlist.lessons.length }}
+						</span>
 					</div>
 				</summary>
 
@@ -27,7 +27,7 @@
 								class="playlist__lesson-info playlist__private"
 							>
 								<h6
-									@click="setCurrentLesson(lesson)"
+									@click="toggleCurrentLesson(lesson)"
 									class="playlist__video-title"
 								>
 									{{ lesson.order }}. {{ lesson.title }}
@@ -42,14 +42,14 @@
 									<input
 										type="checkbox"
 										:checked="watchedLessons.includes(lesson.id)"
-										@change="toggleWatched(lesson.id)"
+										@change="toggleWatchedLesson(lesson.id)"
 										class="playlist__checkbox"
 									/>
 									<span class="playlist__custom-check"></span>
 								</label>
 								<div class="playlist__lesson-info">
 									<h6
-										@click="setCurrentLesson(lesson)"
+										@click="toggleCurrentLesson(lesson)"
 										class="playlist__video-title"
 									>
 										{{ lesson.order }}. {{ lesson.title }}
@@ -68,24 +68,26 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+import { time } from '@/js/filters'
+
 export default {
 	computed: {
-		playlists() {
-			return this.$store.getters['lessons/getLessons']
-		},
-		loggedIn() {
-			return this.$store.state.auth.status.loggedIn
-		},
-		watchedLessons() {
-			return this.$store.state.lessons.watchedLessons
-		},
+		...mapGetters('auth', ['loggedIn']),
+
+		...mapGetters('lessons', {
+			watchedLessons: 'watchedLessons',
+			playlists: 'getLessons',
+		}),
 	},
 	methods: {
-		setCurrentLesson(lesson) {
+		...mapActions('lessons', ['toggleWatchedLesson', 'setCurrentLesson']),
+
+		toggleCurrentLesson(lesson) {
 			if (lesson.videoId) {
 				if (lesson.slug === this.$route.params.slug) return
 
-				this.$store.dispatch('lessons/setCurrentLesson', lesson)
+				this.setCurrentLesson(lesson)
 				this.$router.push({ name: 'WatchSlug', params: { slug: lesson.slug } })
 			} else if (!this.loggedIn) {
 				this.$router.push('/login')
@@ -93,9 +95,7 @@ export default {
 				this.$router.push('/pay')
 			}
 		},
-		toggleWatched(lessonId) {
-			this.$store.dispatch('lessons/toggleWatchedLesson', lessonId)
-		},
+
 		playlistLength(pl) {
 			let plLength = 0
 
@@ -107,10 +107,7 @@ export default {
 		},
 	},
 	filters: {
-		time(value) {
-			if (!value || typeof value !== 'number') return value
-			return Math.floor(value / 60) + ' мин.'
-		},
+		time,
 	},
 }
 </script>
