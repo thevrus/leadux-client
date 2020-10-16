@@ -12,6 +12,11 @@ class DataService {
 			headers: authHeader(),
 		})
 	}
+	getExercises() {
+		return axios.get(process.env.VUE_APP_API_URL + '/exercises', {
+			headers: authHeader(),
+		})
+	}
 	addComment(id, comment) {
 		return axios({
 			method: 'post',

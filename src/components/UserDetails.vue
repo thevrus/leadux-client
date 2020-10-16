@@ -20,46 +20,27 @@
 							</button>
 						</div>
 
-						<div class="avatar" @click="toggleUserInfo">
-							<div v-if="user.avatar">
-								<img
-									:src="host_url + user.avatar.url"
-									alt="Avatar"
-									class="user__img"
-								/>
-							</div>
-
-							<div class="avatar__letter" v-else>
-								{{ user.username | capitalize }}
-							</div>
+						<div @click="toggleUserInfo" class="avatar">
+							<Avatar :avatar="user.avatar" :username="user.username" />
 						</div>
 					</div>
 				</transition>
 			</div>
 
-			<div class="avatar" @click="toggleUserInfo">
-				<div v-if="user.avatar">
-					<img
-						:src="host_url + user.avatar.url"
-						alt="Avatar"
-						class="user__img"
-					/>
-				</div>
-
-				<div class="avatar__letter" v-else>
-					{{ user.username | capitalize }}
-				</div>
+			<div @click="toggleUserInfo" class="avatar">
+				<Avatar :avatar="user.avatar" :username="user.username" />
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
+import Avatar from '@/components/Avatar'
 import { mapActions, mapGetters } from 'vuex'
-import { capitalize } from '@/js/filters'
 
 export default {
 	name: 'UserDetails',
+	components: { Avatar },
 	data() {
 		return {
 			userInfo: false,
@@ -67,11 +48,12 @@ export default {
 		}
 	},
 	computed: {
-		...mapGetters('auth', { user: 'user', loggedIn: 'loggedIn' }),
+		...mapGetters('auth', ['user', 'loggedIn']),
 	},
 	methods: {
-		...mapActions('lessons', { clearCurrentLesson: 'clearCurrentLesson' }),
+		...mapActions('lessons', ['clearCurrentLesson']),
 		...mapActions('auth', ['logout']),
+
 		toggleUserInfo() {
 			return (this.userInfo = !this.userInfo)
 		},
@@ -80,9 +62,6 @@ export default {
 			this.clearCurrentLesson()
 			window.location.reload()
 		},
-	},
-	filters: {
-		capitalize,
 	},
 }
 </script>
@@ -122,33 +101,18 @@ export default {
 	margin-left: 1rem;
 	line-height: 1rem;
 	transition: background-color 0.3s;
+
 	&:hover {
 		background-color: rgba(255, 255, 255, 0.1);
 	}
 }
 
 .avatar {
-	width: 42px;
-	height: 42px;
-	border-radius: 50%;
-	background: linear-gradient(180deg, #93e3a0 0%, #5b8b62 100%);
-	position: relative;
-	margin-left: 1rem;
-	overflow: hidden;
 	cursor: pointer;
 }
 
-.avatar__letter {
-	position: absolute;
-	width: 100%;
-	text-align: center;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -46%);
-	user-select: none;
-	font-weight: bold;
-	font-size: 1rem;
-	color: #ffffff;
+.user {
+	margin-right: 1rem;
 }
 
 .user__nick {
@@ -157,11 +121,6 @@ export default {
 	line-height: 140%;
 	color: #f4f4f4;
 	cursor: pointer;
-}
-
-.user__img {
-	object-fit: cover;
-	width: 100%;
 }
 
 .user__status,
@@ -181,11 +140,12 @@ export default {
 	border: none;
 	appearance: none;
 	margin-left: -0.5rem;
-}
-.logout:hover {
-	background-color: #262626;
-	border-radius: 6px;
-	color: #fff;
+
+	&:hover {
+		background-color: #262626;
+		border-radius: 6px;
+		color: #fff;
+	}
 }
 
 .user__info-wrapper {
@@ -200,14 +160,5 @@ export default {
 	border-radius: 12px;
 	border: 1px solid var(--panel-border);
 	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
-}
-
-.fade-enter-active,
-.fade-leave-active {
-	transition: opacity 0.3s;
-}
-.fade-enter,
-.fade-leave-to {
-	opacity: 0;
 }
 </style>

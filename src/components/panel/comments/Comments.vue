@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import Comment from '@/components/Comment'
-import CommentForm from '@/components/CommentForm'
+import Comment from '@/components/panel/comments/Comment'
+import CommentForm from '@/components/panel/comments/CommentForm'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {

@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 import { auth } from './modules/auth.module'
 import { lessons } from './modules/lessons.module'
 import { comments } from './modules/comments.module'
+import { exercises } from './modules/exercises.module'
 
 Vue.use(Vuex)
 
@@ -12,6 +13,7 @@ export default new Vuex.Store({
 		auth,
 		lessons,
 		comments,
+		exercises,
 	},
 	state: {},
 })

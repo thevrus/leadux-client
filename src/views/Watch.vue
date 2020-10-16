@@ -21,7 +21,7 @@ import NavWatch from '@/components/NavWatch'
 import Loader from '@/components/Loader'
 import Playlist from '@/components/Playlist'
 import Player from '@/components/Player'
-import Panel from '@/components/Panel'
+import Panel from '@/components/panel/Panel'
 import Footer from '@/components/Footer'
 import { mapGetters, mapActions } from 'vuex'
 
@@ -41,17 +41,12 @@ export default {
 		}
 	},
 	computed: {
-		...mapGetters('auth', { loggedIn: 'loggedIn' }),
-		...mapGetters('lessons', {
-			getCurrentLesson: 'getCurrentLesson',
-		}),
+		...mapGetters('auth', ['loggedIn']),
+		...mapGetters('lessons', ['getCurrentLesson']),
 	},
 	methods: {
-		...mapActions('lessons', {
-			setCurrentLesson: 'setCurrentLesson',
-			loadLessons: 'loadLessons',
-		}),
-		...mapActions('auth', { me: 'me' }),
+		...mapActions('lessons', ['setCurrentLesson', 'loadLessons']),
+		...mapActions('auth', ['me']),
 	},
 	mounted() {
 		this.loggedIn && this.me()

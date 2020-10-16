@@ -1,13 +1,6 @@
 <template>
 	<div class="form">
-		<div class="avatar">
-			<div v-if="user.avatar">
-				<img :src="host_url + user.avatar.url" alt="Avatar" class="user__img" />
-			</div>
-			<div class="avatar-letter" v-else>
-				{{ user.username | capitalize }}
-			</div>
-		</div>
+		<Avatar :avatar="user.avatar" :username="user.username" />
 
 		<form @submit.prevent="handleSubmit">
 			<textarea v-model="comment" />
@@ -20,11 +13,14 @@
 </template>
 
 <script>
+import Avatar from '@/components/Avatar'
 import DataService from '@/services/data.service'
 import { mapGetters, mapActions } from 'vuex'
-import { capitalize } from '@/js/filters'
 
 export default {
+	components: {
+		Avatar,
+	},
 	data() {
 		return {
 			host_url: process.env.VUE_APP_API_URL,
@@ -37,6 +33,7 @@ export default {
 	},
 	methods: {
 		...mapActions('comments', ['loadComments']),
+
 		handleSubmit() {
 			const cl = this.getCurrentLesson()
 
@@ -45,9 +42,6 @@ export default {
 				this.comment = ''
 			})
 		},
-	},
-	filters: {
-		capitalize,
 	},
 }
 </script>
@@ -59,30 +53,6 @@ export default {
 	grid-template-columns: 42px 1fr;
 	grid-gap: 2%;
 	margin-bottom: 4rem;
-}
-
-.avatar {
-	width: 42px;
-	height: 42px;
-	border-radius: 50%;
-	background: linear-gradient(180deg, #93e3a0 0%, #5b8b62 100%);
-	position: relative;
-	overflow: hidden;
-	display: inline-block;
-	margin-right: 1rem;
-}
-
-.avatar-letter {
-	position: absolute;
-	width: 100%;
-	text-align: center;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -46%);
-	user-select: none;
-	font-weight: bold;
-	font-size: 1rem;
-	color: #ffffff;
 }
 
 form {

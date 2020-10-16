@@ -3,20 +3,24 @@
 		<Tabs />
 		<div class="panel-body">
 			<Comments />
-			<!-- <Tasks /> -->
-			<!-- <Materials /> -->
+			<Exercises />
+			<Materials />
 		</div>
 	</div>
 </template>
 
 <script>
-import Tabs from '@/components/Tabs'
-import Comments from '@/components/Comments'
+import Tabs from '@/components/panel/Tabs'
+import Comments from '@/components/panel/comments/Comments'
+import Exercises from '@/components/panel/exercises/Exercises'
+import Materials from '@/components/panel/materials/Materials'
 
 export default {
 	components: {
 		Tabs,
 		Comments,
+		Exercises,
+		Materials,
 	},
 }
 </script>

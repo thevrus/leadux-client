@@ -69,7 +69,6 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import { time } from '@/js/filters'
 
 export default {
 	computed: {
@@ -107,7 +106,10 @@ export default {
 		},
 	},
 	filters: {
-		time,
+		time(value) {
+			if (!value || typeof value !== 'number') return value
+			return Math.floor(value / 60) + ' мин.'
+		},
 	},
 }
 </script>
