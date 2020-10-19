@@ -21,13 +21,13 @@ p {
 body {
 	padding: 0;
 	margin: 0;
-	background-color: #262626;
+	background-color: var(--bg);
 	font-family: 'Freigeist', system-ui;
 	letter-spacing: 0.3px;
 }
 
 ::selection {
-	background-color: #6252be;
+	background-color: var(--secondary);
 	color: #fff;
 }
 
@@ -39,7 +39,7 @@ body {
 }
 
 .main-btn {
-	background-color: #e93762;
+	background-color: var(--primary);
 	border: none;
 	cursor: pointer;
 	outline-color: #262626;
@@ -47,7 +47,7 @@ body {
 	font-weight: bold;
 	font-size: 0.89rem;
 	border-radius: 12px;
-	border-color: #e93762;
+	border-color: var(--primary);
 	color: #ffffff;
 	transition: all 0.2s;
 	flex-shrink: 0;
@@ -69,7 +69,7 @@ input {
 	color: #434343;
 	border: 1px solid transparent;
 	margin-bottom: 1.25rem;
-	background-color: rgba(255, 255, 255, 0.9);
+	background-color: #fff;
 	outline-color: #222e4f;
 }
 
