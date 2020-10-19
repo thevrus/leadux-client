@@ -15,7 +15,7 @@ export const lessons = {
 			return new Promise((resolve, reject) => {
 				DataService.getLessons()
 					.then(({ data }) => {
-						commit('LOAD_LESSONS', data)
+						commit('SET_LESSONS', data)
 
 						!ls.find('currentLesson') &&
 							commit('SET_CURRENT_LESSON', data[0].lessons[0])
@@ -49,7 +49,7 @@ export const lessons = {
 		},
 	},
 	mutations: {
-		LOAD_LESSONS(state, playlists) {
+		SET_LESSONS(state, playlists) {
 			state.playlists = playlists
 		},
 		SET_CURRENT_LESSON(state, lesson) {

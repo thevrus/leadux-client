@@ -7,15 +7,24 @@ class DataService {
 			headers: authHeader(),
 		})
 	}
+	getExercises() {
+		return axios.get(
+			process.env.VUE_APP_API_URL + '/exercises?_publicationState=live',
+			{
+				headers: authHeader(),
+			}
+		)
+	}
 	getComments() {
-		return axios.get(process.env.VUE_APP_API_URL + '/comments', {
+		return axios.get(process.env.VUE_APP_API_URL + '/questions', {
 			headers: authHeader(),
 		})
 	}
-	getExercises() {
-		return axios.get(process.env.VUE_APP_API_URL + '/exercises', {
-			headers: authHeader(),
-		})
+	getMaterials() {
+		return axios.get(
+			process.env.VUE_APP_API_URL + '/material-types?_publicationState=live',
+			{ headers: authHeader() }
+		)
 	}
 	addComment(id, comment) {
 		return axios({
