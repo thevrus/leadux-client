@@ -84,5 +84,21 @@ export const auth = {
 		loggedIn(state) {
 			return state.status.loggedIn
 		},
+		isStudent(state) {
+			let isStudent
+			const roleType = state.user && state.user.user.role.type
+
+			switch (roleType) {
+				case 'student':
+					isStudent = true
+					break
+				case 'advanced':
+					isStudent = true
+					break
+				default:
+					isStudent = false
+			}
+			return isStudent
+		},
 	},
 }

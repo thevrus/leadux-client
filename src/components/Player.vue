@@ -17,7 +17,7 @@ import { mapGetters } from 'vuex'
 
 export default {
 	computed: {
-		...mapGetters({ currentLesson: 'lessons/getCurrentLesson' }),
+		...mapGetters('lessons', { currentLesson: 'getCurrentLesson' }),
 	},
 }
 </script>

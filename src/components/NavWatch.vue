@@ -40,29 +40,13 @@ export default {
 	},
 	computed: {
 		...mapGetters('lessons', ['getLessonsLength', 'watchedLessons']),
-		...mapGetters('auth', ['loggedIn', 'user']),
+		...mapGetters('auth', ['loggedIn', 'user', 'isStudent']),
 		progress() {
 			return (
 				'width:' +
 				(100 / this.getLessonsLength) * this.watchedLessons.length +
 				'%'
 			)
-		},
-		isStudent() {
-			let isStudent
-			const roleType = this.user && this.user.role.type
-
-			switch (roleType) {
-				case 'student':
-					isStudent = true
-					break
-				case 'advanced':
-					isStudent = true
-					break
-				default:
-					isStudent = false
-			}
-			return isStudent
 		},
 	},
 }
