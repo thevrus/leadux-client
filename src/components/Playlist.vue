@@ -19,45 +19,39 @@
 					</div>
 				</summary>
 
-				<ul class="playlist__list">
-					<li v-for="lesson in playlist.lessons" :key="lesson.id">
-						<div class="playlist__wrapp">
-							<div
-								v-if="!lesson.videoId"
-								class="playlist__lesson-info playlist__private"
-							>
-								<h6
-									@click="toggleCurrentLesson(lesson)"
-									class="playlist__video-title"
-								>
-									{{ lesson.order }}. {{ lesson.title }}
-								</h6>
-								<div v-if="lesson.videoLength" class="playlist__video-time">
-									{{ lesson.videoLength | time }}
-								</div>
-							</div>
+				<ul>
+					<li
+						v-for="lesson in playlist.lessons"
+						:key="lesson.id"
+						@click="toggleCurrentLesson(lesson)"
+						class="playlist__wrapp,"
+						:class="{ active: currentLesson.id === lesson.id }"
+					>
+						<div
+							v-if="!lesson.videoId"
+							class="playlist__lesson-info playlist__private"
+						>
+							<h6>{{ lesson.order }}. {{ lesson.title }}</h6>
+							<p v-if="lesson.videoLength" class="playlist__video-time">
+								{{ lesson.videoLength | time }}
+							</p>
+						</div>
 
-							<div v-else class="playlist__lesson-wrap">
-								<label class="playlist__label">
-									<input
-										type="checkbox"
-										:checked="watchedLessons.includes(lesson.id)"
-										@change="toggleWatchedLesson(lesson.id)"
-										class="playlist__checkbox"
-									/>
-									<span class="playlist__custom-check"></span>
-								</label>
-								<div class="playlist__lesson-info">
-									<h6
-										@click="toggleCurrentLesson(lesson)"
-										class="playlist__video-title"
-									>
-										{{ lesson.order }}. {{ lesson.title }}
-									</h6>
-									<div v-if="lesson.videoLength" class="playlist__video-time">
-										{{ lesson.videoLength | time }}
-									</div>
-								</div>
+						<div v-else class="playlist__lesson-wrap">
+							<label>
+								<input
+									type="checkbox"
+									:checked="watchedLessons.includes(lesson.id)"
+									@change="toggleWatchedLesson(lesson.id)"
+								/>
+								<span class="playlist__custom-check"></span>
+							</label>
+
+							<div class="playlist__lesson-info">
+								<h6>{{ lesson.order }}. {{ lesson.title }}</h6>
+								<p v-if="lesson.videoLength" class="playlist__video-time">
+									{{ lesson.videoLength | time }}
+								</p>
 							</div>
 						</div>
 					</li>
@@ -77,6 +71,7 @@ export default {
 		...mapGetters('lessons', {
 			watchedLessons: 'watchedLessons',
 			playlists: 'getLessons',
+			currentLesson: 'getCurrentLesson',
 		}),
 	},
 	methods: {
@@ -125,15 +120,45 @@ export default {
 	text-align: left;
 	border: 1px solid var(--panel-border);
 
-	&__list {
-		padding: 2.4rem 2rem 1.4rem 2rem;
+	ul {
+		padding: 1.4rem 0 1.4rem 0;
 	}
 
-	&__wrapp {
-		margin-bottom: 1rem;
+	li {
+		padding: 0.65rem 2rem 0.65rem 2rem;
+		width: 100%;
+		position: relative;
+
+		&:hover {
+			cursor: pointer;
+			background: linear-gradient(90deg, #404040 0.05%, #40404000 100%);
+		}
+
+		&:hover {
+			&::before {
+				opacity: 1;
+			}
+		}
 	}
 
-	&__label {
+	.active {
+		position: relative;
+		cursor: pointer;
+		background: linear-gradient(90deg, #404040 0.05%, #40404000 100%);
+
+		&:before {
+			content: '';
+			background-color: var(--secondary);
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 3px;
+			height: 100%;
+		}
+	}
+
+	label {
 		display: flex;
 		position: relative;
 	}
@@ -142,7 +167,7 @@ export default {
 		display: flex;
 	}
 
-	&__checkbox {
+	input[type='checkbox'] {
 		position: absolute;
 		width: 1px;
 		height: 1px;
@@ -150,9 +175,10 @@ export default {
 		clip: rect(0 0 0 0);
 	}
 
-	&__checkbox:checked + &__custom-check {
+	input[type='checkbox']:checked + &__custom-check {
 		background-color: #34bf6c;
 		border: 1px solid #34bf6c;
+
 		&::before {
 			content: '';
 			width: 12px;
@@ -178,17 +204,14 @@ export default {
 		padding-left: 1rem;
 	}
 
-	&__video-title {
+	h6 {
 		font-weight: 500;
 		font-size: 0.95rem;
 		line-height: 140%;
 		color: #f4f4f4;
 		margin: 0;
-		&:hover {
-			cursor: pointer;
-			opacity: 0.8;
-		}
 	}
+
 	&__video-time {
 		font-weight: 500;
 		font-size: 0.95rem;
