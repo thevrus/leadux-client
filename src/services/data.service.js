@@ -29,7 +29,7 @@ class DataService {
 	addComment(id, comment) {
 		return axios({
 			method: 'post',
-			url: `${process.env.VUE_APP_API_URL}/lessons/${id}/comment`,
+			url: `${process.env.VUE_APP_API_URL}/lessons/${id}/question`,
 			headers: authHeader(),
 			data: {
 				comment,

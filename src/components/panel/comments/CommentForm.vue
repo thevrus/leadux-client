@@ -5,8 +5,12 @@
 		<form @submit.prevent="handleSubmit">
 			<textarea v-model="comment" />
 			<div>
-				<button>Отмена</button>
-				<input type="submit" value="Добавить ответ" />
+				<input type="reset" value="Отмена" />
+				<input
+					type="submit"
+					value="Добавить ответ"
+					placeholder="Добавить комментарий"
+				/>
 			</div>
 		</form>
 	</div>
@@ -27,19 +31,22 @@ export default {
 			comment: '',
 		}
 	},
+	props: {
+		lessonId: {
+			type: String,
+			required: true,
+		},
+	},
 	computed: {
 		...mapGetters('auth', ['loggedIn', 'user']),
-		...mapGetters('lessons', ['getCurrentLesson']),
 	},
 	methods: {
 		...mapActions('comments', ['loadComments']),
 
 		handleSubmit() {
-			const cl = this.getCurrentLesson()
-
-			DataService.addComment(cl.id, this.comment).then(() => {
+			DataService.addComment(this.lessonId, this.comment).then(() => {
 				this.loadComments()
-				this.comment = ''
+				this.text = ''
 			})
 		},
 	},
@@ -52,7 +59,7 @@ export default {
 	display: grid;
 	grid-template-columns: 42px 1fr;
 	grid-gap: 2%;
-	margin-bottom: 4rem;
+	margin-bottom: 2.5rem;
 }
 
 form {
@@ -62,14 +69,21 @@ form {
 		margin-bottom: 1.1rem;
 		box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.08);
 		border-radius: 10px;
+		/* max-height: 3rem; */
+		font-family: Freigeist;
+		font-style: normal;
+		font-weight: 500;
+		font-size: 1rem;
+		padding: 0.5rem 0.75rem;
 	}
 
 	div {
 		position: absolute;
 		right: 0;
+		margin-bottom: -20px;
 	}
 
-	button {
+	input[type='reset'] {
 		appearance: none;
 		border: none;
 		color: #616161;
@@ -79,6 +93,7 @@ form {
 		line-height: 1rem;
 		padding: 0.6rem 1rem;
 		border-radius: 10px;
+		margin-right: 0.5rem;
 	}
 
 	input {

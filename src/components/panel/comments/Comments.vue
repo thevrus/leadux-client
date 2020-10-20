@@ -1,11 +1,14 @@
 <template>
 	<div>
 		<div v-if="!loading">
-			<ul v-for="comment in comments" :key="comment.id">
-				<Comment :comment="{ comment }" />
-			</ul>
+			<CommentForm v-if="loggedIn" :lessonId="currentLesson.id" />
 
-			<CommentForm v-if="loggedIn" />
+			<ul v-for="comment in comments" :key="comment.id">
+				<Comment
+					v-if="currentLesson.id === comment.lesson.id"
+					:comment="{ comment }"
+				/>
+			</ul>
 		</div>
 		<div v-else>Loading...</div>
 	</div>
@@ -30,6 +33,7 @@ export default {
 	computed: {
 		...mapGetters('auth', ['loggedIn', 'user']),
 		...mapGetters('comments', { comments: 'getComments' }),
+		...mapGetters('lessons', { currentLesson: 'getCurrentLesson' }),
 	},
 	methods: {
 		...mapActions('comments', ['loadComments']),
