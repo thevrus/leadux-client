@@ -75,7 +75,7 @@ export default {
 			bottom: -1px;
 			border-top-left-radius: 4px;
 			border-top-right-radius: 4px;
-			left: 45%;
+			left: 43%;
 			width: 40px;
 			height: 3px;
 			background-color: var(--secondary);
@@ -89,6 +89,7 @@ export default {
 	border-radius: 10px;
 	border: 1px solid var(--panel-border);
 	box-shadow: 0px 2px 6px 0px #000000 20%;
+	min-height: 500px;
 
 	&-body {
 		padding: 0 4rem;

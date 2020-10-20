@@ -121,6 +121,8 @@ export default {
 	line-height: 140%;
 	color: #f4f4f4;
 	cursor: pointer;
+	width: max-content;
+	margin-right: 1rem;
 }
 
 .user__status,
@@ -130,6 +132,11 @@ export default {
 	font-size: 0.87rem;
 	line-height: 140%;
 	color: #787878;
+}
+
+.user__email {
+	width: max-content;
+	margin-right: 1rem;
 }
 
 .logout {
@@ -153,7 +160,7 @@ export default {
 	justify-content: space-around;
 	align-items: center;
 	position: absolute;
-	top: -31px;
+	top: -27px;
 	right: -18.9px;
 	background-color: var(--panel-bg);
 	padding: 1rem 1.1rem 1rem 1rem;
