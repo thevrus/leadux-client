@@ -1,8 +1,8 @@
 <template>
 	<div class="fl-sh0">
 		<div class="unregistered__wrapp" v-if="!loggedIn">
-			<router-link class="register-btn" to="/register">Регистрация</router-link>
-			<router-link class="login-btn" to="/login">Вход</router-link>
+			<router-link class="btn" to="/register">Регистрация</router-link>
+			<router-link class="btn btn-light" to="/login">Вход</router-link>
 		</div>
 
 		<div class="registered__wrapp" v-if="loggedIn && user">
@@ -78,23 +78,10 @@ export default {
 	position: relative;
 }
 
-.register-btn {
-	padding: 0.75rem 1.5rem;
-	background-color: rgba(255, 255, 255, 0.04);
-	border-radius: 7px;
-	color: #fff;
-	font-weight: 500;
-	font-size: 1rem;
-	line-height: 1rem;
-	transition: background-color 0.3s;
-	&:hover {
-		background-color: rgba(255, 255, 255, 0.1);
-	}
-}
-
-.login-btn {
+.btn {
 	padding: 0.75rem 1.5rem;
 	border-radius: 7px;
+	text-decoration: none;
 	color: rgba(255, 255, 255, 0.6);
 	font-weight: 500;
 	font-size: 1rem;
@@ -104,6 +91,10 @@ export default {
 
 	&:hover {
 		background-color: rgba(255, 255, 255, 0.1);
+	}
+
+	&-light {
+		background-color: rgba(255, 255, 255, 0.04);
 	}
 }
 

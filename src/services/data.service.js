@@ -26,13 +26,23 @@ class DataService {
 			{ headers: authHeader() }
 		)
 	}
-	addComment(id, comment) {
+	addComment(id, text) {
 		return axios({
 			method: 'post',
 			url: `${process.env.VUE_APP_API_URL}/lessons/${id}/question`,
 			headers: authHeader(),
 			data: {
-				comment,
+				text,
+			},
+		})
+	}
+	addAnswer(id, text) {
+		return axios({
+			method: 'post',
+			url: `${process.env.VUE_APP_API_URL}/questions/${id}/answer`,
+			headers: authHeader(),
+			data: {
+				text,
 			},
 		})
 	}

@@ -8,6 +8,7 @@
 				:class="{ active: activeTab.name == tab.name }"
 				@click="switchTab(tab)"
 			>
+				<img :src="tab.icon" :alt="tab.name" />
 				{{ tab.value }}
 			</li>
 		</ul>
@@ -50,23 +51,38 @@ export default {
 	justify-content: space-between;
 	color: #6c6c6c;
 	border-bottom: 0.5px solid #3a3a3a;
-	margin-bottom: 2.5rem;
+	list-style: none;
+	margin: 0 0 2.2rem 0;
+	padding: 0;
 
 	.tab {
 		cursor: pointer;
 		text-align: center;
 		padding: 1.1rem 0;
 		width: 100%;
-		transition: 0.3s color;
+
+		img {
+			opacity: 0.2;
+			margin-right: 0.25rem;
+			margin-top: -4px;
+		}
 
 		&:hover {
 			color: #fff;
+
+			img {
+				opacity: 1;
+			}
 		}
 	}
 
 	.active {
 		color: #fff;
 		position: relative;
+
+		img {
+			opacity: 1;
+		}
 
 		&::after {
 			content: '';
@@ -75,9 +91,9 @@ export default {
 			bottom: -1px;
 			border-top-left-radius: 4px;
 			border-top-right-radius: 4px;
-			left: 43%;
+			left: 46%;
 			width: 40px;
-			height: 3px;
+			height: 2.5px;
 			background-color: var(--secondary);
 		}
 	}

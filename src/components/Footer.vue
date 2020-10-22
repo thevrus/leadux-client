@@ -37,9 +37,8 @@ footer {
 
 	.logo {
 		font-size: 28px;
-		font-style: normal;
 		font-weight: 700;
-		color: #fff;
+		text-decoration: none;
 		transition: opacity 0.3s;
 
 		&:hover {

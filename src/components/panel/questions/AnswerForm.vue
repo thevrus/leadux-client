@@ -3,14 +3,10 @@
 		<Avatar :avatar="user.avatar" :username="user.username" />
 
 		<form @submit.prevent="handleSubmit">
-			<textarea v-model="comment" />
+			<textarea v-model="text" placeholder="Добавьте ответ" />
 			<div>
 				<input type="reset" value="Отмена" />
-				<input
-					type="submit"
-					value="Добавить ответ"
-					placeholder="Добавить комментарий"
-				/>
+				<input type="submit" value="Добавить ответ" />
 			</div>
 		</form>
 	</div>
@@ -28,12 +24,11 @@ export default {
 	data() {
 		return {
 			host_url: process.env.VUE_APP_API_URL,
-			comment: '',
+			text: '',
 		}
 	},
 	props: {
 		lessonId: {
-			type: String,
 			required: true,
 		},
 	},
@@ -44,7 +39,9 @@ export default {
 		...mapActions('comments', ['loadComments']),
 
 		handleSubmit() {
-			DataService.addComment(this.lessonId, this.comment).then(() => {
+			if (!this.text) return
+
+			DataService.addAnswer(this.lessonId, this.text).then(() => {
 				this.loadComments()
 				this.text = ''
 			})
@@ -60,21 +57,21 @@ export default {
 	grid-template-columns: 42px 1fr;
 	grid-gap: 2%;
 	margin-bottom: 2.5rem;
+	padding-top: 1.8rem;
+	border-top: 1px solid #3f3f3f;
 }
 
 form {
 	textarea {
-		display: block;
 		width: 100%;
 		margin-bottom: 1.1rem;
-		box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.08);
-		border-radius: 10px;
-		/* max-height: 3rem; */
-		font-family: Freigeist;
-		font-style: normal;
-		font-weight: 500;
-		font-size: 1rem;
+		border-radius: 6px;
 		padding: 0.5rem 0.75rem;
+		outline: none;
+		border: none;
+		color: #fff;
+		background-color: #262626;
+		font-family: system-ui;
 	}
 
 	div {
@@ -98,7 +95,7 @@ form {
 
 	input {
 		appearance: none;
-		background-color: #6252be;
+		background-color: var(--secondary);
 		color: #fff;
 		cursor: pointer;
 		font-size: 14px;

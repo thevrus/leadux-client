@@ -70,11 +70,16 @@ export default {
 }
 
 .logo__link {
-	color: #ffffff;
 	font-weight: 700;
 	font-size: responsive 1rem 1.75rem;
 	word-break: normal;
 	line-height: 33px;
+	text-decoration: none;
+	transition: opacity 0.3s;
+
+	&:hover {
+		opacity: 0.8;
+	}
 }
 
 .progresss {

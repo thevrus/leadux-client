@@ -11,6 +11,7 @@
 
 <script>
 export default {
+	name: 'Avatar',
 	data() {
 		return {
 			host_url: process.env.VUE_APP_API_URL,

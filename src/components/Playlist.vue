@@ -121,6 +121,8 @@ export default {
 	border: 1px solid var(--panel-border);
 
 	ul {
+		list-style: none;
+		margin: 0;
 		padding: 1.4rem 0 1.4rem 0;
 	}
 
@@ -218,7 +220,8 @@ export default {
 		line-height: 140%;
 		color: #686868;
 		position: relative;
-		padding-left: 1rem;
+		padding: 0 0 0 1rem;
+		margin: 0;
 
 		&::before {
 			content: '';
@@ -250,6 +253,10 @@ export default {
 			left: 0;
 		}
 	}
+}
+
+details[open] summary ~ * {
+	animation: fadeIn 0.3s ease-in-out;
 }
 
 summary::-webkit-details-marker {

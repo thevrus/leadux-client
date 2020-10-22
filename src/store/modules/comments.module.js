@@ -25,7 +25,7 @@ export const comments = {
 	},
 	getters: {
 		getComments(state) {
-			return state.comments
+			return state.comments.slice().reverse()
 		},
 	},
 }
