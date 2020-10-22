@@ -42,7 +42,7 @@ export default {
 	},
 	computed: {
 		...mapGetters('auth', ['loggedIn']),
-		...mapGetters('lessons', ['getCurrentLesson']),
+		...mapGetters('lessons', ['currentLesson']),
 	},
 	methods: {
 		...mapActions('lessons', ['setCurrentLesson', 'loadLessons']),
@@ -65,7 +65,7 @@ export default {
 				this.$router.push({
 					name: 'WatchSlug',
 					params: {
-						slug: this.getCurrentLesson.slug,
+						slug: this.currentLesson.slug,
 					},
 				})
 			}

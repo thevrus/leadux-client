@@ -24,8 +24,8 @@ export default {
 		}
 	},
 	computed: {
-		...mapGetters('exercises', { exercises: 'getExercises' }),
-		...mapGetters('lessons', { currentLesson: 'getCurrentLesson' }),
+		...mapGetters('exercises', ['exercises']),
+		...mapGetters('lessons', ['currentLesson']),
 	},
 	methods: {
 		...mapActions('exercises', ['loadExercises']),

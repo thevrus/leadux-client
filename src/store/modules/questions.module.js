@@ -1,16 +1,16 @@
 import DataService from '@/services/data.service'
 
-export const comments = {
+export const questions = {
 	namespaced: true,
 	state: {
-		comments: [],
+		questions: [],
 	},
 	actions: {
-		loadComments({ commit }) {
+		getQuestions({ commit }) {
 			return new Promise((resolve, reject) => {
-				DataService.getComments()
+				DataService.getQuestions()
 					.then(({ data }) => {
-						commit('SET_COMMENTS', data)
+						commit('SET_QUESTIONS', data)
 
 						resolve(data)
 					})
@@ -19,13 +19,13 @@ export const comments = {
 		},
 	},
 	mutations: {
-		SET_COMMENTS(state, comments) {
-			state.comments = comments
+		SET_QUESTIONS(state, questions) {
+			state.questions = questions
 		},
 	},
 	getters: {
-		getComments(state) {
-			return state.comments.slice().reverse()
+		questions(state) {
+			return state.questions.slice().reverse()
 		},
 	},
 }

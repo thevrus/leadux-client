@@ -36,13 +36,13 @@ export default {
 		...mapGetters('auth', ['loggedIn', 'user']),
 	},
 	methods: {
-		...mapActions('comments', ['loadComments']),
+		...mapActions('questions', ['getQuestions']),
 
 		handleSubmit() {
 			if (!this.text) return
 
 			DataService.addAnswer(this.lessonId, this.text).then(() => {
-				this.loadComments()
+				this.getQuestions()
 				this.text = ''
 			})
 		},
@@ -56,8 +56,8 @@ export default {
 	display: grid;
 	grid-template-columns: 42px 1fr;
 	grid-gap: 2%;
-	margin-bottom: 2.5rem;
-	padding-top: 1.8rem;
+	margin-bottom: 2rem;
+	padding: 1.8rem 0;
 	border-top: 1px solid #3f3f3f;
 }
 

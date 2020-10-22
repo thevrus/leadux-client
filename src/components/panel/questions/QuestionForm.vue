@@ -36,13 +36,13 @@ export default {
 		...mapGetters('auth', ['loggedIn', 'user']),
 	},
 	methods: {
-		...mapActions('comments', ['loadComments']),
+		...mapActions('questions', ['getQuestions']),
 
 		handleSubmit() {
 			if (!this.text) return
 
-			DataService.addComment(this.lessonId, this.text).then(() => {
-				this.loadComments()
+			DataService.addQuestion(this.lessonId, this.text).then(() => {
+				this.getQuestions()
 				this.text = ''
 			})
 		},

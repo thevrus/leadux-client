@@ -2,17 +2,17 @@
 	<div class="wrapper">
 		<router-link to="/" class="logo__link">Leadux</router-link>
 
-		<div class="progresss" v-if="getLessonsLength">
+		<div class="progresss" v-if="lessonsLength">
 			<div class="progress__container">
 				<div class="progress__wrapper">
 					<span class="progress__title">
-						<span v-if="watchedLessons.length === getLessonsLength">
+						<span v-if="watchedLessons.length === lessonsLength">
 							Курс пройден 🎉
 						</span>
 						<span v-else>Прогресс курса</span>
 					</span>
 					<span class="progress__numbers">
-						{{ watchedLessons.length }} из {{ getLessonsLength }}
+						{{ watchedLessons.length }} из {{ lessonsLength }}
 					</span>
 				</div>
 				<div class="progress__line">
@@ -39,13 +39,11 @@ export default {
 		UserDetails,
 	},
 	computed: {
-		...mapGetters('lessons', ['getLessonsLength', 'watchedLessons']),
+		...mapGetters('lessons', ['lessonsLength', 'watchedLessons']),
 		...mapGetters('auth', ['loggedIn', 'user', 'isStudent']),
 		progress() {
 			return (
-				'width:' +
-				(100 / this.getLessonsLength) * this.watchedLessons.length +
-				'%'
+				'width:' + (100 / this.lessonsLength) * this.watchedLessons.length + '%'
 			)
 		},
 	},

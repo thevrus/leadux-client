@@ -65,10 +65,10 @@ export const lessons = {
 		},
 	},
 	getters: {
-		getCurrentLesson(state) {
+		currentLesson(state) {
 			return state.currentLesson
 		},
-		getLessons(state) {
+		lessons(state) {
 			const sort = (a, b) => a.order - b.order
 
 			const sorted = state.playlists.sort(sort).map(playlist => {
@@ -79,10 +79,7 @@ export const lessons = {
 
 			return sorted
 		},
-		getFirstLesson(state) {
-			return state.playlists[0].lessons[0]
-		},
-		getLessonsLength(state) {
+		lessonsLength(state) {
 			let count = 0
 			state.playlists.forEach(pl => {
 				count += pl.lessons.length

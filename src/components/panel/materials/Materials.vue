@@ -31,7 +31,7 @@ export default {
 	},
 	computed: {
 		...mapGetters('auth', ['loggedIn']),
-		...mapGetters('materials', { materials: 'getMaterials' }),
+		...mapGetters('materials', ['materials']),
 	},
 	methods: {
 		...mapActions('materials', ['loadMaterials']),

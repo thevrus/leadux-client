@@ -22,7 +22,7 @@ export const materials = {
 		},
 	},
 	getters: {
-		getMaterials(state) {
+		materials(state) {
 			return state.materials
 		},
 	},

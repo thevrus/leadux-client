@@ -1,45 +1,45 @@
 <template>
-	<details class="bubble" v-if="comment">
+	<details class="bubble" v-if="question">
 		<summary @click="toggleDetails" class="content">
 			<Avatar
-				:avatar="comment.author.avatar"
-				:username="comment.author.username"
+				:avatar="question.author.avatar"
+				:username="question.author.username"
 			/>
 
 			<span>
 				<div class="info">
 					<span class="user-name">
-						{{ comment.author.username }}
+						{{ question.author.username }}
 					</span>
 
 					<span class="date">{{ '6 дней назад' | date }}</span>
 
-					<span class="counter"> {{ comment.answers.length }} ответ(ов) </span>
+					<span class="counter"> {{ question.answers.length }} ответ(ов) </span>
 				</div>
 
-				<p class="comment">{{ comment.text }}</p>
+				<p class="question">{{ question.text }}</p>
 			</span>
 		</summary>
 
-		<span class="answers-counter" v-if="comment.answers.length > 0">
-			{{ comment.answers.length }} ответ(ов)
+		<span class="answers-counter" v-if="question.answers.length > 0">
+			{{ question.answers.length }} ответ(ов)
 		</span>
 
-		<ul class="answers" v-if="comment.answers.length > 0">
+		<div v-if="isOpenDetails && user">
+			<AnswerForm :lessonId="question.id" />
+		</div>
+
+		<ul class="answers" v-if="question.answers.length > 0">
 			<transition-group name="fade" tag="li">
 				<div
 					class="content__answer"
-					v-for="answer of comment.answers.slice().reverse()"
+					v-for="answer of question.answers.slice().reverse()"
 					:key="answer.id"
 				>
 					<Answer :answer="answer" />
 				</div>
 			</transition-group>
 		</ul>
-
-		<div v-if="isOpenDetails && user">
-			<AnswerForm :lessonId="comment.id" />
-		</div>
 	</details>
 </template>
 
@@ -61,13 +61,13 @@ export default {
 		}
 	},
 	props: {
-		comment: {
+		question: {
 			type: Object,
 			required: true,
 		},
 	},
 	computed: {
-		...mapGetters('lessons', { currentLesson: 'getCurrentLesson' }),
+		...mapGetters('lessons', ['currentLesson']),
 		...mapGetters('auth', ['user']),
 	},
 	methods: {
@@ -170,7 +170,7 @@ summary {
 			vertical-align: top;
 		}
 
-		.comment {
+		.question {
 			display: inline;
 			min-width: 100%;
 			color: #f4f4f4;

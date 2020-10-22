@@ -53,7 +53,7 @@ export const exercises = {
 		},
 	},
 	getters: {
-		getExercises(state) {
+		exercises(state) {
 			return state.exercises
 		},
 		completedExercises(state) {

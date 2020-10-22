@@ -1,6 +1,6 @@
 <template>
 	<aside>
-		<div v-for="playlist in playlists" :key="playlist.id">
+		<div v-for="playlist in lessons" :key="playlist.id">
 			<details
 				v-if="playlist.lessons.length > 0"
 				open
@@ -68,11 +68,7 @@ export default {
 	computed: {
 		...mapGetters('auth', ['loggedIn']),
 
-		...mapGetters('lessons', {
-			watchedLessons: 'watchedLessons',
-			playlists: 'getLessons',
-			currentLesson: 'getCurrentLesson',
-		}),
+		...mapGetters('lessons', ['watchedLessons', 'lessons', 'currentLesson']),
 	},
 	methods: {
 		...mapActions('lessons', ['toggleWatchedLesson', 'setCurrentLesson']),

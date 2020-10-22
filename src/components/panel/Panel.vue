@@ -1,7 +1,7 @@
 <template>
 	<Tabs :tabs="tabs" :initialTab="tabs[0]">
 		<template slot="questions">
-			<Comments />
+			<Questions />
 		</template>
 
 		<template slot="exercises">
@@ -16,7 +16,7 @@
 
 <script>
 import Tabs from '@/components/panel/Tabs'
-import Comments from '@/components/panel/questions/Questions'
+import Questions from '@/components/panel/questions/Questions'
 import Exercises from '@/components/panel/exercises/Exercises'
 import Materials from '@/components/panel/materials/Materials'
 
@@ -28,7 +28,7 @@ export default {
 	name: 'Panel',
 	components: {
 		Tabs,
-		Comments,
+		Questions,
 		Exercises,
 		Materials,
 	},

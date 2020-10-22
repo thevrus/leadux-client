@@ -15,7 +15,7 @@ class DataService {
 			}
 		)
 	}
-	getComments() {
+	getQuestions() {
 		return axios.get(process.env.VUE_APP_API_URL + '/questions', {
 			headers: authHeader(),
 		})
@@ -26,7 +26,7 @@ class DataService {
 			{ headers: authHeader() }
 		)
 	}
-	addComment(id, text) {
+	addQuestion(id, text) {
 		return axios({
 			method: 'post',
 			url: `${process.env.VUE_APP_API_URL}/lessons/${id}/question`,

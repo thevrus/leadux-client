@@ -17,7 +17,7 @@
 				</span>
 			</div>
 
-			<p class="comment">{{ answer.text }}</p>
+			<p class="question">{{ answer.text }}</p>
 		</div>
 	</div>
 </template>
@@ -88,7 +88,7 @@ export default {
 		vertical-align: top;
 	}
 
-	.comment {
+	.question {
 		display: inline;
 		min-width: 100%;
 		color: #f4f4f4;

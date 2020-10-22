@@ -16,10 +16,10 @@
 
 			<ul>
 				<transition-group name="fade" tag="li">
-					<div v-for="comment in comments" :key="comment.id">
+					<div v-for="question in questions" :key="question.id">
 						<Question
-							v-if="currentLesson.id === comment.lesson.id"
-							:comment="comment"
+							v-if="currentLesson.id === question.lesson.id"
+							:question="question"
 						/>
 					</div>
 				</transition-group>
@@ -41,31 +41,30 @@ export default {
 	},
 	data() {
 		return {
-			comment: '',
 			addQuestion: false,
 			loading: true,
 		}
 	},
 	computed: {
 		...mapGetters('auth', ['loggedIn', 'user']),
-		...mapGetters('comments', { comments: 'getComments' }),
-		...mapGetters('lessons', { currentLesson: 'getCurrentLesson' }),
+		...mapGetters('questions', ['questions']),
+		...mapGetters('lessons', ['currentLesson']),
 
 		questionsLength() {
 			let counter = 0
 
-			this.comments.forEach(comment => {
-				if (this.currentLesson.id === comment.lesson.id) counter++
+			this.questions.forEach(question => {
+				if (this.currentLesson.id === question.lesson.id) counter++
 			})
 
 			return counter
 		},
 	},
 	methods: {
-		...mapActions('comments', ['loadComments']),
+		...mapActions('questions', ['getQuestions']),
 	},
 	mounted() {
-		this.loadComments().then(() => {
+		this.getQuestions().then(() => {
 			this.loading = false
 		})
 	},
