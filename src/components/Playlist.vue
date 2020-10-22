@@ -290,6 +290,7 @@ summary::-webkit-details-marker {
 		font-weight: bold;
 		font-size: 1.1rem;
 		line-height: 145%;
+		margin-top: 0;
 		margin-bottom: 0.5rem;
 		user-select: none;
 		cursor: pointer;
