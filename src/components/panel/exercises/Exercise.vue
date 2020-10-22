@@ -1,11 +1,15 @@
 <template>
-	<li class="exercise">
+	<div class="exercise">
 		<span class="exercise__number">{{ exercise.number }}</span>
-		<p class="exercise__title">{{ exercise.description }}</p>
+
+		<VueShowdown
+			class="exercise__description"
+			:markdown="exercise.description"
+		/>
 
 		<div class="exercise__wrap">
-			<ul v-for="material of exercise.media" :key="material.id">
-				<li>
+			<ul>
+				<li v-for="material of exercise.media" :key="material.id">
 					<a
 						:href="host_url + material.url"
 						target="_blank"
@@ -14,20 +18,19 @@
 					>
 				</li>
 			</ul>
+
 			<div class="exercise__toggle-wrap">
-				<span class="exercise__label">Задание выполнено </span>
+				<span class="exercise__label">Задание выполнено</span>
 				<input
 					type="checkbox"
 					:id="exercise.id"
 					:checked="completedExercises.includes(exercise.id)"
 					@change="toggleCompletedExercise(exercise.id)"
 				/>
-				<label :for="exercise.id">
-					toggle
-				</label>
+				<label :for="exercise.id">toggle</label>
 			</div>
 		</div>
-	</li>
+	</div>
 </template>
 
 <script>
@@ -71,22 +74,30 @@ export default {
 		left: -20px;
 		top: -20px;
 		padding: 0.5rem;
-		background-color: #733bea;
+		background-color: var(--secondary);
 		border-radius: 50%;
 		text-align: center;
 	}
 
-	&__title {
+	&__description {
 		font-weight: 500;
 		font-size: 0.92rem;
 		line-height: 140%;
-		color: #d8d8d8;
 		margin-bottom: 1rem;
 	}
 
 	&__wrap {
 		width: 100%;
-		/* clear: both; */
+
+		ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+
+			li {
+				display: inline-block;
+			}
+		}
 	}
 
 	&__toggle-wrap {
@@ -103,27 +114,33 @@ export default {
 
 	&__link {
 		font-weight: 500;
-		font-size: 0.8rem;
-		display: block;
-		line-height: 140%;
+		font-size: 1rem;
+		display: inline-block;
+		letter-spacing: 0.4px;
 		color: #717171;
-		transition: color 0.3s;
 		position: relative;
 		vertical-align: middle;
-		margin-bottom: 0.5rem;
-		margin-left: 0.5rem;
+		margin-right: 1rem;
+		margin-top: 0.1rem;
+		text-decoration: none;
+
 		&:hover {
 			color: #ab96d6;
+
+			&::before {
+				background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTE3IDBIM2EzIDMgMCAwMC0zIDN2MTBhMyAzIDAgMDAzIDNoMTRhMyAzIDAgMDAzLTNWM2EzIDMgMCAwMC0zLTN6TTMgMTRhMSAxIDAgMDEtMS0xdi0yLjQybDMuMy0zLjI5YTEgMSAwIDAxMS40IDBMMTMuNDEgMTRIM3ptMTUtMWExIDEgMCAwMS0xIDFoLS43N2wtMy44MS0zLjgzLjg4LS44OGExIDEgMCAwMTEuNCAwbDMuMyAzLjI5VjEzem0wLTMuMjRsLTEuODgtMS44N2EzLjA2IDMuMDYgMCAwMC00LjI0IDBsLS44OC44OC0yLjg4LTIuODhhMy4wNiAzLjA2IDAgMDAtNC4yNCAwTDIgNy43NlYzYTEgMSAwIDAxMS0xaDE0YTEgMSAwIDAxMSAxdjYuNzZ6IiBmaWxsPSIjQUI5NkQ2Ii8+PC9zdmc+');
+			}
 		}
 
 		&::before {
 			content: '';
 			display: inline-block;
+			vertical-align: middle;
 			width: 1.25rem;
 			height: 1rem;
-			background-image: url('../../../assets/img/img-icon.svg');
+			background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTE3IDBIM2EzIDMgMCAwMC0zIDN2MTBhMyAzIDAgMDAzIDNoMTRhMyAzIDAgMDAzLTNWM2EzIDMgMCAwMC0zLTN6TTMgMTRhMSAxIDAgMDEtMS0xdi0yLjQybDMuMy0zLjI5YTEgMSAwIDAxMS40IDBMMTMuNDEgMTRIM3ptMTUtMWExIDEgMCAwMS0xIDFoLS43N2wtMy44MS0zLjgzLjg4LS44OGExIDEgMCAwMTEuNCAwbDMuMyAzLjI5VjEzem0wLTMuMjRsLTEuODgtMS44N2EzLjA2IDMuMDYgMCAwMC00LjI0IDBsLS44OC44OC0yLjg4LTIuODhhMy4wNiAzLjA2IDAgMDAtNC4yNCAwTDIgNy43NlYzYTEgMSAwIDAxMS0xaDE0YTEgMSAwIDAxMSAxdjYuNzZ6IiBmaWxsPSIjNUM1QzVDIi8+PC9zdmc+');
 			background-size: cover;
-			margin-right: 0.7rem;
+			margin: 0.4rem;
 		}
 	}
 }

@@ -1,8 +1,11 @@
 <template>
 	<ul v-if="!loading">
-		<div v-for="exercise in exercises" :key="exercise.id">
-			<Exercise :exercise="exercise" />
-		</div>
+		<li v-for="exercise in exercises" :key="exercise.id">
+			<Exercise
+				v-if="currentLesson.id === exercise.lesson.id"
+				:exercise="exercise"
+			/>
+		</li>
 	</ul>
 </template>
 
@@ -22,6 +25,7 @@ export default {
 	},
 	computed: {
 		...mapGetters('exercises', { exercises: 'getExercises' }),
+		...mapGetters('lessons', { currentLesson: 'getCurrentLesson' }),
 	},
 	methods: {
 		...mapActions('exercises', ['loadExercises']),
@@ -35,5 +39,11 @@ export default {
 <style lang="postcss" scoped>
 div {
 	color: #fff;
+}
+
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 </style>
