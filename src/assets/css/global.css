@@ -56,19 +56,6 @@ body {
 	color: #ffffff;
 	text-decoration: none;
 }
-
-input {
-	border-radius: 0.7rem;
-	font-weight: bold;
-	font-size: 0.88rem;
-	line-height: 140%;
-	color: #434343;
-	border: 1px solid transparent;
-	margin-bottom: 1.25rem;
-	background-color: #fff;
-	outline-color: #222e4f;
-}
-
 @media (prefers-reduced-motion: no-preference) {
 	.bg[data-bg-animate='on'] {
 		will-change: background-position;

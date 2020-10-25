@@ -1,8 +1,8 @@
 <template>
 	<div class="login bg" data-bg-animate="off">
-		<h3 class="login__title">Вход</h3>
+		<h3>Вход</h3>
 
-		<form name="form" @submit.prevent="handleLogin" class="login__form">
+		<form name="form" @submit.prevent="handleLogin">
 			<TextInput
 				label="Email или Username"
 				name="login"
@@ -17,26 +17,25 @@
 				name="password"
 				:required="true"
 				id="password"
-				type="password"
 				v-model="user.password"
+				autocomplete="current-password"
 			/>
 
-			<div v-if="message" class="login__message">
+			<div tabindex="-1" v-if="message" class="message">
 				{{ message }}
 			</div>
 
-			<button class="login__submit" :disabled="loading">
-				<span v-show="loading"></span>
-				<span class="login__btn">Войти</span>
+			<button :disabled="loading">
+				<span class="btn">Войти</span>
 			</button>
 		</form>
 
-		<div class="login__login">
-			<p class="login__login-info">
+		<div class="login-page">
+			<p class="login-info">
 				Я еще не зарегистрирован
 			</p>
 
-			<router-link v-if="!loggedIn" to="/register" class="login__login-btn">
+			<router-link v-if="!loggedIn" to="/register" class="login-btn">
 				Регистрация
 			</router-link>
 		</div>
@@ -108,7 +107,7 @@ export default {
 	padding: 0 1rem;
 	overflow: hidden;
 
-	&__title {
+	h3 {
 		text-align: center;
 		font-weight: bold;
 		font-size: 2.6rem;
@@ -117,25 +116,14 @@ export default {
 		margin: 0 0 1rem 0;
 	}
 
-	&__desc {
-		width: 100%;
-		max-width: 29rem;
-		font-weight: 500;
-		font-size: 1.1rem;
-		line-height: 140%;
-		color: #fffdcb;
-		margin: 0 auto 3rem;
-		text-align: center;
-	}
-
-	&__form {
+	form {
 		max-width: 372px;
 		width: 100%;
 		margin: 0px auto;
 		position: relative;
 	}
 
-	&__message {
+	.message {
 		width: 100%;
 		padding: 1rem;
 		margin-bottom: 1rem;
@@ -145,7 +133,7 @@ export default {
 		color: #412929;
 	}
 
-	&__submit {
+	button {
 		padding: 1.1rem 2rem;
 		font-weight: 500;
 		font-size: 1.1rem;
@@ -164,33 +152,38 @@ export default {
 		}
 	}
 
-	&__login {
+	a {
+		text-decoration: none;
+	}
+
+	.login-page {
 		max-width: 480px;
 		width: 100%;
 		border-top: 1px solid rgba(255, 255, 255, 0.07);
 		padding-top: 1.75rem;
 		margin: 0 auto 5rem;
 		text-align: center;
-		&-info {
-			font-weight: 500;
-			font-size: 1rem;
-			line-height: 140%;
-			color: rgba(255, 255, 255, 0.37);
-			margin-bottom: 1.6rem;
-		}
+	}
 
-		&-btn {
-			padding: 0.7rem 1.75rem;
-			background-color: rgba(255, 255, 255, 0.04);
-			border-radius: 7px;
-			cursor: pointer;
-			font-size: 0.93rem;
-			color: rgba(255, 255, 255, 0.6);
-			transition: color, background-color 0.3s;
-			&:hover {
-				color: rgba(255, 255, 255, 0.4);
-				background-color: rgba(255, 255, 255, 0.1);
-			}
+	.login-info {
+		font-weight: 500;
+		font-size: 1rem;
+		line-height: 140%;
+		color: rgba(255, 255, 255, 0.37);
+		margin-bottom: 1.6rem;
+	}
+
+	.login-btn {
+		padding: 0.7rem 1.75rem;
+		background-color: rgba(255, 255, 255, 0.04);
+		border-radius: 7px;
+		cursor: pointer;
+		font-size: 0.93rem;
+		color: rgba(255, 255, 255, 0.6);
+		transition: color, background-color 0.3s;
+		&:hover {
+			color: rgba(255, 255, 255, 0.4);
+			background-color: rgba(255, 255, 255, 0.1);
 		}
 	}
 }

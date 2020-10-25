@@ -12,7 +12,7 @@
 						{{ question.author.username }}
 					</span>
 
-					<span class="date">{{ '6 дней назад' | date }}</span>
+					<span class="date">{{ question.created_at | timeSince }}</span>
 
 					<span class="counter"> {{ question.answers.length }} ответ(ов) </span>
 				</div>
@@ -25,9 +25,10 @@
 			{{ question.answers.length }} ответ(ов)
 		</span>
 
-		<div v-if="isOpenDetails && user">
-			<AnswerForm :lessonId="question.id" />
-		</div>
+		<AnswerForm
+			v-if="isOpenDetails && user && isStudent"
+			:lessonId="question.id"
+		/>
 
 		<ul class="answers" v-if="question.answers.length > 0">
 			<transition-group name="fade" tag="li">
@@ -48,6 +49,7 @@ import Avatar from '@/components/Avatar'
 import AnswerForm from '@/components/panel/questions/AnswerForm'
 import Answer from '@/components/panel/questions/Answer'
 import { mapGetters } from 'vuex'
+import { timeSince } from '@/assets/js/filters.js'
 
 export default {
 	components: {
@@ -68,7 +70,7 @@ export default {
 	},
 	computed: {
 		...mapGetters('lessons', ['currentLesson']),
-		...mapGetters('auth', ['user']),
+		...mapGetters('auth', ['user', 'isStudent']),
 	},
 	methods: {
 		toggleDetails() {
@@ -76,10 +78,7 @@ export default {
 		},
 	},
 	filters: {
-		date(value) {
-			if (!value) return
-			return value
-		},
+		timeSince,
 	},
 }
 </script>
@@ -124,9 +123,9 @@ summary {
 
 .answers-counter {
 	display: block;
-	font-size: 1rem;
+	font-size: 0.9rem;
 	color: #ffffff;
-	padding: 1.2rem 0;
+	padding: 0.6rem 0;
 	border-top: 1px solid #3f3f3f;
 }
 

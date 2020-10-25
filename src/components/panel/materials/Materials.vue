@@ -1,5 +1,5 @@
 <template>
-	<div v-if="!loading">
+	<div v-if="!loading && materials.length > 0">
 		<div class="select">
 			<select v-model="selectedCategory">
 				<option

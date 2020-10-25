@@ -1,5 +1,5 @@
 <template>
-	<aside>
+	<aside v-if="lessons">
 		<div v-for="playlist in lessons" :key="playlist.id">
 			<details
 				v-if="playlist.lessons.length > 0"

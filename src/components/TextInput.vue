@@ -11,7 +11,7 @@
 			:value="value"
 			@input="$emit('input', $event.target.value)"
 		/>
-		<label for="email">
+		<label :for="id">
 			{{ label }}
 		</label>
 	</div>
@@ -30,18 +30,31 @@ div {
 
 label {
 	position: absolute;
+	user-select: none;
 	top: 1.1rem;
 	left: 1.5rem;
-	font-weight: 500;
+	font-weight: normal;
 	font-size: 1.1rem;
-	line-height: 140%;
 	color: rgba(0, 0, 0, 0.38);
 	transition: all 0.3s;
+}
+
+input {
+	border-radius: 0.7rem;
+	font-weight: bold;
+	font-size: 0.88rem;
+	color: #434343;
+	border: 1px solid transparent;
+	margin-bottom: 1.25rem;
+	background-color: #fff;
+	outline-color: #222e4f;
 }
 
 .input {
 	padding: 1.7rem 1.5rem 0.7rem 1.5rem;
 	width: 100%;
+	outline: none;
+	background-color: #f5f5f5;
 }
 
 div input:focus ~ label {

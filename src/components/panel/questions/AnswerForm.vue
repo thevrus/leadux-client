@@ -56,8 +56,8 @@ export default {
 	display: grid;
 	grid-template-columns: 42px 1fr;
 	grid-gap: 2%;
-	margin-bottom: 2rem;
-	padding: 1.8rem 0;
+	margin-bottom: 1.6rem;
+	padding: 1.6rem 0;
 	border-top: 1px solid #3f3f3f;
 }
 
@@ -79,6 +79,18 @@ form {
 		right: 0;
 		margin-bottom: -20px;
 	}
+	input {
+		appearance: none;
+		background-color: var(--secondary);
+		color: #fff;
+		cursor: pointer;
+		font-size: 14px;
+		line-height: 1rem;
+		padding: 0.6rem 1rem;
+		border-radius: 10px;
+		outline: none;
+		border: 1px solid transparent;
+	}
 
 	input[type='reset'] {
 		appearance: none;
@@ -91,17 +103,6 @@ form {
 		padding: 0.6rem 1rem;
 		border-radius: 10px;
 		margin-right: 0.5rem;
-	}
-
-	input {
-		appearance: none;
-		background-color: var(--secondary);
-		color: #fff;
-		cursor: pointer;
-		font-size: 14px;
-		line-height: 1rem;
-		padding: 0.6rem 1rem;
-		border-radius: 10px;
 	}
 }
 </style>

@@ -95,6 +95,9 @@ export const auth = {
 				case 'advanced':
 					isStudent = true
 					break
+				case 'author':
+					isStudent = true
+					break
 				default:
 					isStudent = false
 			}
