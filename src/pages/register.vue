@@ -1,12 +1,12 @@
 <template>
 	<div class="register bg" data-bg-animate="off">
-		<h3 class="register__title">Регистрация</h3>
+		<h3>Регистрация</h3>
 
-		<p class="register__desc">
+		<h4>
 			Зарегистрируйтесь и смотрите 2 урока из курса совершенно бесплатно.
-		</p>
+		</h4>
 
-		<form name="form" @submit.prevent="handleRegister" class="register__form">
+		<form name="form" @submit.prevent="handleRegister">
 			<TextInput
 				label="Имя пользователя"
 				name="username"
@@ -31,12 +31,12 @@
 				name="password"
 				:required="true"
 				id="password"
-				type="password"
 				v-model="user.password"
 				:validate="true"
+				autocomplete="new-password"
 			/>
 
-			<div v-if="message" class="register__message">
+			<div tabindex="-1" v-if="message" class="register__message">
 				{{ message }}
 			</div>
 
@@ -106,6 +106,7 @@ export default {
 							case 'Auth.form.error.email.taken':
 								message = 'Данный e-mail уже занят!'
 								break
+
 							case 'Auth.form.error.username.taken':
 								message = 'Данное имя пользователя уже занято!'
 								break
@@ -129,7 +130,7 @@ export default {
 	padding: 0 1rem;
 	overflow-y: scroll;
 
-	&__title {
+	h3 {
 		text-align: center;
 		font-weight: bold;
 		font-size: 2.6rem;
@@ -138,7 +139,7 @@ export default {
 		margin: 0 0 1rem 0;
 	}
 
-	&__desc {
+	h4 {
 		width: 100%;
 		max-width: 29rem;
 		font-weight: 500;
@@ -149,7 +150,7 @@ export default {
 		text-align: center;
 	}
 
-	&__form {
+	form {
 		max-width: 372px;
 		width: 100%;
 		margin: 0px auto;

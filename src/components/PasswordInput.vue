@@ -3,26 +3,25 @@
 		<input
 			:id="id"
 			:name="name"
-			:type="type"
 			:autocomplete="autocomplete"
 			placeholder=" "
 			class="input"
+			type="password"
 			aria-describedby="password-constraints"
 			:required="required"
 			ref="passwordInput"
 			:value="value"
 			@input="onInput"
 		/>
-		<label for="password">
+		<label :for="id">
 			{{ label }}
 		</label>
 
 		<button
-			id="login-toggle-password"
 			ref="togglePasswordButton"
-			@click.prevent="togglePassword"
+			@click="togglePassword"
 			type="button"
-			aria-label="Show password as plain text. Warning: this will display your password on the screen."
+			aria-label="Показать пароль"
 		></button>
 	</div>
 </template>
@@ -32,7 +31,6 @@ export default {
 	props: [
 		'id',
 		'name',
-		'type',
 		'autocomplete',
 		'required',
 		'label',
@@ -92,9 +90,18 @@ div {
 	position: relative;
 }
 
-.input {
+input {
 	padding: 1.7rem 1.5rem 0.7rem 1.5rem;
 	width: 100%;
+	outline: none;
+	border-radius: 0.7rem;
+	font-weight: bold;
+	font-size: 0.88rem;
+	color: #434343;
+	border: 1px solid transparent;
+	margin-bottom: 1.25rem;
+	background-color: #fff;
+	outline-color: #222e4f;
 }
 
 input:focus ~ label {
@@ -117,6 +124,7 @@ input[type='password']:valid + label {
 
 label {
 	position: absolute;
+	user-select: none;
 	top: 1.1rem;
 	left: 1.5rem;
 	font-weight: 500;

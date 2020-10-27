@@ -1,5 +1,5 @@
 <template>
-	<nav id="nav">
+	<nav class="container">
 		<router-link class="logo" to="/">
 			<img src="../assets/img/logo.svg" alt="logo" />
 		</router-link>
@@ -41,7 +41,7 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-#nav {
+nav {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;

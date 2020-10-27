@@ -13,7 +13,7 @@
 				</span>
 
 				<span class="date">
-					{{ '6 дней назад' | date }}
+					{{ answer.created_at | timeSince }}
 				</span>
 			</div>
 
@@ -24,6 +24,7 @@
 
 <script>
 import Avatar from '@/components/Avatar'
+import { timeSince } from '@/assets/js/filters.js'
 
 export default {
 	name: 'Answer',
@@ -37,10 +38,7 @@ export default {
 		},
 	},
 	filters: {
-		date(value) {
-			if (!value) return
-			return value
-		},
+		timeSince,
 	},
 }
 </script>

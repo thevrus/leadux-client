@@ -1,5 +1,5 @@
 <template>
-	<ul v-if="!loading">
+	<ul v-if="!loading && exercises.length > 0">
 		<li v-for="exercise in exercises" :key="exercise.id">
 			<Exercise
 				v-if="currentLesson.id === exercise.lesson.id"
@@ -37,10 +37,6 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-div {
-	color: #fff;
-}
-
 ul {
 	list-style: none;
 	margin: 0;

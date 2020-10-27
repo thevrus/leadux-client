@@ -1,7 +1,11 @@
 <template>
 	<div>
 		<div v-if="!loading">
-			<button @click="addQuestion = !addQuestion" v-show="!addQuestion">
+			<button
+				v-if="loggedIn && isStudent"
+				@click="addQuestion = !addQuestion"
+				v-show="!addQuestion"
+			>
 				Задать вопрос
 			</button>
 
@@ -46,7 +50,7 @@ export default {
 		}
 	},
 	computed: {
-		...mapGetters('auth', ['loggedIn', 'user']),
+		...mapGetters('auth', ['loggedIn', 'user', 'isStudent']),
 		...mapGetters('questions', ['questions']),
 		...mapGetters('lessons', ['currentLesson']),
 

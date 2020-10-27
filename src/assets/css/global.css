@@ -16,7 +16,7 @@ a {
 body {
 	padding: 0;
 	margin: 0;
-	background-color: var(--bg);
+	background-color: #000;
 	font-family: 'Freigeist', system-ui;
 	letter-spacing: 0.3px;
 }
@@ -31,6 +31,14 @@ body {
 	margin: 0 auto;
 	width: 100%;
 	padding: 0 40px;
+}
+
+.grid-x2fr {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-column-gap: 2rem;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .main-btn {
@@ -57,16 +65,19 @@ body {
 	text-decoration: none;
 }
 
-input {
-	border-radius: 0.7rem;
-	font-weight: bold;
-	font-size: 0.88rem;
-	line-height: 140%;
-	color: #434343;
-	border: 1px solid transparent;
-	margin-bottom: 1.25rem;
-	background-color: #fff;
-	outline-color: #222e4f;
+.buy-btn {
+	padding: 1.1rem 2.6rem;
+	background-color: #e937b3;
+	border-radius: 10px;
+	margin-right: 1rem;
+	font-size: 0.95rem;
+	display: inline-block;
+	transition: transform 0.3s;
+
+	&:hover {
+		transform: translateY(-2px);
+		text-decoration: none;
+	}
 }
 
 @media (prefers-reduced-motion: no-preference) {

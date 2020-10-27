@@ -83,7 +83,6 @@ footer {
 
 	.copyright {
 		font-size: 14px;
-		line-height: 140%;
 		color: #6f6f6f;
 		padding-top: 2rem;
 	}
