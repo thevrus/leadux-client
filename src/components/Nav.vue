@@ -1,10 +1,19 @@
 <template>
 	<nav id="nav">
-		<router-link to="/">Home</router-link>
-		<router-link to="/watch">Watch</router-link>
-		<router-link to="/pay">Pay</router-link>
-		<router-link v-if="!loggedIn" to="/login">Login</router-link>
-		<a v-if="loggedIn" href="#!" @click.prevent="logout">Logout</a>
+		<router-link class="logo" to="/">
+			<img src="../assets/img/logo.svg" alt="logo" />
+		</router-link>
+		<div class="link-wrapp">
+			<a href="#">Для кого</a>
+			<a href="#">Что внутри</a>
+			<a href="#">ЧАВО</a>
+		</div>
+		<div class="loggin-wrapp">
+			<router-link class="login" v-if="!loggedIn" to="/login">Вход</router-link>
+			<a class="logout" v-if="loggedIn" href="#!" @click.prevent="logout"
+				>Выход</a
+			>
+		</div>
 	</nav>
 </template>
 
@@ -33,15 +42,39 @@ export default {
 
 <style lang="postcss" scoped>
 #nav {
-	padding: 30px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 
-	a {
+	.logo {
+	}
+
+	.link-wrapp a {
 		font-weight: bold;
-		color: #6c7279;
-		margin-right: 1rem;
+		font-size: 1rem;
+		line-height: 140%;
+		display: inline-block;
+		margin-right: 2rem;
+		color: #d9d9d9;
+		transition: transform 0.3s;
 
-		&.router-link-exact-active {
-			color: #42b983;
+		&:hover {
+			transform: translateY(-2px);
+			text-decoration: none;
+		}
+	}
+	.loggin-wrapp {
+		.login,
+		.logout {
+			padding: 1rem 1.5rem;
+			border: 1px solid rgba(255, 255, 255, 0.2);
+			border-radius: 10px;
+			font-size: 0.95rem;
+			transition: background-color 0.3s;
+			&:hover {
+				text-decoration: none;
+				background-color: #313131;
+			}
 		}
 	}
 }

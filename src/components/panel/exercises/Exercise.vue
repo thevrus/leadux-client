@@ -58,6 +58,9 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
+a {
+	color: #0000;
+}
 .exercise {
 	padding: 1.5rem 1.5rem 3.5rem;
 	background: #343434;
