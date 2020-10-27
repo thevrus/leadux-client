@@ -58,7 +58,6 @@ li {
 }
 select {
 	padding: 0.85rem 4rem 0.85rem 1.5rem;
-	font-family: Freigeist;
 	font-weight: 500;
 	font-size: 0.85rem;
 	color: #ffffff;
@@ -90,7 +89,7 @@ select {
 		width: 10px;
 		height: 6px;
 		position: absolute;
-		background-image: url('../../../assets/img/select_arrow.svg');
+		background-image: url('data:image/svg+xml;base64,PHN2ZyBmaWxsPSJub25lIiBoZWlnaHQ9IjYiIHdpZHRoPSIxMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNOS43MTk0LjI3NTg1YS45NDg2NC45NDg2NCAwIDAwLTEuMzM3NTYgMEw0Ljk3NjI4IDMuNjMzOTggMS42MTgxNi4yNzU4NWEuOTQ4NjQuOTQ4NjQgMCAwMC0xLjMzNzU2IDAgLjk0ODYzLjk0ODYzIDAgMDAwIDEuMzQ3MDVsNC4wMjIxNiA0LjAyMjE2YS45NDg3Ljk0ODcgMCAwMDEuMDM4MzQuMjA3NjQuOTQ4Ny45NDg3IDAgMDAuMzA4NzEtLjIwNzY0TDkuNzE5NCAxLjYyMjlBLjk0ODcuOTQ4NyAwIDAwOS45MjcwNC41ODQ1NmEuOTQ4NjYuOTQ4NjYgMCAwMC0uMjA3NjQtLjMwODd6IiBmaWxsPSIjOTY5Njk2Ii8+PC9zdmc+');
 		background-size: cover;
 		display: block;
 		top: 20px;

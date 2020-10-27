@@ -1,14 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import Watch from '../views/Watch.vue'
+import Index from '../pages/index.vue'
+import Watch from '../pages/watch.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
 	{
 		path: '/',
-		component: Home,
+		component: Index,
 	},
 	{
 		name: 'Watch',
@@ -22,15 +22,23 @@ const routes = [
 	},
 	{
 		path: '/login',
-		component: () => import('../views/Login.vue'),
+		component: () => import('../pages/login.vue'),
 	},
 	{
 		path: '/register',
-		component: () => import('../views/Register.vue'),
+		component: () => import('../pages/register.vue'),
 	},
 	{
 		path: '/pay',
-		component: () => import('../views/Pay.vue'),
+		component: () => import('../pages/pay.vue'),
+	},
+	{
+		path: '/privacy',
+		component: () => import('../pages/privacy.vue'),
+	},
+	{
+		path: '/terms',
+		component: () => import('../pages/terms.vue'),
 	},
 ]
 
