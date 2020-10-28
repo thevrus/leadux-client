@@ -45,7 +45,7 @@ input {
 	font-size: 0.88rem;
 	color: #434343;
 	border: 1px solid transparent;
-	margin-bottom: 1.25rem;
+	margin-bottom: 1rem;
 	background-color: #fff;
 	outline-color: #222e4f;
 }
@@ -65,13 +65,5 @@ div input:focus ~ label {
 input:not(:placeholder-shown).input:not(:focus) + label {
 	top: 0.6rem;
 	font-size: 0.8rem;
-}
-
-input:not(:focus):invalid {
-	color: red;
-}
-
-input[type='email']:valid + label {
-	color: green;
 }
 </style>

@@ -99,7 +99,7 @@ input {
 	font-size: 0.88rem;
 	color: #434343;
 	border: 1px solid transparent;
-	margin-bottom: 1.25rem;
+	margin-bottom: 1rem;
 	background-color: #f5f5f5;
 	outline-color: #222e4f;
 }
@@ -114,14 +114,6 @@ input:not(:placeholder-shown).input:not(:focus) + label {
 	font-size: 0.8rem;
 }
 
-input:not(:focus):invalid {
-	color: red;
-}
-
-input[type='password']:valid + label {
-	color: green;
-}
-
 label {
 	position: absolute;
 	user-select: none;
@@ -130,7 +122,7 @@ label {
 	font-weight: 500;
 	font-size: 1.1rem;
 	line-height: 140%;
-	color: rgba(0, 0, 0, 0.38);
+	color: rgba(0, 0, 0, 0.4);
 	transition: all 0.3s;
 }
 
