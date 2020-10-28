@@ -1,7 +1,7 @@
 <template>
 	<section>
 		<h3>Попробуй первые 2 занятия бесплатно!</h3>
-		<p>Гарантия возврата денег</p>
+		<p id="price">Гарантия возврата денег</p>
 
 		<div class="plans">
 			<img src="@/assets/img/discount.svg" alt="" />
@@ -90,14 +90,13 @@ export default {
 
 <style lang="postcss" scoped>
 section {
-	margin-bottom: 200px;
+	margin-bottom: var(--section-margin);
 	padding: 100px 0;
 	background: radial-gradient(
-			45% 40% at 50% 60%,
-			rgba(127, 18, 165, 0.8) 0%,
-			rgba(127, 18, 165, 0) 100%
-		),
-		#000000;
+		45% 40% at 50% 60%,
+		rgba(127, 18, 165, 0.4) 0%,
+		rgba(127, 18, 165, 0) 100%
+	);
 
 	h3 {
 		font-style: normal;

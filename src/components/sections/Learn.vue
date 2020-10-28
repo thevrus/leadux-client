@@ -53,7 +53,7 @@ export default {
 
 <style lang="postcss" scoped>
 section {
-	margin-bottom: 200px;
+	margin-bottom: var(--section-margin);
 }
 
 h3 {

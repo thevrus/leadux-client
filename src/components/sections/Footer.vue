@@ -63,12 +63,9 @@ footer {
 			display: inline;
 
 			a {
-				font-size: 14px;
+				font-size: 0.9rem;
 				margin-left: 2rem;
-
-				&:hover {
-					text-decoration: underline;
-				}
+				font-weight: 100;
 			}
 		}
 	}

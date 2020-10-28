@@ -100,7 +100,7 @@ input {
 	color: #434343;
 	border: 1px solid transparent;
 	margin-bottom: 1.25rem;
-	background-color: #fff;
+	background-color: #f5f5f5;
 	outline-color: #222e4f;
 }
 

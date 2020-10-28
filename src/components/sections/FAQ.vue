@@ -54,6 +54,10 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
+section {
+	margin-bottom: var(--section-margin);
+}
+
 .grid {
 	display: grid;
 	grid-template-columns: 3fr 5fr;
@@ -63,6 +67,7 @@ export default {
 		position: relative;
 	}
 }
+
 h3 {
 	max-width: 400px;
 	font-weight: 500;

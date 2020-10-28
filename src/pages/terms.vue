@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import Nav from '@/components/Nav'
+import Nav from '@/components/sections/Nav'
 import Footer from '@/components/sections/Footer.vue'
 import axios from 'axios'
 
@@ -39,7 +39,7 @@ export default {
 .content {
 	color: #fff;
 	max-width: 800px;
-	margin: 0 auto;
+	margin: 5rem auto;
 	line-height: 1.5rem;
 	font-weight: 100;
 }

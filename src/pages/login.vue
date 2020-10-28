@@ -1,51 +1,60 @@
 <template>
-	<div class="login">
-		<div class="card">
-			<h3>Вход</h3>
+	<div>
+		<Nav />
 
-			<form name="form" @submit.prevent="handleLogin">
-				<TextInput
-					label="Email или Username"
-					name="login"
-					:required="true"
-					id="login"
-					type="text"
-					v-model="user.email"
-				/>
+		<div class="login">
+			<div class="card">
+				<h3>Вход</h3>
 
-				<PasswordInput
-					label="Пароль"
-					name="password"
-					:required="true"
-					id="password"
-					v-model="user.password"
-					autocomplete="current-password"
-				/>
+				<form name="form" @submit.prevent="handleLogin">
+					<TextInput
+						label="Email или Username"
+						name="login"
+						:required="true"
+						id="login"
+						type="text"
+						v-model="user.email"
+					/>
 
-				<div tabindex="-1" v-if="message" class="message">
-					{{ message }}
+					<PasswordInput
+						label="Пароль"
+						name="password"
+						:required="true"
+						id="password"
+						v-model="user.password"
+						autocomplete="current-password"
+					/>
+
+					<div tabindex="-1" v-if="message" class="message">
+						{{ message }}
+					</div>
+
+					<button :disabled="loading">
+						<span class="btn">Войти</span>
+					</button>
+				</form>
+
+				<div class="login-page">
+					<p class="login-info">
+						Я еще не зарегистрирован
+					</p>
+
+					<router-link v-if="!loggedIn" to="/register" class="login-btn">
+						Регистрация
+					</router-link>
 				</div>
-
-				<button :disabled="loading">
-					<span class="btn">Войти</span>
-				</button>
-			</form>
-
-			<div class="login-page">
-				<p class="login-info">
-					Я еще не зарегистрирован
-				</p>
-
-				<router-link v-if="!loggedIn" to="/register" class="login-btn">
-					Регистрация
-				</router-link>
 			</div>
 		</div>
+
+		<footer>
+			<p>© Leadux, 2020</p>
+		</footer>
 	</div>
 </template>
 
 <script>
 import User from '@/models/user'
+import Nav from '@/components/sections/Nav'
 import TextInput from '@/components/TextInput'
 import PasswordInput from '@/components/PasswordInput'
 import { mapGetters, mapActions } from 'vuex'
@@ -56,6 +65,7 @@ export default {
 		title: 'Логин – LeadUX',
 	},
 	components: {
+		Nav,
 		TextInput,
 		PasswordInput,
 	},
@@ -113,7 +123,7 @@ export default {
 		margin-top: 100px;
 		background-color: #fff;
 		max-width: 500px;
-		margin: 0 auto;
+		margin: 6rem auto 0;
 		padding: 1rem 4rem;
 		border-radius: 20px;
 	}
@@ -193,5 +203,12 @@ export default {
 			opacity: 0.8;
 		}
 	}
+}
+
+footer {
+	text-align: center;
+	color: #fff;
+	font-weight: 100;
+	font-size: 0.9rem;
 }
 </style>

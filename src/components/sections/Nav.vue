@@ -1,18 +1,20 @@
 <template>
 	<nav class="container">
 		<router-link class="logo" to="/">
-			<img src="../assets/img/logo.svg" alt="logo" />
+			<img src="@/assets/img/logo.svg" alt="LeadUX" />
 		</router-link>
+
 		<div class="link-wrapp">
 			<a href="#">Для кого</a>
 			<a href="#">Что внутри</a>
 			<a href="#">ЧАВО</a>
 		</div>
+
 		<div class="loggin-wrapp">
 			<router-link class="login" v-if="!loggedIn" to="/login">Вход</router-link>
-			<a class="logout" v-if="loggedIn" href="#!" @click.prevent="logout"
-				>Выход</a
-			>
+			<a class="logout" v-if="loggedIn" href="#!" @click.prevent="logout">
+				Выход
+			</a>
 		</div>
 	</nav>
 </template>
@@ -46,9 +48,6 @@ nav {
 	justify-content: space-between;
 	align-items: center;
 
-	.logo {
-	}
-
 	.link-wrapp a {
 		font-weight: bold;
 		font-size: 1rem;
@@ -63,6 +62,7 @@ nav {
 			text-decoration: none;
 		}
 	}
+
 	.loggin-wrapp {
 		.login,
 		.logout {

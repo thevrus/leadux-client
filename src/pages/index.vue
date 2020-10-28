@@ -1,13 +1,13 @@
 <template>
 	<div>
-		<Nav />
+		<Crisp />
 		<Header />
 		<Skills />
 		<Questions />
 		<Exercises />
 		<Materials />
-		<Slider />
 		<Learn />
+		<Slider />
 		<Price />
 		<FAQ />
 		<Footer />
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import Nav from '@/components/Nav'
+import Crisp from '@/components/Crisp'
 import Header from '@/components/sections/Header'
 import Skills from '@/components/sections/Skills'
 import Questions from '@/components/sections/Questions'
@@ -30,7 +30,7 @@ import Footer from '@/components/sections/Footer'
 export default {
 	name: 'Home',
 	components: {
-		Nav,
+		Crisp,
 		Header,
 		Skills,
 		Questions,

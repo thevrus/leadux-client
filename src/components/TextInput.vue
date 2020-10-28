@@ -35,7 +35,7 @@ label {
 	left: 1.5rem;
 	font-weight: normal;
 	font-size: 1.1rem;
-	color: rgba(0, 0, 0, 0.38);
+	color: rgba(0, 0, 0, 0.4);
 	transition: all 0.3s;
 }
 

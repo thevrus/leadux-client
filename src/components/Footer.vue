@@ -1,7 +1,7 @@
 <template functional>
 	<footer>
 		<div class="container">
-			<router-link to="#!" class="logo">Leadux</router-link>
+			<router-link to="/" class="logo">Leadux</router-link>
 
 			<div class="content">
 				<p>
