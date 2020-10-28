@@ -94,10 +94,11 @@ a {
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	transition: opacity 0.3s;
+	transition: opacity, transform 0.3s;
 
 	&:hover {
 		opacity: 0.8;
+		transform: translateY(-2px);
 	}
 }
 

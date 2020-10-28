@@ -1,7 +1,6 @@
-<template functional>
+<template>
 	<header>
 		<Nav />
-
 		<div class="container">
 			<div class="header">
 				<div class="col-l">
@@ -11,14 +10,12 @@
 						Android начинается здесь
 					</p>
 					<div class="btn-wrapp">
-						<a href="#price" class="cta">Купить курс</a>
-
-						<router-link to="/watch" class="watch">
-							Попробовать бесплатно
-						</router-link>
+						<a href="#" class="cta">Купить</a>
+						<router-link to="/watch" class="watch"
+							>Попробовать бесплатно</router-link
+						>
 					</div>
 				</div>
-
 				<div class="col-r">
 					<div class="box">
 						<img
@@ -41,8 +38,8 @@
 
 <script>
 import Nav from '@/components/sections/Nav'
-
 export default {
+	name: 'Header',
 	components: {
 		Nav,
 	},
@@ -64,24 +61,26 @@ header {
 			32.2% 61.79% at 100% 0%,
 			rgba(55, 94, 233, 0.6) 0%,
 			rgba(55, 94, 233, 0) 100%
-		);
+		),
+		#000000;
 }
-
 .header {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-gap: 3%;
 	padding: 9rem 0 9.8rem;
-
 	h1 {
-		font-size: 46px;
+		max-width: 580px;
+		width: 100%;
+		font-weight: bold;
+		font-size: responsive 2rem 3rem;
 		line-height: 110%;
 		color: #ffffff;
 		margin-bottom: 2.5rem;
 	}
 
 	.desc {
-		font-weight: 100;
+		font-weight: 500;
 		font-size: 1.12rem;
 		line-height: 155%;
 		color: #e6e6e6;
@@ -106,14 +105,15 @@ header {
 			content: '';
 			width: 10px;
 			height: 12px;
+			background-size: cover;
 			position: absolute;
-			top: 1.3rem;
+			top: 1.2rem;
 			left: 1.75rem;
 			background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTYuNjE3IDIuNTZDOC44NTQgNC4xIDkuOTcyIDQuODcgMTAgNS45NDh2LjEwNkM5Ljk3MiA3LjEzIDguODU0IDcuOSA2LjYxNyA5LjQ0Yy0yLjg2MiAxLjk3Mi00LjI5MyAyLjk1Ny01LjQxOCAyLjQxMmEyLjIzMyAyLjIzMyAwIDAxLS4xMDctLjA1NUMwIDExLjE4OCAwIDkuNDU5IDAgNlMwIC44MTIgMS4wOTIuMjA0Yy4wMzUtLjAyLjA3LS4wMzguMTA3LS4wNTUgMS4xMjUtLjU0NSAyLjU1Ni40NCA1LjQxOCAyLjQxMnoiIGZpbGw9IiNmZmYiLz48L3N2Zz4=');
-			background-size: cover;
 		}
 	}
-
+	.col-r {
+	}
 	.col-r {
 		.figma {
 			position: absolute;
@@ -143,7 +143,7 @@ header {
 				);
 				z-index: 4;
 				height: 658px;
-				width: 106%;
+				width: 135%;
 				position: absolute;
 				top: -106px;
 				left: 14px;

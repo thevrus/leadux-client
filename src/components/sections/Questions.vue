@@ -25,18 +25,34 @@
 
 <style lang="postcss" scoped>
 section {
-	background: radial-gradient(
-		22.64% 50.59% at 75.59% 50%,
-		rgba(40, 152, 255, 0.5) 0%,
-		rgba(40, 152, 255, 0) 100%
-	);
-
+	overflow: hidden;
 	.col-l {
 		margin-left: 3rem;
 	}
 
 	.col-r {
 		justify-self: end;
+	}
+
+	.col-r {
+		display: block;
+		position: relative;
+		&::after {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			content: '';
+			width: 130%;
+			height: 130%;
+			background: radial-gradient(
+				54.04% 54.59% at 50.09% 50%,
+				rgba(40, 152, 255, 0.5) 0%,
+				rgba(40, 152, 255, 0) 100%
+			);
+			display: block;
+			z-index: -1;
+		}
 	}
 }
 </style>

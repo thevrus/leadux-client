@@ -208,7 +208,7 @@ section {
 			line-height: 120%;
 			text-align: center;
 			text-decoration: none;
-			transition: opacity 0.3s;
+			transition: opacity transform 0.3s;
 
 			&:hover {
 				opacity: 0.8;
