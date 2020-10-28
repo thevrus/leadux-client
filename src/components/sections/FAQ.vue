@@ -9,7 +9,7 @@
 			</span>
 
 			<span>
-				<details v-for="(faq, index) in faqs" :key="index">
+				<details v-for="faq in faqs" :key="faq.summary">
 					<summary>{{ faq.summary }}</summary>
 					<p>{{ faq.content }}</p>
 				</details>

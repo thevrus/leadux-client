@@ -13,7 +13,7 @@
 					<p class="price">{{ plans[0].price }}<span>$</span></p>
 
 					<ul>
-						<li v-for="(pro, index) of plans[0].pros" :key="index">
+						<li v-for="pro of plans[0].pros" :key="pro.price">
 							{{ pro }}
 						</li>
 					</ul>

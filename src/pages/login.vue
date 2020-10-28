@@ -1,48 +1,45 @@
 <template>
-	<div>
+	<div class="login">
 		<Nav />
+		<div class="card">
+			<h3>Вход</h3>
 
-		<div class="login">
-			<div class="card">
-				<h3>Вход</h3>
+			<form name="form" @submit.prevent="handleLogin">
+				<TextInput
+					label="Email или Username"
+					name="login"
+					:required="true"
+					id="login"
+					type="text"
+					v-model="user.email"
+				/>
 
-				<form name="form" @submit.prevent="handleLogin">
-					<TextInput
-						label="Email или Username"
-						name="login"
-						:required="true"
-						id="login"
-						type="text"
-						v-model="user.email"
-					/>
+				<PasswordInput
+					label="Пароль"
+					name="password"
+					:required="true"
+					id="password"
+					v-model="user.password"
+					autocomplete="current-password"
+				/>
 
-					<PasswordInput
-						label="Пароль"
-						name="password"
-						:required="true"
-						id="password"
-						v-model="user.password"
-						autocomplete="current-password"
-					/>
-
-					<div tabindex="-1" v-if="message" class="message">
-						{{ message }}
-					</div>
-
-					<button :disabled="loading">
-						<span class="btn">Войти</span>
-					</button>
-				</form>
-
-				<div class="login-page">
-					<p class="login-info">
-						Я еще не зарегистрирован
-					</p>
-
-					<router-link v-if="!loggedIn" to="/register" class="login-btn">
-						Регистрация
-					</router-link>
+				<div tabindex="-1" v-if="message" class="message">
+					{{ message }}
 				</div>
+
+				<button :disabled="loading">
+					<span class="btn">Войти</span>
+				</button>
+			</form>
+
+			<div class="login-page">
+				<p class="login-info">
+					Я еще не зарегистрирован
+				</p>
+
+				<router-link v-if="!loggedIn" to="/register" class="login-btn">
+					Регистрация
+				</router-link>
 			</div>
 		</div>
 
@@ -114,7 +111,6 @@ export default {
 
 <style lang="postcss" scoped>
 .login {
-	min-height: 100vh;
 	background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTM4NyIgaGVpZ2h0PSIxMTI0IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik0xMzUyLjI1IDU2OC45NTJMNDUwLjYyOSA0OS4zNzI1IiBzdHJva2U9InVybCgjcGFpbnQwX2xpbmVhcikiIHN0cm9rZS13aWR0aD0iNDgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxwYXRoIGQ9Ik00NTEuMjg5IDEwOTAuNjRsOTAyLjQ3MS01MjEuMDM5IiBzdHJva2U9InVybCgjcGFpbnQxX2xpbmVhcikiIHN0cm9rZS13aWR0aD0iNDgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQwX2xpbmVhciIgeDE9IjY0OC43NTMiIHkxPSIxNjUuMTc5IiB4Mj0iMTM1NC40NiIgeTI9IjU3Mi43NzYiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcC8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMEExOUZFIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InBhaW50MV9saW5lYXIiIHgxPSI0NTEuNTM5IiB5MT0iMTA5MS4wNyIgeDI9IjEzMzguNzEiIHkyPSI1NzguODY1IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHN0b3Agc3RvcC1jb2xvcj0iIzAwQ0RFQyIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzAwMERENSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjwvc3ZnPg==');
 	background-position: center 120%;
 	background-repeat: no-repeat;
@@ -123,7 +119,7 @@ export default {
 		margin-top: 100px;
 		background-color: #fff;
 		max-width: 500px;
-		margin: 6rem auto 0;
+		margin: 5rem auto 8rem;
 		padding: 1rem 4rem;
 		border-radius: 20px;
 	}
@@ -133,6 +129,7 @@ export default {
 		font-weight: bold;
 		font-size: 2.6rem;
 		color: #000;
+		margin-bottom: 1.8rem;
 	}
 
 	form {
