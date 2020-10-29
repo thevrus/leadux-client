@@ -1,6 +1,4 @@
 const timeSince = date => {
-	console.log(date)
-
 	date = new Date(Date.now() - new Date(date))
 
 	let seconds = Math.floor(date / 1000)

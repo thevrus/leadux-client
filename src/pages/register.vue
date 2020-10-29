@@ -2,48 +2,47 @@
 	<div class="register">
 		<Nav />
 
-		<div class="register">
-			<div class="card">
-				<h3>Регистрация</h3>
+		<div class="card">
+			<h3>Регистрация</h3>
 
-				<h4>
-					Зарегистрируйтесь и смотрите 2 урока из курса совершенно бесплатно.
-				</h4>
+			<h4>
+				Зарегистрируйтесь и смотрите 2 урока из курса совершенно бесплатно.
+			</h4>
 
-				<form name="form" @submit.prevent="handleRegister">
-					<TextInput
-						label="Имя пользователя"
-						name="username"
-						:required="true"
-						id="username"
-						type="text"
-						v-model="user.username"
-					/>
+			<form name="form" @submit.prevent="handleRegister">
+				<TextInput
+					label="Имя пользователя"
+					name="username"
+					:required="true"
+					id="username"
+					type="text"
+					v-model="user.username"
+				/>
 
-					<TextInput
-						label="Ваш Email"
-						name="email"
-						autocomplete="email"
-						:required="true"
-						id="email"
-						type="email"
-						v-model="user.email"
-					/>
+				<TextInput
+					label="Ваш Email"
+					name="email"
+					autocomplete="email"
+					:required="true"
+					id="email"
+					type="email"
+					v-model="user.email"
+				/>
 
-					<PasswordInput
-						label="Пароль"
-						name="password"
-						:required="true"
-						id="password"
-						v-model="user.password"
-						:validate="true"
-						autocomplete="new-password"
-						:class="{ invalid: invalid }"
-					/>
+				<PasswordInput
+					label="Пароль"
+					name="password"
+					:required="true"
+					id="password"
+					v-model="user.password"
+					:validate="true"
+					autocomplete="new-password"
+					:class="{ invalid: invalid }"
+				/>
 
-					<div tabindex="-1" v-if="message" class="register__message">
-						{{ message }}
-					</div>
+				<div tabindex="-1" v-if="message" class="register__message">
+					{{ message }}
+				</div>
 
 				<!--
 					<label class="register__check-label">
@@ -211,6 +210,7 @@ export default {
 
 	&__submit {
 		padding: 1.1rem 2rem;
+		margin-top: 1.25rem;
 		font-weight: 500;
 		font-size: 1.1rem;
 		color: #fff;

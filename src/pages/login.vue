@@ -1,54 +1,51 @@
 <template>
 	<div class="login">
 		<Nav />
+		<div class="card">
+			<h3>Вход</h3>
 
-		<div class="login">
-			<div class="card">
-				<h3>Вход</h3>
+			<form name="form" @submit.prevent="handleLogin">
+				<TextInput
+					label="Email или Username"
+					name="login"
+					:required="true"
+					id="login"
+					type="text"
+					v-model="user.email"
+				/>
 
-				<form name="form" @submit.prevent="handleLogin">
-					<TextInput
-						label="Email или Username"
-						name="login"
-						:required="true"
-						id="login"
-						type="text"
-						v-model="user.email"
-					/>
+				<PasswordInput
+					label="Пароль"
+					name="password"
+					:required="true"
+					id="password"
+					v-model="user.password"
+					autocomplete="current-password"
+					:class="{ invalid: invalid }"
+				/>
 
-					<PasswordInput
-						label="Пароль"
-						name="password"
-						:required="true"
-						id="password"
-						v-model="user.password"
-						autocomplete="current-password"
-						:class="{ invalid: invalid }"
-					/>
-
-					<div tabindex="-1" v-if="message" class="message">
-						{{ message }}
-					</div>
-
-					<button :disabled="loading">
-						<span class="btn">Войти</span>
-					</button>
-				</form>
-
-				<div class="login-page">
-					<p class="login-info">
-						Я еще не зарегистрирован
-					</p>
-
-					<router-link v-if="!loggedIn" to="/register" class="login-btn">
-						Регистрация
-					</router-link>
+				<div tabindex="-1" v-if="message" class="message">
+					{{ message }}
 				</div>
 
 				<button :disabled="loading">
 					<span class="btn">Войти</span>
 				</button>
 			</form>
+
+			<div class="login-page">
+				<p class="login-info">
+					Я еще не зарегистрирован
+				</p>
+
+				<router-link v-if="!loggedIn" to="/register" class="login-btn">
+					Регистрация
+				</router-link>
+			</div>
+
+			<button :disabled="loading">
+				<span class="btn">Войти</span>
+			</button>
 
 			<div class="login-page">
 				<p class="login-info">
