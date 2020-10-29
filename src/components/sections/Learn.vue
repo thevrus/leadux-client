@@ -1,5 +1,5 @@
 <template>
-	<section class="container">
+	<section class="container" id="learn">
 		<h3>В этом курсе вы научитесь:</h3>
 		<ul>
 			<li v-for="(item, index) in array" :key="index">

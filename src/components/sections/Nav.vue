@@ -5,14 +5,14 @@
 		</router-link>
 
 		<div class="link-wrapp">
-			<a href="#">Для кого</a>
-			<a href="#">Что внутри</a>
-			<a href="#">ЧАВО</a>
+			<router-link class="link" to="/#skills">Для кого</router-link>
+			<router-link class="link" to="/#learn">Что внутри</router-link>
+			<router-link class="link" to="/#faq">ЧАВО</router-link>
 		</div>
 
 		<div class="loggin-wrapp">
 			<router-link class="login" v-if="!loggedIn" to="/login">Вход</router-link>
-			<a class="logout" v-if="loggedIn" href="#!" @click.prevent="logout">
+			<a class="logout" v-if="loggedIn" href="#!" @click.prevent="userLogout">
 				Выход
 			</a>
 		</div>
@@ -30,10 +30,10 @@ export default {
 		this.loggedIn ? true : false
 	},
 	methods: {
-		...mapActions('auth', ['loadComlogoutments']),
+		...mapActions('auth', ['logout']),
 		...mapActions('lessons', ['clearCurrentLesson']),
 
-		logout() {
+		userLogout() {
 			this.logout()
 			this.clearCurrentLesson()
 			window.location.reload()
@@ -48,7 +48,7 @@ nav {
 	justify-content: space-between;
 	align-items: center;
 
-	.link-wrapp a {
+	.link-wrapp .link {
 		font-weight: bold;
 		font-size: 1rem;
 		line-height: 140%;
@@ -66,14 +66,16 @@ nav {
 	.loggin-wrapp {
 		.login,
 		.logout {
-			padding: 1rem 1.5rem;
+			padding: 0.8rem 1.5rem;
 			border: 1px solid rgba(255, 255, 255, 0.2);
 			border-radius: 10px;
 			font-size: 0.95rem;
-			transition: background-color 0.3s;
+			display: inline-block;
+			transition: background-color, transform 0.3s;
 			&:hover {
 				text-decoration: none;
-				background-color: #313131;
+				background-color: #192a68;
+				transform: translateY(-2px);
 			}
 		}
 	}

@@ -1,5 +1,5 @@
 <template>
-	<section class="container">
+	<section class="container" id="faq">
 		<div class="grid">
 			<span class="left">
 				<h3>Часто задаваемые вопросы</h3>
@@ -113,10 +113,6 @@ details {
 		margin-bottom: 2.6rem;
 	}
 
-	details[open] &::after {
-		transform: rotate(45deg);
-	}
-
 	summary {
 		position: relative;
 		outline: none;
@@ -125,6 +121,7 @@ details {
 		font-weight: 500;
 		font-size: 1.1rem;
 		padding-top: 4px;
+		transition: transform 0.3s;
 
 		&:hover {
 			opacity: 0.8;
@@ -141,10 +138,13 @@ details {
 			display: block;
 			background-size: cover;
 			background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzQiIGhlaWdodD0iMzQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMTciIGN5PSIxNyIgcj0iMTYuNSIgc3Ryb2tlPSIjMzUzNTM1Ii8+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xNy4wMDAxIDEyYy0uMzk0NSAwLS43MTQzLjMxOTgtLjcxNDMuNzE0M3YzLjU3MmgtMy41NzE1Yy0uMzk0NSAwLS43MTQzLjMxOTgtLjcxNDMuNzE0MyAwIC4zOTQ0LjMxOTguNzE0Mi43MTQzLjcxNDJoMy41NzE1djMuNTcwOWMwIC4zOTQ1LjMxOTguNzE0My43MTQzLjcxNDMuMzk0NCAwIC43MTQyLS4zMTk4LjcxNDItLjcxNDN2LTMuNTcwOWgzLjU3MTRjLjM5NDUgMCAuNzE0My0uMzE5OC43MTQzLS43MTQyIDAtLjM5NDUtLjMxOTgtLjcxNDMtLjcxNDMtLjcxNDNoLTMuNTcxNHYtMy41NzJjMC0uMzk0NS0uMzE5OC0uNzE0My0uNzE0Mi0uNzE0M3oiIGZpbGw9IiNDQ0MiLz48L3N2Zz4=');
-			transform: rotate(0deg);
 			transition: transform 0.3s;
 		}
 	}
+}
+
+details[open] summary::after {
+	transform: rotate(45deg);
 }
 
 details[open] summary ~ * {

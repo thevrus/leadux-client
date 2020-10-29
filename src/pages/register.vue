@@ -2,46 +2,48 @@
 	<div class="register">
 		<Nav />
 
-		<div class="card">
-			<h3>Регистрация</h3>
+		<div class="register">
+			<div class="card">
+				<h3>Регистрация</h3>
 
-			<h4>
-				Зарегистрируйтесь и смотрите 2 урока из курса совершенно бесплатно.
-			</h4>
+				<h4>
+					Зарегистрируйтесь и смотрите 2 урока из курса совершенно бесплатно.
+				</h4>
 
-			<form name="form" @submit.prevent="handleRegister">
-				<TextInput
-					label="Имя пользователя"
-					name="username"
-					:required="true"
-					id="username"
-					type="text"
-					v-model="user.username"
-				/>
+				<form name="form" @submit.prevent="handleRegister">
+					<TextInput
+						label="Имя пользователя"
+						name="username"
+						:required="true"
+						id="username"
+						type="text"
+						v-model="user.username"
+					/>
 
-				<TextInput
-					label="Ваш Email"
-					name="email"
-					autocomplete="email"
-					:required="true"
-					id="email"
-					type="email"
-					v-model="user.email"
-				/>
+					<TextInput
+						label="Ваш Email"
+						name="email"
+						autocomplete="email"
+						:required="true"
+						id="email"
+						type="email"
+						v-model="user.email"
+					/>
 
-				<PasswordInput
-					label="Пароль"
-					name="password"
-					:required="true"
-					id="password"
-					v-model="user.password"
-					:validate="true"
-					autocomplete="new-password"
-				/>
+					<PasswordInput
+						label="Пароль"
+						name="password"
+						:required="true"
+						id="password"
+						v-model="user.password"
+						:validate="true"
+						autocomplete="new-password"
+						:class="{ invalid: invalid }"
+					/>
 
-				<div tabindex="-1" v-if="message" class="register__message">
-					{{ message }}
-				</div>
+					<div tabindex="-1" v-if="message" class="register__message">
+						{{ message }}
+					</div>
 
 				<!--
 					<label class="register__check-label">
@@ -93,6 +95,7 @@ export default {
 			user: new User('', '', ''),
 			submitted: false,
 			successful: false,
+			invalid: false,
 			message: '',
 		}
 	},
@@ -125,7 +128,7 @@ export default {
 						}
 
 						this.message = message
-
+						this.invalid = true
 						this.successful = false
 					}
 				)
@@ -136,6 +139,10 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
+.invalid {
+	border: 2px solid #df1a29;
+	border-radius: 10px;
+}
 .register {
 	background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTM4NyIgaGVpZ2h0PSIxMTI0IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik0xMzUyLjI1IDU2OC45NTJMNDUwLjYyOSA0OS4zNzI1IiBzdHJva2U9InVybCgjcGFpbnQwX2xpbmVhcikiIHN0cm9rZS13aWR0aD0iNDgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxwYXRoIGQ9Ik00NTEuMjg5IDEwOTAuNjRsOTAyLjQ3MS01MjEuMDM5IiBzdHJva2U9InVybCgjcGFpbnQxX2xpbmVhcikiIHN0cm9rZS13aWR0aD0iNDgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQwX2xpbmVhciIgeDE9IjY0OC43NTMiIHkxPSIxNjUuMTc5IiB4Mj0iMTM1NC40NiIgeTI9IjU3Mi43NzYiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcC8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMEExOUZFIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InBhaW50MV9saW5lYXIiIHgxPSI0NTEuNTM5IiB5MT0iMTA5MS4wNyIgeDI9IjEzMzguNzEiIHkyPSI1NzguODY1IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHN0b3Agc3RvcC1jb2xvcj0iIzAwQ0RFQyIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzAwMERENSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjwvc3ZnPg==');
 	background-position: center 120%;
@@ -177,18 +184,16 @@ export default {
 
 	&__message {
 		width: 100%;
-		padding: 1rem;
-		margin-bottom: 1rem;
-		background-color: rgba(219, 110, 110, 04);
-		border: 1px solid #e44343;
+		margin: 0.3rem 0 1rem;
 		border-radius: 0.5rem;
-		color: #412929;
+		color: #df1a29;
 	}
 
 	&__check-label {
 		display: flex;
 		align-items: center;
 		cursor: pointer;
+		margin-top: 1.25rem;
 	}
 
 	&__check {
