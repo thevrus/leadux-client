@@ -1,5 +1,5 @@
 <template functional>
-	<section class="container">
+	<section class="container" id="skills">
 		<h3>Кому подойдет этот курс:</h3>
 
 		<div class="grid">

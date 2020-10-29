@@ -37,12 +37,12 @@ section {
 			left: 50%;
 			transform: translate(-50%, -50%);
 			content: '';
-			width: 130%;
-			height: 130%;
+			width: 140%;
+			height: 140%;
 			background: radial-gradient(
-				51.04% 52.59% at 50.09% 50%,
-				rgba(18, 165, 95, 0.5) 0%,
-				rgba(18, 165, 95, 0) 100%
+				50.04% 46.09% at 50.09% 50%,
+				rgba(40, 152, 255, 0.5) 0%,
+				rgba(40, 152, 255, 0) 100%
 			);
 
 			display: block;

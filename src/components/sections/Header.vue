@@ -107,7 +107,8 @@ header {
 			height: 12px;
 			background-size: cover;
 			position: absolute;
-			top: 1.2rem;
+			top: 50%;
+			transform: translateY(-50%);
 			left: 1.75rem;
 			background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTYuNjE3IDIuNTZDOC44NTQgNC4xIDkuOTcyIDQuODcgMTAgNS45NDh2LjEwNkM5Ljk3MiA3LjEzIDguODU0IDcuOSA2LjYxNyA5LjQ0Yy0yLjg2MiAxLjk3Mi00LjI5MyAyLjk1Ny01LjQxOCAyLjQxMmEyLjIzMyAyLjIzMyAwIDAxLS4xMDctLjA1NUMwIDExLjE4OCAwIDkuNDU5IDAgNlMwIC44MTIgMS4wOTIuMjA0Yy4wMzUtLjAyLjA3LS4wMzguMTA3LS4wNTUgMS4xMjUtLjU0NSAyLjU1Ni40NCA1LjQxOCAyLjQxMnoiIGZpbGw9IiNmZmYiLz48L3N2Zz4=');
 		}
