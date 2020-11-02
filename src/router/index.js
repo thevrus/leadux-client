@@ -21,14 +21,17 @@ const routes = [
 		component: Watch,
 	},
 	{
+		name: 'Login',
 		path: '/login',
 		component: () => import('../pages/login.vue'),
 	},
 	{
+		name: 'Register',
 		path: '/register',
 		component: () => import('../pages/register.vue'),
 	},
 	{
+		name: 'Pay',
 		path: '/pay',
 		component: () => import('../pages/pay.vue'),
 	},
