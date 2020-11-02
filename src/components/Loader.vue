@@ -1,47 +1,26 @@
 <template functional>
-	<div></div>
+	<div class="spinner"></div>
 </template>
 
 <style lang="postcss" scoped>
-div {
-	animation: animate 1.5s linear infinite;
-	clip: rect(0, 80px, 80px, 40px);
-	height: 80px;
-	width: 80px;
+.spinner {
+	width: 4rem;
+	height: 4rem;
+	border: 3px solid rgba(255, 255, 255, 0.4);
+	border-top-color: rgba(0, 0, 0, 0.5);
+	border-radius: 50%;
+	animation: rotation 0.8s ease infinite;
+
 	position: absolute;
-	left: calc(50% - 40px);
-	top: calc(50% - 40px);
+	top: 50%;
+	left: 46%;
 
-	&:after {
-		animation: animate2 1.5s ease-in-out infinite;
-		clip: rect(0, 80px, 80px, 40px);
-		content: '';
-		border-radius: 50%;
-		height: 80px;
-		width: 80px;
-		position: absolute;
-	}
-
-	@keyframes animate {
-		0% {
+	@keyframes rotation {
+		from {
 			transform: rotate(0deg);
 		}
-		100% {
-			transform: rotate(220deg);
-		}
-	}
-
-	@keyframes animate2 {
-		0% {
-			box-shadow: inset #fff 0 0 0 17px;
-			transform: rotate(-140deg);
-		}
-		50% {
-			box-shadow: inset #fff 0 0 0 2px;
-		}
-		100% {
-			box-shadow: inset #fff 0 0 0 17px;
-			transform: rotate(140deg);
+		to {
+			transform: rotate(360deg);
 		}
 	}
 }

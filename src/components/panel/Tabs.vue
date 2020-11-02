@@ -103,6 +103,7 @@ export default {
 	background-color: var(--panel-bg);
 	padding-bottom: 2rem;
 	border-radius: 10px;
+	position: relative;
 	border: 1px solid var(--panel-border);
 	box-shadow: 0px 2px 6px 0px #000000 20%;
 	min-height: 500px;

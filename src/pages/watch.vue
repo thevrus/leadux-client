@@ -1,7 +1,7 @@
 <template>
 	<div id="app">
+		<Nav />
 		<div class="container">
-			<NavWatch />
 			<main v-if="!loading" class="watch">
 				<div>
 					<Player />
@@ -12,16 +12,18 @@
 
 			<Loader v-else />
 		</div>
+		<Chat />
 		<Footer />
 	</div>
 </template>
 
 <script>
-import NavWatch from '@/components/NavWatch'
+import Nav from '@/components/Nav'
 import Loader from '@/components/Loader'
 import Playlist from '@/components/Playlist'
 import Player from '@/components/Player'
 import Panel from '@/components/panel/Panel'
+import Chat from '@/components/Chat'
 import Footer from '@/components/Footer'
 import { mapGetters, mapActions } from 'vuex'
 
@@ -31,8 +33,9 @@ export default {
 		Loader,
 		Player,
 		Playlist,
-		NavWatch,
+		Nav,
 		Panel,
+		Chat,
 		Footer,
 	},
 	data() {
@@ -78,15 +81,19 @@ export default {
 
 <style lang="postcss" scoped>
 #app {
-	background-color: var(--bg);
 	display: grid;
 	grid-template-rows: 1fr auto;
 	min-height: 100vh;
+	background-color: var(--bg);
 }
 
 .watch {
 	display: grid;
 	grid-template-columns: 1fr 388px;
-	grid-gap: 2%;
+	grid-gap: 1.5%;
+}
+
+.container {
+	max-width: 1580px;
 }
 </style>
