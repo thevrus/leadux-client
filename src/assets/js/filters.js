@@ -1,6 +1,4 @@
 const timeSince = date => {
-	console.log(date)
-
 	date = new Date(Date.now() - new Date(date))
 
 	let seconds = Math.floor(date / 1000)
@@ -31,7 +29,7 @@ const timeSince = date => {
 		return Math.floor(interval) + ' минут(ы) назад'
 	}
 
-	return Math.floor(seconds) + 'только что'
+	return 'только что'
 }
 
 export { timeSince }
