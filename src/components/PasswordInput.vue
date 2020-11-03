@@ -99,7 +99,6 @@ input {
 	font-size: 0.88rem;
 	color: #434343;
 	border: 1px solid transparent;
-	margin-bottom: 1rem;
 	background-color: #f5f5f5;
 	outline-color: #222e4f;
 }

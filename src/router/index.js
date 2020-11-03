@@ -7,6 +7,7 @@ Vue.use(VueRouter)
 
 const routes = [
 	{
+		name: 'Home',
 		path: '/',
 		component: Index,
 	},
@@ -49,6 +50,13 @@ const router = new VueRouter({
 	mode: 'history',
 	base: process.env.BASE_URL,
 	routes,
+	scrollBehavior: function(to) {
+		if (to.hash) {
+			return { selector: to.hash }
+		} else {
+			return { x: 0, y: 0 }
+		}
+	},
 })
 
 export default router

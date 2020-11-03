@@ -12,7 +12,7 @@
 
 		<div class="login-wrapp">
 			<router-link class="login" v-if="!loggedIn" to="/login">Вход</router-link>
-			<button class="logout" v-if="loggedIn" @click="logout">
+			<button class="logout" v-if="loggedIn" href="#!" @click="userLogout">
 				Выход
 			</button>
 		</div>
@@ -30,10 +30,10 @@ export default {
 		this.loggedIn ? true : false
 	},
 	methods: {
-		...mapActions('auth', ['loadComlogoutments']),
+		...mapActions('auth', ['logout']),
 		...mapActions('lessons', ['clearCurrentLesson']),
 
-		logout() {
+		userLogout() {
 			this.logout()
 			this.clearCurrentLesson()
 			window.location.reload()
@@ -64,7 +64,7 @@ nav {
 	.login-wrapp {
 		.login,
 		.logout {
-			padding: 1rem 1.5rem;
+			padding: 0.8rem 1.5rem;
 			border: 1px solid rgba(255, 255, 255, 0.2);
 			border-radius: 10px;
 			cursor: pointer;
