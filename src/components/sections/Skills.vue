@@ -1,5 +1,5 @@
 <template functional>
-	<section class="container">
+	<section id="skills" class="container">
 		<h3>Кому подойдет этот курс:</h3>
 
 		<div class="grid">
@@ -40,7 +40,7 @@
 </template>
 
 <style lang="postcss" scoped>
-section {
+.container {
 	padding-top: 8rem;
 	margin-bottom: var(--section-margin);
 

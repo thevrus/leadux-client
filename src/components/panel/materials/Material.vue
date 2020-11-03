@@ -1,17 +1,29 @@
 <template>
 	<div class="wrapp">
 		<span class="number">{{ material.title | capitalize }}</span>
-		<div class="header">
-			<p class="title">{{ material.title }}</p>
-			<a
-				class="link"
-				:href="material.link"
-				target="_blank"
-				rel="noopener noreferrer"
-				>{{ material.link }}</a
-			>
+
+		<div class="grid">
+			<img
+				v-if="material.cover.url"
+				class="cover"
+				:src="host_url + material.cover.url"
+				alt=""
+			/>
+
+			<span>
+				<div class="header">
+					<p class="title">{{ material.title }}</p>
+					<a
+						class="link"
+						:href="material.link"
+						target="_blank"
+						rel="noopener noreferrer"
+						>{{ material.link }}
+					</a>
+				</div>
+				<p class="description">{{ material.description }}</p>
+			</span>
 		</div>
-		<p class="description">{{ material.description }}</p>
 	</div>
 </template>
 
@@ -23,7 +35,11 @@ export default {
 			required: true,
 		},
 	},
-
+	data() {
+		return {
+			host_url: process.env.VUE_APP_API_URL,
+		}
+	},
 	filters: {
 		capitalize(value) {
 			if (!value) return ''
@@ -40,7 +56,7 @@ export default {
 .wrapp {
 	position: relative;
 	padding: 1.5rem 2.5rem;
-	background-color: #343434;
+	background-color: #17181c;
 	border-radius: 10px;
 
 	.number {
@@ -55,6 +71,19 @@ export default {
 		color: white;
 		border-radius: 50%;
 		text-align: center;
+	}
+
+	.grid {
+		display: grid;
+		grid-template-columns: 200px 1fr;
+		grid-column-gap: 1.2rem;
+	}
+
+	.cover {
+		width: 100%;
+		height: 130px;
+		object-fit: cover;
+		border-radius: 6px;
 	}
 
 	.header {
@@ -78,8 +107,9 @@ export default {
 			font-size: 0.85rem;
 			margin: 0px;
 			line-height: 140%;
-			color: #9f9f9f;
+			color: #fff;
 			transition: color 0.3s;
+
 			&:hover {
 				color: #57a576;
 			}

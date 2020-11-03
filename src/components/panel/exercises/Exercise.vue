@@ -64,8 +64,7 @@ a {
 .exercise {
 	padding: 1.5rem 1.5rem 3.5rem;
 	color: #fff;
-	background: #343434;
-	border: 1px solid #434343;
+	background-color: #17181c;
 	border-radius: 10px;
 	margin-bottom: 2.5rem;
 	position: relative;

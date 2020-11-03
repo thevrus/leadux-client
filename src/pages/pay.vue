@@ -13,6 +13,9 @@ import Footer from '@/components/sections/Footer'
 
 export default {
 	name: 'Home',
+	metaInfo: {
+		title: 'Оплата – LeadUX',
+	},
 	components: {
 		Nav,
 		Price,

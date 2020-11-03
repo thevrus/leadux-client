@@ -21,8 +21,9 @@
 </template>
 
 <style lang="postcss" scoped>
-section {
+.section {
 	overflow: hidden;
+
 	.col-l {
 		margin-left: 3rem;
 	}

@@ -58,7 +58,7 @@ export default {
 	grid-gap: 2%;
 	margin-bottom: 1.6rem;
 	padding: 1.6rem 0;
-	border-top: 1px solid #3f3f3f;
+	border-top: 1px solid #262626;
 }
 
 form {
@@ -70,7 +70,7 @@ form {
 		outline: none;
 		border: none;
 		color: #fff;
-		background-color: #262626;
+		background-color: #23242a;
 		font-family: system-ui;
 	}
 

@@ -1,8 +1,8 @@
 <template>
-	<section class="container">
+	<section id="learn" class="container">
 		<h3>В этом курсе вы научитесь:</h3>
 		<ul>
-			<li v-for="(item, index) in array" :key="index">
+			<li v-for="(item, index) in array" :key="'Learn' + index">
 				<h4>{{ item.title }}</h4>
 				<p>{{ item.description }}</p>
 			</li>

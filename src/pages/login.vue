@@ -71,6 +71,7 @@ export default {
 			user: new User('', ''),
 			loading: false,
 			message: '',
+			nextRoute: null,
 			errors: {
 				error: '',
 				email: '',
@@ -81,9 +82,6 @@ export default {
 	computed: {
 		...mapGetters('auth', ['loggedIn']),
 	},
-	created() {
-		this.loggedIn && this.$router.push('/watch')
-	},
 	methods: {
 		...mapActions('auth', ['login']),
 
@@ -93,7 +91,9 @@ export default {
 			if (this.user.email && this.user.password) {
 				this.login(this.user).then(
 					() => {
-						this.$router.push('/watch')
+						this.nextRoute
+							? this.$router.push({ name: this.nextRoute })
+							: this.$router.push({ name: 'Watch' })
 					},
 					error => {
 						this.loading = false
@@ -105,6 +105,10 @@ export default {
 				)
 			}
 		},
+	},
+	created() {
+		this.loggedIn && this.$router.push({ name: 'Watch' })
+		this.nextRoute = this.$route.query ? this.$route.query.nextRoute : null
 	},
 }
 </script>

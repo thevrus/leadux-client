@@ -84,30 +84,6 @@ body {
 	}
 }
 
-.main-btn {
-	background-color: var(--primary);
-	text-decoration: none;
-	border: none;
-	cursor: pointer;
-	outline-color: #262626;
-	padding: 0.89rem 1.87rem;
-	font-weight: bold;
-	font-size: 0.89rem;
-	border-radius: 12px;
-	border-color: var(--primary);
-	color: #ffffff;
-	transition: all 0.2s;
-	flex-shrink: 0;
-}
-
-.main-btn:hover,
-.main-btn:active {
-	background-color: #c93054;
-	border-color: #c93054;
-	color: #ffffff;
-	text-decoration: none;
-}
-
 .cta {
 	padding: 1.1rem 2.6rem;
 	background-color: #e937b3;
@@ -115,10 +91,11 @@ body {
 	margin-right: 1rem;
 	font-size: 0.95rem;
 	display: inline-block;
-	transition: transform 0.3s;
+	text-decoration: none;
+	transition: opacity 0.3s;
 
 	&:hover {
-		transform: translateY(-2px);
+		opacity: 0.8;
 		text-decoration: none;
 	}
 }

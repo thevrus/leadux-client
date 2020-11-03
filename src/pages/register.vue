@@ -93,6 +93,7 @@ export default {
 			user: new User('', '', ''),
 			submitted: false,
 			successful: false,
+			nextRoute: null,
 			message: '',
 		}
 	},
@@ -109,7 +110,10 @@ export default {
 			if (this.user.email && this.user.username && this.user.password) {
 				this.register(this.user).then(
 					() => {
-						this.$router.push('/watch')
+						this.nextRoute
+							? this.$router.push(this.nextRoute)
+							: this.$router.push('/watch')
+
 						this.successful = true
 					},
 					error => {
@@ -131,6 +135,10 @@ export default {
 				)
 			}
 		},
+	},
+	created() {
+		this.loggedIn && this.$router.push({ name: 'Watch' })
+		this.nextRoute = this.$route.query ? this.$route.query.nextRoute : null
 	},
 }
 </script>

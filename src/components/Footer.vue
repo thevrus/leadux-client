@@ -1,7 +1,9 @@
 <template functional>
 	<footer>
 		<div class="container">
-			<router-link to="/" class="logo">Leadux</router-link>
+			<router-link to="/" class="logo">
+				<img src="@/assets/img/logo_white.svg" alt="Leadux" />
+			</router-link>
 
 			<div class="content">
 				<p>
@@ -11,13 +13,10 @@
 
 				<ul class="links">
 					<li>
-						<router-link to="#!">FAQ</router-link>
+						<router-link to="/terms">Условия использования</router-link>
 					</li>
 					<li>
-						<router-link to="#!">Условия использования</router-link>
-					</li>
-					<li>
-						<router-link to="#!">Обратная связь</router-link>
+						<router-link to="/privacy">Политика конфиденциальности</router-link>
 					</li>
 				</ul>
 			</div>
@@ -31,9 +30,13 @@
 <style lang="postcss" scoped>
 footer {
 	background-color: var(--panel-bg);
-	padding-top: 2rem;
-	padding-bottom: 2rem;
+	padding-top: 1.6rem;
+	padding-bottom: 1.6rem;
 	margin-top: 8rem;
+
+	.container {
+		max-width: 1580px;
+	}
 
 	.logo {
 		font-size: 28px;
@@ -56,7 +59,7 @@ footer {
 			max-width: 400px;
 			font-size: 14px;
 			line-height: 155%;
-			color: #535353;
+			color: #8c8c8c;
 		}
 
 		.links {
@@ -64,7 +67,7 @@ footer {
 				display: inline;
 
 				a {
-					color: #818181;
+					color: #8c8c8c;
 					font-weight: 500;
 					font-size: 14px;
 					margin-left: 2rem;
@@ -82,6 +85,7 @@ footer {
 	}
 
 	.copyright {
+		text-align: center;
 		font-size: 14px;
 		color: #6f6f6f;
 		padding-top: 2rem;

@@ -9,7 +9,7 @@
 			</span>
 
 			<span>
-				<details v-for="faq in faqs" :key="faq.summary">
+				<details v-for="(faq, index) in faqs" :key="'FAQ' + index">
 					<summary>{{ faq.summary }}</summary>
 					<p>{{ faq.content }}</p>
 				</details>
@@ -54,7 +54,7 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-section {
+.container {
 	margin-bottom: var(--section-margin);
 }
 
@@ -84,7 +84,7 @@ a {
 	display: inline-block;
 	text-align: center;
 	padding: 1.2rem 6rem;
-	color: #ffffff;
+	color: #fff;
 	text-decoration: none;
 	cursor: pointer;
 	border: 1px solid #666666;
@@ -94,11 +94,10 @@ a {
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	transition: opacity, transform 0.3s;
+	transition: border-color 0.3s;
 
 	&:hover {
-		opacity: 0.8;
-		transform: translateY(-2px);
+		border: 1px solid #fff;
 	}
 }
 

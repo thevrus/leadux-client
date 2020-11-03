@@ -23,19 +23,11 @@ class AuthService {
 		})
 	}
 
-	async invoice() {
-		// TODO
-		// * Interrupt if no response for 2 seconds
-		let ip_info = null
-		if (process.env.VUE_APP_IP_API) {
-			ip_info = await axios.get(process.env.VUE_APP_IP_API)
-		}
-
+	invoice() {
 		return axios({
-			method: 'post',
+			method: 'get',
 			url: `${process.env.VUE_APP_API_URL}/users-permissions/invoice`,
 			headers: authHeader(),
-			data: ip_info && ip_info.data,
 		})
 	}
 }

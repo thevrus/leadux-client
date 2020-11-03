@@ -5,7 +5,7 @@
 			<router-link class="btn btn-light" to="/login">Вход</router-link>
 		</div>
 
-		<div class="registered__wrapp" v-if="loggedIn && user">
+		<div class="registred_wrap" v-if="loggedIn && user">
 			<div class="user">
 				<div class="user__nick">{{ user.username }}</div>
 				<div class="user__status">{{ user.role.description }}</div>
@@ -15,14 +15,15 @@
 						<div class="user__details">
 							<div class="user__nick">{{ user.username }}</div>
 							<div class="user__email">{{ user.email }}</div>
+
 							<button v-if="loggedIn" @click="userLogout" class="logout">
 								Выйти
 							</button>
 						</div>
 
-						<div @click="toggleUserInfo" class="avatar">
+						<span @click="toggleUserInfo" class="avatar">
 							<Avatar :avatar="user.avatar" :username="user.username" />
-						</div>
+						</span>
 					</div>
 				</transition>
 			</div>
@@ -44,7 +45,6 @@ export default {
 	data() {
 		return {
 			userInfo: false,
-			host_url: process.env.VUE_APP_API_URL,
 		}
 	},
 	computed: {
@@ -55,12 +55,12 @@ export default {
 		...mapActions('auth', ['logout']),
 
 		toggleUserInfo() {
-			return (this.userInfo = !this.userInfo)
+			this.userInfo = !this.userInfo
 		},
 		userLogout() {
 			this.logout()
 			this.clearCurrentLesson()
-			window.location.reload()
+			this.$router.push({ name: 'Login' })
 		},
 	},
 }
@@ -71,7 +71,7 @@ export default {
 	flex-shrink: 0;
 }
 
-.registered__wrapp {
+.registred_wrap {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -137,6 +137,7 @@ export default {
 	cursor: pointer;
 	border: none;
 	appearance: none;
+	font-weight: bold;
 	margin-left: -0.5rem;
 
 	&:hover {
@@ -155,7 +156,7 @@ export default {
 	right: -18.9px;
 	background-color: var(--panel-bg);
 	padding: 1rem 1.1rem 1rem 1rem;
-	border-radius: 12px;
+	border-radius: 8px;
 	border: 1px solid var(--panel-border);
 	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
 }

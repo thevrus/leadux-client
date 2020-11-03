@@ -35,7 +35,7 @@ export default {
 	width: 42px;
 	height: 42px;
 	border-radius: 50%;
-	background-color: #76b680;
+	background-color: #34bf6c;
 	position: relative;
 	overflow: hidden;
 	display: inline-block;

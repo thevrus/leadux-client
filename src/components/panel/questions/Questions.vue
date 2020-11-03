@@ -16,9 +16,9 @@
 				@resetForm="addQuestion = !addQuestion"
 			/>
 
-			<span class="questions-counter"> {{ questionsLength }} вопросов: </span>
+			<span class="questions-counter"> {{ questionsLength }} вопрос(ов): </span>
 
-			<ul>
+			<ul class="questions">
 				<transition-group name="fade" tag="li">
 					<div v-for="question in questions" :key="question.id">
 						<Question
@@ -29,19 +29,21 @@
 				</transition-group>
 			</ul>
 		</div>
-		<div v-else>Loading...</div>
+		<Loader v-else />
 	</div>
 </template>
 
 <script>
 import Question from '@/components/panel/questions/Question'
 import QuestionForm from '@/components/panel/questions/QuestionForm'
+import Loader from '@/components/Loader'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
 	components: {
 		Question,
 		QuestionForm,
+		Loader,
 	},
 	data() {
 		return {
@@ -88,7 +90,11 @@ button {
 	outline: none;
 	border: none;
 	float: right;
-	font-weight: bold;
+	transition: opacity 0.3s;
+
+	&:hover {
+		opacity: 0.8;
+	}
 }
 
 .questions-counter {
@@ -97,7 +103,7 @@ button {
 	float: left;
 }
 
-ul {
+.questions {
 	clear: both;
 	list-style: none;
 	margin: 0;

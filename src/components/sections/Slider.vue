@@ -3,12 +3,21 @@
 		<div class="row">
 			<span>
 				<h3>Зарплата UX/UI дизайнера</h3>
-				<p>Источник данных: <a href="#!" target="_blank">Хабр Карьера</a></p>
+				<p>
+					Источник данных:
+					<a
+						href="https://career.habr.com/salaries"
+						rel="noopener noreferrer"
+						target="_blank"
+					>
+						Хабр Карьера
+					</a>
+				</p>
 			</span>
 
-			<output :class="{ small: value == max }"
-				>{{ val }}<span v-show="value != max"> $</span></output
-			>
+			<output :class="{ small: value == max }">
+				{{ val }}<span v-show="value != max"> $</span>
+			</output>
 		</div>
 
 		<div>
@@ -33,10 +42,10 @@
 export default {
 	data() {
 		return {
-			min: 36000,
-			max: 170000,
+			min: 500,
+			max: 5000,
 			step: 1,
-			value: 100000,
+			value: 2800,
 		}
 	},
 	computed: {
@@ -53,7 +62,7 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-section {
+.container {
 	margin-bottom: var(--section-margin);
 }
 
@@ -181,10 +190,6 @@ input[type='range']::-moz-range-thumb {
 	background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzYiIGhlaWdodD0iMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwKSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjEuNSI+PHBhdGggZD0iTTI4LjUgNC45MTY5M2w1LjQ5OTkgNS40OTk5N0wyOC41IDE1LjkxNjhNNi41IDE1LjkxNjhsLTUuNDk5OTQtNS40OTk5TDYuNSA0LjkxNjkzTTM0LjAwMDEgMTAuNDE2NUgyMS4xNjY5TS45OTk5MSAxMC40MTY1SDEzLjgzMzEiLz48L2c+PGRlZnM+PGNsaXBQYXRoIGlkPSJjbGlwMCI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTAgMGgzNnYyMEgweiIvPjwvY2xpcFBhdGg+PC9kZWZzPjwvc3ZnPg==');
 	background-repeat: no-repeat;
 	background-position: center center;
-
-	&:active {
-		transform: scale(0.95);
-	}
 }
 
 input[type='range']::-webkit-slider-thumb:active {

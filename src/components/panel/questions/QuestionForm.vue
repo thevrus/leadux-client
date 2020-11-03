@@ -71,7 +71,7 @@ form {
 		outline: none;
 		border: none;
 		color: #fff;
-		background-color: #262626;
+		background-color: #23242a;
 		font-family: system-ui;
 	}
 

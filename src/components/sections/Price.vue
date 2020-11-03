@@ -1,43 +1,61 @@
 <template>
 	<section>
-		<h3>Попробуй первые 2 занятия бесплатно!</h3>
-		<p id="price">Гарантия возврата денег</p>
+		<h3 id="price">Попробуй первые 2 занятия бесплатно!</h3>
+		<p>Гарантия возврата денег</p>
 
-		<div class="plans">
+		<div class="plans" v-if="!loading">
 			<img src="@/assets/img/discount.svg" alt="" />
 
 			<div class="plan">
 				<div>
-					<h4>{{ plans[0].name }}</h4>
+					<h4>{{ student.name }}</h4>
 
-					<p class="price">{{ plans[0].price }}<span>$</span></p>
+					<p class="price">{{ student.amount }}<span>$</span></p>
 
-					<ul>
-						<li v-for="pro of plans[0].pros" :key="pro.price">
-							{{ pro }}
-						</li>
-					</ul>
+					<VueShowdown class="content" :markdown="student.pros" />
 				</div>
 
-				<a :href="plans[0].link" class="cta">Купить</a>
+				<form
+					@submit="submitForm($event)"
+					method="POST"
+					accept-charset="utf-8"
+					action="https://www.liqpay.ua/api/3/checkout"
+				>
+					<input type="hidden" name="data" :value="student.data" />
+					<input type="hidden" name="signature" :value="student.signature" />
+					<button class="cta">
+						Купить
+					</button>
+				</form>
 			</div>
 
 			<span class="divider"></span>
 
 			<div class="plan">
 				<div>
-					<h4>{{ plans[1].name }}</h4>
+					<h4>{{ studentPlus.name }}</h4>
 
-					<p class="price">{{ plans[1].price }}<span>$</span></p>
+					<p class="price">{{ studentPlus.amount }}<span>$</span></p>
 
-					<ul>
-						<li v-for="(pro, index) of plans[1].pros" :key="index">
-							{{ pro }}
-						</li>
-					</ul>
+					<VueShowdown class="content" :markdown="studentPlus.pros" />
 				</div>
 
-				<a :href="plans[1].link" class="cta cta-primary">Купить</a>
+				<form
+					method="POST"
+					@submit="submitForm($event)"
+					accept-charset="utf-8"
+					action="https://www.liqpay.ua/api/3/checkout"
+				>
+					<input type="hidden" name="data" :value="studentPlus.data" />
+					<input
+						type="hidden"
+						name="signature"
+						:value="studentPlus.signature"
+					/>
+					<button class="cta cta-primary">
+						Купить
+					</button>
+				</form>
 			</div>
 		</div>
 
@@ -49,41 +67,38 @@
 </template>
 
 <script>
+import AuthService from '@/services/auth.service'
+import { mapGetters } from 'vuex'
+
 export default {
 	data() {
 		return {
-			plans: [
-				{
-					name: 'Студент',
-					price: '49',
-					link: '#!',
-					pros: [
-						'Доступ к видео материалам',
-						'Доступ к заданиям',
-						'Доступ к полезным материалам',
-						'Комментирование',
-						'Домашние задания',
-						'Чат студентов',
-					],
-				},
-				{
-					name: 'Студент Плюс',
-					price: '69',
-					link: '#!',
-					pros: [
-						'Доступ к видео материалам',
-						'Доступ к заданиям',
-						'Доступ к полезным материалам',
-						'Комментирование',
-						'Домашние задания',
-						'Чат студентов',
-						'Дизайн ревью от преподавателя',
-						'Консультации с преподавателем',
-						'Менторство',
-					],
-				},
-			],
+			student: null,
+			studentPlus: null,
+			nextRoute: null,
+			loading: true,
 		}
+	},
+	computed: {
+		...mapGetters('auth', ['user', 'loggedIn']),
+	},
+	methods: {
+		submitForm(e) {
+			if (!this.loggedIn) {
+				e.preventDefault()
+				this.$router.push({ name: 'Register', query: { nextRoute: 'Pay' } })
+			}
+		},
+	},
+	created: function() {
+		this.nextRoute = this.$route.query ? this.$route.query.nextRoute : null
+
+		AuthService.invoice().then(({ data }) => {
+			this.student = data[0]
+			this.studentPlus = data[1]
+
+			this.loading = false
+		})
 	},
 }
 </script>
@@ -123,7 +138,7 @@ section {
 		background-color: #fff;
 		max-width: 800px;
 		border-radius: 20px;
-		margin: 2rem auto;
+		margin: 2rem auto 1rem;
 		display: grid;
 		grid-template-columns: 1fr 1px 1fr;
 		grid-column-gap: 6%;
@@ -172,42 +187,41 @@ section {
 			}
 		}
 
-		ul {
-			list-style: none;
-			margin: 1.8rem 0 4rem 0;
-			padding: 0;
-			text-align: left;
+		.content {
+			>>> ul {
+				list-style: none;
+				margin: 1.8rem 0 4rem 0;
+				padding: 0;
+				text-align: left;
 
-			li {
-				margin-bottom: 1rem;
+				li {
+					margin-bottom: 1rem;
+					font-weight: 500;
+					font-size: 1rem;
+					line-height: 120%;
 
-				font-style: normal;
-				font-weight: 500;
-				font-size: 1rem;
-				line-height: 120%;
-
-				&::before {
-					content: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTE2LjY2NzMgNWwtOS4xNjY2NSA5LjE2NjdMMy4zMzM5OCAxMCIgc3Ryb2tlPSIjMTFDQjVCIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==');
-					display: inline-block;
-					vertical-align: text-top;
-					margin-right: 4px;
+					&::before {
+						content: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTE2LjY2NzMgNWwtOS4xNjY2NSA5LjE2NjdMMy4zMzM5OCAxMCIgc3Ryb2tlPSIjMTFDQjVCIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==');
+						display: inline-block;
+						vertical-align: text-top;
+						margin-right: 4px;
+					}
 				}
 			}
 		}
 
 		.cta {
 			background-color: #000;
+			width: 100%;
+			border: 0;
+			outline: 0;
 			display: block;
 			padding: 1.1rem 0;
+			cursor: pointer;
+			text-align: center;
 			color: #fff;
 			border-radius: 8px;
-
-			font-style: normal;
-			font-weight: 500;
-			font-size: 18px;
-			line-height: 120%;
-			text-align: center;
-			text-decoration: none;
+			font-size: 1.1rem;
 			transition: opacity transform 0.3s;
 
 			&:hover {

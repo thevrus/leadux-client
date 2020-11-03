@@ -13,8 +13,9 @@
 						<span class="summary__time">
 							{{ playlistLength(playlist.lessons) }}
 						</span>
+
 						<span class="summary__amount">
-							1 из {{ playlist.lessons.length }}
+							{{ playlist.lessons.length }} урока
 						</span>
 					</div>
 				</summary>
@@ -108,7 +109,6 @@ export default {
 <style lang="postcss" scoped>
 .playlist {
 	width: 100%;
-	background-color: var(--panel-bg);
 	color: #f4f4f4;
 	margin-bottom: 1rem;
 	border-radius: 0.5rem;
@@ -129,7 +129,7 @@ export default {
 
 		&:hover {
 			cursor: pointer;
-			background: linear-gradient(90deg, #404040 0.05%, #40404000 100%);
+			background: linear-gradient(90deg, #252525 0.05%, #40404000 100%);
 		}
 
 		&:hover {
@@ -142,7 +142,7 @@ export default {
 	.active {
 		position: relative;
 		cursor: pointer;
-		background: linear-gradient(90deg, #404040 0.05%, #40404000 100%);
+		background: linear-gradient(90deg, #252525 0.05%, #40404000 100%);
 
 		&:before {
 			content: '';
@@ -261,7 +261,7 @@ summary::-webkit-details-marker {
 
 .summary {
 	outline: none;
-	background-color: #333333;
+	background-color: var(--panel-bg);
 	border-radius: 0.5rem;
 	padding: 1.75rem 2.25rem;
 	position: relative;

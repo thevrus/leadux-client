@@ -51,7 +51,7 @@ export default {
 	color: #fff;
 	vertical-align: top;
 	margin-bottom: 2rem;
-	border-top: 1px solid #3f3f3f;
+	border-top: 1px solid #262626;
 	display: grid;
 	grid-template-columns: 60px 1fr;
 
@@ -75,7 +75,7 @@ export default {
 	.author {
 		font-size: 13px;
 		padding: 2px 10px;
-		border: 1px solid #3f3f3f;
+		border: 1px solid #262626;
 		border-radius: 4px;
 		color: #b0b0b0;
 		vertical-align: top;

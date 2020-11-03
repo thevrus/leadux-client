@@ -69,7 +69,6 @@ export default {
 		},
 	},
 	computed: {
-		...mapGetters('lessons', ['currentLesson']),
 		...mapGetters('auth', ['user', 'isStudent']),
 	},
 	methods: {
@@ -94,7 +93,6 @@ summary::-webkit-details-marker {
 
 summary {
 	outline: none;
-	background-color: #323232;
 	position: relative;
 	cursor: pointer;
 
@@ -126,7 +124,7 @@ summary {
 	font-size: 0.9rem;
 	color: #ffffff;
 	padding: 0.6rem 0;
-	border-top: 1px solid #3f3f3f;
+	border-top: 1px solid #262626;
 }
 
 .answers {
@@ -140,7 +138,7 @@ summary {
 }
 
 .bubble {
-	background-color: #323232;
+	background-color: #17181c;
 	width: 100%;
 	border-radius: 10px;
 	padding: 1rem 2rem 1.5rem 2rem;

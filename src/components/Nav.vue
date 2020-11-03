@@ -1,32 +1,37 @@
 <template>
-	<div class="wrapper">
-		<router-link to="/" class="logo__link">Leadux</router-link>
+	<nav class="nav">
+		<router-link to="/" class="logo">
+			<img src="@/assets/img/logo_white.svg" alt="Leadux" />
+		</router-link>
 
 		<div class="progresss" v-if="lessonsLength">
-			<div class="progress__container">
-				<div class="progress__wrapper">
-					<span class="progress__title">
-						<span v-if="watchedLessons.length === lessonsLength">
-							Курс пройден 🎉
-						</span>
+			<div class="center">
+				<div class="wrapper">
+					<span class="title">
+						<span v-if="isCompletedCourse">Курс пройден 🎉</span>
 						<span v-else>Прогресс курса</span>
 					</span>
-					<span class="progress__numbers">
+					<span class="numbers">
 						{{ watchedLessons.length }} из {{ lessonsLength }}
 					</span>
 				</div>
-				<div class="progress__line">
-					<div class="progress__line--load" :style="progress"></div>
+
+				<div class="line">
+					<div class="line-load" :style="progress"></div>
 				</div>
 			</div>
 
-			<router-link to="/pay" class="main-btn ml" v-if="!isStudent">
+			<router-link
+				:to="{ name: routerLink, query: nextRoute }"
+				v-if="!isStudent"
+				class="cta"
+			>
 				Открыть полный доступ
 			</router-link>
 		</div>
 
 		<UserDetails />
-	</div>
+	</nav>
 </template>
 
 <script>
@@ -46,33 +51,35 @@ export default {
 				'width:' + (100 / this.lessonsLength) * this.watchedLessons.length + '%'
 			)
 		},
+		routerLink() {
+			return this.loggedIn ? 'Pay' : 'Register'
+		},
+		nextRoute() {
+			return this.isStudent ? { nextRoute: 'Watch' } : null
+		},
+		isCompletedCourse() {
+			return this.watchedLessons.length === this.lessonsLength
+		},
 	},
 }
 </script>
 
 <style lang="postcss" scoped>
-.wrapper {
-	max-width: 1580px;
-	height: 80px;
+.nav {
+	margin-left: auto;
+	margin-right: auto;
+	height: 76px;
 	padding: 0 2.2rem;
-	margin-top: 1rem;
-	margin-bottom: 1.5rem;
+	width: 100%;
+	margin-bottom: 1.8rem;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	background-color: var(--panel-bg);
-	border: 1px solid var(--panel-border);
-
-	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
-	border-radius: 10px;
+	box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.04);
 }
 
-.logo__link {
-	font-weight: 700;
-	font-size: responsive 1rem 1.75rem;
-	word-break: normal;
-	line-height: 33px;
-	text-decoration: none;
+.logo {
 	transition: opacity 0.3s;
 
 	&:hover {
@@ -89,13 +96,13 @@ export default {
 	margin: 0 1rem;
 }
 
-.progress__container {
+.center {
 	max-width: 380px;
 	width: 100%;
 	flex-shrink: 1;
 }
 
-.progress__wrapper {
+.wrapper {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -103,39 +110,55 @@ export default {
 	max-width: 380px;
 }
 
-.progress__title {
+.title {
 	font-weight: 500;
 	font-size: 1rem;
 	line-height: 140%;
 	color: #787878;
 }
 
-.progress__numbers {
+.numbers {
 	font-weight: 500;
 	font-size: 1rem;
 	line-height: 140%;
 	color: #bfbfbf;
 }
 
-.progress__line {
+.line {
 	width: 100%;
 	height: 4px;
 	position: relative;
-	background-color: #212121;
+	background-color: #0d0d0d;
 	border-radius: 50px;
 }
 
-.progress__line--load {
+.line-load {
 	position: absolute;
 	left: 0px;
 	right: 0px;
 	height: 4px;
-	background-color: #34bf6c;
+	background-color: #2eb761;
 	border-radius: 50px;
 	transition: width 0.3s linear;
 }
 
-.ml {
+.cta {
+	background-color: #e937b3;
+	text-decoration: none;
+	border: none;
+	cursor: pointer;
 	margin-left: 2.5rem;
+
+	padding: 0.95rem 1.8rem;
+	font-size: 0.9rem;
+	line-height: 130%;
+	border-radius: 12px;
+	color: #ffffff;
+	transition: opacity 0.2s;
+	flex-shrink: 0;
+
+	&:hover {
+		opacity: 0.8;
+	}
 }
 </style>

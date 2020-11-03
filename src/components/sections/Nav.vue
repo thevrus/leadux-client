@@ -4,17 +4,17 @@
 			<img src="@/assets/img/logo.svg" alt="LeadUX" />
 		</router-link>
 
-		<div class="link-wrapp">
-			<a href="#">Для кого</a>
-			<a href="#">Что внутри</a>
-			<a href="#">ЧАВО</a>
+		<div class="links">
+			<a href="/#skills">Для кого</a>
+			<a href="/#learn">Вы научитесь</a>
+			<a href="/#price">Цена</a>
 		</div>
 
-		<div class="loggin-wrapp">
+		<div class="login-wrapp">
 			<router-link class="login" v-if="!loggedIn" to="/login">Вход</router-link>
-			<a class="logout" v-if="loggedIn" href="#!" @click.prevent="logout">
+			<button class="logout" v-if="loggedIn" @click="logout">
 				Выход
-			</a>
+			</button>
 		</div>
 	</nav>
 </template>
@@ -48,32 +48,34 @@ nav {
 	justify-content: space-between;
 	align-items: center;
 
-	.link-wrapp a {
-		font-weight: bold;
+	.links a {
 		font-size: 1rem;
 		line-height: 140%;
 		display: inline-block;
 		margin-right: 2rem;
-		color: #d9d9d9;
-		transition: transform 0.3s;
+		text-decoration: none;
+		transition: opacity 0.3s;
 
 		&:hover {
-			transform: translateY(-2px);
-			text-decoration: none;
+			opacity: 0.8;
 		}
 	}
 
-	.loggin-wrapp {
+	.login-wrapp {
 		.login,
 		.logout {
 			padding: 1rem 1.5rem;
 			border: 1px solid rgba(255, 255, 255, 0.2);
 			border-radius: 10px;
+			cursor: pointer;
+			background-color: transparent;
+			color: #fff;
 			font-size: 0.95rem;
-			transition: background-color 0.3s;
+			transition: border-color 0.3s;
+			text-decoration: none;
+
 			&:hover {
-				text-decoration: none;
-				background-color: #313131;
+				border-color: #fff;
 			}
 		}
 	}
