@@ -75,7 +75,19 @@ ul {
 	grid-column-gap: 3rem;
 	grid-row-gap: 3rem;
 
+	@media (max-width: 920px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	@media (max-width: 768px) {
+		display: block;
+		max-width: 400px;
+		margin: 0px auto;
+	}
+
 	li {
+		@media (max-width: 768px) {
+			margin-bottom: 3rem;
+		}
 		h4 {
 			font-style: normal;
 			font-weight: bold;

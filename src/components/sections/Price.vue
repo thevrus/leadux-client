@@ -29,7 +29,9 @@
 				</form>
 			</div>
 
-			<span class="divider"></span>
+				<div class="plan">
+					<div>
+						<h4>{{ plans[1].name }}</h4>
 
 			<div class="plan">
 				<div>
@@ -57,12 +59,12 @@
 					</button>
 				</form>
 			</div>
-		</div>
 
-		<p class="disclaimer">
-			<b>*</b> Видеокурс постоянно дополняется, после оплаты, все дополнения
-			<span>абсолютно бесплатны</span>
-		</p>
+			<p class="disclaimer">
+				<b>*</b> Видеокурс постоянно дополняется, после оплаты, все дополнения
+				<span>абсолютно бесплатны</span>
+			</p>
+		</div>
 	</section>
 </template>
 
@@ -112,6 +114,7 @@ section {
 		rgba(127, 18, 165, 0.4) 0%,
 		rgba(127, 18, 165, 0) 100%
 	);
+	overflow: hidden;
 
 	h3 {
 		font-style: normal;
