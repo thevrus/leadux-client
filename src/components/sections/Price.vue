@@ -1,50 +1,52 @@
 <template>
 	<section>
-		<h3>Попробуй первые 2 занятия бесплатно!</h3>
-		<p id="price">Гарантия возврата денег</p>
+		<div class="container">
+			<h3>Попробуй первые 2 занятия бесплатно!</h3>
+			<p id="price">Гарантия возврата денег</p>
 
-		<div class="plans">
-			<img src="@/assets/img/discount.svg" alt="" />
+			<div class="plans">
+				<img src="@/assets/img/discount.svg" alt="" />
 
-			<div class="plan">
-				<div>
-					<h4>{{ plans[0].name }}</h4>
+				<div class="plan">
+					<div>
+						<h4>{{ plans[0].name }}</h4>
 
-					<p class="price">{{ plans[0].price }}<span>$</span></p>
+						<p class="price">{{ plans[0].price }}<span>$</span></p>
 
-					<ul>
-						<li v-for="pro of plans[0].pros" :key="pro.price">
-							{{ pro }}
-						</li>
-					</ul>
+						<ul>
+							<li v-for="pro of plans[0].pros" :key="pro.price">
+								{{ pro }}
+							</li>
+						</ul>
+					</div>
+
+					<a :href="plans[0].link" class="cta">Купить</a>
 				</div>
 
-				<a :href="plans[0].link" class="cta">Купить</a>
-			</div>
+				<span class="divider"></span>
 
-			<span class="divider"></span>
+				<div class="plan">
+					<div>
+						<h4>{{ plans[1].name }}</h4>
 
-			<div class="plan">
-				<div>
-					<h4>{{ plans[1].name }}</h4>
+						<p class="price">{{ plans[1].price }}<span>$</span></p>
 
-					<p class="price">{{ plans[1].price }}<span>$</span></p>
+						<ul>
+							<li v-for="(pro, index) of plans[1].pros" :key="index">
+								{{ pro }}
+							</li>
+						</ul>
+					</div>
 
-					<ul>
-						<li v-for="(pro, index) of plans[1].pros" :key="index">
-							{{ pro }}
-						</li>
-					</ul>
+					<a :href="plans[1].link" class="cta cta-primary">Купить</a>
 				</div>
-
-				<a :href="plans[1].link" class="cta cta-primary">Купить</a>
 			</div>
+
+			<p class="disclaimer">
+				<b>*</b> Видеокурс постоянно дополняется, после оплаты, все дополнения
+				<span>абсолютно бесплатны</span>
+			</p>
 		</div>
-
-		<p class="disclaimer">
-			<b>*</b> Видеокурс постоянно дополняется, после оплаты, все дополнения
-			<span>абсолютно бесплатны</span>
-		</p>
 	</section>
 </template>
 
@@ -97,6 +99,7 @@ section {
 		rgba(127, 18, 165, 0.4) 0%,
 		rgba(127, 18, 165, 0) 100%
 	);
+	overflow: hidden;
 
 	h3 {
 		font-style: normal;

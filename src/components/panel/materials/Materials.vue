@@ -66,6 +66,7 @@ select {
 	border-radius: 10px;
 	border: 0;
 	cursor: pointer;
+	appearance: none;
 }
 
 .select {

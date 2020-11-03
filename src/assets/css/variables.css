@@ -5,4 +5,8 @@
 	--primary: #e93762;
 	--secondary: #733bea;
 	--section-margin: 160px;
+	@media (max-width: 768px) {
+		--section-margin: 80px;
+	}
 }
+	

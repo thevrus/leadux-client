@@ -54,5 +54,33 @@ section {
 			z-index: -1;
 		}
 	}
+
+	@media (max-width: 768px) {
+		.col-l {
+			margin-left: 0;
+		}
+
+		.col-r {
+			justify-self: center;
+		}
+
+		p {
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		h3 {
+			margin-left: auto;
+			margin-right: auto;
+			text-align: center;
+		}
+
+		a {
+			display: block;
+			width: 60%;
+			text-align: center;
+			margin: 0 auto 3rem;
+		}
+	}
 }
 </style>

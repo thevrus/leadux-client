@@ -62,9 +62,25 @@ section {
 
 	.grid {
 		display: grid;
-		grid-template-columns: 1fr 1fr 1fr;
+		/* grid-template-columns: 1fr 1fr 1fr; */
 		grid-gap: 4%;
+		grid-template-areas: 'junior junior middle middle senior senior';
 		text-align: center;
+
+		@media (max-width: 1196px) {
+			grid-template-areas:
+				'junior junior middle middle'
+				'senior senior senior senior';
+			align-items: center;
+			justify-content: center;
+		}
+		@media (max-width: 786px) {
+			grid-template-areas:
+				'junior junior junior junior'
+				'middle middle middle middle'
+				'senior senior senior senior';
+			margin-bottom: 6rem;
+		}
 	}
 
 	h5 {
@@ -77,6 +93,8 @@ section {
 	}
 
 	.junior {
+		max-width: 380px;
+		grid-area: junior;
 		h5 {
 			background: linear-gradient(180deg, #4590d4 0%, #76aee1 100%);
 			position: relative;
@@ -91,6 +109,8 @@ section {
 	}
 
 	.middle {
+		max-width: 380px;
+		grid-area: middle;
 		h5 {
 			position: relative;
 			background: linear-gradient(180deg, #e14d4d 0%, #e77575 100%);
@@ -105,6 +125,13 @@ section {
 	}
 
 	.senior {
+		max-width: 380px;
+		grid-area: senior;
+		@media (max-width: 1196px) and (min-width: 786px) {
+			grid-column-start: 2;
+			grid-column-end: 4;
+		}
+
 		h5 {
 			position: relative;
 			background: linear-gradient(180deg, #864ee1 0%, #a492ec 100%);
