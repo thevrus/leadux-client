@@ -57,18 +57,6 @@ header {
 	width: 100%;
 	overflow: hidden;
 	z-index: 2;
-	/* background: radial-gradient(
-			37.95% 72.83% at 61.41% 41.35%,
-			rgba(233, 55, 179, 0.3) 0%,
-			rgba(233, 55, 179, 0) 73.56%
-		),
-		radial-gradient(
-			32.2% 61.79% at 100% 0%,
-			rgba(55, 94, 233, 0.6) 0%,
-			rgba(55, 94, 233, 0) 100%
-		),
-		#000000; */
-
 	background: radial-gradient(
 		48.2% 35.86% at 100% 0%,
 		rgba(0, 87, 217, 0.6) 0%,

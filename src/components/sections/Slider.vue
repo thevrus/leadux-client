@@ -70,17 +70,26 @@ export default {
 	display: flex;
 	justify-content: space-between;
 	align-items: baseline;
+	@media (max-width: 750px) {
+		display: block;
+	}
 }
 
 output {
 	font-weight: bold;
 	font-size: 52px;
+	min-width: 160px;
 
+	@media (max-width: 750px) {
+		display: block;
+		text-align: center;
+		margin: 3rem 0 1.5rem;
+	}
 	span {
+		line-height: 120%;
 		font-style: normal;
 		font-weight: bold;
 		font-size: 28px;
-		line-height: 120%;
 	}
 }
 
@@ -92,7 +101,7 @@ output {
 h3 {
 	font-style: normal;
 	font-weight: 500;
-	font-size: 44px;
+	font-size: responsive 1.8rem 2.75rem;
 	line-height: 120%;
 	color: #fff;
 	margin: 0 0 1rem 0;
@@ -119,6 +128,10 @@ div {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	color: #fff;
+
+	@media (max-width: 750px) {
+		margin-top: 0px;
+	}
 
 	.position {
 		position: relative;

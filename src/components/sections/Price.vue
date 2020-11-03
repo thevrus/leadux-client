@@ -29,9 +29,7 @@
 				</form>
 			</div>
 
-				<div class="plan">
-					<div>
-						<h4>{{ plans[1].name }}</h4>
+			<span class="divider"></span>
 
 			<div class="plan">
 				<div>
@@ -59,12 +57,12 @@
 					</button>
 				</form>
 			</div>
-
-			<p class="disclaimer">
-				<b>*</b> Видеокурс постоянно дополняется, после оплаты, все дополнения
-				<span>абсолютно бесплатны</span>
-			</p>
 		</div>
+
+		<p class="disclaimer">
+			<b>*</b> Видеокурс постоянно дополняется, после оплаты, все дополнения
+			<span>абсолютно бесплатны</span>
+		</p>
 	</section>
 </template>
 
@@ -114,22 +112,26 @@ section {
 		rgba(127, 18, 165, 0.4) 0%,
 		rgba(127, 18, 165, 0) 100%
 	);
-	overflow: hidden;
 
 	h3 {
 		font-style: normal;
 		font-weight: 500;
-		font-size: 44px;
+		font-size: responsive 1.7rem 2.75rem;
 		line-height: 180%;
 		text-align: center;
 		color: #ffffff;
 		margin: 0;
+
+		@media (max-width: 690px) {
+			line-height: 120%;
+			margin-bottom: 1.5rem;
+		}
 	}
 
 	p {
 		font-style: normal;
 		font-weight: 500;
-		font-size: 24px;
+		font-size: responsive 1rem 1.5rem;
 		line-height: 180%;
 		text-align: center;
 		color: #ffffff;
@@ -147,10 +149,22 @@ section {
 		grid-column-gap: 6%;
 		position: relative;
 
+		@media (max-width: 690px) {
+			background-color: transparent;
+			grid-template-columns: 1fr;
+			grid-column-gap: 0;
+			grid-row-gap: 2rem;
+			padding: 0.5rem 2rem;
+		}
+
 		img {
 			position: absolute;
 			top: -60px;
 			right: -50px;
+
+			@media (max-width: 940px) {
+				display: none;
+			}
 		}
 	}
 
@@ -161,14 +175,25 @@ section {
 		flex-direction: column;
 		justify-content: space-between;
 
+		@media (max-width: 690px) {
+			width: 100%;
+			padding: 1rem;
+			background-color: #fff;
+			max-width: 800px;
+			border-radius: 20px;
+		}
+
 		h4 {
 			color: #000000;
-
 			font-style: normal;
 			font-weight: 500;
 			font-size: 26px;
 			line-height: 120%;
 			color: #000000;
+
+			@media (max-width: 690px) {
+				margin: 0 1rem 1rem;
+			}
 		}
 
 		.price {
@@ -202,7 +227,9 @@ section {
 					font-weight: 500;
 					font-size: 1rem;
 					line-height: 120%;
-
+					@media (max-width: 690px) {
+						font-size: 0.93rem;
+					}
 					&::before {
 						content: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTE2LjY2NzMgNWwtOS4xNjY2NSA5LjE2NjdMMy4zMzM5OCAxMCIgc3Ryb2tlPSIjMTFDQjVCIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==');
 						display: inline-block;

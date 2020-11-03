@@ -50,6 +50,10 @@ footer {
 	margin-top: 1rem;
 	margin-bottom: 3rem;
 
+	@media (max-width: 667px) {
+		display: block;
+	}
+
 	p {
 		max-width: 400px;
 		font-size: 0.9rem;
@@ -59,13 +63,26 @@ footer {
 	}
 
 	.links {
+		padding: 0;
 		li {
 			display: inline;
+			@media (max-width: 990px) {
+				display: block;
+				margin-bottom: 1rem;
+			}
+			@media (max-width: 667px) {
+				&:first-child {
+					margin-top: 3rem;
+				}
+			}
 
 			a {
 				font-size: 0.9rem;
 				margin-left: 2rem;
 				font-weight: 100;
+				@media (max-width: 667px) {
+					margin: 0;
+				}
 			}
 		}
 	}

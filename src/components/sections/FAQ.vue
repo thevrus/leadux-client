@@ -2,7 +2,7 @@
 	<section class="container" id="faq">
 		<div class="grid">
 			<span class="left">
-				<h3>Часто задаваемые вопросы</h3>
+				<h3>Часто задаваемые вопросы:</h3>
 				<a href="https://www.t.me/designeroq" target="_blank">
 					Задать вопрос
 				</a>
@@ -63,19 +63,32 @@ export default {
 	grid-template-columns: 3fr 5fr;
 	grid-column-gap: 6%;
 
+	@media (max-width: 720px) {
+		display: block;
+		position: relative;
+		margin-bottom: 10rem;
+	}
+
 	.left {
 		position: relative;
+		@media (max-width: 720px) {
+			position: static;
+		}
 	}
 }
 
 h3 {
 	max-width: 400px;
 	font-weight: 500;
-	font-size: 2.5rem;
+	font-size: responsive 1.8rem 2.5rem;
 	color: #ffffff;
 	line-height: 120%;
 	margin: 0;
 	padding: 0;
+
+	@media (max-width: 720px) {
+		margin-bottom: 2rem;
+	}
 }
 
 a {
@@ -83,7 +96,7 @@ a {
 	font-size: 1rem;
 	display: inline-block;
 	text-align: center;
-	padding: 1.2rem 6rem;
+	padding: 1.2rem 25%;
 	color: #fff;
 	text-decoration: none;
 	cursor: pointer;
@@ -95,6 +108,17 @@ a {
 	bottom: 0;
 	left: 0;
 	transition: border-color 0.3s;
+
+	@media (max-width: 720px) {
+		position: absolute;
+		bottom: -6rem;
+		left: 0;
+	}
+	@media (max-width: 450px) {
+		padding: 1.2rem 0;
+		display: block;
+		width: 100%;
+	}
 
 	&:hover {
 		border: 1px solid #fff;
@@ -120,6 +144,7 @@ details {
 		font-weight: 500;
 		font-size: 1.1rem;
 		padding-top: 4px;
+		padding-right: 2rem;
 		transition: transform 0.3s;
 
 		&:hover {
