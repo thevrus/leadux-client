@@ -142,12 +142,15 @@ export default {
 		margin: 5rem auto 8rem;
 		padding: 1rem 4rem;
 		border-radius: 20px;
+		@media (max-width: 520px) {
+			padding: 1rem;
+		}
 	}
 
 	h3 {
 		text-align: center;
 		font-weight: bold;
-		font-size: 2.6rem;
+		font-size: responsive 1.8rem 2.6rem;
 		color: #000;
 		margin-bottom: 1.8rem;
 	}

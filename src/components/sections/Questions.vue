@@ -59,10 +59,13 @@
 	@media (max-width: 768px) {
 		.col-l {
 			margin-left: 0;
+			order: 2;
 		}
 
 		.col-r {
 			justify-self: center;
+			order: 1;
+			margin-bottom: 3rem;
 		}
 
 		p {

@@ -50,10 +50,9 @@ section {
 
 	@media (max-width: 768px) {
 		.col-l {
-			order: 2;
+			margin-bottom: 3rem;
 		}
 		.col-r {
-			order: 1;
 			justify-self: initial;
 		}
 

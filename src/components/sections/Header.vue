@@ -19,7 +19,7 @@
 				<span class="col-r">
 					<div class="box">
 						<img
-							src="@/assets/img/header_figma.svg"
+							src="@/assets/img/header_figma.png"
 							alt="Интерфейс Фигма"
 							class="figma"
 						/>

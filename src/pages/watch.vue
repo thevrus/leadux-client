@@ -13,6 +13,7 @@
 			<Loader v-else />
 		</div>
 		<Chat />
+		<div class="box"></div>
 		<Footer />
 	</div>
 </template>
@@ -80,11 +81,15 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
+.box {
+	height: 100%;
+}
 #app {
 	display: grid;
 	grid-template-rows: 1fr auto;
 	min-height: 100vh;
 	background-color: var(--bg);
+	min-width: 1015px !important;
 }
 
 .watch {

@@ -162,12 +162,16 @@ export default {
 		margin: 5rem auto 8rem;
 		padding: 1rem 4rem;
 		border-radius: 20px;
+
+		@media (max-width: 520px) {
+			padding: 1rem;
+		}
 	}
 
 	h3 {
 		text-align: center;
 		font-weight: bold;
-		font-size: 2.6rem;
+		font-size: responsive 1.8rem 2.6rem;
 		color: #000;
 		margin-top: 1rem;
 		margin-bottom: 0;
@@ -175,7 +179,7 @@ export default {
 
 	h4 {
 		font-weight: 500;
-		font-size: 1.1rem;
+		font-size: responsive 1rem 1.1rem;
 		line-height: 140%;
 		color: #000;
 		text-align: center;

@@ -103,6 +103,7 @@ form {
 		line-height: 1rem;
 		padding: 0.6rem 1rem;
 		border-radius: 10px;
+		border: none;
 	}
 }
 </style>

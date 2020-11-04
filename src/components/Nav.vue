@@ -100,6 +100,10 @@ export default {
 	max-width: 380px;
 	width: 100%;
 	flex-shrink: 1;
+
+	@media (max-width: 768px) {
+		display: none;
+	}
 }
 
 .wrapper {
