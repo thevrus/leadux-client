@@ -7,32 +7,32 @@ Vue.use(VueRouter)
 
 const routes = [
 	{
-		name: 'Home',
+		name: 'home',
 		path: '/',
 		component: Index,
 	},
 	{
-		name: 'Watch',
+		name: 'watch',
 		path: '/watch',
 		component: Watch,
 	},
 	{
-		name: 'WatchSlug',
+		name: 'watch-slug',
 		path: '/watch/:slug',
 		component: Watch,
 	},
 	{
-		name: 'Login',
+		name: 'login',
 		path: '/login',
 		component: () => import('../pages/login.vue'),
 	},
 	{
-		name: 'Register',
+		name: 'register',
 		path: '/register',
 		component: () => import('../pages/register.vue'),
 	},
 	{
-		name: 'Pay',
+		name: 'pay',
 		path: '/pay',
 		component: () => import('../pages/pay.vue'),
 	},
@@ -50,13 +50,6 @@ const router = new VueRouter({
 	mode: 'history',
 	base: process.env.BASE_URL,
 	routes,
-	scrollBehavior: function(to) {
-		if (to.hash) {
-			return { selector: to.hash }
-		} else {
-			return { x: 0, y: 0 }
-		}
-	},
 })
 
 export default router

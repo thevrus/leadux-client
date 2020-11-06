@@ -81,7 +81,7 @@ h3 {
 	max-width: 400px;
 	font-weight: 500;
 	font-size: responsive 1.8rem 2.5rem;
-	color: #ffffff;
+	color: #fff;
 	line-height: 120%;
 	margin: 0;
 	padding: 0;
@@ -139,8 +139,6 @@ details {
 	summary {
 		position: relative;
 		outline: none;
-		font-weight: bold;
-		transition: opacity 0.3s;
 		font-weight: 500;
 		font-size: 1.1rem;
 		padding-top: 4px;

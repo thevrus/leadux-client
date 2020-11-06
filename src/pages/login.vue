@@ -1,5 +1,5 @@
 <template>
-	<div class="login">
+	<div class="auth">
 		<Nav />
 		<div class="card">
 			<h3>Вход</h3>
@@ -95,7 +95,7 @@ export default {
 					() => {
 						this.nextRoute
 							? this.$router.push({ name: this.nextRoute })
-							: this.$router.push({ name: 'Watch' })
+							: this.$router.push({ name: 'watch' })
 					},
 					error => {
 						this.loading = false
@@ -119,114 +119,96 @@ export default {
 		},
 	},
 	created() {
-		this.loggedIn && this.$router.push({ name: 'Watch' })
+		this.loggedIn && this.$router.push({ name: 'watch' })
 		this.nextRoute = this.$route.query ? this.$route.query.nextRoute : null
 	},
 }
 </script>
 
 <style lang="postcss" scoped>
-.invalid {
-	border: 2px solid #df1a29;
-	border-radius: 10px;
-}
-.login {
-	background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTM4NyIgaGVpZ2h0PSIxMTI0IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik0xMzUyLjI1IDU2OC45NTJMNDUwLjYyOSA0OS4zNzI1IiBzdHJva2U9InVybCgjcGFpbnQwX2xpbmVhcikiIHN0cm9rZS13aWR0aD0iNDgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxwYXRoIGQ9Ik00NTEuMjg5IDEwOTAuNjRsOTAyLjQ3MS01MjEuMDM5IiBzdHJva2U9InVybCgjcGFpbnQxX2xpbmVhcikiIHN0cm9rZS13aWR0aD0iNDgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQwX2xpbmVhciIgeDE9IjY0OC43NTMiIHkxPSIxNjUuMTc5IiB4Mj0iMTM1NC40NiIgeTI9IjU3Mi43NzYiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcC8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMEExOUZFIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InBhaW50MV9saW5lYXIiIHgxPSI0NTEuNTM5IiB5MT0iMTA5MS4wNyIgeDI9IjEzMzguNzEiIHkyPSI1NzguODY1IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHN0b3Agc3RvcC1jb2xvcj0iIzAwQ0RFQyIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzAwMERENSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjwvc3ZnPg==');
-	background-position: center 120%;
-	background-repeat: no-repeat;
-
-	.card {
-		margin-top: 100px;
-		background-color: #fff;
-		max-width: 500px;
-		margin: 5rem auto 8rem;
-		padding: 1rem 4rem;
-		border-radius: 20px;
-		@media (max-width: 520px) {
-			padding: 1rem;
-		}
-	}
-
-	h3 {
-		text-align: center;
-		font-weight: bold;
-		font-size: responsive 1.8rem 2.6rem;
-		color: #000;
-		margin-bottom: 1.8rem;
-	}
-
-	form {
-		width: 100%;
-		margin: 0px auto;
-		position: relative;
-	}
-
-	.message {
-		width: 100%;
-		margin: 0.3rem 0 1rem;
-		border-radius: 0.5rem;
-		color: #df1a29;
-	}
-
-	button {
-		padding: 1.1rem 2rem;
-		margin-top: 1.25rem;
-		font-weight: 500;
-		font-size: 1.1rem;
-		color: #fff;
-		background-color: #000;
-		border-radius: 0.75rem;
-		display: block;
-		width: 100%;
-		border: none;
-		cursor: pointer;
-		transition: opacity 0.3s;
-
-		&:hover {
-			opacity: 0.8;
-		}
-	}
-
-	a {
-		text-decoration: none;
-	}
-
-	.login-page {
-		max-width: 480px;
-		width: 100%;
-		border-top: 1px solid rgba(255, 255, 255, 0.07);
-		padding-top: 1.75rem;
-		margin: 0 auto 5rem;
-		text-align: center;
-	}
-
-	.login-info {
-		font-weight: 500;
-		font-size: 1rem;
-		line-height: 140%;
-		color: #000;
-		margin-bottom: 1.6rem;
-	}
-
-	.login-btn {
-		padding: 0.7rem 1.75rem;
-		background-color: #f2f2f2;
-		border-radius: 7px;
-		cursor: pointer;
-		font-size: 0.93rem;
-		color: #000;
-		transition: opacity 0.3s;
-
-		&:hover {
-			opacity: 0.8;
-		}
+.card {
+	background-color: #fff;
+	max-width: 500px;
+	margin: 5rem auto 8rem;
+	padding: 1rem 4rem;
+	border-radius: 20px;
+	@media (max-width: 520px) {
+		padding: 1rem;
 	}
 }
 
-footer {
+h3 {
 	text-align: center;
+	font-weight: bold;
+	font-size: responsive 1.8rem 2.6rem;
+	color: #000;
+	margin-bottom: 1.8rem;
+}
+
+form {
+	width: 100%;
+	margin: 0 auto;
+	position: relative;
+}
+
+.message {
+	width: 100%;
+	margin: 0.3rem 0 1rem;
+	border-radius: 0.5rem;
+	color: #df1a29;
+}
+
+button {
+	padding: 1.1rem 2rem;
+	margin-top: 1.25rem;
+	font-weight: 500;
+	font-size: 1.1rem;
 	color: #fff;
-	font-weight: 100;
-	font-size: 0.9rem;
+	background-color: #000;
+	border-radius: 0.75rem;
+	display: block;
+	width: 100%;
+	border: none;
+	cursor: pointer;
+	transition: opacity 0.3s;
+
+	&:hover {
+		opacity: 0.8;
+	}
+}
+
+a {
+	text-decoration: none;
+}
+
+.login-page {
+	max-width: 480px;
+	width: 100%;
+	border-top: 1px solid rgba(255, 255, 255, 0.07);
+	padding-top: 1.75rem;
+	margin: 0 auto 5rem;
+	text-align: center;
+}
+
+.login-info {
+	font-weight: 500;
+	font-size: 1rem;
+	line-height: 140%;
+	color: #000;
+	margin-bottom: 1.6rem;
+}
+
+.login-btn {
+	padding: 0.7rem 1.75rem;
+	background-color: #f2f2f2;
+	border-radius: 7px;
+	cursor: pointer;
+	font-size: 0.93rem;
+	color: #000;
+	transition: opacity 0.3s;
+
+	&:hover {
+		opacity: 0.8;
+	}
 }
 </style>

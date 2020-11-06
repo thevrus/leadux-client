@@ -10,7 +10,6 @@
 	border-top-color: rgba(0, 0, 0, 0.5);
 	border-radius: 50%;
 	animation: rotation 0.8s ease infinite;
-
 	position: absolute;
 	top: 50%;
 	left: 46%;

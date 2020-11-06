@@ -48,7 +48,7 @@
 			height: 140%;
 			background: radial-gradient(
 				50.04% 46.09% at 50.09% 50%,
-				rgba(40, 152, 255, 0.5) 0%,
+				rgba(40, 152, 255, 0.65) 0%,
 				rgba(40, 152, 255, 0) 100%
 			);
 			display: block;
@@ -76,7 +76,6 @@
 		h3 {
 			margin-left: auto;
 			margin-right: auto;
-			text-align: center;
 		}
 
 		a {

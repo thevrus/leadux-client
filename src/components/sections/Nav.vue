@@ -23,6 +23,7 @@
 				<button class="btn" @click="isOpened = !isOpened">
 					<div class="burger" :class="{ burgerOpen: isOpened }"></div>
 				</button>
+
 				<transition name="fade">
 					<ul class="list" v-if="isOpened">
 						<li class="list-item">
@@ -189,7 +190,7 @@ nav {
 			align-items: center;
 			justify-content: center;
 			flex-direction: column;
-			padding: 0.5rem 0px;
+			padding: 0.5rem 0;
 			position: absolute;
 			top: 36px;
 			right: -18px;

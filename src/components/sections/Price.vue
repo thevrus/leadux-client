@@ -1,5 +1,5 @@
 <template>
-	<section>
+	<section class="container">
 		<h3 id="price">Попробуй первые 2 занятия бесплатно!</h3>
 		<p>Гарантия возврата денег</p>
 
@@ -86,7 +86,7 @@ export default {
 		submitForm(e) {
 			if (!this.loggedIn) {
 				e.preventDefault()
-				this.$router.push({ name: 'Register', query: { nextRoute: 'Pay' } })
+				this.$router.push({ name: 'register', query: { nextRoute: 'pay' } })
 			}
 		},
 	},
@@ -109,7 +109,7 @@ section {
 	padding: 100px 0;
 	background: radial-gradient(
 		45% 40% at 50% 60%,
-		rgba(127, 18, 165, 0.4) 0%,
+		rgba(127, 18, 165, 0.5) 0%,
 		rgba(127, 18, 165, 0) 100%
 	);
 
@@ -119,7 +119,7 @@ section {
 		font-size: responsive 1.7rem 2.75rem;
 		line-height: 180%;
 		text-align: center;
-		color: #ffffff;
+		color: #fff;
 		margin: 0;
 
 		@media (max-width: 690px) {
@@ -134,7 +134,7 @@ section {
 		font-size: responsive 1rem 1.5rem;
 		line-height: 180%;
 		text-align: center;
-		color: #ffffff;
+		color: #fff;
 		margin: 0;
 	}
 
@@ -170,26 +170,25 @@ section {
 
 	.plan {
 		text-align: center;
-		color: #000000;
+		color: #000;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
 
 		@media (max-width: 690px) {
 			width: 100%;
-			padding: 1rem;
+			padding: 2rem 1.5rem;
 			background-color: #fff;
 			max-width: 800px;
 			border-radius: 20px;
 		}
 
 		h4 {
-			color: #000000;
+			color: #000;
 			font-style: normal;
 			font-weight: 500;
 			font-size: 26px;
 			line-height: 120%;
-			color: #000000;
 
 			@media (max-width: 690px) {
 				margin: 0 1rem 1rem;
@@ -201,7 +200,7 @@ section {
 			font-weight: bold;
 			font-size: 60px;
 			line-height: 120%;
-			color: #000000;
+			color: #000;
 			padding: 0.6rem 0;
 
 			border-top: 1px solid #e5e5e5;

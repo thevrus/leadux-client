@@ -42,7 +42,6 @@ label {
 input {
 	border-radius: 0.7rem;
 	font-weight: bold;
-	font-size: 0.88rem;
 	color: #434343;
 	border: 1px solid transparent;
 	margin-bottom: 1rem;

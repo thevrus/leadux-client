@@ -60,7 +60,7 @@ select {
 	padding: 0.85rem 4rem 0.85rem 1.5rem;
 	font-weight: 500;
 	font-size: 0.85rem;
-	color: #ffffff;
+	color: #fff;
 	letter-spacing: 0.2px;
 	background-color: var(--secondary);
 	border-radius: 10px;
@@ -81,8 +81,8 @@ select {
 	position: absolute;
 	border-radius: 10px;
 	display: block;
-	top: 0px;
-	right: 0px;
+	top: 0;
+	right: 0;
 	pointer-events: none;
 
 	&::after {

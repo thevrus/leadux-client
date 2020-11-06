@@ -58,10 +58,9 @@ section {
 
 h3 {
 	font-style: normal;
-	font-weight: 500;
-	font-size: 44px;
+	font-size: responsive 1.5rem 2.75rem;
 	line-height: 120%;
-	color: #ffffff;
+	color: #fff;
 	max-width: 400px;
 }
 
@@ -80,14 +79,13 @@ ul {
 	}
 	@media (max-width: 768px) {
 		display: block;
-		max-width: 400px;
-		margin: 0px auto;
 	}
 
 	li {
 		@media (max-width: 768px) {
 			margin-bottom: 3rem;
 		}
+
 		h4 {
 			font-style: normal;
 			font-weight: bold;
@@ -102,11 +100,8 @@ ul {
 		}
 
 		p {
-			font-style: normal;
 			font-weight: 100;
-			font-size: 15px;
 			line-height: 145%;
-			letter-spacing: 0.01em;
 		}
 	}
 }

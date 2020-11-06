@@ -33,6 +33,7 @@
 		justify-self: end;
 		display: block;
 		position: relative;
+
 		&::after {
 			position: absolute;
 			top: 50%;
@@ -42,11 +43,10 @@
 			width: 140%;
 			height: 140%;
 			background: radial-gradient(
-				50.04% 46.09% at 50.09% 50%,
-				rgba(18, 165, 95, 0.5) 0%,
+				50% 50% at 50% 50%,
+				rgba(18, 165, 95, 0.6) 0%,
 				rgba(18, 165, 95, 0) 100%
 			);
-
 			display: block;
 			z-index: -1;
 		}
@@ -61,16 +61,6 @@
 			justify-self: center;
 			order: 1;
 			margin-bottom: 3rem;
-		}
-		p {
-			margin-left: auto;
-			margin-right: auto;
-		}
-
-		h3 {
-			margin-left: auto;
-			margin-right: auto;
-			text-align: center;
 		}
 
 		a {

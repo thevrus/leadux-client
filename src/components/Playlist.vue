@@ -79,7 +79,7 @@ export default {
 				if (lesson.slug === this.$route.params.slug) return
 
 				this.setCurrentLesson(lesson)
-				this.$router.push({ name: 'WatchSlug', params: { slug: lesson.slug } })
+				this.$router.push({ name: 'watch-slug', params: { slug: lesson.slug } })
 			} else if (!this.loggedIn) {
 				this.$router.push('/login')
 			} else {
@@ -130,9 +130,7 @@ export default {
 		&:hover {
 			cursor: pointer;
 			background: linear-gradient(90deg, #252525 0.05%, #40404000 100%);
-		}
 
-		&:hover {
 			&::before {
 				opacity: 1;
 			}

@@ -67,7 +67,7 @@ export default {
 				this.setCurrentLesson(lesson)
 			} else {
 				this.$router.push({
-					name: 'WatchSlug',
+					name: 'watch-slug',
 					params: {
 						slug: this.currentLesson.slug,
 					},
@@ -89,7 +89,7 @@ export default {
 	grid-template-rows: 1fr auto;
 	min-height: 100vh;
 	background-color: var(--bg);
-	min-width: 1015px !important;
+	min-width: 1090px !important;
 }
 
 .watch {
