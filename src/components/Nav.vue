@@ -52,7 +52,7 @@ export default {
 			)
 		},
 		routerLink() {
-			return this.loggedIn ? 'Pay' : 'Register'
+			return this.loggedIn ? 'pay' : 'register'
 		},
 		nextRoute() {
 			return this.isStudent ? { nextRoute: 'watch' } : null
@@ -152,7 +152,6 @@ export default {
 	border: none;
 	cursor: pointer;
 	margin-left: 2.5rem;
-
 	padding: 0.95rem 1.8rem;
 	font-size: 0.9rem;
 	line-height: 130%;
