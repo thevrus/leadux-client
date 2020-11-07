@@ -20,19 +20,20 @@
 				</button>
 			</div>
 			<div class="burger-wrap">
-				<button class="btn" @click="isOpened = !isOpened">
+				<button class="btn" @click="openMenu">
+					<div class="overlay" v-if="isOpened"></div>
 					<div class="burger" :class="{ burgerOpen: isOpened }"></div>
 				</button>
 				<transition name="fade">
-					<ul class="list" v-if="isOpened">
+					<ul class="list" v-if="isOpened" @click="closeMenu">
 						<li class="list-item">
-							<router-link class="link" to="/#skills">Для кого</router-link>
+							<a href="/#skills">Для кого</a>
 						</li>
 						<li class="list-item">
-							<router-link class="link" to="/#learn">Что внутри</router-link>
+							<a href="/#learn">Вы научитесь</a>
 						</li>
 						<li class="list-item">
-							<router-link class="link" to="/#faq">ЧАВО</router-link>
+							<a href="/#price">Цена</a>
 						</li>
 					</ul>
 				</transition>
@@ -64,6 +65,22 @@ export default {
 			this.logout()
 			this.clearCurrentLesson()
 			window.location.reload()
+		},
+
+		openMenu() {
+			this.isOpened = !this.isOpened
+			if (this.isOpened) {
+				document.body.style.overflow = 'hidden'
+			} else {
+				document.body.style.overflow = 'initial'
+			}
+		},
+
+		closeMenu(e) {
+			if (e.target.hash) {
+				this.isOpened = false
+				document.body.style.overflow = 'initial'
+			}
 		},
 	},
 }
@@ -132,6 +149,19 @@ nav {
 			}
 		}
 
+		.overlay {
+			background-color: #000;
+			opacity: 0.6;
+			width: 100vw;
+			height: 100vh;
+			position: fixed;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			z-index: 9;
+		}
+
 		.btn {
 			border: none;
 			outline: none;
@@ -140,6 +170,7 @@ nav {
 			appearance: none;
 		}
 		.burger {
+			z-index: 10;
 			width: 32px;
 			height: 1.5px;
 			display: block;
@@ -192,9 +223,9 @@ nav {
 			padding: 0.5rem 0px;
 			position: absolute;
 			top: 36px;
-			right: -18px;
+			right: -21px;
 			z-index: 10;
-			width: 100vw;
+			width: 103vw;
 			background: radial-gradient(
 				48.2% 35.86% at 100% 0%,
 				rgba(0, 87, 217, 0.6) 0%,
@@ -204,6 +235,9 @@ nav {
 
 			.list-item {
 				margin: 0.5rem 0;
+				a {
+					width: 100%;
+				}
 			}
 		}
 	}

@@ -53,6 +53,16 @@
 			);
 			display: block;
 			z-index: -1;
+
+			@media (max-width: 768px) {
+				width: 170%;
+				height: 170%;
+				background: radial-gradient(
+					54.04% 46.09% at 50.09% 50%,
+					rgba(40, 152, 255, 0.5) 0%,
+					rgba(40, 152, 255, 0) 100%
+				);
+			}
 		}
 	}
 
