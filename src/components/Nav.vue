@@ -52,10 +52,10 @@ export default {
 			)
 		},
 		routerLink() {
-			return this.loggedIn ? 'Pay' : 'Register'
+			return this.loggedIn ? 'pay' : 'register'
 		},
 		nextRoute() {
-			return this.isStudent ? { nextRoute: 'Watch' } : null
+			return this.isStudent ? { nextRoute: 'watch' } : null
 		},
 		isCompletedCourse() {
 			return this.watchedLessons.length === this.lessonsLength
@@ -76,7 +76,7 @@ export default {
 	justify-content: space-between;
 	align-items: center;
 	background-color: var(--panel-bg);
-	box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.04);
+	box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04);
 }
 
 .logo {
@@ -138,8 +138,8 @@ export default {
 
 .line-load {
 	position: absolute;
-	left: 0px;
-	right: 0px;
+	left: 0;
+	right: 0;
 	height: 4px;
 	background-color: #2eb761;
 	border-radius: 50px;
@@ -152,12 +152,11 @@ export default {
 	border: none;
 	cursor: pointer;
 	margin-left: 2.5rem;
-
 	padding: 0.95rem 1.8rem;
 	font-size: 0.9rem;
 	line-height: 130%;
 	border-radius: 12px;
-	color: #ffffff;
+	color: #fff;
 	transition: opacity 0.2s;
 	flex-shrink: 0;
 

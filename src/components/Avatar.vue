@@ -57,6 +57,6 @@ export default {
 	user-select: none;
 	font-weight: bold;
 	font-size: 1rem;
-	color: #ffffff;
+	color: #fff;
 }
 </style>

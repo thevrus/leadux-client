@@ -4,9 +4,9 @@
 	--panel-border: #262626;
 	--primary: #e93762;
 	--secondary: #733bea;
-	--section-margin: 160px;
+	--section-margin: 180px;
+
 	@media (max-width: 768px) {
-		--section-margin: 80px;
+		--section-margin: 60px;
 	}
 }
-	

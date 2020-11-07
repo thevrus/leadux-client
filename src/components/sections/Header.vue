@@ -1,21 +1,25 @@
 <template>
 	<header>
 		<Nav />
+
 		<div class="container">
 			<div class="header">
 				<span class="col-l">
-					<h1>Единственный курс по UX/UI дизайну, который тебе нужен</h1>
+					<h1>Единственный курс Figma который тебе нужен</h1>
 					<p class="desc">
 						Твой путь в веб-дизайне и дизайне мобильных приложений для iOS и
 						Android начинается здесь
 					</p>
+
 					<div class="btn-wrapp">
 						<a href="#price" class="cta">Купить</a>
+
 						<router-link to="/watch" class="watch">
 							{{ loggedIn ? 'Смотреть' : 'Попробовать бесплатно' }}
 						</router-link>
 					</div>
 				</span>
+
 				<span class="col-r">
 					<div class="box">
 						<img
@@ -58,9 +62,9 @@ header {
 	overflow: hidden;
 	z-index: 2;
 	background: radial-gradient(
-		48.2% 35.86% at 100% 0%,
-		rgba(0, 87, 217, 0.6) 0%,
-		rgba(0, 102, 255, 0) 100%
+		65% 100% at 100% 0%,
+		rgba(238, 59, 254, 0.5) 0%,
+		rgba(255, 81, 248, 0) 73.29%
 	);
 }
 
@@ -81,7 +85,7 @@ header {
 		font-weight: bold;
 		font-size: responsive 2rem 3rem;
 		line-height: 110%;
-		color: #ffffff;
+		color: #fff;
 		margin-bottom: 2.5rem;
 	}
 
@@ -112,7 +116,7 @@ header {
 			text-decoration: none;
 		}
 
-		&:before {
+		&::before {
 			content: '';
 			width: 10px;
 			height: 12px;
@@ -140,6 +144,7 @@ header {
 			height: 658px;
 			z-index: 0;
 			animation: fadeIn 1.2s ease-in-out 1;
+
 			@media (max-width: 768px) {
 				left: 54px;
 				top: -106px;
@@ -176,7 +181,7 @@ header {
 			&::after {
 				content: '';
 				display: block;
-				background: linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, #000000 100%);
+				background: linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, #000 100%);
 				z-index: 4;
 				height: 658px;
 				width: 135%;

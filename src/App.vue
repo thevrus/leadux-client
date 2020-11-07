@@ -5,11 +5,11 @@
 </template>
 
 <script>
-import { metaInfo } from '@/meta/index'
-
 export default {
 	name: 'App',
-	metaInfo,
+	metaInfo: {
+		title: 'LeadUX – Единственный курс Figma который тебе нужен',
+	},
 }
 </script>
 

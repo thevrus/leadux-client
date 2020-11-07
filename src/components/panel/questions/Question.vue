@@ -122,7 +122,7 @@ summary {
 .answers-counter {
 	display: block;
 	font-size: 0.9rem;
-	color: #ffffff;
+	color: #fff;
 	padding: 0.6rem 0;
 	border-top: 1px solid #262626;
 }

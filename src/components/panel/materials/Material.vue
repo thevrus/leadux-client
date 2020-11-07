@@ -99,13 +99,13 @@ export default {
 			font-size: 0.92rem;
 			line-height: 140%;
 			color: #34bf6c;
-			margin: 0px;
+			margin: 0;
 		}
 
 		.link {
 			font-weight: 500;
 			font-size: 0.85rem;
-			margin: 0px;
+			margin: 0;
 			line-height: 140%;
 			color: #fff;
 			transition: color 0.3s;
@@ -121,7 +121,7 @@ export default {
 		font-size: 0.9rem;
 		line-height: 140%;
 		color: #f4f4f4;
-		margin: 0px;
+		margin: 0;
 		padding-top: 1rem;
 	}
 

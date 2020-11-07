@@ -130,12 +130,12 @@ div {
 	color: #fff;
 
 	@media (max-width: 750px) {
-		margin-top: 0px;
+		margin-top: 0;
 	}
 
 	.position {
 		position: relative;
-		font-size: 1.2rem;
+		font-size: responsive 0.9rem 1.2rem;
 
 		&:not(:first-child)::after {
 			content: '';
@@ -146,6 +146,10 @@ div {
 			width: 14px;
 			height: 6px;
 			background-color: #000;
+
+			@media (max-width: 750px) {
+				width: 8px;
+			}
 		}
 	}
 }
@@ -188,6 +192,13 @@ input[type='range']::-webkit-slider-thumb {
 	background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzYiIGhlaWdodD0iMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwKSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjEuNSI+PHBhdGggZD0iTTI4LjUgNC45MTY5M2w1LjQ5OTkgNS40OTk5N0wyOC41IDE1LjkxNjhNNi41IDE1LjkxNjhsLTUuNDk5OTQtNS40OTk5TDYuNSA0LjkxNjkzTTM0LjAwMDEgMTAuNDE2NUgyMS4xNjY5TS45OTk5MSAxMC40MTY1SDEzLjgzMzEiLz48L2c+PGRlZnM+PGNsaXBQYXRoIGlkPSJjbGlwMCI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTAgMGgzNnYyMEgweiIvPjwvY2xpcFBhdGg+PC9kZWZzPjwvc3ZnPg==');
 	background-repeat: no-repeat;
 	background-position: center center;
+
+	@media (max-width: 750px) {
+		height: 44px;
+		width: 44px;
+		bottom: 22px;
+		background-size: 65%;
+	}
 }
 
 input[type='range']::-moz-range-thumb {
@@ -203,6 +214,13 @@ input[type='range']::-moz-range-thumb {
 	background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzYiIGhlaWdodD0iMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwKSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjEuNSI+PHBhdGggZD0iTTI4LjUgNC45MTY5M2w1LjQ5OTkgNS40OTk5N0wyOC41IDE1LjkxNjhNNi41IDE1LjkxNjhsLTUuNDk5OTQtNS40OTk5TDYuNSA0LjkxNjkzTTM0LjAwMDEgMTAuNDE2NUgyMS4xNjY5TS45OTk5MSAxMC40MTY1SDEzLjgzMzEiLz48L2c+PGRlZnM+PGNsaXBQYXRoIGlkPSJjbGlwMCI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTAgMGgzNnYyMEgweiIvPjwvY2xpcFBhdGg+PC9kZWZzPjwvc3ZnPg==');
 	background-repeat: no-repeat;
 	background-position: center center;
+
+	@media (max-width: 750px) {
+		height: 44px;
+		width: 44px;
+		bottom: 22px;
+		background-size: 65%;
+	}
 }
 
 input[type='range']::-webkit-slider-thumb:active {

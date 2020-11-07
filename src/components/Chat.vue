@@ -2,6 +2,7 @@
 	<a
 		href="https://www.t.me/designeroq"
 		target="_blank"
+		rel="noopener noreferrer"
 		class="chat"
 		title="Задать вопрос"
 	>

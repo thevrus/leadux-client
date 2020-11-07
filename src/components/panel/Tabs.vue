@@ -105,7 +105,7 @@ export default {
 	border-radius: 10px;
 	position: relative;
 	border: 1px solid var(--panel-border);
-	box-shadow: 0px 2px 6px 0px #000000 20%;
+	box-shadow: 0 2px 6px 0 #000 20%;
 	min-height: 500px;
 
 	&-body {

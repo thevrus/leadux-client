@@ -60,7 +60,7 @@ export default {
 		userLogout() {
 			this.logout()
 			this.clearCurrentLesson()
-			this.$router.push({ name: 'Login' })
+			this.$router.push({ name: 'login' })
 		},
 	},
 }
@@ -158,6 +158,6 @@ export default {
 	padding: 1rem 1.1rem 1rem 1rem;
 	border-radius: 8px;
 	border: 1px solid var(--panel-border);
-	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 </style>
