@@ -3,6 +3,7 @@
 		<h3>В этом курсе вы научитесь:</h3>
 		<ul>
 			<li v-for="(item, index) in array" :key="'Learn' + index">
+				<img :src="item.img" />
 				<h4>{{ item.title }}</h4>
 				<p>{{ item.description }}</p>
 			</li>
@@ -11,39 +12,52 @@
 </template>
 
 <script>
+import img1 from '@/assets/img/learn_img-1.jpg'
+import img2 from '@/assets/img/learn_img-2.jpg'
+import img3 from '@/assets/img/learn_img-3.jpg'
+import img4 from '@/assets/img/learn_img-4.jpg'
+import img5 from '@/assets/img/learn_img-5.jpg'
+import img6 from '@/assets/img/learn_img-6.jpg'
+
 export default {
 	data() {
 		return {
 			array: [
 				{
-					title: 'Создавать веб-сайты с нуля',
-					description:
-						'В заключительной части курса вы увидите подробный процесс создания главной страницы сайта с нуля. Шаг за шагом...',
-				},
-				{
-					title: 'Дизайнить для iOS и Android',
-					description:
-						'Разбересь с профессиональными функциями, которые позволят упростить и ускорить разработку интерфейсов для смартфонов',
-				},
-				{
-					title: 'Рисовать современный дизайн',
-					description:
-						'Освоите множество полезных инструментов и приемов для создания дорогого, современного дизайна и сможете начать зарабатывать',
-				},
-				{
-					title: 'Работать с интерфейсом Figma',
+					img: img1,
+					title: 'Полностью изучите инструмент Figma',
 					description:
 						'Вы будете знать где находятся функции, панели и команды. Сможете легко ориентироваться внутри программы',
 				},
 				{
-					title: 'Грамотно управлять инструментами',
-					description:
-						'Сможете пользоваться всеми инструментами Figma на профессиональном уровне и использовать все их фишки и секреты',
-				},
-				{
-					title: 'Пользоваться горячими клавишами',
+					img: img2,
+					title: 'Освоите все гарячие клавишы и фишки Figma',
 					description:
 						'В каждом урок автор будет показывать какие клавиши он нажимает и за то отвечает то или иное сокращение',
+				},
+				{
+					img: img3,
+					title: 'Работать со стилями и компонентами',
+					description:
+						'Вы обучитесь компонентному подходу в разработке интерфейсов который упростит вашу жизнь и жизнь разработчиков',
+				},
+				{
+					img: img4,
+					title: 'Работать со шрифтами',
+					description:
+						'Вы освоите инстумент типографики и узнаете о разновидности гарнитур используемых в разработке интерфейсов',
+				},
+				{
+					img: img5,
+					title: 'Создавать мобильные приложения',
+					description:
+						'Разбересь с профессиональными функциями, которые позволят упростить и ускорить разработку интерфейсов для смартфонов',
+				},
+				{
+					img: img6,
+					title: 'Создавать веб сайты',
+					description:
+						'В заключительной части курса вы увидите подробный процесс создания главной страницы сайта с нуля. Шаг за шагом...',
 				},
 			],
 		}
@@ -86,17 +100,16 @@ ul {
 			margin-bottom: 3rem;
 		}
 
+		img {
+			width: 100%;
+			max-width: 382px;
+		}
+
 		h4 {
 			font-style: normal;
 			font-weight: bold;
 			font-size: 18px;
 			line-height: 120%;
-
-			&::before {
-				display: block;
-				margin-bottom: 1rem;
-				content: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTIiIGZpbGw9IiMzNEJGNkMiLz48cGF0aCBkPSJNNy43MTM4NyAxMi4zNDI5bDMuNDI4NTMgMy40Mjg1IDUuMTQyOS01LjQ4NTciIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIyLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==');
-			}
 		}
 
 		p {

@@ -28,6 +28,15 @@
 					{{ message }}
 				</div>
 
+				<a
+					class="forgot-link"
+					href="https://www.t.me/designeroq"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					Забыл пароль?
+				</a>
+
 				<button :disabled="loading">
 					<span class="btn">Войти</span>
 				</button>
@@ -179,6 +188,18 @@ button {
 
 a {
 	text-decoration: none;
+}
+
+.forgot-link {
+	color: #000;
+	display: block;
+	text-align: right;
+	margin: 0.8rem 0;
+	font-size: 0.9rem;
+	transition: color 0.3s;
+	&:hover {
+		text-decoration: underline;
+	}
 }
 
 .login-page {
