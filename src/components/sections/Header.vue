@@ -23,7 +23,7 @@
 				<span class="col-r">
 					<div class="box">
 						<img
-							src="@/assets/img/header_figma.png"
+							src="@/assets/img/header_figma.jpg"
 							alt="Интерфейс Фигма"
 							class="figma"
 						/>
@@ -62,10 +62,18 @@ header {
 	overflow: hidden;
 	z-index: 2;
 	background: radial-gradient(
-		65% 100% at 100% 0%,
+		65.13% 124.98% at 100% 0%,
 		rgba(238, 59, 254, 0.5) 0%,
 		rgba(255, 81, 248, 0) 73.29%
 	);
+
+	@media (max-width: 768px) {
+		background: radial-gradient(
+			85.13% 24.98% at 100% 0%,
+			rgba(238, 59, 254, 0.5) 0%,
+			rgba(255, 81, 248, 0) 73.29%
+		);
+	}
 }
 
 .header {
@@ -76,8 +84,12 @@ header {
 
 	@media (max-width: 768px) {
 		grid-template-columns: 1fr;
-		grid-template-rows: 600px 1fr;
+		grid-template-rows: 400px 1fr;
 		padding-bottom: 3.8rem;
+	}
+
+	@media (max-width: 425px) {
+		grid-template-rows: 250px 1fr;
 	}
 	h1 {
 		max-width: 580px;
@@ -126,6 +138,9 @@ header {
 			transform: translateY(-50%);
 			left: 1.75rem;
 			background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTYuNjE3IDIuNTZDOC44NTQgNC4xIDkuOTcyIDQuODcgMTAgNS45NDh2LjEwNkM5Ljk3MiA3LjEzIDguODU0IDcuOSA2LjYxNyA5LjQ0Yy0yLjg2MiAxLjk3Mi00LjI5MyAyLjk1Ny01LjQxOCAyLjQxMmEyLjIzMyAyLjIzMyAwIDAxLS4xMDctLjA1NUMwIDExLjE4OCAwIDkuNDU5IDAgNlMwIC44MTIgMS4wOTIuMjA0Yy4wMzUtLjAyLjA3LS4wMzguMTA3LS4wNTUgMS4xMjUtLjU0NSAyLjU1Ni40NCA1LjQxOCAyLjQxMnoiIGZpbGw9IiNmZmYiLz48L3N2Zz4=');
+			@media (max-width: 768px) {
+				top: -244px;
+			}
 		}
 	}
 	.col-l {
@@ -146,8 +161,14 @@ header {
 			animation: fadeIn 1.2s ease-in-out 1;
 
 			@media (max-width: 768px) {
-				left: 54px;
+				left: 114px;
 				top: -106px;
+				height: 520px;
+			}
+
+			@media (max-width: 425px) {
+				clip: rect(0px, 500px, 390px, 0px);
+				left: 14px;
 			}
 		}
 
@@ -160,8 +181,13 @@ header {
 			animation: fadeIn 3s ease-in-out 1;
 
 			@media (max-width: 768px) {
-				left: 203px;
+				left: 243px;
 				top: -79px;
+				height: 490px;
+			}
+			@media (max-width: 425px) {
+				clip: rect(0px, 500px, 360px, 0px);
+				left: 132px;
 			}
 		}
 
@@ -188,6 +214,13 @@ header {
 				position: absolute;
 				top: -64px;
 				left: 14px;
+
+				@media (max-width: 768px) {
+					top: -244px;
+				}
+				@media (max-width: 425px) {
+					top: -374px;
+				}
 			}
 		}
 	}

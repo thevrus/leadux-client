@@ -49,7 +49,7 @@ section {
 				width: 170%;
 				height: 170%;
 				background: radial-gradient(
-					54.04% 46.09% at 50.09% 50%,
+					54.04% 40.09% at 50.09% 50%,
 					rgba(115, 59, 234, 0.5) 0%,
 					rgba(115, 59, 234, 0) 100%
 				);

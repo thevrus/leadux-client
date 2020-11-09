@@ -68,6 +68,7 @@ export default {
 <style lang="postcss" scoped>
 section {
 	margin-bottom: var(--section-margin);
+	padding-bottom: 3.25rem;
 }
 
 h3 {
@@ -93,16 +94,18 @@ ul {
 	}
 	@media (max-width: 768px) {
 		display: block;
+		text-align: center;
 	}
 
 	li {
 		@media (max-width: 768px) {
-			margin-bottom: 3rem;
+			margin-bottom: 5rem;
 		}
 
 		img {
 			width: 100%;
 			max-width: 382px;
+			border-radius: 4px;
 		}
 
 		h4 {
@@ -115,6 +118,10 @@ ul {
 		p {
 			font-weight: 100;
 			line-height: 145%;
+			@media (max-width: 768px) {
+				max-width: 382px;
+				margin: 0 auto;
+			}
 		}
 	}
 }

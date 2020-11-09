@@ -80,7 +80,7 @@ footer {
 				font-size: 0.9rem;
 				margin-left: 2rem;
 				font-weight: 100;
-				@media (max-width: 667px) {
+				@media (max-width: 685px) {
 					margin: 0;
 				}
 			}
