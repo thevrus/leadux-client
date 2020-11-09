@@ -3,7 +3,7 @@
 		<h3>В этом курсе вы научитесь:</h3>
 		<ul>
 			<li v-for="(item, index) in array" :key="'Learn' + index">
-				<img :src="item.img" />
+				<img :src="item.img" :alt="item.title" />
 				<h4>{{ item.title }}</h4>
 				<p>{{ item.description }}</p>
 			</li>
@@ -91,30 +91,37 @@ ul {
 	@media (max-width: 920px) {
 		grid-template-columns: repeat(2, 1fr);
 	}
+
 	@media (max-width: 768px) {
 		display: block;
 	}
 
 	li {
 		@media (max-width: 768px) {
-			margin-bottom: 3rem;
+			margin-bottom: 4rem;
 		}
 
 		img {
 			width: 100%;
-			max-width: 382px;
+			max-width: auto;
+			border-radius: 4px;
+
+			@media (min-width: 960px) {
+				max-width: 382px;
+			}
 		}
 
 		h4 {
-			font-style: normal;
 			font-weight: bold;
-			font-size: 18px;
+			font-size: 1.1rem;
 			line-height: 120%;
+			margin: 0.9rem 0 0.8rem 0;
 		}
 
 		p {
 			font-weight: 100;
 			line-height: 145%;
+			margin: 0;
 		}
 	}
 }

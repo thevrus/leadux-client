@@ -106,7 +106,6 @@ export default {
 <style lang="postcss" scoped>
 section {
 	margin-bottom: var(--section-margin);
-	padding: 100px 0;
 	background: radial-gradient(
 		45% 40% at 50% 60%,
 		rgba(127, 18, 165, 0.5) 0%,
@@ -150,11 +149,12 @@ section {
 		position: relative;
 
 		@media (max-width: 690px) {
+			margin: 0.5rem auto 1rem;
 			background-color: transparent;
 			grid-template-columns: 1fr;
 			grid-column-gap: 0;
-			grid-row-gap: 2rem;
-			padding: 0.5rem 2rem;
+			grid-row-gap: 0.8rem;
+			padding: 0.5rem 0;
 		}
 
 		img {
@@ -202,7 +202,6 @@ section {
 			line-height: 120%;
 			color: #000;
 			padding: 0.6rem 0;
-
 			border-top: 1px solid #e5e5e5;
 			border-bottom: 1px solid #e5e5e5;
 
@@ -253,7 +252,7 @@ section {
 			font-size: 1.1rem;
 			transition: opacity transform 0.3s;
 
-			&:hover {
+			:hover {
 				opacity: 0.8;
 			}
 

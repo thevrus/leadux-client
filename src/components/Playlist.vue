@@ -142,7 +142,7 @@ export default {
 		cursor: pointer;
 		background: linear-gradient(90deg, #252525 0.05%, #40404000 100%);
 
-		&:before {
+		&::before {
 			content: '';
 			background-color: var(--secondary);
 			display: block;
@@ -253,10 +253,6 @@ details[open] summary ~ * {
 	animation: fadeIn 0.3s ease-in-out;
 }
 
-summary::-webkit-details-marker {
-	display: none;
-}
-
 .summary {
 	outline: none;
 	background-color: var(--panel-bg);
@@ -264,6 +260,15 @@ summary::-webkit-details-marker {
 	padding: 1.75rem 2.25rem;
 	position: relative;
 	cursor: pointer;
+	list-style-type: none;
+
+	::-webkit-details-marker {
+		display: none;
+	}
+
+	::-moz-details-marker {
+		display: none;
+	}
 
 	&::after {
 		position: absolute;

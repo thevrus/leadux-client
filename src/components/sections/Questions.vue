@@ -33,11 +33,9 @@
 
 	.col-r {
 		justify-self: end;
-	}
-
-	.col-r {
 		display: block;
 		position: relative;
+
 		&::after {
 			position: absolute;
 			top: 50%;
@@ -76,16 +74,6 @@
 			justify-self: center;
 			order: 1;
 			margin-bottom: 3rem;
-		}
-
-		p {
-			margin-left: auto;
-			margin-right: auto;
-		}
-
-		h3 {
-			margin-left: auto;
-			margin-right: auto;
 		}
 
 		a {

@@ -12,17 +12,23 @@
 
 		<div class="login-wrapp">
 			<div class="logginLogut">
-				<router-link class="login" v-if="!loggedIn" to="/login"
-					>Вход</router-link
-				>
+				<router-link class="login" v-if="!loggedIn" to="/login">
+					Вход
+				</router-link>
+
 				<button class="logout" v-if="loggedIn" href="#!" @click="userLogout">
 					Выход
 				</button>
 			</div>
+
 			<div class="burger-wrap">
-				<button class="btn" @click="openMenu">
+				<button
+					class="btn"
+					@click="openMenu"
+					:aria-label="isOpened ? 'Закрыть меню' : 'Открыть меню'"
+				>
 					<div class="overlay" v-if="isOpened"></div>
-					<div class="burger" :class="{ burgerOpen: isOpened }"></div>
+					<div class="burger" :class="{ 'burger-open': isOpened }"></div>
 				</button>
 
 				<transition name="fade">
@@ -30,9 +36,11 @@
 						<li class="list-item">
 							<a href="/#skills">Для кого</a>
 						</li>
+
 						<li class="list-item">
 							<a href="/#learn">Вы научитесь</a>
 						</li>
+
 						<li class="list-item">
 							<a href="/#price">Цена</a>
 						</li>
@@ -180,6 +188,7 @@ nav {
 			background-color: #fff;
 			position: relative;
 			transition: all 0.3s;
+
 			&::after {
 				content: '';
 				width: 32px;
@@ -193,7 +202,7 @@ nav {
 			}
 		}
 
-		.burgerOpen {
+		.burger-open {
 			width: 32px;
 			height: 1.5px;
 			display: block;
@@ -202,6 +211,7 @@ nav {
 			background-color: #fff;
 			margin-top: 8px;
 			position: relative;
+
 			&::after {
 				content: '';
 				width: 32px;
@@ -227,15 +237,12 @@ nav {
 			right: -21px;
 			z-index: 10;
 			width: 103vw;
-			background: radial-gradient(
-				48.2% 35.86% at 100% 0%,
-				rgba(0, 87, 217, 0.6) 0%,
-				rgba(0, 102, 255, 0) 100%
-			);
-			background-color: #192a68;
+			background: rgba(0, 0, 0, 0.4);
+			backdrop-filter: blur(28px);
 
 			.list-item {
 				margin: 0.5rem 0;
+
 				a {
 					width: 100%;
 				}

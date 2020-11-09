@@ -114,6 +114,7 @@ a {
 		bottom: -6rem;
 		left: 0;
 	}
+
 	@media (max-width: 450px) {
 		padding: 1.2rem 0;
 		display: block;
@@ -145,6 +146,14 @@ details {
 		padding-right: 2rem;
 		transition: transform 0.3s;
 
+		::-webkit-details-marker {
+			display: none;
+		}
+
+		::-moz-details-marker {
+			display: none;
+		}
+
 		&:hover {
 			opacity: 0.8;
 		}
@@ -171,9 +180,5 @@ details[open] summary::after {
 
 details[open] summary ~ * {
 	animation: fadeIn 0.3s ease-in-out;
-}
-
-summary::-webkit-details-marker {
-	display: none;
 }
 </style>

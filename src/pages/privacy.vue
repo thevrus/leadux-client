@@ -1,7 +1,13 @@
 <template>
 	<div>
 		<Nav />
-		<VueShowdown v-if="content.text" :markdown="content.text" class="content" />
+		<main class="container">
+			<VueShowdown
+				v-if="content.text"
+				:markdown="content.text"
+				class="content"
+			/>
+		</main>
 		<Footer />
 	</div>
 </template>
