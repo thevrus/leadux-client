@@ -3,16 +3,16 @@
 		<div class="container grid-x2fr">
 			<div class="col-l">
 				<span>Сотни полезных ссылок</span>
-				<h3>
+				<h2>
 					Очень много полезных материалов
-				</h3>
+				</h2>
 				<p>
 					Все лучшее, что автор использует лично в ежедневной работе. Тысячи
 					иконок, изображения в высоком разрешении и много-много всего
 					совершенно бесплатно
 				</p>
 
-				<a href="#price" class="cta">Купить курс</a>
+				<a href="#price" rel="noopener" class="cta">Купить курс</a>
 			</div>
 			<div class="col-r">
 				<img src="@/assets/img/materials_img.png" alt="Вопросы и ответы" />

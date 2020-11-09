@@ -1,6 +1,6 @@
 <template>
 	<section class="container">
-		<h3 id="price">Попробуй первые 2 занятия бесплатно!</h3>
+		<h2 id="price">Попробуй первые 2 занятия бесплатно!</h2>
 		<p>Гарантия возврата денег</p>
 
 		<div class="plans" v-if="!loading">
@@ -8,7 +8,7 @@
 
 			<div class="plan">
 				<div>
-					<h4>{{ student.name }}</h4>
+					<h3>{{ student.name }}</h3>
 
 					<p class="price">{{ student.amount }}<span>$</span></p>
 
@@ -23,9 +23,7 @@
 				>
 					<input type="hidden" name="data" :value="student.data" />
 					<input type="hidden" name="signature" :value="student.signature" />
-					<button class="cta">
-						Купить
-					</button>
+					<button class="cta">Купить</button>
 				</form>
 			</div>
 
@@ -33,7 +31,7 @@
 
 			<div class="plan">
 				<div>
-					<h4>{{ studentPlus.name }}</h4>
+					<h3>{{ studentPlus.name }}</h3>
 
 					<p class="price">{{ studentPlus.amount }}<span>$</span></p>
 
@@ -112,7 +110,7 @@ section {
 		rgba(127, 18, 165, 0) 100%
 	);
 
-	h3 {
+	h2 {
 		font-style: normal;
 		font-weight: 500;
 		font-size: responsive 1.7rem 2.75rem;
@@ -183,7 +181,7 @@ section {
 			border-radius: 20px;
 		}
 
-		h4 {
+		h3 {
 			color: #000;
 			font-style: normal;
 			font-weight: 500;

@@ -1,13 +1,13 @@
 <template functional>
 	<section id="skills" class="container">
-		<h3>Кому подойдет этот курс:</h3>
+		<h2>Кому подойдет этот курс:</h2>
 
 		<div class="grid">
 			<span class="junior">
-				<h4>
+				<h3>
 					Новичкам
 					<img src="@/assets/img/skills_junior.png" alt="Иконка человека" />
-				</h4>
+				</h3>
 				<p>
 					Вы с нуля освоите навыки работы в Figma и сможете начать карьеру
 					веб-дизайнера или стать UI/UX специалистом
@@ -15,10 +15,10 @@
 			</span>
 
 			<span class="middle">
-				<h4>
+				<h3>
 					Продвинутым
 					<img src="@/assets/img/skills_middle.png" alt="Иконка человека" />
-				</h4>
+				</h3>
 				<p>
 					Вы уже знакомы с Photoshop, Sketch app, Adobe XD и прочими
 					программами, но хотите изучить лучшую из всех — Figma
@@ -26,10 +26,10 @@
 			</span>
 
 			<span class="senior">
-				<h4>
+				<h3>
 					Профессионалам
 					<img src="@/assets/img/skills_senior.png" alt="Иконка человека" />
-				</h4>
+				</h3>
 				<p>
 					Вы профи в полиграфии, обработке фото или любой другой области, и
 					хотите освоить новые горизонты
@@ -44,7 +44,7 @@
 	padding-top: 8rem;
 	margin-bottom: var(--section-margin);
 
-	h3 {
+	h2 {
 		font-weight: bold;
 		font-size: responsive 1.5rem 2.25rem;
 		margin-bottom: 2.5rem;
@@ -84,7 +84,7 @@
 		}
 	}
 
-	h4 {
+	h3 {
 		font-weight: normal;
 		font-size: responsive 1rem 1.15rem;
 		line-height: 140%;
@@ -98,7 +98,7 @@
 		grid-area: junior;
 		margin: 0 auto;
 
-		h4 {
+		h3 {
 			background: linear-gradient(180deg, #4590d4 0%, #76aee1 100%);
 			position: relative;
 
@@ -116,7 +116,7 @@
 		grid-area: middle;
 		margin: 0 auto;
 
-		h4 {
+		h3 {
 			position: relative;
 			background: linear-gradient(180deg, #e14d4d 0%, #e77575 100%);
 
@@ -139,7 +139,7 @@
 			grid-column-end: 4;
 		}
 
-		h4 {
+		h3 {
 			position: relative;
 			background: linear-gradient(180deg, #864ee1 0%, #a492ec 100%);
 

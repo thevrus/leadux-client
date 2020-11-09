@@ -12,7 +12,7 @@
 					</p>
 
 					<div class="btn-wrapp">
-						<a href="#price" class="cta">Купить</a>
+						<a href="#price" rel="noopener" class="cta">Купить</a>
 
 						<router-link to="/watch" class="watch">
 							{{ loggedIn ? 'Смотреть' : 'Попробовать бесплатно' }}
@@ -23,7 +23,7 @@
 				<span class="col-r">
 					<div class="box">
 						<img
-							src="@/assets/img/header_figma.png"
+							src="@/assets/img/header_figma.svg"
 							alt="Интерфейс Фигма"
 							class="figma"
 						/>

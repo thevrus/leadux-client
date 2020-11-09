@@ -2,7 +2,7 @@
 	<div class="auth">
 		<Nav />
 		<div class="card">
-			<h3>Вход</h3>
+			<h2>Вход</h2>
 
 			<form name="form" @submit.prevent="handleLogin">
 				<TextInput
@@ -146,7 +146,7 @@ export default {
 	}
 }
 
-h3 {
+h2 {
 	text-align: center;
 	font-weight: bold;
 	font-size: responsive 1.8rem 2.6rem;

@@ -2,8 +2,8 @@
 	<section class="container">
 		<div class="row">
 			<span>
-				<h3>Зарплата UX/UI дизайнера</h3>
-				<p>
+				<h2>Зарплата UX/UI дизайнера</h2>
+				<label for="slider">
 					Источник данных:
 					<a
 						href="https://career.habr.com/salaries"
@@ -12,7 +12,7 @@
 					>
 						Хабр Карьера
 					</a>
-				</p>
+				</label>
 			</span>
 
 			<output :class="{ small: value == max }">
@@ -33,6 +33,7 @@
 			:step="step"
 			v-model="value"
 			@change="slide"
+			id="slider"
 			class="range pink"
 		/>
 	</section>
@@ -99,7 +100,7 @@ output {
 	padding: 1.45rem 0;
 }
 
-h3 {
+h2 {
 	font-style: normal;
 	font-weight: 500;
 	font-size: responsive 1.8rem 2.75rem;
@@ -108,17 +109,17 @@ h3 {
 	margin: 0 0 1rem 0;
 }
 
-p {
+label {
 	font-style: normal;
 	font-weight: 500;
-	font-size: 18px;
+	font-size: 1.1rem;
 	line-height: 120%;
 	color: #cccccc;
 
 	a {
 		font-style: normal;
 		font-weight: 500;
-		font-size: 18px;
+		font-size: 1.1rem;
 		color: #fff;
 		text-decoration: underline;
 	}

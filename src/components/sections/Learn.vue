@@ -1,10 +1,10 @@
 <template>
 	<section id="learn" class="container">
-		<h3>В этом курсе вы научитесь:</h3>
+		<h2>В этом курсе вы научитесь:</h2>
 		<ul>
 			<li v-for="(item, index) in array" :key="'Learn' + index">
 				<img :src="item.img" :alt="item.title" />
-				<h4>{{ item.title }}</h4>
+				<h3>{{ item.title }}</h3>
 				<p>{{ item.description }}</p>
 			</li>
 		</ul>
@@ -70,7 +70,7 @@ section {
 	margin-bottom: var(--section-margin);
 }
 
-h3 {
+h2 {
 	font-style: normal;
 	font-size: responsive 1.5rem 2.75rem;
 	line-height: 120%;
@@ -111,7 +111,7 @@ ul {
 			}
 		}
 
-		h4 {
+		h3 {
 			font-weight: bold;
 			font-size: 1.1rem;
 			line-height: 120%;
