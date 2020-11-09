@@ -62,9 +62,9 @@ header {
 	overflow: hidden;
 	z-index: 2;
 	background: radial-gradient(
-		65% 100% at 100% 0%,
-		rgba(238, 59, 254, 0.5) 0%,
-		rgba(255, 81, 248, 0) 73.29%
+		38.67% 74.22% at 100% 0%,
+		rgba(254, 59, 246, 0.6) 4.12%,
+		rgba(91, 98, 255, 0) 99.9%
 	);
 }
 
