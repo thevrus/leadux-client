@@ -1,10 +1,10 @@
 <template>
 	<section id="learn" class="container">
-		<h3>В этом курсе вы научитесь:</h3>
+		<h2>В этом курсе вы научитесь:</h2>
 		<ul>
 			<li v-for="(item, index) in array" :key="'Learn' + index">
-				<img :src="item.img" />
-				<h4>{{ item.title }}</h4>
+				<img :src="item.img" :alt="item.title" />
+				<h3>{{ item.title }}</h3>
 				<p>{{ item.description }}</p>
 			</li>
 		</ul>
@@ -71,7 +71,7 @@ section {
 	padding-bottom: 3.25rem;
 }
 
-h3 {
+h2 {
 	font-style: normal;
 	font-size: responsive 1.5rem 2.75rem;
 	line-height: 120%;
@@ -92,6 +92,7 @@ ul {
 	@media (max-width: 920px) {
 		grid-template-columns: repeat(2, 1fr);
 	}
+
 	@media (max-width: 768px) {
 		display: block;
 		text-align: center;
@@ -104,15 +105,19 @@ ul {
 
 		img {
 			width: 100%;
-			max-width: 382px;
+			max-width: auto;
 			border-radius: 4px;
+
+			@media (min-width: 960px) {
+				max-width: 382px;
+			}
 		}
 
-		h4 {
-			font-style: normal;
+		h3 {
 			font-weight: bold;
-			font-size: 18px;
+			font-size: 1.1rem;
 			line-height: 120%;
+			margin: 0.9rem 0 0.8rem 0;
 		}
 
 		p {

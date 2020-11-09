@@ -96,6 +96,14 @@ summary {
 	position: relative;
 	cursor: pointer;
 
+	::-webkit-details-marker {
+		display: none;
+	}
+
+	::-moz-details-marker {
+		display: none;
+	}
+
 	&::after {
 		position: absolute;
 		right: 0;

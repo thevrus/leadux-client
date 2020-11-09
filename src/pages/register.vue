@@ -3,11 +3,11 @@
 		<Nav />
 
 		<div class="card">
-			<h3>Регистрация</h3>
+			<h2>Регистрация</h2>
 
-			<h4>
+			<h3>
 				Зарегистрируйтесь и смотрите 2 урока из курса совершенно бесплатно.
-			</h4>
+			</h3>
 
 			<form name="form" @submit.prevent="handleRegister">
 				<TextInput
@@ -158,7 +158,7 @@ export default {
 	}
 }
 
-h3 {
+h2 {
 	text-align: center;
 	font-weight: bold;
 	font-size: responsive 1.8rem 2.6rem;
@@ -167,7 +167,7 @@ h3 {
 	margin-bottom: 0;
 }
 
-h4 {
+h3 {
 	font-weight: 500;
 	font-size: responsive 1rem 1.1rem;
 	line-height: 140%;

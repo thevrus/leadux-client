@@ -4,16 +4,16 @@
 			<div class="col-l">
 				<span>Ответы получат все</span>
 
-				<h3>
+				<h2>
 					Задвайте вопросы — получайте ответы
-				</h3>
+				</h2>
 
 				<p>
 					Смотрите урок и у вас возникли вопросы? Задайте их не отрываясь от
 					просмотра и получите быстрый ответ от автора курса
 				</p>
 
-				<a href="#price" class="cta">Купить курс</a>
+				<a href="#price" rel="noopener" class="cta">Купить курс</a>
 			</div>
 
 			<div class="col-r">
@@ -33,11 +33,9 @@
 
 	.col-r {
 		justify-self: end;
-	}
-
-	.col-r {
 		display: block;
 		position: relative;
+
 		&::after {
 			position: absolute;
 			top: 50%;
@@ -76,16 +74,6 @@
 			justify-self: center;
 			order: 1;
 			margin-bottom: 3rem;
-		}
-
-		p {
-			margin-left: auto;
-			margin-right: auto;
-		}
-
-		h3 {
-			margin-left: auto;
-			margin-right: auto;
 		}
 
 		a {

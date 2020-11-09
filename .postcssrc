@@ -5,6 +5,7 @@
             "stage": "2"
         },
         "precss": {},
-        "postcss-responsive-type": {}
+        "postcss-responsive-type": {},
+        "postcss-input-range": {}
     }
 }

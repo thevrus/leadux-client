@@ -12,33 +12,20 @@
 
 		<div class="login-wrapp">
 			<div class="logginLogut">
-				<router-link class="login" v-if="!loggedIn" to="/login"
-					>Вход</router-link
-				>
+				<router-link class="login" v-if="!loggedIn" to="/login">
+					Вход
+				</router-link>
+
 				<button class="logout" v-if="loggedIn" href="#!" @click="userLogout">
 					Выход
 				</button>
 			</div>
-			<div class="burger-wrap">
-				<button class="btn" @click="openMenu">
-					<div class="overlay" v-if="isOpened"></div>
-					<div class="burger" :class="{ burgerOpen: isOpened }"></div>
-				</button>
 
-				<transition name="fade">
-					<ul class="list" v-if="isOpened" @click="closeMenu">
-						<li class="list-item">
-							<a href="/#skills">Для кого</a>
-						</li>
-						<li class="list-item">
-							<a href="/#learn">Вы научитесь</a>
-						</li>
-						<li class="list-item">
-							<a href="/#price">Цена</a>
-						</li>
-					</ul>
-				</transition>
-			</div>
+			<button
+				class="btn"
+				@click="openMenu"
+				:aria-label="isOpened ? 'Закрыть меню' : 'Открыть меню'"
+			></button>
 		</div>
 	</nav>
 </template>
@@ -47,11 +34,6 @@
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
-	data() {
-		return {
-			isOpened: false,
-		}
-	},
 	computed: {
 		...mapGetters('auth', ['loggedIn']),
 	},
@@ -66,22 +48,6 @@ export default {
 			this.logout()
 			this.clearCurrentLesson()
 			window.location.reload()
-		},
-
-		openMenu() {
-			this.isOpened = !this.isOpened
-			if (this.isOpened) {
-				document.body.style.overflow = 'hidden'
-			} else {
-				document.body.style.overflow = 'initial'
-			}
-		},
-
-		closeMenu(e) {
-			if (e.target.hash) {
-				this.isOpened = false
-				document.body.style.overflow = 'initial'
-			}
 		},
 	},
 }
@@ -140,105 +106,33 @@ nav {
 		}
 	}
 
-	.burger-wrap {
-		position: relative;
-		display: none;
-		margin-left: 1.5rem;
-		@media (max-width: 768px) {
-			& {
-				display: block;
-			}
-		}
+	.btn {
+		border: none;
+		outline: none;
+		background-color: transparent;
+		cursor: pointer;
+		appearance: none;
+	}
 
-		.overlay {
-			background-color: #000;
-			opacity: 0.6;
-			width: 100vw;
-			height: 100vh;
-			position: fixed;
-			left: 0;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			z-index: 9;
-		}
+	.list {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		padding: 0.5rem 0;
+		position: absolute;
+		top: 36px;
+		right: -21px;
+		z-index: 10;
+		width: 103vw;
+		background: rgba(0, 0, 0, 0.4);
+		backdrop-filter: blur(28px);
 
-		.btn {
-			border: none;
-			outline: none;
-			background-color: transparent;
-			cursor: pointer;
-			appearance: none;
-		}
-		.burger {
-			z-index: 10;
-			width: 32px;
-			height: 1.5px;
-			display: block;
-			border-radius: 8px;
-			margin-bottom: 10px;
-			background-color: #fff;
-			position: relative;
-			transition: all 0.3s;
-			&::after {
-				content: '';
-				width: 32px;
-				height: 1.5px;
-				display: block;
-				border-radius: 8px;
-				background-color: #fff;
-				position: absolute;
-				left: 0;
-				top: 10px;
-			}
-		}
+		.list-item {
+			margin: 0.5rem 0;
 
-		.burgerOpen {
-			width: 32px;
-			height: 1.5px;
-			display: block;
-			border-radius: 8px;
-			transform: rotate(-45deg);
-			background-color: #fff;
-			margin-top: 8px;
-			position: relative;
-			&::after {
-				content: '';
-				width: 32px;
-				height: 1.5px;
-				display: block;
-				border-radius: 8px;
-				background-color: #fff;
-				transform: rotate(90deg);
-				position: absolute;
-				left: 0;
-				top: 0;
-			}
-		}
-
-		.list {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			flex-direction: column;
-			padding: 0.5rem 0;
-			position: absolute;
-			top: 36px;
-			right: -21px;
-			z-index: 10;
-			width: 103vw;
-			background: radial-gradient(
-				48.2% 35.86% at 100% 0%,
-				rgba(0, 87, 217, 0.6) 0%,
-				rgba(0, 102, 255, 0) 100%
-			);
-			background-color: #192a68;
-
-			.list-item {
-				margin: 0.5rem 0;
-				a {
-					width: 100%;
-				}
+			a {
+				width: 100%;
 			}
 		}
 	}

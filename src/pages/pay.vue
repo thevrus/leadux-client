@@ -23,3 +23,9 @@ export default {
 	},
 }
 </script>
+
+<style scoped>
+>>> section {
+	padding: 100px 0;
+}
+</style>

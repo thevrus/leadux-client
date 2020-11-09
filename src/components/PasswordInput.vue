@@ -90,10 +90,23 @@ div {
 	position: relative;
 }
 
+label {
+	position: absolute;
+	user-select: none;
+	top: 1.1rem;
+	left: 1.5rem;
+	font-weight: 500;
+	font-size: 1.1rem;
+	line-height: 140%;
+	color: rgba(0, 0, 0, 0.4);
+	transition: all 0.3s;
+}
+
 input {
 	padding: 1.7rem 1.5rem 0.7rem 1.5rem;
 	width: 100%;
 	outline: none;
+	font-size: 1rem;
 	border-radius: 0.7rem;
 	font-weight: bold;
 	color: #434343;
@@ -110,18 +123,6 @@ input:focus ~ label {
 input:not(:placeholder-shown).input:not(:focus) + label {
 	top: 0.6rem;
 	font-size: 0.8rem;
-}
-
-label {
-	position: absolute;
-	user-select: none;
-	top: 1.1rem;
-	left: 1.5rem;
-	font-weight: 500;
-	font-size: 1.1rem;
-	line-height: 140%;
-	color: rgba(0, 0, 0, 0.4);
-	transition: all 0.3s;
 }
 
 button {

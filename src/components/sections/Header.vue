@@ -12,7 +12,7 @@
 					</p>
 
 					<div class="btn-wrapp">
-						<a href="#price" class="cta">Купить</a>
+						<a href="#price" rel="noopener" class="cta">Купить</a>
 
 						<router-link to="/watch" class="watch">
 							{{ loggedIn ? 'Смотреть' : 'Попробовать бесплатно' }}
@@ -62,9 +62,9 @@ header {
 	overflow: hidden;
 	z-index: 2;
 	background: radial-gradient(
-		65.13% 124.98% at 100% 0%,
-		rgba(238, 59, 254, 0.5) 0%,
-		rgba(255, 81, 248, 0) 73.29%
+		38.67% 74.22% at 100% 0%,
+		rgba(254, 59, 246, 0.6) 4.12%,
+		rgba(91, 98, 255, 0) 99.9%
 	);
 
 	@media (max-width: 768px) {
@@ -84,13 +84,10 @@ header {
 
 	@media (max-width: 768px) {
 		grid-template-columns: 1fr;
-		grid-template-rows: 400px 1fr;
+		grid-template-rows: 240px 1fr;
 		padding-bottom: 3.8rem;
 	}
 
-	@media (max-width: 425px) {
-		grid-template-rows: 250px 1fr;
-	}
 	h1 {
 		max-width: 580px;
 		width: 100%;
@@ -161,14 +158,10 @@ header {
 			animation: fadeIn 1.2s ease-in-out 1;
 
 			@media (max-width: 768px) {
-				left: 114px;
+				left: 14px;
 				top: -106px;
 				height: 520px;
-			}
-
-			@media (max-width: 425px) {
-				clip: rect(0px, 500px, 390px, 0px);
-				left: 14px;
+				clip: rect(0px, 640px, 390px, 0px);
 			}
 		}
 
@@ -181,13 +174,10 @@ header {
 			animation: fadeIn 3s ease-in-out 1;
 
 			@media (max-width: 768px) {
-				left: 243px;
+				left: 132px;
 				top: -79px;
 				height: 490px;
-			}
-			@media (max-width: 425px) {
 				clip: rect(0px, 500px, 360px, 0px);
-				left: 132px;
 			}
 		}
 
@@ -216,9 +206,6 @@ header {
 				left: 14px;
 
 				@media (max-width: 768px) {
-					top: -244px;
-				}
-				@media (max-width: 425px) {
 					top: -374px;
 				}
 			}

@@ -1,6 +1,6 @@
 <template>
 	<section class="container">
-		<h3 id="price">Попробуй первые 2 занятия бесплатно!</h3>
+		<h2 id="price">Попробуй первые 2 занятия бесплатно!</h2>
 		<p>Гарантия возврата денег</p>
 
 		<div class="plans" v-if="!loading">
@@ -8,7 +8,7 @@
 
 			<div class="plan">
 				<div>
-					<h4>{{ student.name }}</h4>
+					<h3>{{ student.name }}</h3>
 
 					<p class="price">{{ student.amount }}<span>$</span></p>
 
@@ -23,9 +23,7 @@
 				>
 					<input type="hidden" name="data" :value="student.data" />
 					<input type="hidden" name="signature" :value="student.signature" />
-					<button class="cta">
-						Купить
-					</button>
+					<button class="cta">Купить</button>
 				</form>
 			</div>
 
@@ -33,7 +31,7 @@
 
 			<div class="plan">
 				<div>
-					<h4>{{ studentPlus.name }}</h4>
+					<h3>{{ studentPlus.name }}</h3>
 
 					<p class="price">{{ studentPlus.amount }}<span>$</span></p>
 
@@ -106,14 +104,13 @@ export default {
 <style lang="postcss" scoped>
 section {
 	margin-bottom: var(--section-margin);
-	padding: 100px 0;
 	background: radial-gradient(
 		45% 40% at 50% 60%,
 		rgba(127, 18, 165, 0.5) 0%,
 		rgba(127, 18, 165, 0) 100%
 	);
 
-	h3 {
+	h2 {
 		font-style: normal;
 		font-weight: 500;
 		font-size: responsive 1.7rem 2.75rem;
@@ -150,11 +147,12 @@ section {
 		position: relative;
 
 		@media (max-width: 690px) {
+			margin: 0.5rem auto 1rem;
 			background-color: transparent;
 			grid-template-columns: 1fr;
 			grid-column-gap: 0;
-			grid-row-gap: 2rem;
-			padding: 0.5rem 2rem;
+			grid-row-gap: 0.8rem;
+			padding: 0.5rem 0;
 		}
 
 		img {
@@ -183,7 +181,7 @@ section {
 			border-radius: 20px;
 		}
 
-		h4 {
+		h3 {
 			color: #000;
 			font-style: normal;
 			font-weight: 500;
@@ -202,7 +200,6 @@ section {
 			line-height: 120%;
 			color: #000;
 			padding: 0.6rem 0;
-
 			border-top: 1px solid #e5e5e5;
 			border-bottom: 1px solid #e5e5e5;
 
@@ -253,7 +250,7 @@ section {
 			font-size: 1.1rem;
 			transition: opacity transform 0.3s;
 
-			&:hover {
+			:hover {
 				opacity: 0.8;
 			}
 
