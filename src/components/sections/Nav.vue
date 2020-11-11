@@ -20,12 +20,6 @@
 					Выход
 				</button>
 			</div>
-
-			<button
-				class="btn"
-				@click="openMenu"
-				:aria-label="isOpened ? 'Закрыть меню' : 'Открыть меню'"
-			></button>
 		</div>
 	</nav>
 </template>
