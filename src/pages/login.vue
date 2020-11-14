@@ -28,14 +28,9 @@
 					{{ message }}
 				</div>
 
-				<a
-					class="forgot-link"
-					href="https://www.t.me/designeroq"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
+				<span class="forgot-link" @click="toggleChat">
 					Забыл пароль?
-				</a>
+				</span>
 
 				<button :disabled="loading">
 					<span class="btn">Войти</span>
@@ -95,6 +90,10 @@ export default {
 	},
 	methods: {
 		...mapActions('auth', ['login']),
+
+		toggleChat() {
+			window.$crisp && window.$crisp.push(['do', 'chat:open'])
+		},
 
 		handleLogin() {
 			this.loading = true
@@ -197,6 +196,8 @@ a {
 	margin: 0.8rem 0;
 	font-size: 0.9rem;
 	transition: color 0.3s;
+	cursor: pointer;
+
 	&:hover {
 		text-decoration: underline;
 	}

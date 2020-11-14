@@ -12,7 +12,6 @@
 
 			<Loader v-else />
 		</div>
-		<Chat />
 		<div class="box"></div>
 		<Footer />
 	</div>
@@ -24,7 +23,6 @@ import Loader from '@/components/Loader'
 import Playlist from '@/components/Playlist'
 import Player from '@/components/Player'
 import Panel from '@/components/panel/Panel'
-import Chat from '@/components/Chat'
 import Footer from '@/components/Footer'
 import { mapGetters, mapActions } from 'vuex'
 
@@ -36,7 +34,6 @@ export default {
 		Playlist,
 		Nav,
 		Panel,
-		Chat,
 		Footer,
 	},
 	data() {

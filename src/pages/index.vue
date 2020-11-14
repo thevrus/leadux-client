@@ -10,7 +10,6 @@
 		<Price />
 		<FAQ />
 		<Footer />
-		<Chat />
 	</div>
 </template>
 
@@ -24,7 +23,6 @@ import Slider from '@/components/sections/Slider'
 import Learn from '@/components/sections/Learn'
 import FAQ from '@/components/sections/FAQ'
 import Price from '@/components/sections/Price'
-import Chat from '@/components/Chat'
 import Footer from '@/components/sections/Footer'
 
 export default {
@@ -39,7 +37,6 @@ export default {
 		Slider,
 		Learn,
 		FAQ,
-		Chat,
 		Footer,
 	},
 }
