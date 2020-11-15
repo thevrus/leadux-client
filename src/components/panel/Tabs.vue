@@ -101,12 +101,11 @@ export default {
 
 .panel {
 	background-color: var(--panel-bg);
-	padding-bottom: 2rem;
 	border-radius: 10px;
 	position: relative;
 	border: 1px solid var(--panel-border);
 	box-shadow: 0 2px 6px 0 #000 20%;
-	min-height: 500px;
+	min-height: 417px;
 
 	&-body {
 		padding: 0 4rem;

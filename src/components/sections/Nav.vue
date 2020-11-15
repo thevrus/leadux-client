@@ -11,13 +11,8 @@
 		</div>
 
 		<div class="auth">
-			<button class="logout" v-if="loggedIn" href="#!" @click="userLogout">
-				Выход
-			</button>
-
-			<router-link v-else class="login" to="/login">
-				Вход
-			</router-link>
+			<button class="logout" v-if="loggedIn" @click="userLogout">Выход</button>
+			<router-link v-else class="login" to="/login"> Вход </router-link>
 		</div>
 	</nav>
 </template>
