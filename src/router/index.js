@@ -41,8 +41,8 @@ const routes = [
 		component: () => import('../pages/privacy.vue'),
 	},
 	{
-		path: '/terms',
-		component: () => import('../pages/terms.vue'),
+		path: '/pay-rules',
+		component: () => import('../pages/pay-rules.vue'),
 	},
 ]
 

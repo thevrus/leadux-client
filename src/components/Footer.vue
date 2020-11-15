@@ -13,10 +13,12 @@
 
 				<ul class="links">
 					<li>
-						<router-link to="/terms">Условия использования</router-link>
+						<router-link to="/privacy">
+							Политика конфиденциальности
+						</router-link>
 					</li>
 					<li>
-						<router-link to="/privacy">Политика конфиденциальности</router-link>
+						<router-link to="/pay-rules"> Условия оплаты </router-link>
 					</li>
 				</ul>
 			</div>

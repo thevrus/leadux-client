@@ -18,9 +18,9 @@ import Footer from '@/components/sections/Footer.vue'
 import axios from 'axios'
 
 export default {
-	name: 'PrivacyPolicy',
+	name: 'PayRules',
 	metaInfo: {
-		title: 'Правила использования',
+		title: 'Условия оплаты',
 	},
 	components: {
 		Nav,
@@ -34,7 +34,7 @@ export default {
 	beforeCreate() {
 		axios
 			.get(
-				`${process.env.VUE_APP_API_URL}/pages/terms-of-use?_publicationState=live`
+				`${process.env.VUE_APP_API_URL}/pages/pay-rules?_publicationState=live`
 			)
 			.then(({ data }) => (this.content = data))
 	},

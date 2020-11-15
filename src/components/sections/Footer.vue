@@ -10,18 +10,31 @@
 				материалов карается законом
 			</p>
 
-			<ul class="links">
-				<li>
-					<router-link to="/privacy">
-						Политика конфиденциальности
-					</router-link>
-				</li>
-				<li>
-					<router-link to="/terms">
-						Условия использования
-					</router-link>
-				</li>
-			</ul>
+			<div class="col">
+				<ul class="links">
+					<li>
+						<router-link to="/privacy">
+							Политика конфиденциальности
+						</router-link>
+					</li>
+					<li>
+						<router-link to="/pay-rules"> Условия оплаты </router-link>
+					</li>
+				</ul>
+
+				<span class="logos">
+					<img
+						src="@/assets/img/visa.svg"
+						alt="Логотип Visa"
+						title="Защищенные платежи"
+					/>
+					<img
+						src="@/assets/img/mc.svg"
+						alt="Логотип MasterCard"
+						title="Защищенные платежи"
+					/>
+				</span>
+			</div>
 		</div>
 
 		<p class="copyright">© Leadux, 2020</p>
@@ -62,27 +75,46 @@ footer {
 		line-height: 155%;
 	}
 
-	.links {
-		padding: 0;
-		li {
-			display: inline;
-			@media (max-width: 990px) {
-				display: block;
-				margin-bottom: 1rem;
-			}
-			@media (max-width: 667px) {
-				&:first-child {
-					margin-top: 3rem;
-				}
-			}
+	.col {
+		text-align: right;
 
-			a {
-				font-size: 0.9rem;
-				margin-left: 2rem;
-				font-weight: 100;
-				@media (max-width: 685px) {
-					margin: 0;
+		@media (max-width: 667px) {
+			text-align: left;
+		}
+
+		.links {
+			padding: 0;
+			margin-bottom: 2.5rem;
+
+			li {
+				display: inline;
+
+				@media (max-width: 990px) {
+					display: block;
+					margin-bottom: 1rem;
 				}
+
+				@media (max-width: 667px) {
+					&:first-child {
+						margin-top: 3rem;
+					}
+				}
+
+				a {
+					font-size: 0.9rem;
+					margin-left: 2rem;
+					font-weight: 100;
+
+					@media (max-width: 685px) {
+						margin: 0;
+					}
+				}
+			}
+		}
+
+		.logos {
+			img:not(:last-child) {
+				margin-right: 1.5rem;
 			}
 		}
 	}
