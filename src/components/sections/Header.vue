@@ -152,13 +152,14 @@ header {
 			top: -64px;
 			height: 658px;
 			z-index: 0;
+			border-radius: 8px;
 			animation: fadeIn 1.2s ease-in-out 1;
 
 			@media (max-width: 768px) {
 				left: 14px;
 				top: -106px;
 				height: 520px;
-				clip: rect(0px, 640px, 390px, 0px);
+				clip: rect(0, 640px, 390px, 0);
 			}
 		}
 
@@ -168,13 +169,13 @@ header {
 			top: -34px;
 			height: 619px;
 			z-index: 0;
-			animation: fadeIn 3s ease-in-out 1;
+			animation: fadeIn 2.5s ease-in-out 1;
 
 			@media (max-width: 768px) {
 				left: 132px;
 				top: -79px;
 				height: 490px;
-				clip: rect(0px, 500px, 360px, 0px);
+				clip: rect(0, 500px, 360px, 0);
 			}
 		}
 
@@ -197,7 +198,7 @@ header {
 				background: linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, #000 100%);
 				z-index: 4;
 				height: 658px;
-				width: 135%;
+				width: 138%;
 				position: absolute;
 				top: -64px;
 				left: 14px;

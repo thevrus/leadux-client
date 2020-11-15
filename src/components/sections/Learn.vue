@@ -68,6 +68,11 @@ export default {
 <style lang="postcss" scoped>
 section {
 	margin-bottom: var(--section-margin);
+
+	@media (max-width: 768px) {
+		margin-bottom: auto;
+	}
+
 	padding-bottom: 3.25rem;
 }
 
@@ -122,10 +127,6 @@ ul {
 		p {
 			font-weight: 100;
 			line-height: 145%;
-			@media (max-width: 768px) {
-				max-width: 382px;
-				margin: 0 auto;
-			}
 		}
 	}
 }

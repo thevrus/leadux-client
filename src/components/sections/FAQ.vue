@@ -3,9 +3,8 @@
 		<div class="grid">
 			<span class="left">
 				<h2>Часто задаваемые вопросы:</h2>
-				<a href="https://www.t.me/designeroq" target="_blank" rel="noopener">
-					Задать вопрос
-				</a>
+
+				<button @click="toggleChat">Задать вопрос</button>
 			</span>
 
 			<span>
@@ -50,12 +49,21 @@ export default {
 			],
 		}
 	},
+	methods: {
+		toggleChat() {
+			window.$crisp && window.$crisp.push(['do', 'chat:open'])
+		},
+	},
 }
 </script>
 
 <style lang="postcss" scoped>
 .container {
 	margin-bottom: var(--section-margin);
+
+	@media (max-width: 720px) {
+		margin-bottom: calc(var(--section-margin) + 80px);
+	}
 }
 
 .grid {
@@ -91,20 +99,18 @@ h2 {
 	}
 }
 
-a {
+button {
 	font-weight: 100;
 	font-size: 1rem;
-	display: inline-block;
-	text-align: center;
+	background: none;
 	padding: 1.2rem 25%;
+	outline: none;
 	color: #fff;
-	text-decoration: none;
-	cursor: pointer;
-	border: 1px solid #666666;
-	box-sizing: border-box;
+	border: 1px solid #666;
 	border-radius: 8px;
 	margin-top: auto;
 	position: absolute;
+	cursor: pointer;
 	bottom: 0;
 	left: 0;
 	transition: border-color 0.3s;

@@ -6,9 +6,7 @@
 			</div>
 			<div class="col-r">
 				<span>Главное — практика</span>
-				<h2>
-					Выполняйте задания и развивайте навыки
-				</h2>
+				<h2>Выполняйте задания и развивайте навыки</h2>
 				<p>
 					Закрепляйте ваши знания практикой. Домашние задания еще никогда не
 					были такими интересными и полезными
@@ -23,12 +21,15 @@
 <style lang="postcss" scoped>
 section {
 	overflow: hidden;
+
 	.col-r {
 		justify-self: end;
 	}
+
 	.col-l {
 		display: block;
 		position: relative;
+
 		&::after {
 			position: absolute;
 			top: 50%;
@@ -38,8 +39,8 @@ section {
 			width: 140%;
 			height: 140%;
 			background: radial-gradient(
-				50.04% 46.09% at 50.09% 50%,
-				rgba(115, 59, 234, 0.65) 0%,
+				45% 45% at 50% 50%,
+				rgba(115, 59, 234, 0.8) 0%,
 				rgba(115, 59, 234, 0) 100%
 			);
 			display: block;
@@ -49,8 +50,8 @@ section {
 				width: 170%;
 				height: 170%;
 				background: radial-gradient(
-					54.04% 40.09% at 50.09% 50%,
-					rgba(115, 59, 234, 0.5) 0%,
+					35% 35% at 50% 50%,
+					rgba(115, 59, 234, 1) 0%,
 					rgba(115, 59, 234, 0) 100%
 				);
 			}

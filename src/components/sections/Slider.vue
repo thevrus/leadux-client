@@ -2,7 +2,7 @@
 	<section class="container">
 		<div class="row">
 			<span>
-				<h2>Зарплата UX/UI дизайнера</h2>
+				<h2>Зарплата UI дизайнера</h2>
 				<label for="slider">
 					Источник данных:
 					<a

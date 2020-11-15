@@ -3,9 +3,7 @@
 		<div class="container grid-x2fr">
 			<div class="col-l">
 				<span>Сотни полезных ссылок</span>
-				<h2>
-					Очень много полезных материалов
-				</h2>
+				<h2>Очень много полезных материалов</h2>
 				<p>
 					Все лучшее, что автор использует лично в ежедневной работе. Тысячи
 					иконок, изображения в высоком разрешении и много-много всего
@@ -25,10 +23,6 @@
 .section {
 	overflow: hidden;
 
-	.col-l {
-		margin-left: 3rem;
-	}
-
 	.col-r {
 		justify-self: end;
 		display: block;
@@ -43,8 +37,8 @@
 			width: 140%;
 			height: 140%;
 			background: radial-gradient(
-				50% 50% at 50% 50%,
-				rgba(18, 165, 95, 0.6) 0%,
+				45% 45% at 50% 50%,
+				rgba(18, 165, 95, 0.8) 0%,
 				rgba(18, 165, 95, 0) 100%
 			);
 			display: block;
@@ -54,8 +48,8 @@
 				width: 170%;
 				height: 170%;
 				background: radial-gradient(
-					54.04% 40.09% at 50.09% 50%,
-					rgba(18, 165, 95, 0.5) 0%,
+					35% 35% at 50% 50%,
+					rgba(18, 165, 95, 1) 0%,
 					rgba(18, 165, 95, 0) 100%
 				);
 			}
@@ -67,6 +61,7 @@
 			margin-left: 0;
 			order: 2;
 		}
+
 		.col-r {
 			justify-self: center;
 			order: 1;

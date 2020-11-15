@@ -94,7 +94,7 @@ export default {
 				if (les.videoLength) plLength += les.videoLength
 			})
 
-			return Math.floor(plLength / 60) + ' мин'
+			return Math.floor(plLength / 60) + ' мин.'
 		},
 	},
 	filters: {

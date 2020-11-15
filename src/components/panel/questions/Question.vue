@@ -87,10 +87,6 @@ details[open] summary ~ * {
 	animation: fadeIn 0.3s ease-in-out;
 }
 
-summary::-webkit-details-marker {
-	display: none;
-}
-
 summary {
 	outline: none;
 	position: relative;
@@ -154,7 +150,7 @@ summary {
 
 	.content {
 		font-size: 0.82rem;
-		color: #666666;
+		color: #666;
 		display: grid;
 		grid-template-columns: 60px 1fr;
 

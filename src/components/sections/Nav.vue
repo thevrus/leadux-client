@@ -10,22 +10,14 @@
 			<a href="/#price">Цена</a>
 		</div>
 
-		<div class="login-wrapp">
-			<div class="logginLogut">
-				<router-link class="login" v-if="!loggedIn" to="/login">
-					Вход
-				</router-link>
+		<div class="auth">
+			<button class="logout" v-if="loggedIn" href="#!" @click="userLogout">
+				Выход
+			</button>
 
-				<button class="logout" v-if="loggedIn" href="#!" @click="userLogout">
-					Выход
-				</button>
-			</div>
-
-			<button
-				class="btn"
-				@click="openMenu"
-				:aria-label="isOpened ? 'Закрыть меню' : 'Открыть меню'"
-			></button>
+			<router-link v-else class="login" to="/login">
+				Вход
+			</router-link>
 		</div>
 	</nav>
 </template>
@@ -82,12 +74,10 @@ nav {
 		}
 	}
 
-	.login-wrapp {
+	.auth {
 		display: flex;
 		align-items: center;
-	}
 
-	.logginLogut {
 		.login,
 		.logout {
 			padding: 0.8rem 1.5rem;
@@ -104,14 +94,6 @@ nav {
 				border-color: #fff;
 			}
 		}
-	}
-
-	.btn {
-		border: none;
-		outline: none;
-		background-color: transparent;
-		cursor: pointer;
-		appearance: none;
 	}
 
 	.list {

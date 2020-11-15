@@ -27,10 +27,6 @@
 .section {
 	overflow: hidden;
 
-	.col-l {
-		margin-left: 3rem;
-	}
-
 	.col-r {
 		justify-self: end;
 		display: block;
@@ -45,8 +41,8 @@
 			width: 140%;
 			height: 140%;
 			background: radial-gradient(
-				50.04% 46.09% at 50.09% 50%,
-				rgba(40, 152, 255, 0.65) 0%,
+				45% 45% at 50% 50%,
+				rgba(40, 152, 255, 0.8) 0%,
 				rgba(40, 152, 255, 0) 100%
 			);
 			display: block;
@@ -56,8 +52,8 @@
 				width: 170%;
 				height: 170%;
 				background: radial-gradient(
-					54.04% 40.09% at 50.09% 50%,
-					rgba(40, 152, 255, 0.5) 0%,
+					35% 35% at 50% 50%,
+					rgba(40, 152, 255, 1) 0%,
 					rgba(40, 152, 255, 0) 100%
 				);
 			}

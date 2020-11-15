@@ -2,9 +2,9 @@
 	<div class="wrapp">
 		<span class="number">{{ material.title | capitalize }}</span>
 
-		<div class="grid">
+		<div :class="{ grid: material.cover !== null }">
 			<img
-				v-if="material.cover.url"
+				v-if="material.cover"
 				class="cover"
 				:src="host_url + material.cover.url"
 				alt=""
@@ -43,10 +43,7 @@ export default {
 	filters: {
 		capitalize(value) {
 			if (!value) return ''
-			return value
-				.toString()
-				.slice(0, 1)
-				.toUpperCase()
+			return value.toString().slice(0, 1).toUpperCase()
 		},
 	},
 }

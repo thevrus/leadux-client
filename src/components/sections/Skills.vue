@@ -94,9 +94,7 @@
 	}
 
 	.junior {
-		max-width: 380px;
 		grid-area: junior;
-		margin: 0 auto;
 
 		h3 {
 			background: linear-gradient(180deg, #4590d4 0%, #76aee1 100%);
@@ -112,9 +110,7 @@
 	}
 
 	.middle {
-		max-width: 380px;
 		grid-area: middle;
-		margin: 0 auto;
 
 		h3 {
 			position: relative;
@@ -130,9 +126,7 @@
 	}
 
 	.senior {
-		max-width: 380px;
 		grid-area: senior;
-		margin: 0 auto;
 
 		@media (max-width: 1196px) and (min-width: 786px) {
 			grid-column-start: 2;
