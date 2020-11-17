@@ -71,7 +71,6 @@
 			grid-template-areas:
 				'junior junior middle middle'
 				'senior senior senior senior';
-			align-items: center;
 			justify-content: center;
 		}
 
@@ -104,7 +103,7 @@
 				position: absolute;
 				left: 8px;
 				bottom: 0;
-				width: 88px;
+				width: 78px;
 			}
 		}
 	}

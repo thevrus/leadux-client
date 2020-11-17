@@ -239,10 +239,10 @@ form {
 	}
 
 	&-info {
-		font-weight: 500;
-		font-size: 1rem;
+		font-weight: 300;
+		font-size: 0.9rem;
 		line-height: 140%;
-		color: #000;
+		color: #676767;
 		margin-bottom: 1.6rem;
 	}
 
