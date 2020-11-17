@@ -1,0 +1,77 @@
+<template functional>
+	<section class="section">
+		<div class="container grid-x2fr">
+			<div class="col-l">
+				<img src="@/assets/img/exercises_img.png" alt="Задания" />
+			</div>
+			<div class="col-r">
+				<span>Главное — практика</span>
+				<h2>Выполняйте задания и развивайте навыки</h2>
+				<p>
+					Закрепляйте ваши знания практикой. Домашние задания еще никогда не
+					были такими интересными и полезными
+				</p>
+
+				<a href="#price" rel="noopener" class="cta">Купить курс</a>
+			</div>
+		</div>
+	</section>
+</template>
+
+<style lang="postcss" scoped>
+section {
+	overflow: hidden;
+
+	.col-r {
+		justify-self: end;
+	}
+
+	.col-l {
+		display: block;
+		position: relative;
+
+		&::after {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			content: '';
+			width: 140%;
+			height: 140%;
+			background: radial-gradient(
+				45% 45% at 50% 50%,
+				rgba(115, 59, 234, 0.8) 0%,
+				rgba(115, 59, 234, 0) 100%
+			);
+			display: block;
+			z-index: -1;
+
+			@media (max-width: 768px) {
+				width: 170%;
+				height: 170%;
+				background: radial-gradient(
+					35% 35% at 50% 50%,
+					rgba(115, 59, 234, 1) 0%,
+					rgba(115, 59, 234, 0) 100%
+				);
+			}
+		}
+	}
+
+	@media (max-width: 768px) {
+		.col-l {
+			margin-bottom: 3rem;
+		}
+		.col-r {
+			justify-self: initial;
+		}
+
+		a {
+			display: block;
+			width: 60%;
+			text-align: center;
+			margin: 0 auto 3rem;
+		}
+	}
+}
+</style>

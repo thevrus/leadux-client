@@ -1,0 +1,13 @@
+:root {
+	--bg: #17171a;
+	--panel-bg: #1e1e23;
+	--panel-border: #262626;
+	--primary: #e93762;
+	--cta: #e937b3;
+	--secondary: #733bea;
+	--section-margin: 180px;
+
+	@media (max-width: 768px) {
+		--section-margin: 140px;
+	}
+}

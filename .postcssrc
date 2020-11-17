@@ -1,0 +1,11 @@
+{
+    "plugins": {
+        "postcss-normalize": {},
+        "postcss-preset-env": {
+            "stage": "2"
+        },
+        "precss": {},
+        "postcss-responsive-type": {},
+        "postcss-input-range": {}
+    }
+}

@@ -1,37 +1,34 @@
 import axios from 'axios'
+import authHeader from './auth-header'
 
 class AuthService {
-	login(user) {
-		return axios
-			.post(`${process.env.VUE_APP_API_URL}auth/local`, {
-				identifier: user.email,
-				password: user.password,
-			})
-			.then(response => {
-				if (response.data.jwt) {
-					localStorage.setItem('user', JSON.stringify(response.data))
-				}
-
-				return response.data
-			})
+	login({ email, password }) {
+		return axios.post(`${process.env.VUE_APP_API_URL}/auth/local`, {
+			identifier: email,
+			password,
+		})
 	}
 
-	register(user) {
-		return axios
-			.post(`${process.env.VUE_APP_API_URL}auth/local/register`, {
-				username: user.username,
-				email: user.email,
-				password: user.password,
-			})
-			.then(response => {
-				if (response.data.jwt) {
-					localStorage.setItem('user', JSON.stringify(response.data))
-				}
-			})
+	register({ username, email, password }) {
+		return axios.post(`${process.env.VUE_APP_API_URL}/auth/local/register`, {
+			username,
+			email,
+			password,
+		})
 	}
 
-	logout() {
-		localStorage.removeItem('user')
+	me() {
+		return axios.get(`${process.env.VUE_APP_API_URL}/users/me`, {
+			headers: authHeader(),
+		})
+	}
+
+	invoice() {
+		return axios({
+			method: 'get',
+			url: `${process.env.VUE_APP_API_URL}/users-permissions/invoice`,
+			headers: authHeader(),
+		})
 	}
 }
 
