@@ -3,58 +3,89 @@
 		<h2 id="price">Попробуй первые 2 занятия бесплатно!</h2>
 		<p>Гарантия возврата денег</p>
 
-		<div class="plans" v-if="!loading">
-			<img src="@/assets/img/discount.svg" alt="" />
+		<div class="plans-wrapp">
+			<div class="plans" v-if="!loading">
+				<img src="@/assets/img/discount.svg" alt="" />
 
-			<div class="plan">
-				<div>
-					<h3>{{ student.name }}</h3>
+				<div class="plan">
+					<div>
+						<h3>{{ student.name }}</h3>
 
-					<p class="price">{{ student.amount }}<span>$</span></p>
+						<div class="price-box">
+							<p class="price" :class="{ oldPrice: isValidPromo }">
+								{{ student.amount }}<span>$</span>
+							</p>
+							<p v-if="isValidPromo" class="price">
+								{{ studentPromo }}<span>$</span>
+							</p>
+						</div>
 
-					<VueShowdown class="content" :markdown="student.pros" />
+						<VueShowdown class="content" :markdown="student.pros" />
+					</div>
+
+					<form
+						@submit="submitForm($event)"
+						method="POST"
+						accept-charset="utf-8"
+						action="https://www.liqpay.ua/api/3/checkout"
+					>
+						<input type="hidden" name="data" :value="student.data" />
+						<input type="hidden" name="signature" :value="student.signature" />
+						<p v-if="roleType !== 'authenticated'" class="student-plan">
+							<span class="inner">Приобретен</span>
+						</p>
+						<button v-else class="cta">Купить</button>
+					</form>
+
+					<Promotion v-if="roleType === 'authenticated'" class="promo-phone" />
 				</div>
 
-				<form
-					@submit="submitForm($event)"
-					method="POST"
-					accept-charset="utf-8"
-					action="https://www.liqpay.ua/api/3/checkout"
-				>
-					<input type="hidden" name="data" :value="student.data" />
-					<input type="hidden" name="signature" :value="student.signature" />
-					<button class="cta">Купить</button>
-				</form>
-			</div>
+				<span class="divider"></span>
 
-			<span class="divider"></span>
+				<div class="plan">
+					<div>
+						<h3>{{ studentPlus.name }}</h3>
 
-			<div class="plan">
-				<div>
-					<h3>{{ studentPlus.name }}</h3>
+						<div class="price-box">
+							<p class="price" :class="{ oldPrice: isValidPromo }">
+								{{ studentPlus.amount }}<span>$</span>
+							</p>
+							<p v-if="isValidPromo" class="price">
+								{{ studentPlusPromo }}<span>$</span>
+							</p>
+						</div>
 
-					<p class="price">{{ studentPlus.amount }}<span>$</span></p>
+						<VueShowdown class="content" :markdown="studentPlus.pros" />
+					</div>
 
-					<VueShowdown class="content" :markdown="studentPlus.pros" />
+					<form
+						method="POST"
+						@submit="submitForm($event)"
+						accept-charset="utf-8"
+						action="https://www.liqpay.ua/api/3/checkout"
+					>
+						<input type="hidden" name="data" :value="studentPlus.data" />
+						<input
+							type="hidden"
+							name="signature"
+							:value="studentPlus.signature"
+						/>
+						<p v-if="roleType === 'advanced'" class="student-plan">
+							<span class="inner">Приобретен</span>
+						</p>
+						<button v-else class="cta cta-primary">
+							Купить
+						</button>
+					</form>
+					<Promotion v-if="roleType !== 'advanced'" class="promo-phone" />
 				</div>
-
-				<form
-					method="POST"
-					@submit="submitForm($event)"
-					accept-charset="utf-8"
-					action="https://www.liqpay.ua/api/3/checkout"
-				>
-					<input type="hidden" name="data" :value="studentPlus.data" />
-					<input
-						type="hidden"
-						name="signature"
-						:value="studentPlus.signature"
-					/>
-					<button class="cta cta-primary">
-						Купить
-					</button>
-				</form>
 			</div>
+
+			<Promotion
+				v-if="roleType !== 'advanced'"
+				@data="showResult"
+				class="promo-desktop"
+			/>
 		</div>
 
 		<p class="disclaimer">
@@ -66,6 +97,7 @@
 
 <script>
 import AuthService from '@/services/auth.service'
+import Promotion from '@/components/Promotion'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -75,10 +107,16 @@ export default {
 			studentPlus: null,
 			nextRoute: null,
 			loading: true,
+			isValidPromo: null,
+			studentPromo: 48,
+			studentPlusPromo: 58,
 		}
 	},
+	components: {
+		Promotion,
+	},
 	computed: {
-		...mapGetters('auth', ['user', 'loggedIn']),
+		...mapGetters('auth', ['user', 'loggedIn', 'roleType']),
 	},
 	methods: {
 		submitForm(e) {
@@ -86,6 +124,11 @@ export default {
 				e.preventDefault()
 				this.$router.push({ name: 'register', query: { nextRoute: 'pay' } })
 			}
+		},
+
+		showResult(data) {
+			console.log(data)
+			this.isValidPromo = data
 		},
 	},
 	created: function() {
@@ -96,6 +139,8 @@ export default {
 			this.studentPlus = data[1]
 
 			this.loading = false
+			console.log(this.roleType)
+			console.log(this.studentPlus)
 		})
 	},
 }
@@ -135,12 +180,33 @@ section {
 		margin: 0;
 	}
 
-	.plans {
+	.promo-phone {
+		display: none;
+		@media (max-width: 690px) {
+			display: block;
+		}
+	}
+	.promo-desktop {
+		@media (max-width: 690px) {
+			display: none;
+		}
+	}
+
+	.plans-wrapp {
 		padding: 2.2rem 3rem;
 		background-color: #fff;
 		max-width: 800px;
 		border-radius: 20px;
 		margin: 2rem auto 1rem;
+
+		@media (max-width: 690px) {
+			margin: 0.5rem auto 1rem;
+			background-color: transparent;
+			padding: 0.5rem 0;
+		}
+	}
+
+	.plans {
 		display: grid;
 		grid-template-columns: 1fr 1px 1fr;
 		grid-column-gap: 6%;
@@ -158,7 +224,7 @@ section {
 		img {
 			position: absolute;
 			top: -60px;
-			right: -50px;
+			right: -90px;
 
 			@media (max-width: 940px) {
 				display: none;
@@ -179,6 +245,7 @@ section {
 			background-color: #fff;
 			max-width: 800px;
 			border-radius: 20px;
+			margin-bottom: 1rem;
 		}
 
 		h3 {
@@ -197,7 +264,7 @@ section {
 			font-style: normal;
 			font-weight: bold;
 			font-size: 60px;
-			line-height: 120%;
+			line-height: 100%;
 			color: #000;
 			padding: 0.6rem 0;
 			border-top: 1px solid #e5e5e5;
@@ -208,6 +275,45 @@ section {
 				font-weight: bold;
 				font-size: 24px;
 				line-height: 120%;
+			}
+		}
+		.price-box {
+			position: relative;
+		}
+		.oldPrice {
+			font-size: 32px;
+			line-height: 120%;
+			color: rgba(0, 0, 0, 0.4);
+			border: none;
+			position: absolute;
+			bottom: 0;
+			left: 4rem;
+		}
+
+		.student-plan {
+			color: #007a22;
+			background-color: #e5ffed;
+			width: 100%;
+			border: 0;
+			outline: 0;
+			display: block;
+
+			text-align: center;
+			border-radius: 8px;
+			padding: 0.8rem 0;
+			.inner {
+				position: relative;
+				font-size: 1.1rem;
+				&::after {
+					content: '';
+					background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMSAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE3LjI4NzkgNUw4LjEyMTI2IDE0LjE2NjdMMy45NTQ1OSAxMCIgc3Ryb2tlPSIjMDA3QTIyIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K');
+					width: 20px;
+					height: 20px;
+					position: absolute;
+					top: 50%;
+					right: -1.5rem;
+					transform: translateY(-50%);
+				}
 			}
 		}
 
