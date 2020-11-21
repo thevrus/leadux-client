@@ -44,6 +44,10 @@ const routes = [
 		path: '/pay-rules',
 		component: () => import('../pages/pay-rules.vue'),
 	},
+	{
+		path: '/about',
+		component: () => import('../pages/about.vue'),
+	},
 ]
 
 const router = new VueRouter({
