@@ -15,7 +15,7 @@ Vue.use(VueShowdown, {
 	},
 })
 Vue.use(VueGtag, {
-	config: { id: 'G-LX4HX4HKWY' },
+	config: { id: 'G-JLFP5VWW29' },
 })
 
 new Vue({

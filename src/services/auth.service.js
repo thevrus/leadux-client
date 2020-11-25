@@ -30,6 +30,16 @@ class AuthService {
 			headers: authHeader(),
 		})
 	}
+
+	invoicePromo(promocode) {
+		if (!promocode) return
+
+		return axios({
+			method: 'get',
+			url: `${process.env.VUE_APP_API_URL}/users-permissions/invoice?promocode=${promocode}`,
+			headers: authHeader(),
+		})
+	}
 }
 
 export default new AuthService()

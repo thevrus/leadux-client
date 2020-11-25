@@ -6,7 +6,7 @@
 			<img
 				v-if="material.cover"
 				class="cover"
-				:src="host_url + material.cover.url"
+				:src="material.cover.url"
 				alt=""
 			/>
 
@@ -35,15 +35,13 @@ export default {
 			required: true,
 		},
 	},
-	data() {
-		return {
-			host_url: process.env.VUE_APP_API_URL,
-		}
-	},
 	filters: {
 		capitalize(value) {
 			if (!value) return ''
-			return value.toString().slice(0, 1).toUpperCase()
+			return value
+				.toString()
+				.slice(0, 1)
+				.toUpperCase()
 		},
 	},
 }

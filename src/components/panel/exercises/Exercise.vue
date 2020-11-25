@@ -10,12 +10,9 @@
 		<div class="exercise__wrap">
 			<ul>
 				<li v-for="material of exercise.media" :key="material.id">
-					<a
-						:href="host_url + material.url"
-						target="_blank"
-						class="exercise__link"
-						>{{ material.name }}</a
-					>
+					<a :href="material.url" target="_blank" class="exercise__link">
+						{{ material.name }}
+					</a>
 				</li>
 			</ul>
 
@@ -37,11 +34,6 @@
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
-	data() {
-		return {
-			host_url: process.env.VUE_APP_API_URL,
-		}
-	},
 	props: {
 		exercise: {
 			type: Object,
@@ -124,14 +116,6 @@ a {
 		margin-top: 0.1rem;
 		text-decoration: none;
 
-		&:hover {
-			color: #ab96d6;
-
-			&::before {
-				background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTE3IDBIM2EzIDMgMCAwMC0zIDN2MTBhMyAzIDAgMDAzIDNoMTRhMyAzIDAgMDAzLTNWM2EzIDMgMCAwMC0zLTN6TTMgMTRhMSAxIDAgMDEtMS0xdi0yLjQybDMuMy0zLjI5YTEgMSAwIDAxMS40IDBMMTMuNDEgMTRIM3ptMTUtMWExIDEgMCAwMS0xIDFoLS43N2wtMy44MS0zLjgzLjg4LS44OGExIDEgMCAwMTEuNCAwbDMuMyAzLjI5VjEzem0wLTMuMjRsLTEuODgtMS44N2EzLjA2IDMuMDYgMCAwMC00LjI0IDBsLS44OC44OC0yLjg4LTIuODhhMy4wNiAzLjA2IDAgMDAtNC4yNCAwTDIgNy43NlYzYTEgMSAwIDAxMS0xaDE0YTEgMSAwIDAxMSAxdjYuNzZ6IiBmaWxsPSIjQUI5NkQ2Ii8+PC9zdmc+');
-			}
-		}
-
 		&::before {
 			content: '';
 			display: inline-block;
@@ -141,6 +125,14 @@ a {
 			background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTE3IDBIM2EzIDMgMCAwMC0zIDN2MTBhMyAzIDAgMDAzIDNoMTRhMyAzIDAgMDAzLTNWM2EzIDMgMCAwMC0zLTN6TTMgMTRhMSAxIDAgMDEtMS0xdi0yLjQybDMuMy0zLjI5YTEgMSAwIDAxMS40IDBMMTMuNDEgMTRIM3ptMTUtMWExIDEgMCAwMS0xIDFoLS43N2wtMy44MS0zLjgzLjg4LS44OGExIDEgMCAwMTEuNCAwbDMuMyAzLjI5VjEzem0wLTMuMjRsLTEuODgtMS44N2EzLjA2IDMuMDYgMCAwMC00LjI0IDBsLS44OC44OC0yLjg4LTIuODhhMy4wNiAzLjA2IDAgMDAtNC4yNCAwTDIgNy43NlYzYTEgMSAwIDAxMS0xaDE0YTEgMSAwIDAxMSAxdjYuNzZ6IiBmaWxsPSIjNUM1QzVDIi8+PC9zdmc+');
 			background-size: cover;
 			margin: 0 0.4rem;
+		}
+
+		&:hover {
+			color: #ab96d6;
+
+			&::before {
+				background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTE3IDBIM2EzIDMgMCAwMC0zIDN2MTBhMyAzIDAgMDAzIDNoMTRhMyAzIDAgMDAzLTNWM2EzIDMgMCAwMC0zLTN6TTMgMTRhMSAxIDAgMDEtMS0xdi0yLjQybDMuMy0zLjI5YTEgMSAwIDAxMS40IDBMMTMuNDEgMTRIM3ptMTUtMWExIDEgMCAwMS0xIDFoLS43N2wtMy44MS0zLjgzLjg4LS44OGExIDEgMCAwMTEuNCAwbDMuMyAzLjI5VjEzem0wLTMuMjRsLTEuODgtMS44N2EzLjA2IDMuMDYgMCAwMC00LjI0IDBsLS44OC44OC0yLjg4LTIuODhhMy4wNiAzLjA2IDAgMDAtNC4yNCAwTDIgNy43NlYzYTEgMSAwIDAxMS0xaDE0YTEgMSAwIDAxMSAxdjYuNzZ6IiBmaWxsPSIjQUI5NkQ2Ii8+PC9zdmc+');
+			}
 		}
 	}
 }
@@ -178,16 +170,13 @@ input:checked + label {
 	background: #60715d;
 }
 
-input:checked + label:after {
-	background: #11e271;
+label:active::after {
+	width: 24px;
 }
 
-input:checked + label:after {
+input:checked + label::after {
+	background: #11e271;
 	left: calc(100% - 5px);
 	transform: translateX(-100%);
-}
-
-label:active:after {
-	width: 24px;
 }
 </style>

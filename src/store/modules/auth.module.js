@@ -103,5 +103,8 @@ export const auth = {
 			}
 			return isStudent
 		},
+		roleType(state) {
+			return state.user && state.user.user.role.type
+		},
 	},
 }

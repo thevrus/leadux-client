@@ -23,7 +23,6 @@ export default {
 	},
 	data() {
 		return {
-			host_url: process.env.VUE_APP_API_URL,
 			text: '',
 		}
 	},

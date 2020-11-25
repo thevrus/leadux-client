@@ -1,4 +1,4 @@
-<template functional>
+<template>
 	<section id="skills" class="container">
 		<h2>Кому подойдет этот курс:</h2>
 
@@ -46,7 +46,8 @@
 
 	h2 {
 		font-weight: bold;
-		font-size: responsive 1.5rem 2.25rem;
+		font-family: 'Freigeist-XWideBold', system-ui;
+		font-size: responsive 1.5rem 2rem;
 		margin-bottom: 2.5rem;
 		line-height: 120%;
 		color: #fff;

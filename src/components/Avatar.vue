@@ -1,7 +1,7 @@
 <template>
 	<div class="avatar">
 		<div v-if="avatar">
-			<img :src="host_url + avatar.url" alt="Avatar" class="img" />
+			<img :src="avatar.url" alt="Avatar" class="img" />
 		</div>
 		<div class="avatar-letter" v-else>
 			{{ username | capitalize }}
@@ -12,11 +12,6 @@
 <script>
 export default {
 	name: 'Avatar',
-	data() {
-		return {
-			host_url: process.env.VUE_APP_API_URL,
-		}
-	},
 	props: ['avatar', 'username'],
 	filters: {
 		capitalize(value) {

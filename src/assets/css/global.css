@@ -85,7 +85,8 @@ summary::-moz-details-marker {
 	h2 {
 		max-width: 454px;
 		font-weight: bold;
-		font-size: responsive 1.5rem 2.25rem;
+		font-family: 'Freigeist-XWideBold', system-ui;
+		font-size: responsive 1.5rem 2rem;
 		line-height: 130%;
 		color: #f4f4f4;
 		margin-bottom: 1.5rem;
