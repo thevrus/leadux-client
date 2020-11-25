@@ -77,11 +77,9 @@ section {
 }
 
 h2 {
-	font-style: normal;
-	font-size: responsive 1.5rem 2.75rem;
-	line-height: 120%;
+	font-family: 'Freigeist-XWideBold', system-ui;
+	font-size: responsive 1.5rem 2rem;
 	color: #fff;
-	max-width: 400px;
 }
 
 ul {

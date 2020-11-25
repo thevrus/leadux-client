@@ -43,7 +43,10 @@ export default {
 	filters: {
 		capitalize(value) {
 			if (!value) return ''
-			return value.toString().slice(0, 1).toUpperCase()
+			return value
+				.toString()
+				.slice(0, 1)
+				.toUpperCase()
 		},
 	},
 }

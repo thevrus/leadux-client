@@ -44,9 +44,9 @@ export default {
 	data() {
 		return {
 			min: 500,
-			max: 5000,
+			max: 4000,
 			step: 1,
-			value: 2800,
+			value: 2300,
 		}
 	},
 	computed: {
@@ -71,14 +71,15 @@ export default {
 	display: flex;
 	justify-content: space-between;
 	align-items: baseline;
+
 	@media (max-width: 750px) {
 		display: block;
 	}
 }
 
 output {
-	font-weight: bold;
-	font-size: 52px;
+	font-family: 'Freigeist-XWideBold', system-ui;
+	font-size: 44px;
 	min-width: 160px;
 
 	@media (max-width: 750px) {
@@ -101,10 +102,8 @@ output {
 }
 
 h2 {
-	font-style: normal;
-	font-weight: 500;
-	font-size: responsive 1.8rem 2.75rem;
-	line-height: 120%;
+	font-family: 'Freigeist-XWideBold', system-ui;
+	font-size: responsive 1.5rem 2rem;
 	color: #fff;
 	margin: 0 0 1rem 0;
 }
@@ -114,7 +113,7 @@ label {
 	font-weight: 500;
 	font-size: 1.1rem;
 	line-height: 120%;
-	color: #cccccc;
+	color: #ccc;
 
 	a {
 		font-style: normal;
@@ -137,7 +136,7 @@ div {
 
 	.position {
 		position: relative;
-		font-size: responsive 0.9rem 1.2rem;
+		font-family: 'Freigeist-XWideBold', system-ui;
 
 		&:not(:first-child)::after {
 			content: '';
