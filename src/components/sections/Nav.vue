@@ -1,5 +1,5 @@
 <template>
-	<nav class="container">
+	<nav class="nav container">
 		<router-link class="logo" to="/">
 			<img src="@/assets/img/logo.svg" alt="LeadUX" />
 		</router-link>
@@ -41,10 +41,12 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-nav {
+.nav {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
 
 	.links {
 		@media (max-width: 768px) {

@@ -83,9 +83,8 @@ export default {
 }
 
 h2 {
-	max-width: 400px;
-	font-weight: 500;
-	font-size: responsive 1.8rem 2.5rem;
+	font-family: 'Freigeist-XWideBold', system-ui;
+	font-size: responsive 1.5rem 2rem;
 	color: #fff;
 	line-height: 120%;
 	margin: 0;

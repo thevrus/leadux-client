@@ -91,6 +91,7 @@ header {
 	h1 {
 		max-width: 580px;
 		width: 100%;
+		font-family: 'Freigeist-XWideBold', system-ui;
 		font-weight: bold;
 		font-size: responsive 2rem 3rem;
 		line-height: 110%;
@@ -99,12 +100,12 @@ header {
 	}
 
 	.desc {
-		font-weight: 500;
-		font-size: 1.12rem;
-		line-height: 155%;
+		font-weight: 100;
+		font-size: 1.2rem;
+		line-height: 160%;
 		color: #e6e6e6;
 		max-width: 520px;
-		margin: 0 0 3.25rem;
+		margin: 0 0 3.5rem;
 	}
 
 	.watch {

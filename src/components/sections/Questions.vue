@@ -1,4 +1,4 @@
-<template functional>
+<template>
 	<section class="section">
 		<div class="container grid-x2fr">
 			<div class="col-l">
