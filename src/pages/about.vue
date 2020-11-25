@@ -1,7 +1,7 @@
 <template>
-	<div class="container">
+	<div>
 		<Nav />
-		<div class="about">
+		<main class="container about">
 			<div class="main-info">
 				<h2 class="title">O Leadux</h2>
 				<p class="desc">
@@ -15,6 +15,7 @@
 					него, дают профессиональные советы и помогают с трудоустройством.
 				</p>
 			</div>
+
 			<div class="author">
 				<div class="col-l">
 					<picture>
@@ -70,7 +71,7 @@
 					</ul>
 				</div>
 			</div>
-		</div>
+		</main>
 		<Footer />
 	</div>
 </template>
@@ -91,18 +92,18 @@ export default {
 	.main-info {
 		.title {
 			font-weight: bold;
+			font-family: 'Freigeist-XWideBold', system-ui;
 			font-size: responsive 1.75rem 2.75rem;
-			line-height: 140%;
 			text-align: center;
-			color: #ffffff;
-			margin-top: 5rem;
-			margin-bottom: 3rem;
+			color: #fff;
+			margin-top: 3.5rem;
+			margin-bottom: 1.5rem;
 		}
+
 		.desc {
-			font-weight: normal;
-			font-size: 1.02rem;
-			line-height: 149%;
-			color: #bebebe;
+			font-weight: 100;
+			line-height: 160%;
+			color: #e6e6e6;
 			max-width: 830px;
 			width: 100%;
 			margin: 0 auto 8rem;
@@ -130,8 +131,9 @@ export default {
 
 		.col-l {
 			position: relative;
+
 			@media (max-width: 695px) {
-				&:after {
+				&::after {
 					content: '';
 					background: linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, #000 100%);
 					width: 100%;
@@ -142,6 +144,7 @@ export default {
 					z-index: -1;
 				}
 			}
+
 			.person {
 				width: 100%;
 				max-width: 255px;
@@ -167,11 +170,12 @@ export default {
 				}
 			}
 		}
+
 		.col-r {
 			padding-right: 1rem;
 			position: relative;
 
-			&:after {
+			&::after {
 				content: '';
 				width: 30px;
 				height: 40px;
@@ -181,17 +185,19 @@ export default {
 				top: -29px;
 				right: 10%;
 			}
+
 			@media (max-width: 695px) {
 				padding-left: 1rem;
 			}
+
 			.status {
 				padding: 10px 22px;
-				background-color: #222222;
+				background-color: #222;
 				border-radius: 7px;
 				font-weight: 500;
 				font-size: 14px;
 				line-height: 140%;
-				color: #616161;
+				color: #888;
 				margin-bottom: 1.4rem;
 				display: inline-block;
 			}
@@ -239,10 +245,7 @@ export default {
 			}
 
 			.link {
-				font-weight: 500;
 				display: inline-block;
-				font-size: 1rem;
-				line-height: 149%;
 				color: #5b5b5b;
 				cursor: pointer;
 				position: relative;
@@ -257,33 +260,34 @@ export default {
 					background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMTUiIHZpZXdCb3g9IjAgMCAyMCAxNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik04LjcwODMzIDQuNzkxNzVDOC43MDgzMyA1LjYxMzA4IDguMzk5NDIgNi4zNjI5MiA3Ljg5MTU4IDYuOTMwMzNDOC42MDQzOCA3LjQzNzMzIDkuMTM3NTYgOC4xNTc3OSA5LjQxNDA5IDguOTg3NjVDOS42OTA2MyA5LjgxNzUgOS42OTYyMSAxMC43MTM4IDkuNDMwMDMgMTEuNTQ3QzkuMTYzODUgMTIuMzgwMiA4LjYzOTY5IDEzLjEwNzMgNy45MzMyNiAxMy42MjMxQzcuMjI2ODMgMTQuMTM5IDYuMzc0NzIgMTQuNDE2OSA1LjUgMTQuNDE2N0gxLjM3NUMxLjAxMDMzIDE0LjQxNjcgMC42NjA1OTEgMTQuMjcxOSAwLjQwMjcyOCAxNC4wMTRDMC4xNDQ4NjYgMTMuNzU2MiAwIDEzLjQwNjQgMCAxMy4wNDE3VjIuMDQxNzVDMCAxLjY3NzA4IDAuMTQ0ODY2IDEuMzI3MzQgMC40MDI3MjggMS4wNjk0OEMwLjY2MDU5MSAwLjgxMTYxNCAxLjAxMDMzIDAuNjY2NzQ4IDEuMzc1IDAuNjY2NzQ4SDUuMDQxNjdDNi4wMTQxMyAwLjY2Njc0OCA2Ljk0Njc2IDEuMDUzMDYgNy42MzQzOSAxLjc0MDY5QzguMzIyMDMgMi40MjgzMiA4LjcwODMzIDMuMzYwOTUgOC43MDgzMyA0LjMzMzQxVjQuNzkxNzVaTTEuODMzMzMgNi4xNjY3NVYyLjUwMDA4SDUuMDQxNjdDNS41Mjc5IDIuNTAwMDggNS45OTQyMSAyLjY5MzI0IDYuMzM4MDMgMy4wMzcwNUM2LjY4MTg1IDMuMzgwODcgNi44NzUgMy44NDcxOCA2Ljg3NSA0LjMzMzQxVjQuNzkxNzVDNi44NzUgNS4xNTY0MiA2LjczMDEzIDUuNTA2MTYgNi40NzIyNyA1Ljc2NDAyQzYuMjE0NDEgNi4wMjE4OCA1Ljg2NDY3IDYuMTY2NzUgNS41IDYuMTY2NzVIMS44MzMzM1pNMS44MzMzMyA4LjAwMDA4SDUuNUM2LjEwNzc5IDguMDAwMDggNi42OTA2OCA4LjI0MTUyIDcuMTIwNDUgOC42NzEzQzcuNTUwMjIgOS4xMDEwNyA3Ljc5MTY3IDkuNjgzOTYgNy43OTE2NyAxMC4yOTE3QzcuNzkxNjcgMTAuODk5NSA3LjU1MDIyIDExLjQ4MjQgNy4xMjA0NSAxMS45MTIyQzYuNjkwNjggMTIuMzQyIDYuMTA3NzkgMTIuNTgzNCA1LjUgMTIuNTgzNEgxLjgzMzMzVjguMDAwMDhaTTExLjkxNjcgMi41QzExLjkxNjcgMi4yNTY4OCAxMi4wMTMyIDIuMDIzNzMgMTIuMTg1MiAxLjg1MTgyQzEyLjM1NzEgMS42Nzk5MSAxMi41OTAyIDEuNTgzMzMgMTIuODMzMyAxLjU4MzMzSDE2LjA0MTdDMTYuMjg0OCAxLjU4MzMzIDE2LjUxNzkgMS42Nzk5MSAxNi42ODk4IDEuODUxODJDMTYuODYxOCAyLjAyMzczIDE2Ljk1ODMgMi4yNTY4OCAxNi45NTgzIDIuNUMxNi45NTgzIDIuNzQzMTIgMTYuODYxOCAyLjk3NjI3IDE2LjY4OTggMy4xNDgxOEMxNi41MTc5IDMuMzIwMDkgMTYuMjg0OCAzLjQxNjY3IDE2LjA0MTcgMy40MTY2N0gxMi44MzMzQzEyLjU5MDIgMy40MTY2NyAxMi4zNTcxIDMuMzIwMDkgMTIuMTg1MiAzLjE0ODE4QzEyLjAxMzIgMi45NzYyNyAxMS45MTY3IDIuNzQzMTIgMTEuOTE2NyAyLjVaTTkuNjI1IDguOTE2NjdDOS42MjUgNi4zMzM1IDExLjgzMzMgNC4zMzMzMyAxNC40Mzc1IDQuMzMzMzNDMTcuMDQxNyA0LjMzMzMzIDE5LjI1IDYuMzMzNSAxOS4yNSA4LjkxNjY3QzE5LjI1IDkuMTU5NzggMTkuMTUzNCA5LjM5Mjk0IDE4Ljk4MTUgOS41NjQ4NUMxOC44MDk2IDkuNzM2NzYgMTguNTc2NCA5LjgzMzMzIDE4LjMzMzMgOS44MzMzM0gxMS40NTgzQzExLjQ1ODMgMTEuMyAxMi43Mzg5IDEyLjU4MzMgMTQuNDM3NSAxMi41ODMzQzE1LjQ1NDEgMTIuNTgzMyAxNi4xMTg3IDEyLjI5NTUgMTYuNTEzOCAxMi4wNDE2QzE2LjcwODIgMTEuOTIzIDE2Ljg4MTYgMTEuNzczMSAxNy4wMjcxIDExLjU5NzlDMTcuMTY3MiAxMS40MDI2IDE3LjM3ODMgMTEuMjcwMSAxNy42MTUyIDExLjIyOUMxNy44NTIgMTEuMTg3OSAxOC4wOTU1IDExLjI0MTQgMTguMjkzMiAxMS4zNzgxQzE4LjQ5MDkgMTEuNTE0NyAxOC42MjcxIDExLjcyMzYgMTguNjcyMyAxMS45NTk3QzE4LjcxNzUgMTIuMTk1NyAxOC42NjgyIDEyLjQ0MDEgMTguNTM1IDEyLjY0MDJDMTguMjI4OCAxMy4wMDUgMTcuOTEwNyAxMy4zMjIyIDE3LjUwNTYgMTMuNTgyNUMxNi44MzE4IDE0LjAxNyAxNS44MjYzIDE0LjQxNjcgMTQuNDM3NSAxNC40MTY3QzExLjgzMzMgMTQuNDE2NyA5LjYyNSAxMi40MTY1IDkuNjI1IDkuODMzMzNWOC45MTY2N1pNMTQuNDM3NSA2LjE2NjY3QzE1Ljc2NzYgNi4xNjY2NyAxNi44NDE5IDYuOTU0MDggMTcuMjQ1MyA4SDExLjYyOThDMTIuMDMzMSA2Ljk1NDA4IDEzLjEwNzQgNi4xNjY2NyAxNC40Mzc1IDYuMTY2NjdaIiBmaWxsPSIjMEY4Q0ZGIi8+Cjwvc3ZnPgo=');
 					background-size: cover;
 					position: absolute;
-					top: 50%;
+					top: 45%;
 					left: 0;
 					transform: translateY(-50%);
 				}
 			}
 			.youtube {
-				&:before {
+				&::before {
 					content: '';
 					width: 20px;
 					height: 17px;
 					background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEiIGhlaWdodD0iMTkiIHZpZXdCb3g9IjAgMCAyMSAxOSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik02LjM1Nzg1IDIuODM1MTlDOC43MzM4NSAyLjQ5ODc3IDExLjU5OTQgMi40OTg3NyAxMy45NzU0IDIuODM1MTlDMTYuMTM0MSAzLjE0MTM1IDE3LjgwNyA0LjY1NTY5IDE4LjEyNiA2LjI4NzM1QzE4LjUxMzggOC4yNjI3NyAxOC41MTM4IDEwLjY1MzQgMTguMTI2IDEyLjYyODlDMTcuODA2MSAxNC4yNjA1IDE2LjEzNDEgMTUuNzc0OSAxMy45NzU0IDE2LjA4MUMxMS41OTk0IDE2LjQxNzQgOC43MzI5MyAxNi40MTc0IDYuMzU3ODUgMTYuMDgxQzQuMTk5MSAxNS43NzQ5IDIuNTI3MSAxNC4yNjA1IDIuMjA3MTggMTIuNjI4OUMxLjgxOTQzIDEwLjY1MzQgMS44MTk0MyA4LjI2Mjc3IDIuMjA3MTggNi4yODczNUMyLjUyNzEgNC42NTU2OSA0LjE5OTEgMy4xNDEzNSA2LjM1Nzg1IDIuODM1MTlaTTE0LjIzMiAxLjAyMDE5QzExLjY4NjQgMC42NTk5MzggOC42NDY3NyAwLjY1OTkzOCA2LjEwMTE4IDEuMDIwMTlDMy4zMzc0MyAxLjQxMTYgMC45MDgyNjcgMy4zODMzNSAwLjQwODY4NCA1LjkzNTM1Qy0wLjAyNDg5OTcgOC4xNDM2IC0wLjAyNDg5OTcgMTAuNzcyNiAwLjQwODY4NCAxMi45ODA5QzAuOTA4MjY3IDE1LjUzMjkgMy4zMzc0MyAxNy41MDQ2IDYuMTAxMTggMTcuODk2QzguNjQ2NzcgMTguMjU2MyAxMS42ODY0IDE4LjI1NjMgMTQuMjMyIDE3Ljg5NkMxNi45OTU4IDE3LjUwNDYgMTkuNDI0OSAxNS41MzI5IDE5LjkyNDUgMTIuOTgwOUMyMC4zNTgxIDEwLjc3MjYgMjAuMzU4MSA4LjE0MzYgMTkuOTI0NSA1LjkzNTM1QzE5LjQyNDkgMy4zODMzNSAxNi45OTU4IDEuNDExNiAxNC4yMzIgMS4wMjAxOVpNOC44NDIwMiA1LjAyODc3QzguNzAzOTcgNC45MzY2NyA4LjU0MzUgNC44ODM3NiA4LjM3Nzc0IDQuODc1NzFDOC4yMTE5OCA0Ljg2NzY2IDguMDQ3MTQgNC45MDQ3NiA3LjkwMDgyIDQuOTgzMDVDNy43NTQ0OSA1LjA2MTM1IDcuNjMyMTYgNS4xNzc4OSA3LjU0Njg4IDUuMzIwMjZDNy40NjE2IDUuNDYyNjMgNy40MTY1OCA1LjYyNTQ4IDcuNDE2NiA1Ljc5MTQ0VjEzLjEyNDhDNy40MTY1OCAxMy4yOTA3IDcuNDYxNiAxMy40NTM2IDcuNTQ2ODggMTMuNTk1OUM3LjYzMjE2IDEzLjczODMgNy43NTQ0OSAxMy44NTQ5IDcuOTAwODIgMTMuOTMzMkM4LjA0NzE0IDE0LjAxMTQgOC4yMTE5OCAxNC4wNDg1IDguMzc3NzQgMTQuMDQwNUM4LjU0MzUgMTQuMDMyNCA4LjcwMzk3IDEzLjk3OTUgOC44NDIwMiAxMy44ODc0TDE0LjM0MiAxMC4yMjA4QzE0LjQ2NzYgMTAuMTM3MSAxNC41NzA1IDEwLjAyMzYgMTQuNjQxNyA5Ljg5MDZDMTQuNzEyOSA5Ljc1NzU2IDE0Ljc1MDEgOS42MDkgMTQuNzUwMSA5LjQ1ODFDMTQuNzUwMSA5LjMwNzIxIDE0LjcxMjkgOS4xNTg2NSAxNC42NDE3IDkuMDI1NkMxNC41NzA1IDguODkyNTYgMTQuNDY3NiA4Ljc3OTE1IDE0LjM0MiA4LjY5NTQ0TDguODQyMDIgNS4wMjg3N1pNMTIuMTgwNSA5LjQ1ODFMOS4yNDk5MyAxMS40MTI0VjcuNTA0NjlMMTIuMTgwNSA5LjQ1ODFaIiBmaWxsPSIjRkY0MzQzIi8+Cjwvc3ZnPgo=');
 					background-size: cover;
 					position: absolute;
-					top: 50%;
+					top: 45%;
 					left: 0;
 					transform: translateY(-50%);
 				}
 			}
+
 			.upwork {
-				&:before {
+				&::before {
 					content: '';
 					width: 24px;
 					height: 20px;
 					background-image: url('../assets/img/upwork.png');
 					background-size: cover;
 					position: absolute;
-					top: 50%;
+					top: 45%;
 					left: 0;
 					transform: translateY(-50%);
 				}
