@@ -20,6 +20,9 @@
 					<li>
 						<router-link to="/pay-rules"> Условия оплаты </router-link>
 					</li>
+					<li>
+						<router-link to="/about">О нас</router-link>
+					</li>
 				</ul>
 
 				<span class="logos">
