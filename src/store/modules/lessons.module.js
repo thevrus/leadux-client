@@ -90,5 +90,8 @@ export const lessons = {
 		watchedLessons(state) {
 			return state.watchedLessons
 		},
+		firstLesson(state) {
+			return state.playlists[0].lessons[0]
+		},
 	},
 }

@@ -54,7 +54,9 @@ export const exercises = {
 	},
 	getters: {
 		exercises(state) {
-			return state.exercises
+			const sort = (a, b) => a.number - b.number
+
+			return state.exercises.sort(sort)
 		},
 		completedExercises(state) {
 			return state.completedExercises
