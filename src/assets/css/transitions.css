@@ -1,10 +1,12 @@
 .fade-enter-active,
 .fade-leave-active {
-	transition: opacity 0.3s;
+	transition-duration: 0.3s;
+	transition-property: opacity;
+	transition-timing-function: ease;
 }
 
 .fade-enter,
-.fade-leave-to {
+.fade-leave-active {
 	opacity: 0;
 }
 

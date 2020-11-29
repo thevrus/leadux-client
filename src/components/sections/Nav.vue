@@ -56,17 +56,17 @@ export default {
 		}
 
 		a {
-			font-weight: bold;
-			font-size: 1rem;
-			line-height: 140%;
+			font-family: Freigeist-XWideBold;
+			font-size: 0.9rem;
 			display: inline-block;
 			margin-right: 2rem;
-			color: #d9d9d9;
+			color: #dadada;
 			transition: transform 0.3s;
+			text-decoration: none;
+			transition: color 0.3s;
 
 			&:hover {
-				transform: translateY(-2px);
-				text-decoration: none;
+				color: #fff;
 			}
 		}
 	}

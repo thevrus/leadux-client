@@ -1,5 +1,5 @@
 <template>
-	<transition-group name="fade" mode="out-in">
+	<transition-group name="fade">
 		<router-view key="main" />
 		<Chat key="chat" />
 	</transition-group>
