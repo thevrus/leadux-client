@@ -3,7 +3,6 @@ import App from './App.vue'
 import VueMeta from 'vue-meta'
 import VueShowdown from 'vue-showdown'
 import VueGtag from 'vue-gtag'
-import './registerServiceWorker'
 import router from './router'
 import store from './store'
 
