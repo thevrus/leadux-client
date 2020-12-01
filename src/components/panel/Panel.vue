@@ -1,16 +1,16 @@
 <template>
 	<Tabs :tabs="tabs" :initialTab="tabs[0]">
-		<template slot="questions">
+		<keep-alive slot="questions">
 			<Questions />
-		</template>
+		</keep-alive>
 
-		<template slot="exercises">
+		<keep-alive slot="exercises">
 			<Exercises />
-		</template>
+		</keep-alive>
 
-		<template slot="materials">
+		<keep-alive slot="materials">
 			<Materials />
-		</template>
+		</keep-alive>
 	</Tabs>
 </template>
 

@@ -32,6 +32,7 @@ export default {
 	.video-wrapper {
 		position: relative;
 		padding-top: 56.25%;
+		aspect-ratio: 16 / 9;
 		height: 0;
 		overflow: hidden;
 		border-radius: 8px;
