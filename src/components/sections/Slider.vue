@@ -27,14 +27,14 @@
 		</div>
 
 		<input
+			id="slider"
+			v-model="value"
+			class="range pink"
 			type="range"
 			:min="min"
 			:max="max"
 			:step="step"
-			v-model="value"
 			@change="slide"
-			id="slider"
-			class="range pink"
 		/>
 	</section>
 </template>

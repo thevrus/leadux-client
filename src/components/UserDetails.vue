@@ -1,34 +1,34 @@
 <template>
 	<div class="fl-sh0">
-		<div class="unregistered__wrapp" v-if="!loggedIn">
+		<div v-if="!loggedIn" class="unregistered__wrapp">
 			<router-link class="btn" to="/register">Регистрация</router-link>
 			<router-link class="btn btn-light" to="/login">Вход</router-link>
 		</div>
 
-		<div class="registred_wrap" v-if="loggedIn && user">
+		<div v-if="loggedIn && user" class="registred_wrap">
 			<div class="user">
 				<div class="user__nick">{{ user.username }}</div>
 				<div class="user__status">{{ user.role.description }}</div>
 
 				<transition name="fade" mode="out-in" appear>
-					<div class="user__info-wrapper" v-show="userInfo">
+					<div v-show="userInfo" class="user__info-wrapper">
 						<div class="user__details">
 							<div class="user__nick">{{ user.username }}</div>
 							<div class="user__email">{{ user.email }}</div>
 
-							<button v-if="loggedIn" @click="userLogout" class="logout">
+							<button v-if="loggedIn" class="logout" @click="userLogout">
 								Выйти
 							</button>
 						</div>
 
-						<span @click="toggleUserInfo" class="avatar">
+						<span class="avatar" @click="toggleUserInfo">
 							<Avatar :avatar="user.avatar" :username="user.username" />
 						</span>
 					</div>
 				</transition>
 			</div>
 
-			<div @click="toggleUserInfo" class="avatar">
+			<div class="avatar" @click="toggleUserInfo">
 				<Avatar :avatar="user.avatar" :username="user.username" />
 			</div>
 		</div>

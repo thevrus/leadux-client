@@ -11,7 +11,7 @@
 		</div>
 
 		<div class="auth">
-			<button class="logout" v-if="loggedIn" @click="userLogout">Выход</button>
+			<button v-if="loggedIn" class="logout" @click="userLogout">Выход</button>
 			<router-link v-else class="login" to="/login"> Вход </router-link>
 		</div>
 	</nav>
@@ -45,8 +45,8 @@ export default {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-top: 0.5rem;
-	margin-bottom: 0.5rem;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
 
 	.links {
 		@media (max-width: 768px) {

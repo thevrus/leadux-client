@@ -23,7 +23,7 @@
 				Использован промокод:
 				<span class="promo-value">{{ promocode }}</span>
 
-				<span @click="discardPromo" class="promo-close">
+				<span class="promo-close" @click="discardPromo">
 					<div class="promo-cross"></div>
 				</span>
 			</span>

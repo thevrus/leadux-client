@@ -15,10 +15,10 @@
 		</div>
 
 		<form
-			@submit="submitForm($event)"
 			method="POST"
 			accept-charset="utf-8"
 			action="https://www.liqpay.ua/api/3/checkout"
+			@submit="submitForm($event)"
 		>
 			<input type="hidden" name="data" :value="plan.data" />
 			<input type="hidden" name="signature" :value="plan.signature" />
@@ -44,10 +44,10 @@ import { mapGetters } from 'vuex'
 // import Promotion from '@/components/Promotion'
 
 export default {
-	props: ['plan', 'onApply'],
 	components: {
 		// Promotion,
 	},
+	props: ['plan', 'onApply'],
 	computed: {
 		...mapGetters('auth', ['loggedIn']),
 	},

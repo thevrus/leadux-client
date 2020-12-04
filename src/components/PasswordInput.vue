@@ -2,6 +2,7 @@
 	<div>
 		<input
 			:id="id"
+			ref="passwordInput"
 			:name="name"
 			:autocomplete="autocomplete"
 			placeholder=" "
@@ -9,7 +10,6 @@
 			type="password"
 			aria-describedby="password-constraints"
 			:required="required"
-			ref="passwordInput"
 			:value="value"
 			@input="onInput"
 		/>
@@ -19,9 +19,9 @@
 
 		<button
 			ref="togglePasswordButton"
-			@click="togglePassword"
 			type="button"
 			aria-label="Показать пароль"
+			@click="togglePassword"
 		></button>
 	</div>
 </template>
