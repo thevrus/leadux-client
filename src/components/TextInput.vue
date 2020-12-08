@@ -45,7 +45,6 @@ input {
 	font-size: 1rem;
 	color: #434343;
 	border: 1px solid transparent;
-	margin-bottom: 1rem;
 	background-color: #fff;
 	outline-color: #222e4f;
 }

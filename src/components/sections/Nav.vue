@@ -11,6 +11,10 @@
 		</div>
 
 		<div class="auth">
+			<router-link v-if="loggedIn" to="/watch" class="watch">
+				Личный кабинет
+			</router-link>
+
 			<button v-if="loggedIn" class="logout" @click="userLogout">Выход</button>
 			<router-link v-else class="login" to="/login"> Вход </router-link>
 		</div>
@@ -74,6 +78,28 @@ export default {
 	.auth {
 		display: flex;
 		align-items: center;
+
+		.watch {
+			margin-right: 1.4rem;
+			font-weight: 500;
+			font-size: 0.95rem;
+			line-height: 140%;
+			padding: 0.8rem 1.5rem;
+			background: rgba(0, 0, 0, 0.12);
+			border-radius: 10px;
+			cursor: pointer;
+			text-decoration: none;
+			border: 1px solid transparent;
+			transition: border-color 0.3s;
+
+			&:hover {
+				border-color: #fff;
+			}
+
+			@media (max-width: 900px) {
+				display: none;
+			}
+		}
 
 		.login,
 		.logout {

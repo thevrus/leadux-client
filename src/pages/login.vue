@@ -12,6 +12,8 @@
 					id="login"
 					type="text"
 					v-model="user.email"
+					class="mb1rem"
+					:class="{ invalid: invalid }"
 				/>
 
 				<PasswordInput
@@ -32,7 +34,7 @@
 					Забыл пароль?
 				</span>
 
-				<button :disabled="loading">
+				<button :disabled="loading" :class="{ load: loading }">
 					<span class="btn">Войти</span>
 				</button>
 			</form>
@@ -134,6 +136,9 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
+.mb1rem {
+	margin-bottom: 1rem;
+}
 .card {
 	background-color: #fff;
 	max-width: 500px;
@@ -231,6 +236,23 @@ a {
 
 	&:hover {
 		opacity: 0.8;
+	}
+}
+
+.load {
+	animation: load infinite 1.3s;
+	cursor: not-allowed;
+}
+
+@keyframes load {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.7;
+	}
+	100% {
+		opacity: 1;
 	}
 }
 </style>

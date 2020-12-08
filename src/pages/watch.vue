@@ -45,10 +45,6 @@ export default {
 		...mapGetters('auth', ['loggedIn']),
 		...mapGetters('lessons', ['currentLesson', 'firstLesson']),
 	},
-	methods: {
-		...mapActions('lessons', ['setCurrentLesson', 'loadLessons']),
-		...mapActions('auth', ['me']),
-	},
 	mounted() {
 		this.loggedIn && this.me()
 
@@ -81,6 +77,10 @@ export default {
 
 			this.loading = false
 		})
+	},
+	methods: {
+		...mapActions('lessons', ['setCurrentLesson', 'loadLessons']),
+		...mapActions('auth', ['me']),
 	},
 }
 </script>
