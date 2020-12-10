@@ -6,27 +6,27 @@
 
 			<form name="form" @submit.prevent="handleLogin">
 				<TextInput
+					id="login"
+					v-model="user.email"
 					label="Email или Username"
 					name="login"
 					:required="true"
-					id="login"
 					type="text"
-					v-model="user.email"
 					class="mb1rem"
 					:class="{ invalid: invalid }"
 				/>
 
 				<PasswordInput
+					id="password"
+					v-model="user.password"
 					label="Пароль"
 					name="password"
 					:required="true"
-					id="password"
-					v-model="user.password"
 					autocomplete="current-password"
 					:class="{ invalid: invalid }"
 				/>
 
-				<div tabindex="-1" v-if="message" class="message">
+				<div v-if="message" tabindex="-1" class="message">
 					{{ message }}
 				</div>
 
@@ -90,6 +90,10 @@ export default {
 	computed: {
 		...mapGetters('auth', ['loggedIn']),
 	},
+	created() {
+		this.loggedIn && this.$router.push({ name: 'watch' })
+		this.nextRoute = this.$route.query ? this.$route.query.nextRoute : null
+	},
 	methods: {
 		...mapActions('auth', ['login']),
 
@@ -128,10 +132,6 @@ export default {
 			}
 		},
 	},
-	created() {
-		this.loggedIn && this.$router.push({ name: 'watch' })
-		this.nextRoute = this.$route.query ? this.$route.query.nextRoute : null
-	},
 }
 </script>
 
@@ -139,6 +139,7 @@ export default {
 .mb1rem {
 	margin-bottom: 1rem;
 }
+
 .card {
 	background-color: #fff;
 	max-width: 500px;

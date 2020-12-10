@@ -16,7 +16,7 @@
 			</router-link>
 
 			<button v-if="loggedIn" class="logout" @click="userLogout">Выход</button>
-			<router-link v-else class="login" to="/login"> Вход </router-link>
+			<router-link v-else class="login" to="/login">Вход</router-link>
 		</div>
 	</nav>
 </template>
@@ -51,23 +51,28 @@ export default {
 	align-items: center;
 	padding-top: 0.5rem;
 	padding-bottom: 0.5rem;
+	position: relative;
 
 	.links {
-		@media (max-width: 768px) {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+
+		@media (max-width: 920px) {
 			& {
 				display: none;
 			}
 		}
 
 		a {
-			font-family: Freigeist-XWideBold;
+			font-family: Freigeist-XWideBold, sans-serif;
 			font-size: 0.9rem;
 			display: inline-block;
 			margin-right: 2rem;
 			color: #dadada;
-			transition: transform 0.3s;
+			transition: transform 0.3s, color 0.3s;
 			text-decoration: none;
-			transition: color 0.3s;
 
 			&:hover {
 				color: #fff;
@@ -89,14 +94,14 @@ export default {
 			border-radius: 10px;
 			cursor: pointer;
 			text-decoration: none;
-			border: 1px solid transparent;
+			border: 0.5px solid transparent;
 			transition: border-color 0.3s;
 
 			&:hover {
 				border-color: #fff;
 			}
 
-			@media (max-width: 900px) {
+			@media (max-width: 960px) {
 				display: none;
 			}
 		}

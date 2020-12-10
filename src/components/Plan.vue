@@ -47,7 +47,7 @@ export default {
 	components: {
 		// Promotion,
 	},
-	props: ['plan', 'onApply'],
+	props: ['plan', 'on-apply'],
 	computed: {
 		...mapGetters('auth', ['loggedIn']),
 	},
@@ -113,8 +113,8 @@ export default {
 	}
 
 	.old-price {
-		font-size: 2rem;
-		line-height: 120%;
+		font-size: responsive 1rem 2rem;
+		line-height: 130%;
 		color: #999999;
 		border: none;
 		position: absolute;

@@ -7,16 +7,16 @@
 			<div class="plans">
 				<img src="@/assets/img/discount.svg" alt="Бестселлер" />
 
-				<Plan :plan="plans[0]" onApply="applyPromocode" />
+				<Plan :plan="plans[0]" on-apply="applyPromocode" />
 				<span class="divider"></span>
-				<Plan :plan="plans[1]" onApply="applyPromocode" />
+				<Plan :plan="plans[1]" on-apply="applyPromocode" />
 			</div>
 
 			<Promotion
 				class="promo-desktop"
 				:is-valid="validPromo"
-				@:apply-promo="applyPromocode"
-				@:discard-promo="discardPromocode"
+				@apply-promo="applyPromocode"
+				@discard-promo="discardPromocode"
 			/>
 		</div>
 
@@ -59,6 +59,8 @@ export default {
 	},
 	methods: {
 		applyPromocode(promocode) {
+			console.log('applyPromocode fired')
+
 			AuthService.invoicePromo(promocode).then(({ data }) => {
 				this.plans = data
 
