@@ -11,7 +11,7 @@ import Chat from '@/components/Chat'
 export default {
 	name: 'App',
 	metaInfo: {
-		title: 'LeadUX – Единственный курс Figma который тебе нужен',
+		title: 'LeadUX – уроки Figma',
 	},
 	components: {
 		Chat,
