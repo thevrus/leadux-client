@@ -46,6 +46,10 @@ export default {
 			validPromo: null,
 		}
 	},
+	components: {
+		Plan,
+		Promotion,
+	},
 	computed: {
 		...mapGetters('auth', ['user', 'loggedIn', 'roleType']),
 	},
