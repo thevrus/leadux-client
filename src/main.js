@@ -13,9 +13,15 @@ Vue.use(VueShowdown, {
 		emoji: true,
 	},
 })
-Vue.use(VueGtag, {
-	config: { id: 'G-JLFP5VWW29' },
-})
+Vue.use(
+	VueGtag,
+	{
+		config: { id: 'G-JLFP5VWW29' },
+		appName: 'Leadux',
+		pageTrackerScreenviewEnabled: true,
+	},
+	router
+)
 
 new Vue({
 	router,
