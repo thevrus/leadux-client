@@ -29,12 +29,6 @@
 
 <script>
 export default {
-	props: {
-		material: {
-			type: Object,
-			required: true,
-		},
-	},
 	filters: {
 		capitalize(value) {
 			if (!value) return ''
@@ -42,6 +36,12 @@ export default {
 				.toString()
 				.slice(0, 1)
 				.toUpperCase()
+		},
+	},
+	props: {
+		material: {
+			type: Object,
+			required: true,
 		},
 	},
 }

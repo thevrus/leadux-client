@@ -19,8 +19,8 @@
 			<div class="exercise__toggle-wrap">
 				<span class="exercise__label">Задание выполнено</span>
 				<input
-					type="checkbox"
 					:id="exercise.id"
+					type="checkbox"
 					:checked="completedExercises.includes(exercise.id)"
 					@change="toggleCompletedExercise(exercise.id)"
 				/>

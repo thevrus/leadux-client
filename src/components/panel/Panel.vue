@@ -1,5 +1,5 @@
 <template>
-	<Tabs :tabs="tabs" :initialTab="tabs[0]">
+	<Tabs :tabs="tabs" :initial-tab="tabs[0]">
 		<keep-alive slot="questions">
 			<Questions />
 		</keep-alive>

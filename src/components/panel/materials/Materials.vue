@@ -1,9 +1,9 @@
 <template>
 	<div v-if="!loading && materials.length > 0" class="wrapp">
-		<div class="overlay" v-if="!isStudent">
+		<div v-if="!isStudent" class="overlay">
 			<router-link
-				:to="{ name: routerLink, query: { nextRoute: 'pay' } }"
 				v-if="!isStudent"
+				:to="{ name: routerLink, query: { nextRoute: 'pay' } }"
 				class="cta mat"
 			>
 				Открыть полный доступ
@@ -36,11 +36,11 @@ import Material from '@/components/panel/materials/Material'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
-	data() {
-		return { loading: true, selectedCategory: null }
-	},
 	components: {
 		Material,
+	},
+	data() {
+		return { loading: true, selectedCategory: null }
 	},
 	computed: {
 		...mapGetters('auth', ['loggedIn', 'user', 'isStudent']),

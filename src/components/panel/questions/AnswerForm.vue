@@ -21,15 +21,15 @@ export default {
 	components: {
 		Avatar,
 	},
-	data() {
-		return {
-			text: '',
-		}
-	},
 	props: {
 		lessonId: {
 			required: true,
 		},
+	},
+	data() {
+		return {
+			text: '',
+		}
 	},
 	computed: {
 		...mapGetters('auth', ['loggedIn', 'user']),
