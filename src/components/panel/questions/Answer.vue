@@ -31,14 +31,14 @@ export default {
 	components: {
 		Avatar,
 	},
+	filters: {
+		timeSince,
+	},
 	props: {
 		answer: {
 			type: Object,
 			required: true,
 		},
-	},
-	filters: {
-		timeSince,
 	},
 }
 </script>

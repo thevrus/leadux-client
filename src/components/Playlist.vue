@@ -1,12 +1,7 @@
 <template>
 	<aside v-if="lessons">
 		<div v-for="playlist in lessons" :key="playlist.id">
-			<details
-				v-if="playlist.lessons.length > 0"
-				open
-				class="playlist"
-				id="details"
-			>
+			<details v-if="playlist.lessons.length > 0" open class="playlist">
 				<summary class="summary">
 					<p class="summary__title">{{ playlist.name }}</p>
 					<div class="summary__wrap">
@@ -24,9 +19,8 @@
 					<li
 						v-for="lesson in playlist.lessons"
 						:key="lesson.id"
-						@click="toggleCurrentLesson(lesson)"
-						class="playlist__wrapp,"
 						:class="{ active: currentLesson.id === lesson.id }"
+						@click="toggleCurrentLesson(lesson)"
 					>
 						<div
 							v-if="!lesson.videoId"
@@ -45,7 +39,7 @@
 									:checked="watchedLessons.includes(lesson.id)"
 									@change="toggleWatchedLesson(lesson.id)"
 								/>
-								<span class="playlist__custom-check"></span>
+								<span class="custom-check"></span>
 							</label>
 
 							<div class="playlist__lesson-info">
@@ -66,6 +60,12 @@
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
+	filters: {
+		time(value) {
+			if (!value || typeof value !== 'number') return value
+			return Math.floor(value / 60) + ' мин.'
+		},
+	},
 	computed: {
 		...mapGetters('auth', ['loggedIn']),
 
@@ -95,12 +95,6 @@ export default {
 			})
 
 			return Math.floor(plLength / 60) + ' мин.'
-		},
-	},
-	filters: {
-		time(value) {
-			if (!value || typeof value !== 'number') return value
-			return Math.floor(value / 60) + ' мин.'
 		},
 	},
 }
@@ -171,7 +165,20 @@ export default {
 		clip: rect(0 0 0 0);
 	}
 
-	input[type='checkbox']:checked + &__custom-check {
+	.custom-check {
+		width: 1.38rem;
+		height: 1.38rem;
+		border: 1px solid #686868;
+		border-radius: 50%;
+		transition: all 0.3s;
+		cursor: pointer;
+
+		&:hover {
+			border: 1px solid #fff;
+		}
+	}
+
+	input[type='checkbox']:checked + .custom-check {
 		background-color: #34bf6c;
 		border: 1px solid #34bf6c;
 
@@ -185,15 +192,10 @@ export default {
 			margin-top: 31%;
 			margin-left: 21%;
 		}
-	}
 
-	&__custom-check {
-		width: 1.38rem;
-		height: 1.38rem;
-		border: 1px solid #686868;
-		border-radius: 50%;
-		transition: all 0.3s;
-		cursor: pointer;
+		&:hover {
+			opacity: 0.5;
+		}
 	}
 
 	&__lesson-info {

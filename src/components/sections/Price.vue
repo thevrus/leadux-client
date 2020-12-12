@@ -3,20 +3,20 @@
 		<h2 id="price">Попробуй первые 2 занятия бесплатно!</h2>
 		<p>Гарантия возврата денег</p>
 
-		<div class="plans-wrapp" v-if="!loading">
+		<div v-if="!loading" class="plans-wrapp">
 			<div class="plans">
 				<img src="@/assets/img/discount.svg" alt="Бестселлер" />
 
-				<Plan :plan="plans[0]" onApply="applyPromocode" />
+				<Plan :plan="plans[0]" on-apply="applyPromocode" />
 				<span class="divider"></span>
-				<Plan :plan="plans[1]" onApply="applyPromocode" />
+				<Plan :plan="plans[1]" on-apply="applyPromocode" />
 			</div>
 
 			<Promotion
-				v-on:apply-promo="applyPromocode"
-				v-on:discard-promo="discardPromocode"
 				class="promo-desktop"
 				:is-valid="validPromo"
+				@apply-promo="applyPromocode"
+				@discard-promo="discardPromocode"
 			/>
 		</div>
 
@@ -34,6 +34,10 @@ import Promotion from '@/components/Promotion'
 import { mapGetters } from 'vuex'
 
 export default {
+	components: {
+		Plan,
+		Promotion,
+	},
 	data() {
 		return {
 			plans: [],
@@ -42,15 +46,21 @@ export default {
 			validPromo: null,
 		}
 	},
-	components: {
-		Plan,
-		Promotion,
-	},
 	computed: {
 		...mapGetters('auth', ['user', 'loggedIn', 'roleType']),
 	},
+	created: function() {
+		this.nextRoute = this.$route.query ? this.$route.query.nextRoute : null
+
+		AuthService.invoice().then(({ data }) => {
+			this.plans = data
+			this.loading = false
+		})
+	},
 	methods: {
 		applyPromocode(promocode) {
+			console.log('applyPromocode fired')
+
 			AuthService.invoicePromo(promocode).then(({ data }) => {
 				this.plans = data
 
@@ -71,14 +81,6 @@ export default {
 				this.validPromo = null
 			})
 		},
-	},
-	created: function() {
-		this.nextRoute = this.$route.query ? this.$route.query.nextRoute : null
-
-		AuthService.invoice().then(({ data }) => {
-			this.plans = data
-			this.loading = false
-		})
 	},
 }
 </script>

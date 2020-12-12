@@ -6,25 +6,27 @@
 
 			<form name="form" @submit.prevent="handleLogin">
 				<TextInput
+					id="login"
+					v-model="user.email"
 					label="Email или Username"
 					name="login"
 					:required="true"
-					id="login"
 					type="text"
-					v-model="user.email"
+					class="mb1rem"
+					:class="{ invalid: invalid }"
 				/>
 
 				<PasswordInput
+					id="password"
+					v-model="user.password"
 					label="Пароль"
 					name="password"
 					:required="true"
-					id="password"
-					v-model="user.password"
 					autocomplete="current-password"
 					:class="{ invalid: invalid }"
 				/>
 
-				<div tabindex="-1" v-if="message" class="message">
+				<div v-if="message" tabindex="-1" class="message">
 					{{ message }}
 				</div>
 
@@ -32,7 +34,7 @@
 					Забыл пароль?
 				</span>
 
-				<button :disabled="loading">
+				<button :disabled="loading" :class="{ load: loading }">
 					<span class="btn">Войти</span>
 				</button>
 			</form>
@@ -88,6 +90,10 @@ export default {
 	computed: {
 		...mapGetters('auth', ['loggedIn']),
 	},
+	created() {
+		this.loggedIn && this.$router.push({ name: 'watch' })
+		this.nextRoute = this.$route.query ? this.$route.query.nextRoute : null
+	},
 	methods: {
 		...mapActions('auth', ['login']),
 
@@ -126,14 +132,14 @@ export default {
 			}
 		},
 	},
-	created() {
-		this.loggedIn && this.$router.push({ name: 'watch' })
-		this.nextRoute = this.$route.query ? this.$route.query.nextRoute : null
-	},
 }
 </script>
 
 <style lang="postcss" scoped>
+.mb1rem {
+	margin-bottom: 1rem;
+}
+
 .card {
 	background-color: #fff;
 	max-width: 500px;
@@ -231,6 +237,23 @@ a {
 
 	&:hover {
 		opacity: 0.8;
+	}
+}
+
+.load {
+	animation: load infinite 1.3s;
+	cursor: not-allowed;
+}
+
+@keyframes load {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.7;
+	}
+	100% {
+		opacity: 1;
 	}
 }
 </style>

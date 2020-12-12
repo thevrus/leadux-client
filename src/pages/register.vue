@@ -11,36 +11,40 @@
 
 			<form name="form" @submit.prevent="handleRegister">
 				<TextInput
+					id="username"
+					v-model="user.username"
 					label="Имя пользователя"
 					name="username"
 					:required="true"
-					id="username"
 					type="text"
-					v-model="user.username"
+					class="mb1rem"
 				/>
 
 				<TextInput
+					id="email"
+					v-model="user.email"
+					:class="{ invalid: invalidMail }"
 					label="Ваш Email"
 					name="email"
 					autocomplete="email"
 					:required="true"
-					id="email"
 					type="email"
-					v-model="user.email"
+					class="mb1rem"
 				/>
 
 				<PasswordInput
+					id="password"
+					v-model="user.password"
 					label="Пароль"
 					name="password"
 					:required="true"
-					id="password"
-					v-model="user.password"
 					:validate="true"
 					autocomplete="new-password"
-					:class="{ invalid: invalid }"
+					:class="{ invalid: invalidPass }"
+					class="mb1rem"
 				/>
 
-				<div tabindex="-1" v-if="message" class="message">
+				<div v-if="message" tabindex="-1" class="message">
 					{{ message }}
 				</div>
 
@@ -53,7 +57,9 @@
 					</label>
 					-->
 
-				<button class="submit">Зapeгиcтpиpoвaтьcя</button>
+				<button :disabled="loading" :class="{ load: loading }" class="submit">
+					Зapeгиcтpиpoвaтьcя
+				</button>
 			</form>
 			<div class="login">
 				<p class="login-info">
@@ -92,15 +98,21 @@ export default {
 	data() {
 		return {
 			user: new User('', '', ''),
+			loading: false,
 			submitted: false,
 			successful: false,
 			nextRoute: null,
-			invalid: false,
+			invalidMail: false,
+			invalidPass: false,
 			message: '',
 		}
 	},
 	computed: {
 		...mapGetters('auth', ['loggedIn']),
+	},
+	created() {
+		this.loggedIn && this.$router.push({ name: 'watch' })
+		this.nextRoute = this.$route.query ? this.$route.query.nextRoute : null
 	},
 	methods: {
 		...mapActions('auth', ['register']),
@@ -108,6 +120,7 @@ export default {
 		handleRegister() {
 			this.message = ''
 			this.submitted = true
+			this.loading = true
 
 			if (this.user.email && this.user.username && this.user.password) {
 				this.register(this.user).then(
@@ -119,33 +132,35 @@ export default {
 						this.successful = true
 					},
 					error => {
+						this.loading = false
 						let message = null
 						switch (error.response.data.message[0].messages[0].id) {
 							case 'Auth.form.error.email.taken':
 								message = 'Данный e-mail уже занят!'
+								this.invalidMail = true
 								break
 
 							case 'Auth.form.error.username.taken':
 								message = 'Данное имя пользователя уже занято!'
+								this.invalidPass = true
 								break
 						}
 
 						this.message = message
-						this.invalid = true
 						this.successful = false
 					}
 				)
 			}
 		},
 	},
-	created() {
-		this.loggedIn && this.$router.push({ name: 'watch' })
-		this.nextRoute = this.$route.query ? this.$route.query.nextRoute : null
-	},
 }
 </script>
 
 <style lang="postcss" scoped>
+.mb1rem {
+	margin-bottom: 1rem;
+}
+
 .card {
 	background-color: #fff;
 	max-width: 500px;
@@ -258,6 +273,23 @@ form {
 		&:hover {
 			opacity: 0.8;
 		}
+	}
+}
+
+.load {
+	animation: load infinite 1.3s;
+	cursor: not-allowed;
+}
+
+@keyframes load {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.7;
+	}
+	100% {
+		opacity: 1;
 	}
 }
 </style>

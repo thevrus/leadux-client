@@ -3,7 +3,6 @@ import App from './App.vue'
 import VueMeta from 'vue-meta'
 import VueShowdown from 'vue-showdown'
 import VueGtag from 'vue-gtag'
-import './registerServiceWorker'
 import router from './router'
 import store from './store'
 
@@ -14,9 +13,15 @@ Vue.use(VueShowdown, {
 		emoji: true,
 	},
 })
-Vue.use(VueGtag, {
-	config: { id: 'G-JLFP5VWW29' },
-})
+Vue.use(
+	VueGtag,
+	{
+		config: { id: 'G-JLFP5VWW29' },
+		appName: 'Leadux',
+		pageTrackerScreenviewEnabled: true,
+	},
+	router
+)
 
 new Vue({
 	router,

@@ -43,11 +43,7 @@ export default {
 	},
 	computed: {
 		...mapGetters('auth', ['loggedIn']),
-		...mapGetters('lessons', ['currentLesson']),
-	},
-	methods: {
-		...mapActions('lessons', ['setCurrentLesson', 'loadLessons']),
-		...mapActions('auth', ['me']),
+		...mapGetters('lessons', ['currentLesson', 'firstLesson']),
 	},
 	mounted() {
 		this.loggedIn && this.me()
@@ -61,7 +57,15 @@ export default {
 				])
 
 				const lesson = flatLessons.find(lesson => lesson.slug === slug)
-				this.setCurrentLesson(lesson)
+				if (lesson) this.setCurrentLesson(lesson)
+				else {
+					this.$router.push({
+						name: 'watch-slug',
+						params: {
+							slug: this.firstLesson.slug,
+						},
+					})
+				}
 			} else {
 				this.$router.push({
 					name: 'watch-slug',
@@ -73,6 +77,10 @@ export default {
 
 			this.loading = false
 		})
+	},
+	methods: {
+		...mapActions('lessons', ['setCurrentLesson', 'loadLessons']),
+		...mapActions('auth', ['me']),
 	},
 }
 </script>

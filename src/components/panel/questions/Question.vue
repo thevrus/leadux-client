@@ -1,6 +1,6 @@
 <template>
-	<details class="bubble" v-if="question">
-		<summary @click="toggleDetails" class="content">
+	<details v-if="question" class="bubble">
+		<summary class="content" @click="toggleDetails">
 			<Avatar
 				:avatar="question.author.avatar"
 				:username="question.author.username"
@@ -21,21 +21,21 @@
 			</span>
 		</summary>
 
-		<span class="answers-counter" v-if="question.answers.length > 0">
+		<span v-if="question.answers.length > 0" class="answers-counter">
 			{{ question.answers.length }} ответ(ов)
 		</span>
 
 		<AnswerForm
 			v-if="isOpenDetails && user && isStudent"
-			:lessonId="question.id"
+			:lesson-id="question.id"
 		/>
 
-		<ul class="answers" v-if="question.answers.length > 0">
+		<ul v-if="question.answers.length > 0" class="answers">
 			<transition-group name="fade" tag="li">
 				<div
-					class="content__answer"
 					v-for="answer of question.answers.slice().reverse()"
 					:key="answer.id"
+					class="content__answer"
 				>
 					<Answer :answer="answer" />
 				</div>
@@ -57,16 +57,16 @@ export default {
 		AnswerForm,
 		Answer,
 	},
-	data() {
-		return {
-			isOpenDetails: false,
-		}
-	},
 	props: {
 		question: {
 			type: Object,
 			required: true,
 		},
+	},
+	data() {
+		return {
+			isOpenDetails: false,
+		}
 	},
 	computed: {
 		...mapGetters('auth', ['user', 'isStudent']),

@@ -116,15 +116,16 @@ ul {
 		}
 
 		h3 {
-			font-weight: bold;
-			font-size: 1.1rem;
-			line-height: 120%;
-			margin: 0.9rem 0 0.8rem 0;
+			font-family: Freigeist-XWideBold;
+			font-size: 1rem;
+			line-height: 140%;
+			margin: 0.9rem 0 0.6rem 0;
 		}
 
 		p {
+			margin: 0;
 			font-weight: 100;
-			line-height: 145%;
+			line-height: 150%;
 		}
 	}
 }

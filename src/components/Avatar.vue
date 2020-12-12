@@ -3,7 +3,7 @@
 		<div v-if="avatar">
 			<img :src="avatar.url" alt="Avatar" class="img" />
 		</div>
-		<div class="avatar-letter" v-else>
+		<div v-else class="avatar-letter">
 			{{ username | capitalize }}
 		</div>
 	</div>
@@ -12,7 +12,6 @@
 <script>
 export default {
 	name: 'Avatar',
-	props: ['avatar', 'username'],
 	filters: {
 		capitalize(value) {
 			if (!value) return ''
@@ -22,6 +21,7 @@ export default {
 				.toUpperCase()
 		},
 	},
+	props: ['avatar', 'username'],
 }
 </script>
 

@@ -3,8 +3,8 @@
 		<div v-if="!loading">
 			<button
 				v-if="loggedIn && isStudent"
-				@click="addQuestion = !addQuestion"
 				v-show="!addQuestion"
+				@click="addQuestion = !addQuestion"
 			>
 				Задать вопрос
 			</button>
@@ -12,7 +12,7 @@
 			<QuestionForm
 				v-show="addQuestion"
 				v-if="loggedIn"
-				:lessonId="currentLesson.id"
+				:lesson-id="currentLesson.id"
 				@resetForm="addQuestion = !addQuestion"
 			/>
 

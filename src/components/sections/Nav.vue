@@ -11,8 +11,12 @@
 		</div>
 
 		<div class="auth">
-			<button class="logout" v-if="loggedIn" @click="userLogout">Выход</button>
-			<router-link v-else class="login" to="/login"> Вход </router-link>
+			<router-link v-if="loggedIn" to="/watch" class="watch">
+				Личный кабинет
+			</router-link>
+
+			<button v-if="loggedIn" class="logout" @click="userLogout">Выход</button>
+			<router-link v-else class="login" to="/login">Вход</router-link>
 		</div>
 	</nav>
 </template>
@@ -45,28 +49,33 @@ export default {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-top: 0.5rem;
-	margin-bottom: 0.5rem;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	position: relative;
 
 	.links {
-		@media (max-width: 768px) {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+
+		@media (max-width: 920px) {
 			& {
 				display: none;
 			}
 		}
 
 		a {
-			font-weight: bold;
-			font-size: 1rem;
-			line-height: 140%;
+			font-family: Freigeist-XWideBold, sans-serif;
+			font-size: 0.9rem;
 			display: inline-block;
 			margin-right: 2rem;
-			color: #d9d9d9;
-			transition: transform 0.3s;
+			color: #dadada;
+			transition: transform 0.3s, color 0.3s;
+			text-decoration: none;
 
 			&:hover {
-				transform: translateY(-2px);
-				text-decoration: none;
+				color: #fff;
 			}
 		}
 	}
@@ -74,6 +83,28 @@ export default {
 	.auth {
 		display: flex;
 		align-items: center;
+
+		.watch {
+			margin-right: 1.4rem;
+			font-weight: 500;
+			font-size: 0.95rem;
+			line-height: 140%;
+			padding: 0.8rem 1.5rem;
+			background: rgba(0, 0, 0, 0.12);
+			border-radius: 10px;
+			cursor: pointer;
+			text-decoration: none;
+			border: 0.5px solid transparent;
+			transition: border-color 0.3s;
+
+			&:hover {
+				border-color: #fff;
+			}
+
+			@media (max-width: 960px) {
+				display: none;
+			}
+		}
 
 		.login,
 		.logout {

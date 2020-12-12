@@ -22,7 +22,7 @@ body {
 	margin: 0;
 	background-color: #000;
 	font-family: 'Freigeist', system-ui;
-	letter-spacing: 0.3px;
+	letter-spacing: 0.4px;
 }
 
 ::selection {
@@ -112,7 +112,8 @@ summary::-moz-details-marker {
 	background-color: #e937b3;
 	border-radius: 10px;
 	margin-right: 1rem;
-	font-size: 0.95rem;
+	font-size: 0.9rem;
+	letter-spacing: 0.4px;
 	display: inline-block;
 	text-decoration: none;
 	transition: opacity 0.3s;

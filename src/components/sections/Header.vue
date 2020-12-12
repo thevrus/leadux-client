@@ -31,7 +31,7 @@
 						<img
 							src="@/assets/img/header_elem.png"
 							alt="Интерфейс Фигма"
-							class="elem"
+							class="figma-ui"
 						/>
 					</div>
 				</span>
@@ -164,7 +164,7 @@ header {
 			}
 		}
 
-		.elem {
+		.figma-ui {
 			position: absolute;
 			left: 173px;
 			top: -34px;

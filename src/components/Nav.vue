@@ -4,7 +4,7 @@
 			<img src="@/assets/img/logo_white.svg" alt="Leadux" />
 		</router-link>
 
-		<div class="progresss" v-if="lessonsLength">
+		<div v-if="lessonsLength" class="progresss">
 			<div class="center">
 				<div class="wrapper">
 					<span class="title">
@@ -22,8 +22,8 @@
 			</div>
 
 			<router-link
-				:to="{ name: routerLink, query: nextRoute }"
 				v-if="!isStudent"
+				:to="{ name: routerLink, query: nextRoute }"
 				class="cta"
 			>
 				Открыть полный доступ
@@ -147,7 +147,7 @@ export default {
 }
 
 .cta {
-	background-color: #e937b3;
+	background-color: var(--cta);
 	text-decoration: none;
 	border: none;
 	cursor: pointer;

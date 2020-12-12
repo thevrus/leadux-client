@@ -1,5 +1,5 @@
 <template>
-	<section class="container" id="faq">
+	<section id="faq" class="container">
 		<div class="grid">
 			<span class="left">
 				<h2>Часто задаваемые вопросы:</h2>

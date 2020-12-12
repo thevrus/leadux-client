@@ -1,5 +1,5 @@
 <template>
-	<transition-group name="fade" mode="out-in">
+	<transition-group name="fade">
 		<router-view key="main" />
 		<Chat key="chat" />
 	</transition-group>
@@ -11,7 +11,7 @@ import Chat from '@/components/Chat'
 export default {
 	name: 'App',
 	metaInfo: {
-		title: 'LeadUX – Единственный курс Figma который тебе нужен',
+		title: 'LeadUX – уроки Figma',
 	},
 	components: {
 		Chat,
