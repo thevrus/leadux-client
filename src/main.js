@@ -4,8 +4,8 @@ import VueMeta from 'vue-meta'
 import VueShowdown from 'vue-showdown'
 import VueGtag from 'vue-gtag'
 import Hotjar from 'vue-hotjar'
-import store from './store'
 import router from './router'
+import store from './store'
 
 Vue.config.productionTip = false
 Vue.use(VueMeta)
