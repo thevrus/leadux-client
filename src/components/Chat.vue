@@ -3,7 +3,7 @@
 <script>
 export default {
 	mounted() {
-		if (process.env.VUE_APP_PROD === true) {
+		if (process.env.VUE_APP_PROD === 'true') {
 			window.$crisp = []
 			window.CRISP_WEBSITE_ID = '9e1dfe79-2774-4204-b877-5197d83762bd'
 			const script = document.createElement('script')

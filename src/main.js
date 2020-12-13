@@ -20,13 +20,13 @@ Vue.use(
 		config: { id: 'G-JLFP5VWW29' },
 		appName: 'Leadux',
 		pageTrackerScreenviewEnabled: true,
-		enabled: process.env.VUE_APP_PROD === true,
+		enabled: process.env.VUE_APP_PROD === 'true',
 	},
 	router
 )
 Vue.use(Hotjar, {
 	id: '2153201',
-	isProduction: process.env.VUE_APP_PROD === true,
+	isProduction: process.env.VUE_APP_PROD === 'true',
 })
 
 new Vue({
