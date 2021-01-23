@@ -1,23 +1,75 @@
-<template functional>
+<template>
 	<section class="section">
 		<div class="container grid-x2fr">
 			<div class="col-l">
-				<span>Сотни полезных ссылок</span>
-				<h2>Очень много полезных материалов</h2>
-				<p>
+				<span ref="answer2">Сотни полезных ссылок</span>
+				<h2 ref="title2">Очень много полезных материалов</h2>
+				<p ref="desc2">
 					Все лучшее, что автор использует лично в ежедневной работе. Тысячи
 					иконок, изображения в высоком разрешении и много-много всего
 					совершенно бесплатно
 				</p>
 
-				<a href="#price" rel="noopener" class="cta">Купить курс</a>
+				<a ref="link2" href="#price" rel="noopener" class="cta">Купить курс</a>
 			</div>
 			<div class="col-r">
-				<img src="@/assets/img/materials_img.png" alt="Вопросы и ответы" />
+				<img
+					ref="img2"
+					src="@/assets/img/materials_img.png"
+					alt="Вопросы и ответы"
+				/>
 			</div>
 		</div>
 	</section>
 </template>
+<script>
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
+export default {
+	mounted() {
+		const { answer2, title2, desc2, link2, img2 } = this.$refs
+
+		gsap.from([title2, desc2, link2], {
+			x: -200,
+			opacity: 0,
+			ease: 'easeOut',
+			stagger: 0.1,
+			duration: 1,
+			scrollTrigger: {
+				trigger: title2,
+				start: 'top 95%',
+				end: 'bottom 5%',
+			},
+		})
+
+		gsap.from(answer2, {
+			x: 50,
+			opacity: 0,
+			ease: 'easeOut',
+			duration: 1,
+			scrollTrigger: {
+				trigger: answer2,
+				start: 'top 95%',
+				end: 'bottom 5%',
+			},
+		})
+
+		gsap.from(img2, 1, {
+			x: 200,
+			opacity: 0,
+			ease: 'easeOut',
+			scrollTrigger: {
+				trigger: img2,
+				start: 'top 95%',
+				end: 'bottom 5%',
+			},
+		})
+	},
+}
+</script>
 
 <style lang="postcss" scoped>
 .section {

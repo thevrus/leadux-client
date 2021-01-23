@@ -2,13 +2,13 @@
 	<section id="faq" class="container">
 		<div class="grid">
 			<span class="left">
-				<h2>Часто задаваемые вопросы:</h2>
+				<h2 ref="title">Часто задаваемые вопросы:</h2>
 
-				<button @click="toggleChat">Задать вопрос</button>
+				<button ref="btn" @click="toggleChat">Задать вопрос</button>
 			</span>
 
 			<span>
-				<details v-for="(faq, index) in faqs" :key="'FAQ' + index">
+				<details ref="answer" v-for="(faq, index) in faqs" :key="'FAQ' + index">
 					<summary>{{ faq.summary }}</summary>
 					<p>{{ faq.content }}</p>
 				</details>
@@ -18,6 +18,10 @@
 </template>
 
 <script>
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 export default {
 	data() {
 		return {
@@ -50,6 +54,33 @@ export default {
 		toggleChat() {
 			window.$crisp && window.$crisp.push(['do', 'chat:open'])
 		},
+	},
+
+	mounted() {
+		const { title, btn, answer } = this.$refs
+
+		gsap.from([title, btn], 1, {
+			x: -50,
+			opacity: 0,
+			ease: 'easeOut',
+			stagger: 0.15,
+			scrollTrigger: {
+				trigger: title,
+				start: 'top 95%',
+				end: 'bottom 5%',
+			},
+		})
+		gsap.from(answer, 0.5, {
+			y: 20,
+			opacity: 0,
+			ease: 'easeOut',
+			stagger: 0.3,
+			scrollTrigger: {
+				trigger: answer,
+				start: 'top 90%',
+				end: 'bottom 10%',
+			},
+		})
 	},
 }
 </script>
