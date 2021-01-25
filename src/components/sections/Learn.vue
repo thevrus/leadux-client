@@ -2,7 +2,7 @@
 	<section id="learn" class="container">
 		<h2>В этом курсе вы научитесь:</h2>
 		<ul>
-			<li v-for="(item, index) in array" :key="'Learn' + index">
+			<li ref="li" v-for="(item, index) in array" :key="'Learn' + index">
 				<img :src="item.img" :alt="item.title" />
 				<h3>{{ item.title }}</h3>
 				<p>{{ item.description }}</p>
@@ -19,7 +19,27 @@ import img4 from '@/assets/img/learn_img-4.jpg'
 import img5 from '@/assets/img/learn_img-5.jpg'
 import img6 from '@/assets/img/learn_img-6.jpg'
 
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
 export default {
+	mounted() {
+		const { li } = this.$refs
+
+		gsap.from([li], 0.5, {
+			x: -80,
+			opacity: 0,
+			ease: 'easeOut',
+			stagger: 0.1,
+			scrollTrigger: {
+				trigger: li,
+				start: 'top 90%',
+				end: 'bottom 10%',
+			},
+		})
+	},
 	data() {
 		return {
 			array: [

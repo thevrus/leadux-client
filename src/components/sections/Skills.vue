@@ -3,7 +3,7 @@
 		<h2>Кому подойдет этот курс:</h2>
 
 		<div class="grid">
-			<span class="junior">
+			<span class="junior" ref="junior">
 				<h3>
 					Новичкам
 					<img src="@/assets/img/skills_junior.png" alt="Иконка человека" />
@@ -14,7 +14,7 @@
 				</p>
 			</span>
 
-			<span class="middle">
+			<span class="middle" ref="middle">
 				<h3>
 					Продвинутым
 					<img src="@/assets/img/skills_middle.png" alt="Иконка человека" />
@@ -25,7 +25,7 @@
 				</p>
 			</span>
 
-			<span class="senior">
+			<span class="senior" ref="senior">
 				<h3>
 					Профессионалам
 					<img src="@/assets/img/skills_senior.png" alt="Иконка человека" />
@@ -38,6 +38,31 @@
 		</div>
 	</section>
 </template>
+
+<script>
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
+export default {
+	mounted() {
+		const { junior, middle, senior } = this.$refs
+
+		gsap.from([junior, middle, senior], 0.5, {
+			x: -50,
+			opacity: 0,
+			ease: 'easeOut',
+			stagger: 0.15,
+			scrollTrigger: {
+				trigger: junior,
+				start: 'top 95%',
+				end: 'bottom 5%',
+			},
+		})
+	},
+}
+</script>
 
 <style lang="postcss" scoped>
 .container {
