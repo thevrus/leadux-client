@@ -131,9 +131,9 @@ section {
 	}
 
 	.plans-wrapp {
-		padding: 2.2rem 3rem;
+		padding: 1.8rem 2.2rem;
 		background-color: #fff;
-		max-width: 800px;
+		max-width: 860px;
 		border-radius: 20px;
 		margin: 2rem auto 1rem;
 
@@ -147,7 +147,7 @@ section {
 	.plans {
 		display: grid;
 		grid-template-columns: 1fr 1px 1fr;
-		grid-column-gap: 6%;
+		grid-column-gap: 4%;
 		position: relative;
 
 		@media (max-width: 690px) {

@@ -1,17 +1,22 @@
 <template>
-	<ul v-if="!loading && exercises.length > 0">
-		<li v-for="exercise in exercises" :key="exercise.id">
-			<Exercise
-				v-if="currentLesson.id === exercise.lesson.id"
-				:exercise="exercise"
-			/>
-		</li>
-	</ul>
+	<div>
+		<ul v-if="!loading && exercises.length > 0">
+			<li v-for="exercise in exercises" :key="exercise.id">
+				<Exercise
+					v-if="
+						exercise.lesson &&
+							exercise.lesson.id &&
+							currentLesson.id === exercise.lesson.id
+					"
+					:exercise="exercise"
+				/>
+			</li>
+		</ul>
+	</div>
 </template>
 
 <script>
 import Exercise from '@/components/panel/exercises/Exercise'
-
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
@@ -27,11 +32,11 @@ export default {
 		...mapGetters('exercises', ['exercises']),
 		...mapGetters('lessons', ['currentLesson']),
 	},
-	methods: {
-		...mapActions('exercises', ['loadExercises']),
-	},
 	mounted() {
 		this.loadExercises().then(() => (this.loading = false))
+	},
+	methods: {
+		...mapActions('exercises', ['loadExercises']),
 	},
 }
 </script>

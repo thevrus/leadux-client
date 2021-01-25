@@ -57,6 +57,9 @@ export default {
 		AnswerForm,
 		Answer,
 	},
+	filters: {
+		timeSince,
+	},
 	props: {
 		question: {
 			type: Object,
@@ -75,9 +78,6 @@ export default {
 		toggleDetails() {
 			return (this.isOpenDetails = !this.isOpenDetails)
 		},
-	},
-	filters: {
-		timeSince,
 	},
 }
 </script>

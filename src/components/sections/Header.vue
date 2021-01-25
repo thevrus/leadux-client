@@ -62,16 +62,16 @@ header {
 	overflow: hidden;
 	z-index: 2;
 	background: radial-gradient(
-		38.67% 74.22% at 100% 0%,
-		rgba(254, 59, 246, 0.6) 4.12%,
-		rgba(91, 98, 255, 0) 99.9%
+		39% 75% at 100% 0%,
+		rgba(254, 59, 246, 0.6) 44%,
+		rgba(91, 98, 255, 0) 100%
 	);
 
 	@media (max-width: 768px) {
 		background: radial-gradient(
-			85.13% 24.98% at 100% 0%,
+			85% 25% at 100% 0%,
 			rgba(238, 59, 254, 0.5) 0%,
-			rgba(255, 81, 248, 0) 73.29%
+			rgba(255, 81, 248, 0) 75%
 		);
 	}
 }
