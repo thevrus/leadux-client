@@ -1,6 +1,6 @@
 <template>
 	<section class="container">
-		<h2 id="price">Попробуй первые 2 занятия бесплатно!</h2>
+		<h2 ref="title" id="price">Попробуй первые 2 занятия бесплатно!</h2>
 		<p>Гарантия возврата денег</p>
 
 		<div v-if="!loading" class="plans-wrapp">
@@ -33,6 +33,11 @@ import Plan from '@/components/Plan'
 import Promotion from '@/components/Promotion'
 import { mapGetters } from 'vuex'
 
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
 export default {
 	components: {
 		Plan,
@@ -45,6 +50,21 @@ export default {
 			loading: true,
 			validPromo: null,
 		}
+	},
+	mounted() {
+		const { title } = this.$refs
+
+		gsap.from(title, {
+			y: -100,
+			duration: 1,
+			opacity: 0,
+			ease: 'easeOut',
+			scrollTrigger: {
+				trigger: title,
+				start: 'top 95%',
+				end: 'bottom 5%',
+			},
+		})
 	},
 	computed: {
 		...mapGetters('auth', ['user', 'loggedIn', 'roleType']),
@@ -131,9 +151,9 @@ section {
 	}
 
 	.plans-wrapp {
-		padding: 2.2rem 3rem;
+		padding: 1.8rem 2.2rem;
 		background-color: #fff;
-		max-width: 800px;
+		max-width: 860px;
 		border-radius: 20px;
 		margin: 2rem auto 1rem;
 
@@ -147,7 +167,7 @@ section {
 	.plans {
 		display: grid;
 		grid-template-columns: 1fr 1px 1fr;
-		grid-column-gap: 6%;
+		grid-column-gap: 4%;
 		position: relative;
 
 		@media (max-width: 690px) {

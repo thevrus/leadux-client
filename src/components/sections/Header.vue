@@ -5,13 +5,13 @@
 		<div class="container">
 			<div class="header">
 				<span class="col-l">
-					<h1>Единственный курс Figma который тебе нужен</h1>
-					<p class="desc">
+					<h1 ref="title">Единственный курс Figma который тебе нужен</h1>
+					<p class="desc" ref="desc">
 						Твой путь в веб-дизайне и дизайне мобильных приложений для iOS и
 						Android начинается здесь
 					</p>
 
-					<div class="btn-wrapp">
+					<div class="btn-wrapp" ref="btns">
 						<a href="#price" rel="noopener" class="cta">Купить</a>
 
 						<router-link to="/watch" class="watch">
@@ -26,12 +26,14 @@
 							src="@/assets/img/header_figma.jpg"
 							alt="Интерфейс Фигма"
 							class="figma"
+							ref="figma"
 						/>
 
 						<img
 							src="@/assets/img/header_elem.png"
 							alt="Интерфейс Фигма"
 							class="figma-ui"
+							ref="elements"
 						/>
 					</div>
 				</span>
@@ -43,6 +45,7 @@
 <script>
 import Nav from '@/components/sections/Nav'
 import { mapGetters } from 'vuex'
+import { gsap } from 'gsap'
 
 export default {
 	name: 'Header',
@@ -51,6 +54,22 @@ export default {
 	},
 	computed: {
 		...mapGetters('auth', ['loggedIn']),
+	},
+	mounted() {
+		const { title, desc, btns, figma, elements } = this.$refs
+
+		gsap.from([title, desc, btns], 1, {
+			x: -200,
+			opacity: 0,
+			ease: 'easeInOut',
+			stagger: 0.2,
+		})
+		gsap.from([figma, elements], 1, {
+			x: 200,
+			opacity: 0,
+			ease: 'easeInOut',
+			stagger: 0.2,
+		})
 	},
 }
 </script>
@@ -62,16 +81,16 @@ header {
 	overflow: hidden;
 	z-index: 2;
 	background: radial-gradient(
-		38.67% 74.22% at 100% 0%,
-		rgba(254, 59, 246, 0.6) 4.12%,
-		rgba(91, 98, 255, 0) 99.9%
+		39% 75% at 100% 0%,
+		rgba(254, 59, 246, 0.6) 44%,
+		rgba(91, 98, 255, 0) 100%
 	);
 
 	@media (max-width: 768px) {
 		background: radial-gradient(
-			85.13% 24.98% at 100% 0%,
+			85% 25% at 100% 0%,
 			rgba(238, 59, 254, 0.5) 0%,
-			rgba(255, 81, 248, 0) 73.29%
+			rgba(255, 81, 248, 0) 75%
 		);
 	}
 }
@@ -154,7 +173,7 @@ header {
 			height: 658px;
 			z-index: 0;
 			border-radius: 8px;
-			animation: fadeIn 1.2s ease-in-out 1;
+			/* animation: fadeIn 1.2s ease-in-out 1; */
 
 			@media (max-width: 768px) {
 				left: 14px;
@@ -170,7 +189,7 @@ header {
 			top: -34px;
 			height: 619px;
 			z-index: 0;
-			animation: fadeIn 2.5s ease-in-out 1;
+			/* animation: fadeIn 2.5s ease-in-out 1; */
 
 			@media (max-width: 768px) {
 				left: 132px;

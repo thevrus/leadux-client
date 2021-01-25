@@ -53,6 +53,7 @@ export default {
 a {
 	color: #0000;
 }
+
 .exercise {
 	padding: 1.5rem 1.5rem 3.5rem;
 	color: #fff;

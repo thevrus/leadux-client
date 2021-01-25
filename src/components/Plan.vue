@@ -143,8 +143,8 @@ export default {
 			text-align: left;
 
 			li {
-				margin-bottom: 0.8rem;
-				font-weight: 500;
+				margin-bottom: 1rem;
+				font-weight: 300;
 				font-size: 1rem;
 				line-height: 120%;
 
@@ -156,7 +156,7 @@ export default {
 					content: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTE2LjY2NzMgNWwtOS4xNjY2NSA5LjE2NjdMMy4zMzM5OCAxMCIgc3Ryb2tlPSIjMTFDQjVCIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==');
 					display: inline-block;
 					vertical-align: text-top;
-					margin-right: 4px;
+					margin-right: 8px;
 				}
 			}
 		}
